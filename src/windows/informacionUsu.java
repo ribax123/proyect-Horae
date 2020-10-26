@@ -103,14 +103,14 @@ public class informacionUsu extends javax.swing.JFrame {
         jLabel_Nombre.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel_Nombre.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_Nombre.setText("Username");
-        getContentPane().add(jLabel_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 50, -1, -1));
+        getContentPane().add(jLabel_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, -1, -1));
 
         jLabel_permisos.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel_permisos.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_permisos.setText("Estado:");
-        getContentPane().add(jLabel_permisos, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, -1, -1));
-        getContentPane().add(jTextField_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, 130, -1));
-        getContentPane().add(jTextField_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 130, -1));
+        getContentPane().add(jLabel_permisos, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, -1, -1));
+        getContentPane().add(jTextField_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 160, -1));
+        getContentPane().add(jTextField_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 160, -1));
 
         jLabel_Nombre2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel_Nombre2.setForeground(new java.awt.Color(255, 255, 255));
@@ -123,7 +123,7 @@ public class informacionUsu extends javax.swing.JFrame {
                 jComboBox_estadoItemStateChanged(evt);
             }
         });
-        getContentPane().add(jComboBox_estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 80, -1));
+        getContentPane().add(jComboBox_estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 80, -1));
 
         jLabel_permisos1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel_permisos1.setForeground(new java.awt.Color(255, 255, 255));
@@ -136,10 +136,10 @@ public class informacionUsu extends javax.swing.JFrame {
                 jComboBox_permiosItemStateChanged(evt);
             }
         });
-        getContentPane().add(jComboBox_permios, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 80, -1));
+        getContentPane().add(jComboBox_permios, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 100, -1));
 
         jButton_ActualizarU.setText("Actualizar Usuario");
-        getContentPane().add(jButton_ActualizarU, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 160, 130, -1));
+        getContentPane().add(jButton_ActualizarU, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, 160, -1));
 
         jButton2.setText("Actualizar password");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -147,7 +147,7 @@ public class informacionUsu extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, 130, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 160, -1));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Creado por el equipo 7  ®");
