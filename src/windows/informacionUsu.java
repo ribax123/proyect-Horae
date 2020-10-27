@@ -5,6 +5,7 @@
  */
 package windows;
 import clases.conexion;
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.sql.*;
@@ -139,6 +140,11 @@ public class informacionUsu extends javax.swing.JFrame {
         getContentPane().add(jComboBox_permios, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 100, -1));
 
         jButton_ActualizarU.setText("Actualizar Usuario");
+        jButton_ActualizarU.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_ActualizarUActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton_ActualizarU, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, 160, -1));
 
         jButton2.setText("Actualizar password");
@@ -170,6 +176,89 @@ public class informacionUsu extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton_ActualizarUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ActualizarUActionPerformed
+
+        int status_cm, nivel_cm, control = 0;
+        String nombre, usuario, password, nivel ="", estado = "";
+        
+        
+        nombre = jTextField_Nombre.getText().trim();
+        usuario = jTextField_username.getText().trim();
+        status_cm = jComboBox_estado.getSelectedIndex() +1;
+        nivel_cm = jComboBox_permios.getSelectedIndex() +1;
+       
+        if (nombre.equals("")) {
+            jTextField_Nombre.setBackground(Color.ORANGE);
+            control++;
+        } else if (usuario.equals("")) {
+            jTextField_username.setBackground(Color.ORANGE);
+            control++;
+        }
+        if (control == 0) {
+            
+            if(nivel_cm == 1){
+                nivel = "Administrador";
+            }else if (nivel_cm == 2) {
+                nivel = "Auxiiar";
+            }
+            
+            if(status_cm == 1){
+                estado = "Actitvo";
+            }else if (status_cm == 2){
+                estado = "Inactivo";
+            }
+                           
+            try {
+                
+                  Connection cn = conexion.conectar();
+                PreparedStatement pst = cn.prepareStatement(
+                "select username from usuarios where username = '" + usuario + "' and not id_usuario = '" 
+                + ID + "'");
+                
+                ResultSet rs = pst.executeQuery();
+                
+                if (rs.next()) {
+                    
+                    JOptionPane.showMessageDialog(null, "Nombre de usuario no disponible.");
+                    jTextField_username.setBackground(Color.ORANGE);
+                    cn.close();
+                    
+                }else {
+                    
+                Connection cn2 = conexion.conectar();
+                PreparedStatement pst2 = cn2.prepareStatement(
+                "update usuarios set nombre_usuario=?, username=?, nivel=?, estado=? " 
+                + "where id_usuario = '" + ID + "'");
+                
+                pst2.setString(1,nombre);
+                pst2.setString(2,usuario);
+                pst2.setString(3,nivel);
+                pst2.setString(4,estado);
+                
+               pst2.executeUpdate();
+               cn2.close();
+               
+               
+               JOptionPane.showMessageDialog(null,"Actualizacion de usuario exitosa.");
+               jTextField_Nombre.setBackground(Color.GREEN);
+               jTextField_username.setBackground(Color.GREEN);
+               
+            }
+                
+                
+                
+            } catch (SQLException e) {
+                System.out.println("Error al Actualizar" + e);
+                
+            }
+        
+        }else{
+            JOptionPane.showMessageDialog(null, "Debes llenar todos los campos");
+        }
+        
+           // TODO add your handling code here:
+    }//GEN-LAST:event_jButton_ActualizarUActionPerformed
 
     /**
      * @param args the command line arguments
