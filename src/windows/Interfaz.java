@@ -123,7 +123,7 @@ public class Interfaz extends javax.swing.JFrame {
         
         if(!user.equals("") || !pass.equals("")){
         
-            //coneccion a base de datos e instrucciones
+            //conexion a base de datos e instrucciones
             try {
                 Connection cn = conexion.conectar();
                 PreparedStatement pst = cn.prepareStatement(
