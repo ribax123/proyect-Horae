@@ -204,7 +204,7 @@ public class informacionUsu extends javax.swing.JFrame {
             }
             
             if(status_cm == 1){
-                estado = "Actitvo";
+                estado = "Activo";
             }else if (status_cm == 2){
                 estado = "Inactivo";
             }
