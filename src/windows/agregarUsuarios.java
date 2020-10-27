@@ -77,20 +77,20 @@ public class agregarUsuarios extends javax.swing.JFrame {
         jLabel_Nombre.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel_Nombre.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_Nombre.setText("Username:");
-        getContentPane().add(jLabel_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 70, -1, -1));
+        getContentPane().add(jLabel_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, -1, -1));
 
         jLabel_Nombre2.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel_Nombre2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_Nombre2.setText("Password");
-        getContentPane().add(jLabel_Nombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, -1, -1));
+        getContentPane().add(jLabel_Nombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 140, -1, -1));
 
         jLabel_Nombre3.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel_Nombre3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_Nombre3.setText("Nivel :");
-        getContentPane().add(jLabel_Nombre3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, -1, -1));
-        getContentPane().add(jPassword_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 170, 150, 25));
-        getContentPane().add(jTex_Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 100, 150, 25));
-        getContentPane().add(jTex_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 150, 25));
+        getContentPane().add(jLabel_Nombre3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
+        getContentPane().add(jPassword_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, 170, 27));
+        getContentPane().add(jTex_Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 170, 27));
+        getContentPane().add(jTex_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 170, 27));
 
         listaBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Auxiliar" }));
         listaBox.addActionListener(new java.awt.event.ActionListener() {
@@ -98,12 +98,12 @@ public class agregarUsuarios extends javax.swing.JFrame {
                 listaBoxActionPerformed(evt);
             }
         });
-        getContentPane().add(listaBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 150, 23));
+        getContentPane().add(listaBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 170, 27));
 
         jLabel_Nombre4.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel_Nombre4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_Nombre4.setText("Nombre :");
-        getContentPane().add(jLabel_Nombre4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, -1, -1));
+        getContentPane().add(jLabel_Nombre4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
 
         jButton1_add.setBackground(new java.awt.Color(153, 255, 255));
         jButton1_add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/add.png"))); // NOI18N
@@ -112,10 +112,10 @@ public class agregarUsuarios extends javax.swing.JFrame {
                 jButton1_addActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 95, 95));
+        getContentPane().add(jButton1_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, 105, 105));
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Creado por el equipo 7  ®");
+        jLabel2.setText("Creado por el equipo 6  ®");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 290, -1, -1));
 
         jLabel_FAU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/fondoRegis.jpg"))); // NOI18N
