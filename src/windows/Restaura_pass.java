@@ -4,41 +4,45 @@
  * and open the template in the editor.
  */
 package windows;
+
 import java.sql.*;
 import clases.conexion;
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
+import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
+
 /**
  *
  * @author fabia_000
  */
 public class Restaura_pass extends javax.swing.JFrame {
-    
+
     String user = "", user_update = "";
+
     /**
      * Creates new form Restaura_pass
      */
     public Restaura_pass() {
         initComponents();
-        
-       
+
         user = Interfaz.user;
         user_update = gestionarUsuarios.user_Update;
-        
+
         setResizable(false);
         setTitle("Restablecer contraseña para " + user_update);
         setLocationRelativeTo(null);
-        
+
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        
+
     }
+
     // icono pequeño
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("iconos/iconopequeño.png"));
         return retValue;
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -52,10 +56,10 @@ public class Restaura_pass extends javax.swing.JFrame {
         jLabel_titulo = new javax.swing.JLabel();
         jLabel_pass1 = new javax.swing.JLabel();
         jLabel_pass2 = new javax.swing.JLabel();
-        jTex_Confirmarpass = new javax.swing.JTextField();
-        jTex_pass = new javax.swing.JTextField();
         jBu_add = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jTex_Confirmarpass = new javax.swing.JPasswordField();
+        jTex_pass = new javax.swing.JPasswordField();
         jLabel_wall = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -76,8 +80,6 @@ public class Restaura_pass extends javax.swing.JFrame {
         jLabel_pass2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_pass2.setText("Contraseña :");
         getContentPane().add(jLabel_pass2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
-        getContentPane().add(jTex_Confirmarpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 210, 27));
-        getContentPane().add(jTex_pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 210, 27));
 
         jBu_add.setBackground(new java.awt.Color(204, 255, 255));
         jBu_add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/add-pass.png"))); // NOI18N
@@ -88,10 +90,18 @@ public class Restaura_pass extends javax.swing.JFrame {
         });
         getContentPane().add(jBu_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, 70, 70));
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Creado por el equipo 6 ®");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, -1, -1));
+        getContentPane().add(jTex_Confirmarpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 200, 27));
+
+        jTex_pass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTex_passActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTex_pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 200, 27));
 
         jLabel_wall.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/fondopass.jpg"))); // NOI18N
         getContentPane().add(jLabel_wall, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 220));
@@ -100,8 +110,60 @@ public class Restaura_pass extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBu_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBu_addActionPerformed
+
+        String password, confirmacion_password;
+
+        password = jTex_pass.getText().trim();
+        confirmacion_password = jTex_Confirmarpass.getText().trim();
+
+        if (!password.equals("") && !confirmacion_password.equals("")) {
+
+            if (password.equals(confirmacion_password)) {
+                
+                try {
+                    // conexion al la base de datos.
+                    Connection cn = conexion.conectar();
+                    PreparedStatement pst = cn.prepareStatement(
+                    "update usuarios set password=? where username = '" + user_update + "'");
+                    
+                    pst.setString(1,password);
+                    
+                    pst.executeUpdate();
+                    cn.close();
+                    
+                    jTex_pass.setBackground(Color.GREEN);
+                    jTex_Confirmarpass.setBackground(Color.GREEN);
+                    
+                    JOptionPane.showMessageDialog(null, "Restauración exitosa");
+                    // cierra la venta cuando se ejecuta exitosamente
+                    this.dispose();
+                    
+                    
+                    
+                    
+                } catch (SQLException e) {
+                    System.err.println("Error en restaurar la contraseña " + e);
+                }
+
+            } else {
+                jTex_Confirmarpass.setBackground(Color.ORANGE);
+                JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
+
+            }
+
+        } else {
+            jTex_pass.setBackground(Color.ORANGE);
+            jTex_Confirmarpass.setBackground(Color.ORANGE);
+            JOptionPane.showMessageDialog(null, "No se admiten campos vacios.");
+
+        }
+
         // TODO add your handling code here:
     }//GEN-LAST:event_jBu_addActionPerformed
+
+    private void jTex_passActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTex_passActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTex_passActionPerformed
 
     /**
      * @param args the command line arguments
@@ -145,7 +207,7 @@ public class Restaura_pass extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_pass2;
     private javax.swing.JLabel jLabel_titulo;
     private javax.swing.JLabel jLabel_wall;
-    private javax.swing.JTextField jTex_Confirmarpass;
-    private javax.swing.JTextField jTex_pass;
+    private javax.swing.JPasswordField jTex_Confirmarpass;
+    private javax.swing.JPasswordField jTex_pass;
     // End of variables declaration//GEN-END:variables
 }
