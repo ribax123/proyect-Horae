@@ -51,6 +51,7 @@ public class Interfaz extends javax.swing.JFrame {
         jButton_salir = new javax.swing.JButton();
         jLabel_icon = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
         jLabel_Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -66,7 +67,7 @@ public class Interfaz extends javax.swing.JFrame {
         getContentPane().add(jLabel_Fodeer, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 540, -1, -1));
         jLabel_Fodeer.getAccessibleContext().setAccessibleName("Creado por  equipo 7 ®");
 
-        jPanel2.setBackground(new java.awt.Color(0, 102, 153));
+        jPanel2.setBackground(new java.awt.Color(0, 51, 102));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1_Usuario.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
@@ -79,13 +80,13 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel_password.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/candado.png"))); // NOI18N
         jPanel2.add(jLabel_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 346, 40, 40));
 
-        jPassword_txt.setBackground(new java.awt.Color(0, 102, 153));
+        jPassword_txt.setBackground(new java.awt.Color(0, 51, 102));
         jPassword_txt.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jPassword_txt.setForeground(new java.awt.Color(0, 153, 153));
         jPassword_txt.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jPanel2.add(jPassword_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 360, 220, 30));
 
-        jTextField_User.setBackground(new java.awt.Color(0, 102, 153));
+        jTextField_User.setBackground(new java.awt.Color(0, 51, 102));
         jTextField_User.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jTextField_User.setForeground(new java.awt.Color(0, 153, 153));
         jTextField_User.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -112,14 +113,14 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel2.add(botton_ingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 430, 60, 60));
 
         jSeparator1.setBackground(new java.awt.Color(0, 153, 153));
-        jSeparator1.setForeground(new java.awt.Color(0, 204, 204));
+        jSeparator1.setForeground(new java.awt.Color(0, 102, 102));
         jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, 280, -1));
 
         jSeparator2.setBackground(new java.awt.Color(0, 153, 153));
-        jSeparator2.setForeground(new java.awt.Color(0, 204, 204));
+        jSeparator2.setForeground(new java.awt.Color(0, 102, 102));
         jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, 280, -1));
 
-        jButton_salir.setBackground(new java.awt.Color(51, 0, 51));
+        jButton_salir.setBackground(new java.awt.Color(0, 0, 0));
         jButton_salir.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jButton_salir.setForeground(new java.awt.Color(255, 255, 255));
         jButton_salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/boton-de-encendido-apagado.png"))); // NOI18N
@@ -130,7 +131,7 @@ public class Interfaz extends javax.swing.JFrame {
                 jButton_salirActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 30, 30));
+        jPanel2.add(jButton_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, 30, 30));
 
         jLabel_icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/n.png"))); // NOI18N
         jPanel2.add(jLabel_icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 160, 170));
@@ -142,8 +143,10 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel1.setText("Sing In");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
 
+        jSeparator3.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 522, 215, 3));
+
         jLabel_Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/a.jpg"))); // NOI18N
-        jLabel_Fondo.setText("si");
         getContentPane().add(jLabel_Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 570));
 
         pack();
@@ -253,6 +256,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JPasswordField jPassword_txt;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTextField jTextField_User;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,19 +5,37 @@
  */
 package windows;
 
+import java.awt.PopupMenu;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author fabia_000
  */
-public class Auxiliar extends javax.swing.JFrame {
+public class Auxiliar extends javax.swing.JFrame implements ActionListener {
 
-    /**
-     * Creates new form Auxiliar
-     */
+    Inicio inicio = new Inicio();
+    Añadir añadir = new Añadir();
+    Buscar buscar = new Buscar();
+    Stock stock = new Stock();
+    Borrar borrar = new Borrar();
+
+    //constutor
     public Auxiliar() {
         initComponents();
         setTitle("Auxiliar");
+        setSize(600, 450);
+        setResizable(false);
         setLocationRelativeTo(null);
+        contenedor.add(inicio);
+
+        bt_añardir.addActionListener(this);
+        bt_Inicio.addActionListener(this);
+        bt_borrar.addActionListener(this);
+        bt_stock.addActionListener(this);
+        bt_buscar.addActionListener(this);
+
     }
 
     /**
@@ -29,18 +47,42 @@ public class Auxiliar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        contenedor = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        bt_buscar = new javax.swing.JButton();
+        bt_stock = new javax.swing.JButton();
+        bt_borrar = new javax.swing.JButton();
+        bt_añardir = new javax.swing.JButton();
+        bt_Inicio = new javax.swing.JButton();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 850, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 620, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(610, 400));
+
+        contenedor.setPreferredSize(new java.awt.Dimension(610, 400));
+        contenedor.setLayout(new java.awt.BorderLayout());
+
+        jPanel1.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(150, 540));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        bt_buscar.setText("buscar");
+        jPanel1.add(bt_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
+
+        bt_stock.setText("stock");
+        jPanel1.add(bt_stock, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
+
+        bt_borrar.setText("borrar");
+        jPanel1.add(bt_borrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
+
+        bt_añardir.setText("añadir");
+        jPanel1.add(bt_añardir, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
+
+        bt_Inicio.setText("Inicio");
+        jPanel1.add(bt_Inicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
+
+        contenedor.add(jPanel1, java.awt.BorderLayout.LINE_START);
+
+        getContentPane().add(contenedor, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -81,5 +123,69 @@ public class Auxiliar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_Inicio;
+    private javax.swing.JButton bt_añardir;
+    private javax.swing.JButton bt_borrar;
+    private javax.swing.JButton bt_buscar;
+    private javax.swing.JButton bt_stock;
+    private javax.swing.JPanel contenedor;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+
+        Object evt = ae.getSource();
+
+        if (evt.equals(bt_Inicio)) {
+            inicio.setVisible(true);
+            buscar.setVisible(false);
+            añadir.setVisible(false);
+            borrar.setVisible(false);
+            stock.setVisible(false);
+
+            contenedor.add(inicio);
+            contenedor.validate();
+
+        } else if (evt.equals(bt_añardir)) {
+            inicio.setVisible(false);
+            buscar.setVisible(false);
+            añadir.setVisible(true);
+            borrar.setVisible(false);
+            stock.setVisible(false);
+
+            contenedor.add(añadir);
+            contenedor.validate();
+
+        } else if (evt.equals(bt_borrar)) {
+            inicio.setVisible(false);
+            buscar.setVisible(false);
+            añadir.setVisible(false);
+            borrar.setVisible(true);
+            stock.setVisible(false);
+
+            contenedor.add(borrar);
+            contenedor.validate();
+
+        } else if (evt.equals(bt_buscar)) {
+            inicio.setVisible(false);
+            buscar.setVisible(true);
+            añadir.setVisible(false);
+            borrar.setVisible(false);
+            stock.setVisible(false);
+
+            contenedor.add(buscar);
+            contenedor.validate();
+        
+        }else if (evt.equals(bt_stock)) {
+            inicio.setVisible(false);
+            buscar.setVisible(false);
+            añadir.setVisible(false);
+            borrar.setVisible(false);
+            stock.setVisible(true);
+
+            contenedor.add(stock);
+            contenedor.validate();
+        }
+    }
 }

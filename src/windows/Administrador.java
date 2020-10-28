@@ -113,6 +113,11 @@ public class Administrador extends javax.swing.JFrame {
         getContentPane().add(jButton_gestionU, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, 125, 110));
 
         jButton_MenuAux.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/137-briefcase.png"))); // NOI18N
+        jButton_MenuAux.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_MenuAuxActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton_MenuAux, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 150, 125, 110));
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -156,6 +161,13 @@ public class Administrador extends javax.swing.JFrame {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton_regisUActionPerformed
+
+    private void jButton_MenuAuxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_MenuAuxActionPerformed
+                
+            Auxiliar auxiliar = new Auxiliar();
+            auxiliar.setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton_MenuAuxActionPerformed
 
     /**
      * @param args the command line arguments
