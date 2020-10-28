@@ -25,7 +25,7 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
     public Auxiliar() {
         initComponents();
         setTitle("Auxiliar");
-        setSize(600, 450);
+        setSize(700, 450);
         setResizable(false);
         setLocationRelativeTo(null);
         contenedor.add(inicio);
@@ -51,9 +51,11 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
         jPanel1 = new javax.swing.JPanel();
         bt_buscar = new javax.swing.JButton();
         bt_stock = new javax.swing.JButton();
-        bt_borrar = new javax.swing.JButton();
-        bt_añardir = new javax.swing.JButton();
         bt_Inicio = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        bt_añardir = new javax.swing.JButton();
+        bt_borrar = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(610, 400));
@@ -61,24 +63,61 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
         contenedor.setPreferredSize(new java.awt.Dimension(610, 400));
         contenedor.setLayout(new java.awt.BorderLayout());
 
-        jPanel1.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel1.setBackground(new java.awt.Color(0, 102, 153));
         jPanel1.setPreferredSize(new java.awt.Dimension(150, 540));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        bt_buscar.setText("buscar");
-        jPanel1.add(bt_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
+        bt_buscar.setBackground(new java.awt.Color(0, 102, 153));
+        bt_buscar.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
+        bt_buscar.setForeground(new java.awt.Color(255, 255, 255));
+        bt_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/lupa.png"))); // NOI18N
+        bt_buscar.setText("Buscar");
+        bt_buscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bt_buscar.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        jPanel1.add(bt_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 130, 40));
 
-        bt_stock.setText("stock");
-        jPanel1.add(bt_stock, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
+        bt_stock.setBackground(new java.awt.Color(0, 102, 153));
+        bt_stock.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
+        bt_stock.setForeground(new java.awt.Color(255, 255, 255));
+        bt_stock.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/lista.png"))); // NOI18N
+        bt_stock.setText("Stock");
+        bt_stock.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bt_stock.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        jPanel1.add(bt_stock, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 130, 40));
 
-        bt_borrar.setText("borrar");
-        jPanel1.add(bt_borrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
-
-        bt_añardir.setText("añadir");
-        jPanel1.add(bt_añardir, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
-
+        bt_Inicio.setBackground(new java.awt.Color(0, 102, 153));
+        bt_Inicio.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
+        bt_Inicio.setForeground(new java.awt.Color(255, 255, 255));
+        bt_Inicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/casa.png"))); // NOI18N
         bt_Inicio.setText("Inicio");
-        jPanel1.add(bt_Inicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
+        bt_Inicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bt_Inicio.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jPanel1.add(bt_Inicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 130, 40));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Menú");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, -1, -1));
+
+        bt_añardir.setBackground(new java.awt.Color(0, 102, 153));
+        bt_añardir.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
+        bt_añardir.setForeground(new java.awt.Color(255, 255, 255));
+        bt_añardir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/anadir.png"))); // NOI18N
+        bt_añardir.setText("Ingresar");
+        bt_añardir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        bt_añardir.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        jPanel1.add(bt_añardir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 130, 40));
+
+        bt_borrar.setBackground(new java.awt.Color(0, 102, 153));
+        bt_borrar.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
+        bt_borrar.setForeground(new java.awt.Color(255, 255, 255));
+        bt_borrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/borrar.png"))); // NOI18N
+        bt_borrar.setText("Eliminar");
+        bt_borrar.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        jPanel1.add(bt_borrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 130, 40));
+
+        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 130, 2));
 
         contenedor.add(jPanel1, java.awt.BorderLayout.LINE_START);
 
@@ -129,7 +168,9 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
     private javax.swing.JButton bt_buscar;
     private javax.swing.JButton bt_stock;
     private javax.swing.JPanel contenedor;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 
     @Override

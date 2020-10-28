@@ -28,33 +28,25 @@ public class Inicio extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        fondo = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 52, 128));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Light", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Control de inventarios");
+        jLabel1.setText("Control de inventario");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(167, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(58, 58, 58))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jLabel1)
-                .addContainerGap(327, Short.MAX_VALUE))
-        );
+        fondo.setFont(new java.awt.Font("Segoe UI Light", 0, 36)); // NOI18N
+        fondo.setForeground(new java.awt.Color(255, 255, 255));
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/a.jpg"))); // NOI18N
+        add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 470));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel fondo;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
