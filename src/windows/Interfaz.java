@@ -5,6 +5,7 @@
  */
 package windows;
 import java.awt.Image;
+import java.awt.Color;
 import java.awt.Toolkit;
 import java.sql.*;
 import clases.conexion;
@@ -38,14 +39,18 @@ public class Interfaz extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel_icon = new javax.swing.JLabel();
-        jButton_salir = new javax.swing.JButton();
+        jLabel_Fodeer = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
         jLabel1_Usuario = new javax.swing.JLabel();
         jLabel_password = new javax.swing.JLabel();
-        jTextField_User = new javax.swing.JTextField();
         jPassword_txt = new javax.swing.JPasswordField();
+        jTextField_User = new javax.swing.JTextField();
         botton_ingresar = new javax.swing.JButton();
-        jLabel_Fodeer = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jButton_salir = new javax.swing.JButton();
+        jLabel_icon = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jLabel_Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -54,59 +59,92 @@ public class Interfaz extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel_icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/iconoing.png"))); // NOI18N
-        getContentPane().add(jLabel_icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, -1, -1));
+        jLabel_Fodeer.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel_Fodeer.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel_Fodeer.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_Fodeer.setText("Creado por el equipo 6  ®");
+        getContentPane().add(jLabel_Fodeer, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 540, -1, -1));
+        jLabel_Fodeer.getAccessibleContext().setAccessibleName("Creado por  equipo 7 ®");
 
-        jButton_salir.setBackground(new java.awt.Color(153, 204, 255));
-        jButton_salir.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jButton_salir.setForeground(new java.awt.Color(255, 255, 255));
-        jButton_salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/058-power-button.png"))); // NOI18N
-        jButton_salir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_salirActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 490, 50, 50));
+        jPanel2.setBackground(new java.awt.Color(0, 102, 153));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1_Usuario.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel1_Usuario.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1_Usuario.setText("Usuario :");
-        getContentPane().add(jLabel1_Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, -1, -1));
+        jLabel1_Usuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/usuario.png"))); // NOI18N
+        jPanel2.add(jLabel1_Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 273, 40, 40));
 
         jLabel_password.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel_password.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_password.setText("Contraseña :");
-        getContentPane().add(jLabel_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, -1, -1));
+        jLabel_password.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/candado.png"))); // NOI18N
+        jPanel2.add(jLabel_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 346, 40, 40));
 
-        jTextField_User.setBackground(new java.awt.Color(51, 204, 255));
-        jTextField_User.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jTextField_User.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(jTextField_User, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, 150, 25));
+        jPassword_txt.setBackground(new java.awt.Color(0, 102, 153));
+        jPassword_txt.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jPassword_txt.setForeground(new java.awt.Color(0, 153, 153));
+        jPassword_txt.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel2.add(jPassword_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 360, 220, 30));
 
-        jPassword_txt.setBackground(new java.awt.Color(51, 204, 255));
-        jPassword_txt.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jPassword_txt.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(jPassword_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 370, 150, 25));
+        jTextField_User.setBackground(new java.awt.Color(0, 102, 153));
+        jTextField_User.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jTextField_User.setForeground(new java.awt.Color(0, 153, 153));
+        jTextField_User.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jTextField_User.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jTextField_User.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField_UserActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jTextField_User, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 220, 30));
 
-        botton_ingresar.setBackground(new java.awt.Color(153, 204, 255));
+        botton_ingresar.setBackground(new java.awt.Color(0, 153, 153));
         botton_ingresar.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         botton_ingresar.setForeground(new java.awt.Color(255, 255, 255));
-        botton_ingresar.setText("Ingresar");
+        botton_ingresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/entrar.png"))); // NOI18N
+        botton_ingresar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        botton_ingresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botton_ingresar.setSelected(true);
         botton_ingresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botton_ingresarActionPerformed(evt);
             }
         });
-        getContentPane().add(botton_ingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 440, 130, -1));
+        jPanel2.add(botton_ingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 430, 60, 60));
 
-        jLabel_Fodeer.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel_Fodeer.setText("Creado por el equipo 7  ®");
-        getContentPane().add(jLabel_Fodeer, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 545, -1, -1));
-        jLabel_Fodeer.getAccessibleContext().setAccessibleName("Creado por  equipo 7 ®");
+        jSeparator1.setBackground(new java.awt.Color(0, 153, 153));
+        jSeparator1.setForeground(new java.awt.Color(0, 204, 204));
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, 280, -1));
 
-        jLabel_Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/fondo.png"))); // NOI18N
-        getContentPane().add(jLabel_Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 309, 570));
+        jSeparator2.setBackground(new java.awt.Color(0, 153, 153));
+        jSeparator2.setForeground(new java.awt.Color(0, 204, 204));
+        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, 280, -1));
+
+        jButton_salir.setBackground(new java.awt.Color(51, 0, 51));
+        jButton_salir.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jButton_salir.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/boton-de-encendido-apagado.png"))); // NOI18N
+        jButton_salir.setBorder(null);
+        jButton_salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton_salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_salirActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 30, 30));
+
+        jLabel_icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/n.png"))); // NOI18N
+        jPanel2.add(jLabel_icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 160, 170));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 410, 570));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Light", 0, 56)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Sing In");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
+
+        jLabel_Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/a.jpg"))); // NOI18N
+        jLabel_Fondo.setText("si");
+        getContentPane().add(jLabel_Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 570));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -162,6 +200,10 @@ public class Interfaz extends javax.swing.JFrame {
            
         }
     }//GEN-LAST:event_botton_ingresarActionPerformed
+
+    private void jTextField_UserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_UserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_UserActionPerformed
     
     /**
      * @param args the command line arguments
@@ -201,12 +243,16 @@ public class Interfaz extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botton_ingresar;
     private javax.swing.JButton jButton_salir;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel1_Usuario;
     private javax.swing.JLabel jLabel_Fodeer;
     private javax.swing.JLabel jLabel_Fondo;
     private javax.swing.JLabel jLabel_icon;
     private javax.swing.JLabel jLabel_password;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPasswordField jPassword_txt;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField jTextField_User;
     // End of variables declaration//GEN-END:variables
 }
