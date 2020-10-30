@@ -25,7 +25,7 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
     public Auxiliar() {
         initComponents();
         setTitle("Auxiliar");
-        setSize(700, 450);
+        setSize(820, 450);
         setResizable(false);
         setLocationRelativeTo(null);
         contenedor.add(inicio);
@@ -102,7 +102,7 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
         bt_añardir.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
         bt_añardir.setForeground(new java.awt.Color(255, 255, 255));
         bt_añardir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/anadir.png"))); // NOI18N
-        bt_añardir.setText("Ingresar");
+        bt_añardir.setText("Registrar");
         bt_añardir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         bt_añardir.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         jPanel1.add(bt_añardir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 130, 40));
@@ -216,8 +216,8 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
 
             contenedor.add(buscar);
             contenedor.validate();
-        
-        }else if (evt.equals(bt_stock)) {
+
+        } else if (evt.equals(bt_stock)) {
             inicio.setVisible(false);
             buscar.setVisible(false);
             añadir.setVisible(false);
