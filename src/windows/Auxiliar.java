@@ -58,7 +58,6 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
         jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(610, 400));
 
         contenedor.setPreferredSize(new java.awt.Dimension(610, 400));
         contenedor.setLayout(new java.awt.BorderLayout());
