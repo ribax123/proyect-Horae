@@ -254,12 +254,12 @@
         <Component class="javax.swing.JLabel" name="jLabel_icon">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/iconos/n.png"/>
+              <Image iconType="3" name="/iconos/HORAE.png"/>
             </Property>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="40" y="10" width="160" height="170"/>
+              <AbsoluteConstraints x="0" y="0" width="190" height="200"/>
             </Constraint>
           </Constraints>
         </Component>

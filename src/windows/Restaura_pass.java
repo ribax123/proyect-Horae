@@ -66,17 +66,17 @@ public class Restaura_pass extends javax.swing.JFrame {
         setIconImage(getIconImage());
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel_titulo.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel_titulo.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel_titulo.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_titulo.setText("Restablecer contraseña");
-        getContentPane().add(jLabel_titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, -1));
+        getContentPane().add(jLabel_titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, -1, -1));
 
-        jLabel_pass1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jLabel_pass1.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
         jLabel_pass1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_pass1.setText("Confirmar contraseña :");
         getContentPane().add(jLabel_pass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
 
-        jLabel_pass2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jLabel_pass2.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
         jLabel_pass2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_pass2.setText("Contraseña :");
         getContentPane().add(jLabel_pass2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
@@ -90,7 +90,7 @@ public class Restaura_pass extends javax.swing.JFrame {
         });
         getContentPane().add(jBu_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, 70, 70));
 
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Creado por el equipo 6 ®");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, -1, -1));

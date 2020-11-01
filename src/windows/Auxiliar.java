@@ -52,10 +52,9 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
         bt_buscar = new javax.swing.JButton();
         bt_stock = new javax.swing.JButton();
         bt_Inicio = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         bt_añardir = new javax.swing.JButton();
         bt_borrar = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,7 +72,7 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
         bt_buscar.setText("Buscar");
         bt_buscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bt_buscar.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        jPanel1.add(bt_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 130, 40));
+        jPanel1.add(bt_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 130, 40));
 
         bt_stock.setBackground(new java.awt.Color(0, 102, 153));
         bt_stock.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
@@ -82,7 +81,7 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
         bt_stock.setText("Stock");
         bt_stock.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bt_stock.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        jPanel1.add(bt_stock, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 130, 40));
+        jPanel1.add(bt_stock, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 130, 40));
 
         bt_Inicio.setBackground(new java.awt.Color(0, 102, 153));
         bt_Inicio.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
@@ -91,12 +90,7 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
         bt_Inicio.setText("Inicio");
         bt_Inicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bt_Inicio.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jPanel1.add(bt_Inicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 130, 40));
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Menú");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, -1, -1));
+        jPanel1.add(bt_Inicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 130, 40));
 
         bt_añardir.setBackground(new java.awt.Color(0, 102, 153));
         bt_añardir.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
@@ -105,7 +99,7 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
         bt_añardir.setText("Registrar");
         bt_añardir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         bt_añardir.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        jPanel1.add(bt_añardir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 130, 40));
+        jPanel1.add(bt_añardir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 130, 40));
 
         bt_borrar.setBackground(new java.awt.Color(0, 102, 153));
         bt_borrar.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
@@ -113,10 +107,11 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
         bt_borrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/borrar.png"))); // NOI18N
         bt_borrar.setText("Eliminar");
         bt_borrar.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        jPanel1.add(bt_borrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 130, 40));
+        jPanel1.add(bt_borrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 130, 40));
 
-        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 130, 2));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/HORAE.png"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-50, -10, 180, 150));
 
         contenedor.add(jPanel1, java.awt.BorderLayout.LINE_START);
 
@@ -167,9 +162,8 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
     private javax.swing.JButton bt_buscar;
     private javax.swing.JButton bt_stock;
     private javax.swing.JPanel contenedor;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 
     @Override

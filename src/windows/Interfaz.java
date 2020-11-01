@@ -133,8 +133,8 @@ public class Interfaz extends javax.swing.JFrame {
         });
         jPanel2.add(jButton_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, 30, 30));
 
-        jLabel_icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/n.png"))); // NOI18N
-        jPanel2.add(jLabel_icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 160, 170));
+        jLabel_icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/HORAE.png"))); // NOI18N
+        jPanel2.add(jLabel_icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 200));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 410, 570));
 

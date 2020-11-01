@@ -29,6 +29,7 @@ public class Inicio extends javax.swing.JPanel {
 
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 52, 128));
@@ -44,13 +45,19 @@ public class Inicio extends javax.swing.JPanel {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/fondo.jpeg"))); // NOI18N
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 50));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Presentación.jpg"))); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Creado por el equipo 6 ®");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 390, 180, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/fondoAuxiliar.png"))); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 660, 360));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
