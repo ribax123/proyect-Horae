@@ -42,7 +42,7 @@ public class gestionarUsuarios extends javax.swing.JFrame {
         // metodo para impedir que se cierre el programa al cerrar la ventana actual
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
-        // conexión a la base de datos e instrucciones CONSULTA
+        // conexión a la base de datos e instrucciones CONSULTAS
         try {
             Connection cn = conexion.conectar();
             PreparedStatement pst = cn.prepareStatement(
@@ -128,6 +128,7 @@ public class gestionarUsuarios extends javax.swing.JFrame {
         titulo.setText("Usuarios registrados");
         getContentPane().add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, -1, -1));
 
+        jTable_usuarios.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
         jTable_usuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -139,6 +140,7 @@ public class gestionarUsuarios extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable_usuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jScrollPane1.setViewportView(jTable_usuarios);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 650, 200));

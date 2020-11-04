@@ -5,7 +5,9 @@
  */
 package windows;
 
+import java.awt.Image;
 import java.awt.PopupMenu;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.WindowConstants;
@@ -58,6 +60,12 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
         
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
     }
+    
+    // icono miniatura
+    public Image getIconImage(){
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("iconos/iconopequeño.png"));
+        return retValue;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -78,6 +86,7 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
 
         contenedor.setPreferredSize(new java.awt.Dimension(610, 400));
         contenedor.setLayout(new java.awt.BorderLayout());
