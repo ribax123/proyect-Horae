@@ -33,17 +33,16 @@ public class gestionarUsuarios extends javax.swing.JFrame {
     public gestionarUsuarios() {
         initComponents();
         user = Interfaz.user;
-        
+
         // Dimensiones de la interfaz
         setTitle("Usuarios resgistrados - Sesion de " + user);
         setResizable(false);
         setLocationRelativeTo(null);
-        
+
         // metodo para impedir que se cierre el programa al cerrar la ventana actual
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        
-        // conexión a la base de datos e instrucciones 
-       
+
+        // conexión a la base de datos e instrucciones CONSULTA
         try {
             Connection cn = conexion.conectar();
             PreparedStatement pst = cn.prepareStatement(
@@ -59,9 +58,8 @@ public class gestionarUsuarios extends javax.swing.JFrame {
             model.addColumn("Username");
             model.addColumn("Permisos");
             model.addColumn("Estado");
-            
+
             // ciclo para llenar la tabla
-            
             /* cuando hay una solicitud  para generar 
             la lista, se crea un ciclo con un objeto...
              se crea un nuevo ciclo para iterar cada una
@@ -82,14 +80,15 @@ public class gestionarUsuarios extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error al mostrar imformacion, ¡Contacte al administrador!");
         }
 
-// Metodo para obtener la seleción sobre la tabla al usuario al que se le ha hecho click 
+        // accion del mouse
         jTable_usuarios.addMouseListener(new MouseAdapter() {
             @Override
+            // Metodo para obtener los datos sobre el usuario al que se ha seleccionado 
             public void mouseClicked(MouseEvent e) {
                 int fila_point = jTable_usuarios.rowAtPoint(e.getPoint());
                 int columna_point = 2;
                 if (fila_point > -1) {
-                    user_Update = (String)model.getValueAt(fila_point, columna_point);
+                    user_Update = (String) model.getValueAt(fila_point, columna_point);
                     informacionUsu infou = new informacionUsu();
                     infou.setVisible(true);
                 }
@@ -98,6 +97,7 @@ public class gestionarUsuarios extends javax.swing.JFrame {
 
     }
 // icono miniatura para la interfaz
+
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("iconos/iconopequeño.png"));
         return retValue;

@@ -130,11 +130,13 @@ public class agregarUsuarios extends javax.swing.JFrame {
 
     private void jButton1_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_addActionPerformed
 
-        // Variables para los campos "agregar usuarios"
+       
+        // tipo Variables para los campos "agregar usuarios"
         
         int permisos_cmb, validacion = 0;
         String nombre,username,pass,permisos_string = "";
-         
+        
+        // definir variables
         nombre = jTex_Nombre.getText().trim();
         username = jTex_Username.getText().trim();
         pass = jPassword_add.getText().trim();
@@ -172,6 +174,7 @@ public class agregarUsuarios extends javax.swing.JFrame {
             Connection cn = conexion.conectar();
             PreparedStatement pst = cn.prepareStatement(   
                 "select username from usuarios where username = '" + username + "'");
+           
             ResultSet rs = pst.executeQuery();
             
             if(rs.next()){
@@ -186,7 +189,7 @@ public class agregarUsuarios extends javax.swing.JFrame {
                 if (validacion == 0) {
                     try {
                         Connection cn2 = conexion.conectar();
-                        // instrucciones
+                        // instrucciones colsultas
                         PreparedStatement pst2 = cn2.prepareStatement(
                             " insert into usuarios values (?,?,?,?,?,?)");
                         

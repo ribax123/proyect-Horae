@@ -8,13 +8,19 @@ package windows;
 import java.awt.PopupMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.WindowConstants;
 
 /**
  *
  * @author fabia_000
  */
 public class Auxiliar extends javax.swing.JFrame implements ActionListener {
-
+    
+    String user;
+    
+    
+    //nuevos objetos de sus respectivas clases 
+   
     Inicio inicio = new Inicio();
     Añadir añadir = new Añadir();
     Buscar buscar = new Buscar();
@@ -24,18 +30,33 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
     //constutor
     public Auxiliar() {
         initComponents();
+       
+        // // Dimenciones y pocisión de la intefaz 
+        
         setTitle("Auxiliar");
         setSize(820, 450);
         setResizable(false);
         setLocationRelativeTo(null);
+        
+        user = Interfaz.user;
+        
+        setTitle("Control de inventarios - sesion de " + user);
+       
+        
+        // mostrar panel principal "Inicio"
         contenedor.add(inicio);
-
+        
+        
+        
+        // botones paneles de la interfaz
+        
         bt_añardir.addActionListener(this);
         bt_Inicio.addActionListener(this);
         bt_borrar.addActionListener(this);
         bt_stock.addActionListener(this);
         bt_buscar.addActionListener(this);
-
+        
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -72,6 +93,11 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
         bt_buscar.setText("Buscar");
         bt_buscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bt_buscar.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        bt_buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_buscarActionPerformed(evt);
+            }
+        });
         jPanel1.add(bt_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 130, 40));
 
         bt_stock.setBackground(new java.awt.Color(0, 102, 153));
@@ -81,6 +107,11 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
         bt_stock.setText("Stock");
         bt_stock.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bt_stock.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        bt_stock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_stockActionPerformed(evt);
+            }
+        });
         jPanel1.add(bt_stock, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 130, 40));
 
         bt_Inicio.setBackground(new java.awt.Color(0, 102, 153));
@@ -90,6 +121,11 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
         bt_Inicio.setText("Inicio");
         bt_Inicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bt_Inicio.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        bt_Inicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_InicioActionPerformed(evt);
+            }
+        });
         jPanel1.add(bt_Inicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 130, 40));
 
         bt_añardir.setBackground(new java.awt.Color(0, 102, 153));
@@ -99,6 +135,11 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
         bt_añardir.setText("Registrar");
         bt_añardir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         bt_añardir.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        bt_añardir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_añardirActionPerformed(evt);
+            }
+        });
         jPanel1.add(bt_añardir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 130, 40));
 
         bt_borrar.setBackground(new java.awt.Color(0, 102, 153));
@@ -107,6 +148,11 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
         bt_borrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/borrar.png"))); // NOI18N
         bt_borrar.setText("Eliminar");
         bt_borrar.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        bt_borrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_borrarActionPerformed(evt);
+            }
+        });
         jPanel1.add(bt_borrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 130, 40));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/HORAE.png"))); // NOI18N
@@ -119,6 +165,26 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bt_InicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_InicioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_InicioActionPerformed
+
+    private void bt_añardirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_añardirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_añardirActionPerformed
+
+    private void bt_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_buscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_buscarActionPerformed
+
+    private void bt_stockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_stockActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_stockActionPerformed
+
+    private void bt_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_borrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_borrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -167,6 +233,8 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
     // End of variables declaration//GEN-END:variables
 
     @Override
+    
+    // metodo y funcionalidad de los botones cambio de paneles en la interfaz
     public void actionPerformed(ActionEvent ae) {
 
         Object evt = ae.getSource();

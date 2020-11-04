@@ -22,14 +22,14 @@ public class Administrador extends javax.swing.JFrame {
     public static int sesion_user; 
 
     /**
-     * Creates new form Administrador
+     * Constructor
      */
     public Administrador() {
         initComponents();
         user = Interfaz.user;
         sesion_user = 1;
         
-        // Dimenciones y pocisión de la intefaz
+        // Dimenciones y pocisión de la interfaz
         setResizable(false);
         setTitle("Administrador - " + user);
         setLocationRelativeTo(null);
@@ -37,7 +37,7 @@ public class Administrador extends javax.swing.JFrame {
         
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         
-        // conexión a la base de datos e instrucciones
+        // conexión a la base de datos e instrucciones consultas
         try {
             Connection cn = conexion.conectar();
             PreparedStatement pst = cn.prepareStatement(
@@ -45,6 +45,7 @@ public class Administrador extends javax.swing.JFrame {
             
             // validacion de usuarios en la base de datos
             ResultSet rs = pst.executeQuery();
+            
             if (rs.next()) {
                     nombre_user = rs.getString("nombre_usuario");
                     jLabel_nameUsuario.setText(nombre_user);
@@ -154,26 +155,30 @@ public class Administrador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_gestionUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_gestionUActionPerformed
-
+        // nuevo objeto de la clase ... 
         gestionarUsuarios gestionarU = new gestionarUsuarios();
+        // ABRIR NUEVA INTERFAZ
         gestionarU.setVisible(true);
 
-        // TODO add your handling code here:
+      
     }//GEN-LAST:event_jButton_gestionUActionPerformed
 
     private void jButton_regisUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_regisUActionPerformed
-
+        
+        // nuevo objeto de la clase ... 
         agregarUsuarios registrarUsuarios = new agregarUsuarios();
+        // ABRIR NUEVA INTERFAZ
         registrarUsuarios.setVisible(true); 
 
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_jButton_regisUActionPerformed
 
     private void jButton_MenuAuxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_MenuAuxActionPerformed
-                
+             // nuevo objeto de la clase ...
             Auxiliar auxiliar = new Auxiliar();
+            // ABRIR NUEVA INTERFAZ
             auxiliar.setVisible(true);
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButton_MenuAuxActionPerformed
 
     /**
@@ -203,7 +208,7 @@ public class Administrador extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        /*CREA Y MUESTRA LA INTERFAZ */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Administrador().setVisible(true);

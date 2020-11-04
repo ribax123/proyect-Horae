@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package windows;
+
 import clases.conexion;
 import java.awt.Color;
 import java.awt.Image;
@@ -12,46 +13,45 @@ import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 
-
-
-
 public class informacionUsu extends javax.swing.JFrame {
-    
+
+    // variables necesarias para obtener el nombre del usuario y 
     String user = "", user_update = "";
     int ID;
-    
-    
- // cosntructor   
+
+    // cosntructor   
     public informacionUsu() {
         initComponents();
-        
+
         // variables de usuario
         user = Interfaz.user;
         user_update = gestionarUsuarios.user_Update;
-        
+
         // Dimenciones y pocisión de la intefaz
         setSize(452, 295);
         setResizable(false);
         setTitle("Información del usuario " + " -  " + user);
         setLocationRelativeTo(null);
-        
+
         // metodo para evitar el cierre total del programa
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        
+
         jLabel_titulo.setText("Informacion de usuario - " + user_update);
-        
+
+        // generar conexion a la base de datos consulata
         try {
             Connection cn = conexion.conectar();
             PreparedStatement pst = cn.prepareStatement(
-                "select * from usuarios where username = '" + user_update + "'");
+                    // instrucciones de consulta a la base de datos
+                    "select * from usuarios where username = '" + user_update + "'");
             ResultSet rs = pst.executeQuery();
-            
+
             if (rs.next()) {
                 ID = rs.getInt("id_usuario");
-                
+
                 jTextField_Nombre.setText(rs.getString("nombre_usuario"));
                 jTextField_username.setText(rs.getString("username"));
-                
+
                 jComboBox_estado.setSelectedItem(rs.getString("estado"));
                 jComboBox_permios.setSelectedItem(rs.getString("nivel"));
             }
@@ -60,10 +60,11 @@ public class informacionUsu extends javax.swing.JFrame {
             System.err.println("Error al cargar el usuario" + e);
             JOptionPane.showMessageDialog(null, "¡¡Error al cargar!!, contacte al administrador.");
         }
-        
+
     }
-        // Imagen logo miniatura
-        public Image getIconImage(){
+    // Imagen logo miniatura
+
+    public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("iconos/iconopequeño.png"));
         return retValue;
     }
@@ -87,7 +88,7 @@ public class informacionUsu extends javax.swing.JFrame {
         jLabel_permisos1 = new javax.swing.JLabel();
         jComboBox_permios = new javax.swing.JComboBox<>();
         jButton_ActualizarU = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        botton_pass = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         fondoInfo = new javax.swing.JLabel();
 
@@ -147,13 +148,13 @@ public class informacionUsu extends javax.swing.JFrame {
         });
         getContentPane().add(jButton_ActualizarU, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, 160, -1));
 
-        jButton2.setText("Actualizar password");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        botton_pass.setText("Actualizar password");
+        botton_pass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                botton_passActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 160, -1));
+        getContentPane().add(botton_pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 160, -1));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Creado por el equipo 6  ®");
@@ -173,24 +174,23 @@ public class informacionUsu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox_permiosItemStateChanged
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    
+    private void botton_passActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botton_passActionPerformed
+
         Restaura_pass restaurarPass = new Restaura_pass();
         restaurarPass.setVisible(true);
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_botton_passActionPerformed
 
     private void jButton_ActualizarUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ActualizarUActionPerformed
 
         int status_cm, nivel_cm, control = 0;
-        String nombre, usuario, password, nivel ="", estado = "";
-        
-        
+        String nombre, usuario, password, nivel = "", estado = "";
+
         nombre = jTextField_Nombre.getText().trim();
         usuario = jTextField_username.getText().trim();
-        status_cm = jComboBox_estado.getSelectedIndex() +1;
-        nivel_cm = jComboBox_permios.getSelectedIndex() +1;
-       
+        status_cm = jComboBox_estado.getSelectedIndex() + 1;
+        nivel_cm = jComboBox_permios.getSelectedIndex() + 1;
+
         if (nombre.equals("")) {
             jTextField_Nombre.setBackground(Color.ORANGE);
             control++;
@@ -199,68 +199,65 @@ public class informacionUsu extends javax.swing.JFrame {
             control++;
         }
         if (control == 0) {
-            
-            if(nivel_cm == 1){
+
+            if (nivel_cm == 1) {
                 nivel = "Administrador";
-            }else if (nivel_cm == 2) {
+            } else if (nivel_cm == 2) {
                 nivel = "Auxiiar";
             }
-            
-            if(status_cm == 1){
+
+            if (status_cm == 1) {
                 estado = "Activo";
-            }else if (status_cm == 2){
+            } else if (status_cm == 2) {
                 estado = "Inactivo";
             }
-                           
+
             try {
-                
-                  Connection cn = conexion.conectar();
+
+                Connection cn = conexion.conectar();
                 PreparedStatement pst = cn.prepareStatement(
-                "select username from usuarios where username = '" + usuario + "' and not id_usuario = '" 
-                + ID + "'");
-                
+                        "select username from usuarios where username = '" + usuario + "' and not id_usuario = '"
+                        + ID + "'");
+
                 ResultSet rs = pst.executeQuery();
-                
+
                 if (rs.next()) {
-                    
+
                     JOptionPane.showMessageDialog(null, "Nombre de usuario no disponible.");
                     jTextField_username.setBackground(Color.ORANGE);
                     cn.close();
-                    
-                }else {
-                    
-                Connection cn2 = conexion.conectar();
-                PreparedStatement pst2 = cn2.prepareStatement(
-                "update usuarios set nombre_usuario=?, username=?, nivel=?, estado=? " 
-                + "where id_usuario = '" + ID + "'");
-                
-                pst2.setString(1,nombre);
-                pst2.setString(2,usuario);
-                pst2.setString(3,nivel);
-                pst2.setString(4,estado);
-                
-               pst2.executeUpdate();
-               cn2.close();
-               
-               
-               JOptionPane.showMessageDialog(null,"Actualizacion de usuario exitosa.");
-               jTextField_Nombre.setBackground(Color.GREEN);
-               jTextField_username.setBackground(Color.GREEN);
-               
-            }
-                
-                
-                
+
+                } else {
+
+                    Connection cn2 = conexion.conectar();
+                    PreparedStatement pst2 = cn2.prepareStatement(
+                            "update usuarios set nombre_usuario=?, username=?, nivel=?, estado=? "
+                            + "where id_usuario = '" + ID + "'");
+
+                    pst2.setString(1, nombre);
+                    pst2.setString(2, usuario);
+                    pst2.setString(3, nivel);
+                    pst2.setString(4, estado);
+
+                    pst2.executeUpdate();
+                    cn2.close();
+
+                    JOptionPane.showMessageDialog(null, "Actualizacion de usuario exitosa.");
+                    jTextField_Nombre.setBackground(Color.GREEN);
+                    jTextField_username.setBackground(Color.GREEN);
+
+                }
+
             } catch (SQLException e) {
                 System.out.println("Error al Actualizar" + e);
-                
+
             }
-        
-        }else{
+
+        } else {
             JOptionPane.showMessageDialog(null, "Debes llenar todos los campos");
         }
-        
-           // TODO add your handling code here:
+
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButton_ActualizarUActionPerformed
 
     /**
@@ -299,8 +296,8 @@ public class informacionUsu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botton_pass;
     private javax.swing.JLabel fondoInfo;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton_ActualizarU;
     private javax.swing.JComboBox<String> jComboBox_estado;
     private javax.swing.JComboBox<String> jComboBox_permios;

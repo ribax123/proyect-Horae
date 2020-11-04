@@ -14,11 +14,15 @@ import javax.swing.JOptionPane;
  *
  * @author fabia_000
  */
+
+    // clase
 public class Interfaz extends javax.swing.JFrame {
 
+   //  variasble global usuario
    public static String user = "";
    String pass = "";
     
+   //constructor
     public Interfaz() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -153,18 +157,25 @@ public class Interfaz extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_salirActionPerformed
-    System.exit(0);        // TODO add your handling code here:
+    
+        // funcion boton salir
+        System.exit(0);    
+    
+    
     }//GEN-LAST:event_jButton_salirActionPerformed
 
     private void botton_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botton_ingresarActionPerformed
     
-        // validacions de campos vacios
+       // variables para obtener el texto de los campos
+        
         user = jTextField_User.getText().trim();
         pass = jPassword_txt.getText().trim();
         
+         // validaciones campos vacios
+        
         if(!user.equals("") || !pass.equals("")){
         
-            //conexion a base de datos e instrucciones
+            //conexion y consulta a la base de datos
             try {
                 Connection cn = conexion.conectar();
                 PreparedStatement pst = cn.prepareStatement(
@@ -174,12 +185,14 @@ public class Interfaz extends javax.swing.JFrame {
                 ResultSet rs = pst.executeQuery();
                 
                 if (rs.next()) {
-                   
+                   // guarda en variables el nivel y el estado desde la base de datos
                     String nivel = rs.getString("nivel");
                     String estado = rs.getString("estado");
                     
                     if (nivel.equalsIgnoreCase("Administrador") && estado.equalsIgnoreCase("Activo")){
+                        //se encarga de eliminar un objeto y asi liberar recursos 
                          dispose();
+                         // si la condicion se cumple abre una nueva interfaz
                          new Administrador().setVisible(true);
                     
                     }else if(nivel.equalsIgnoreCase("Auxiliar") && estado.equalsIgnoreCase("Activo")){
@@ -189,6 +202,7 @@ public class Interfaz extends javax.swing.JFrame {
                     
                 } else {
                     JOptionPane.showMessageDialog(null, "¡¡Datos incorrectos!!");
+                    //deja los spacios de la interfaz en blanco en caso de no coincidir
                     jTextField_User.setText("");
                     jPassword_txt.setText(""); 
                 }
