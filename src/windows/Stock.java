@@ -83,9 +83,10 @@ public class Stock extends javax.swing.JPanel {
         jTable_product = new javax.swing.JTable();
         CREADO = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(51, 0, 51));
+        setBackground(new java.awt.Color(0, 0, 0));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable_product.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
@@ -113,6 +114,7 @@ public class Stock extends javax.swing.JPanel {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Inventario en Stock");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, -1, -1));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, 350, 10));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/sTOCK.png"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -125,6 +127,7 @@ public class Stock extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable_product;
     // End of variables declaration//GEN-END:variables
 }

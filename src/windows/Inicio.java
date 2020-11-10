@@ -32,6 +32,7 @@ public class Inicio extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jSeparator1 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -40,6 +41,7 @@ public class Inicio extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(0, 52, 128));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 390, 10));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Light", 0, 36)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -49,19 +51,19 @@ public class Inicio extends javax.swing.JPanel {
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/fondo.jpeg"))); // NOI18N
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 50));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 70));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Creado por el equipo 6 ®");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 390, 180, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 400, 180, -1));
 
         jtex_bienvenido.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jtex_bienvenido.setForeground(new java.awt.Color(0, 204, 204));
-        add(jtex_bienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, -1, -1));
+        add(jtex_bienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 75, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/fondoAuxiliar.png"))); // NOI18N
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 660, 360));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 660, 370));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -70,6 +72,7 @@ public class Inicio extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel jtex_bienvenido;
     // End of variables declaration//GEN-END:variables
 }

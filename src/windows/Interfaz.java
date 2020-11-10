@@ -10,10 +10,7 @@ import java.awt.Toolkit;
 import java.sql.*;
 import clases.conexion;
 import javax.swing.JOptionPane;
-/**
- *
- * @author fabia_000
- */
+
 
     // clase
 public class Interfaz extends javax.swing.JFrame {

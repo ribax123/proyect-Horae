@@ -35,14 +35,12 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
        
         // // Dimenciones y pocisión de la intefaz 
         
-        setTitle("Auxiliar");
-        setSize(820, 450);
-        setResizable(false);
-        setLocationRelativeTo(null);
-        
+       
+        setSize(810, 423);        
+        setLocationRelativeTo(null);        
         user = Interfaz.user;
         
-        setTitle("Control de inventarios - sesion de " + user);
+       
        
         
         // mostrar panel principal "Inicio"
@@ -87,6 +85,7 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
+        setUndecorated(true);
 
         contenedor.setPreferredSize(new java.awt.Dimension(610, 400));
         contenedor.setLayout(new java.awt.BorderLayout());
