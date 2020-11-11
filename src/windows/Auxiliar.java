@@ -17,12 +17,10 @@ import javax.swing.WindowConstants;
  * @author fabia_000
  */
 public class Auxiliar extends javax.swing.JFrame implements ActionListener {
-    
+
     String user;
-    
-    
+
     //nuevos objetos de sus respectivas clases 
-   
     Inicio inicio = new Inicio();
     Añadir añadir = new Añadir();
     Buscar buscar = new Buscar();
@@ -32,35 +30,27 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
     //constutor
     public Auxiliar() {
         initComponents();
-       
+
         // // Dimenciones y pocisión de la intefaz 
-        
-       
-        setSize(810, 423);        
-        setLocationRelativeTo(null);        
+        setSize(810, 423);
+        setLocationRelativeTo(null);
         user = Interfaz.user;
-        
-       
-       
-        
+
         // mostrar panel principal "Inicio"
         contenedor.add(inicio);
-        
-        
-        
+
         // botones paneles de la interfaz
-        
         bt_añardir.addActionListener(this);
         bt_Inicio.addActionListener(this);
         bt_borrar.addActionListener(this);
         bt_stock.addActionListener(this);
         bt_buscar.addActionListener(this);
-        
+
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
     }
-    
+
     // icono miniatura
-    public Image getIconImage(){
+    public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("iconos/iconopequeño.png"));
         return retValue;
     }
@@ -81,9 +71,11 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
         bt_Inicio = new javax.swing.JButton();
         bt_añardir = new javax.swing.JButton();
         bt_borrar = new javax.swing.JButton();
+        jButton_Salir = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(getIconImage());
         setUndecorated(true);
 
@@ -163,9 +155,24 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
         });
         jPanel1.add(bt_borrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 130, 40));
 
+        jButton_Salir.setBackground(new java.awt.Color(0, 102, 153));
+        jButton_Salir.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jButton_Salir.setForeground(new java.awt.Color(0, 204, 204));
+        jButton_Salir.setText("x");
+        jButton_Salir.setBorder(null);
+        jButton_Salir.setContentAreaFilled(false);
+        jButton_Salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton_Salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_SalirActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton_Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 30, 30));
+
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/HORAE.png"))); // NOI18N
         jLabel2.setText("jLabel2");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-50, -10, 180, 150));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 100, -1));
 
         contenedor.add(jPanel1, java.awt.BorderLayout.LINE_START);
 
@@ -193,6 +200,13 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
     private void bt_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_borrarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bt_borrarActionPerformed
+
+    private void jButton_SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SalirActionPerformed
+        
+        
+        dispose();
+
+    }//GEN-LAST:event_jButton_SalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -236,12 +250,14 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
     private javax.swing.JButton bt_buscar;
     private javax.swing.JButton bt_stock;
     private javax.swing.JPanel contenedor;
+    private javax.swing.JButton jButton_Salir;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 
     @Override
-    
+
     // metodo y funcionalidad de los botones cambio de paneles en la interfaz
     public void actionPerformed(ActionEvent ae) {
 
