@@ -157,7 +157,7 @@ public class informacionUsu extends javax.swing.JFrame {
         getContentPane().add(botton_pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 160, -1));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Creado por el equipo 6  ®");
+        jLabel1.setText("Creado por el equipo 7  ®");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, -1, -1));
 
         fondoInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/fondoINfo.jpg"))); // NOI18N

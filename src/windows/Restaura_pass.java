@@ -76,7 +76,7 @@ public class Restaura_pass extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Creado por el equipo 6 ®");
+        jLabel1.setText("Creado por el equipo 7 ®");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, -1, -1));
         getContentPane().add(jTex_Confirmarpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 200, 27));
 

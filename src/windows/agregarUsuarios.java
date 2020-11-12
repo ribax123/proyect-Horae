@@ -115,7 +115,7 @@ public class agregarUsuarios extends javax.swing.JFrame {
         getContentPane().add(jButton1_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, 105, 105));
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Creado por el equipo 6  ®");
+        jLabel2.setText("Creado por el equipo 7  ®");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 290, -1, -1));
 
         jLabel_FAU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/fondoRegis.jpg"))); // NOI18N

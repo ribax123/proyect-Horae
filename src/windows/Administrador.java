@@ -141,7 +141,7 @@ public class Administrador extends javax.swing.JFrame {
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 310, -1, -1));
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Creado por el equipo 6  ®");
+        jLabel5.setText("Creado por el equipo 7  ®");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 370, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/HORAE.png"))); // NOI18N

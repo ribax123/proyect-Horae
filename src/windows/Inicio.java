@@ -41,7 +41,7 @@ public class Inicio extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Creado por el equipo 6 ®");
+        jLabel2.setText("Creado por el equipo 7 ®");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 400, 180, -1));
 
         jtex_bienvenido.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N

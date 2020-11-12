@@ -1,9 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package windows;
+
 import java.awt.Image;
 import java.awt.Color;
 import java.awt.Toolkit;
@@ -11,25 +7,24 @@ import java.sql.*;
 import clases.conexion;
 import javax.swing.JOptionPane;
 
-
-    // clase
+// clase
 public class Interfaz extends javax.swing.JFrame {
 
-   //  variasble global usuario
-   public static String user = "";
-   String pass = "";
-    
-   //constructor
+    //  variasble global usuario
+    public static String user = "";
+    String pass = "";
+
+    //constructor
     public Interfaz() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
+
     // icono miniatura
-    public Image getIconImage(){
+    public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("iconos/iconopequeño.png"));
         return retValue;
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -64,7 +59,7 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel_Fodeer.setBackground(new java.awt.Color(255, 255, 255));
         jLabel_Fodeer.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel_Fodeer.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_Fodeer.setText("Creado por el equipo 6  ®");
+        jLabel_Fodeer.setText("Creado por el equipo 7  ®");
         getContentPane().add(jLabel_Fodeer, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 540, -1, -1));
         jLabel_Fodeer.getAccessibleContext().setAccessibleName("Creado por  equipo 7 ®");
 
@@ -154,71 +149,69 @@ public class Interfaz extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_salirActionPerformed
-    
+
         // funcion boton salir
-        System.exit(0);    
-    
-    
+        System.exit(0);
+
+
     }//GEN-LAST:event_jButton_salirActionPerformed
 
     private void botton_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botton_ingresarActionPerformed
-    
-       // variables para obtener el texto de los campos
-        
+
+        // variables para obtener el texto de los campos
         user = jTextField_User.getText().trim();
         pass = jPassword_txt.getText().trim();
-        
-         // validaciones campos vacios
-        
-        if(!user.equals("") || !pass.equals("")){
-        
+
+        // validaciones campos vacios
+        if (!user.equals("") || !pass.equals("")) {
+
             //conexion y consulta a la base de datos
             try {
                 Connection cn = conexion.conectar();
                 PreparedStatement pst = cn.prepareStatement(
-                "select nivel, estado from usuarios where username = '" + user
-                        + "' and password = '" + pass + "'"); 
-                
+                        "select nivel, estado from usuarios where username = '" + user
+                        + "' and password = '" + pass + "'");
+
                 ResultSet rs = pst.executeQuery();
-                
+
                 if (rs.next()) {
-                   // guarda en variables el nivel y el estado desde la base de datos
+                    // guarda en variables el nivel y el estado desde la base de datos
                     String nivel = rs.getString("nivel");
                     String estado = rs.getString("estado");
-                    
-                    if (nivel.equalsIgnoreCase("Administrador") && estado.equalsIgnoreCase("Activo")){
+
+                    if (nivel.equalsIgnoreCase("Administrador") && estado.equalsIgnoreCase("Activo")) {
                         //se encarga de eliminar un objeto y asi liberar recursos 
-                         dispose();
-                         // si la condicion se cumple abre una nueva interfaz
-                         new Administrador().setVisible(true);
-                    
-                    }else if(nivel.equalsIgnoreCase("Auxiliar") && estado.equalsIgnoreCase("Activo")){
-                         dispose();
-                         new Auxiliar().setVisible(true);
+                        dispose();
+                        // si la condicion se cumple abre una nueva interfaz
+                        new Administrador().setVisible(true);
+
+                    } else if (nivel.equalsIgnoreCase("Auxiliar") && estado.equalsIgnoreCase("Activo")) {
+                        dispose();
+                        new Auxiliar().setVisible(true);
                     }
-                    
+
                 } else {
                     JOptionPane.showMessageDialog(null, "¡¡Datos incorrectos!!");
                     //deja los spacios de la interfaz en blanco en caso de no coincidir
                     jTextField_User.setText("");
-                    jPassword_txt.setText(""); 
+                    jPassword_txt.setText("");
                 }
-                
+
             } catch (SQLException e) {
                 System.err.println("Error en el boton acceder. " + e);
                 JOptionPane.showMessageDialog(null, "¡¡ error al iniciar sesion!!, contacte al administrador");
             }
-            
-        } else{            
+
+        } else {
             JOptionPane.showMessageDialog(null, "Debes llenar todos los campos");
-           
+
         }
     }//GEN-LAST:event_botton_ingresarActionPerformed
 
     private void jTextField_UserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_UserActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_UserActionPerformed
-    
+
     /**
      * @param args the command line arguments
      */
