@@ -11,12 +11,18 @@ package windows;
  */
 public class Buscar extends javax.swing.JPanel {
 
-    /**
-     * Creates new form Buscar
-     */
+    
+    
     public Buscar() {
         initComponents();
+        other fecha1 = new other();
+        
+        addFecha.setText(fecha1.getAnio()+"-"+ fecha1.getMes()+"-"+fecha1.getDia());
+        
+      
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,17 +33,65 @@ public class Buscar extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        addFecha = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jText_Descrip = new javax.swing.JTextField();
+        jTex_Tipo = new javax.swing.JTextField();
+        jText_ID = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(102, 0, 255));
-        setLayout(new java.awt.GridBagLayout());
+        setBackground(new java.awt.Color(0, 51, 51));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("jLabel1");
-        add(jLabel1, new java.awt.GridBagConstraints());
+        addFecha.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        addFecha.setForeground(new java.awt.Color(255, 255, 255));
+        addFecha.setText("fecha");
+        add(addFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Tipo:");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Descripción :");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, -1, -1));
+        add(jText_Descrip, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 150, 25));
+        add(jTex_Tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, 150, 23));
+        add(jText_ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 150, 23));
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, 25, 25));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI Light", 0, 36)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Buscar");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, -1, -1));
+        add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, 25, 25));
+        add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 300, 25, 25));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("ID :");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel addFecha;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JTextField jTex_Tipo;
+    private javax.swing.JTextField jText_Descrip;
+    private javax.swing.JTextField jText_ID;
     // End of variables declaration//GEN-END:variables
 }
