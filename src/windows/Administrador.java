@@ -6,20 +6,19 @@
 package windows;
 
 import java.sql.*;
-import clases.conexion; 
+import clases.conexion;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.WindowConstants;
-        
 
 /**
  *
  * @author fabia_000
  */
 public class Administrador extends javax.swing.JFrame {
-    
+
     String user, nombre_user;
-    public static int sesion_user; 
+    public static int sesion_user;
 
     /**
      * Constructor
@@ -28,44 +27,40 @@ public class Administrador extends javax.swing.JFrame {
         initComponents();
         user = Interfaz.user;
         sesion_user = 1;
-        
+
         // Dimenciones y pocisión de la interfaz
         setResizable(false);
         setTitle("Administrador - " + user);
         setLocationRelativeTo(null);
-        
-        
+
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        
+
         // conexión a la base de datos e instrucciones consultas
         try {
             Connection cn = conexion.conectar();
             PreparedStatement pst = cn.prepareStatement(
-            "select nombre_usuario from usuarios where username = '" + user + "'");
-            
+                    "select nombre_usuario from usuarios where username = '" + user + "'");
+
             // validacion de usuarios en la base de datos
             ResultSet rs = pst.executeQuery();
-            
+
             if (rs.next()) {
-                    nombre_user = rs.getString("nombre_usuario");
-                    jLabel_nameUsuario.setText(nombre_user);
+                nombre_user = rs.getString("nombre_usuario");
+                jLabel_nameUsuario.setText(nombre_user);
             }
-                        
+
         } catch (Exception e) {
             System.err.println("error en la conexion desde la interfaz Administrador");
         }
-        
-        
-        
+
     }
+
     // Imagen logo miniatura
-    public Image getIconImage(){
+    public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("iconos/iconopequeño.png"));
         return retValue;
     }
 
-    
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -160,25 +155,25 @@ public class Administrador extends javax.swing.JFrame {
         // ABRIR NUEVA INTERFAZ
         gestionarU.setVisible(true);
 
-      
+
     }//GEN-LAST:event_jButton_gestionUActionPerformed
 
     private void jButton_regisUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_regisUActionPerformed
-        
+
         // nuevo objeto de la clase ... 
         agregarUsuarios registrarUsuarios = new agregarUsuarios();
         // ABRIR NUEVA INTERFAZ
-        registrarUsuarios.setVisible(true); 
+        registrarUsuarios.setVisible(true);
 
-       
+
     }//GEN-LAST:event_jButton_regisUActionPerformed
 
     private void jButton_MenuAuxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_MenuAuxActionPerformed
-             // nuevo objeto de la clase ...
-            Auxiliar auxiliar = new Auxiliar();
-            // ABRIR NUEVA INTERFAZ
-            auxiliar.setVisible(true);
-        
+        // nuevo objeto de la clase ...
+        Auxiliar auxiliar = new Auxiliar();
+        // ABRIR NUEVA INTERFAZ
+        auxiliar.setVisible(true);
+
     }//GEN-LAST:event_jButton_MenuAuxActionPerformed
 
     /**

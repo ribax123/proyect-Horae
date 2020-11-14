@@ -22,7 +22,7 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
 
     //nuevos objetos de sus respectivas clases 
     Inicio inicio = new Inicio();
-    Añadir añadir = new Añadir();
+    añadirDos añadir = new añadirDos();
     Buscar buscar = new Buscar();
     Stock stock = new Stock();
     Borrar borrar = new Borrar();

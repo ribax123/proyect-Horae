@@ -24,10 +24,7 @@ public class other {
     private String mes = Integer.toString(c1.get(Calendar.MONTH));
     private String anio = Integer.toString(c1.get(Calendar.YEAR));
 
-    public Date fecha() {
-        Date fecha = new Date();
-        return fecha;
-    }
+   
 
     /**
      * @return the dia

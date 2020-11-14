@@ -21,16 +21,18 @@ import javax.swing.table.DefaultTableModel;
 public class Stock extends javax.swing.JPanel {
 
     String user;
-    public static String user_Update = "";
-    DefaultTableModel model = new DefaultTableModel();
+    String tipo;
+    public static int user_Update =0;
+    public DefaultTableModel model = new DefaultTableModel();
+
     /**
      * Creates new form Stock
      */
     public Stock() {
         initComponents();
         user = Interfaz.user;
-        
-         // conexión a la base de datos e instrucciones CONSULTAS
+
+        // conexión a la base de datos e instrucciones CONSULTAS
         try {
             Connection cn = conexion.conectar();
             PreparedStatement pst = cn.prepareStatement(
@@ -39,7 +41,7 @@ public class Stock extends javax.swing.JPanel {
             ResultSet rs = pst.executeQuery();
 
             jTable_product = new JTable(model);
-            jScrollPane1.setViewportView(jTable_product );
+            jScrollPane1.setViewportView(jTable_product);
 
             model.addColumn("Id");
             model.addColumn("Descripcion");
@@ -48,12 +50,6 @@ public class Stock extends javax.swing.JPanel {
             model.addColumn("Fecha");
             model.addColumn("Autor");
 
-            // ciclo para llenar la tabla
-            /* cuando hay una solicitud  para generar 
-            la lista, se crea un ciclo con un objeto...
-             se crea un nuevo ciclo para iterar cada una
-             de las posiciones e insertar cada uno de los datos en las 
-            posiciones de las filas*/
             while (rs.next()) {
                 Object[] fila = new Object[6];
 
@@ -84,7 +80,10 @@ public class Stock extends javax.swing.JPanel {
         CREADO = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        buscarTipo = new javax.swing.JButton();
+        comboTipo = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
+        fondo = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 0, 0));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -104,7 +103,7 @@ public class Stock extends javax.swing.JPanel {
         jTable_product.setGridColor(new java.awt.Color(153, 0, 0));
         jScrollPane1.setViewportView(jTable_product);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 640, 300));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 640, 240));
 
         CREADO.setForeground(new java.awt.Color(255, 255, 255));
         CREADO.setText("Creado por el equipo 6  ®");
@@ -116,18 +115,95 @@ public class Stock extends javax.swing.JPanel {
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, -1, -1));
         add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, 350, 10));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/sTOCK.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 430));
+        buscarTipo.setText("Filtrar");
+        buscarTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarTipoActionPerformed(evt);
+            }
+        });
+        add(buscarTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, -1, -1));
+
+        comboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Movil", "PC", "Cargador", "Audifonos", "Consola", "Reloj", "TV", " " }));
+        comboTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboTipoActionPerformed(evt);
+            }
+        });
+        add(comboTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, -1, 32));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Tipo");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
+
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/sTOCK.png"))); // NOI18N
+        fondo.setText("jLabel1");
+        add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 430));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void buscarTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarTipoActionPerformed
+        
+        String Selecion = comboTipo.getSelectedItem().toString();
+        String query = "";
+        
+        model.setRowCount(0);
+        model.setColumnCount(0);
+        
+        
+        try {
+            Connection cn1 = conexion.conectar();
+            
+
+            if (Selecion.equals("Todos")) {
+                query = "select Id, Descripcion, Unidades, Tipo, Fecha, Autor from inventario";
+            } else {
+                query = "select Id, Descripcion, Unidades, Tipo, Fecha, Autor from inventario where Tipo = '" + Selecion + "'" ;
+            }
+            PreparedStatement ps1 = cn1.prepareStatement(query);
+            ResultSet rs = ps1.executeQuery();
+            
+            jTable_product = new JTable(model);
+            jScrollPane1.setViewportView(jTable_product);
+
+            model.addColumn("Id");
+            model.addColumn("Descripcion");
+            model.addColumn("Unidades");
+            model.addColumn("Tipo");
+            model.addColumn("Fecha");
+            model.addColumn("Autor");
+
+            while (rs.next()) {
+                Object[] fila = new Object[6];
+
+                for (int i = 0; i < 6; i++) {
+                    fila[i] = rs.getObject(i + 1);
+                }
+                model.addRow(fila);
+            }
+            cn1.close();
+
+        } catch (SQLException e) {
+            System.err.print("Error al llenar la tabla TIPO" + e);
+            JOptionPane.showMessageDialog(null, "Error al mostrar imformacion, ¡Contacte al administrador! TIPO");
+        }
+    }//GEN-LAST:event_buscarTipoActionPerformed
+
+    private void comboTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboTipoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboTipoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CREADO;
+    private javax.swing.JButton buscarTipo;
+    private javax.swing.JComboBox<String> comboTipo;
+    private javax.swing.JLabel fondo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable_product;
     // End of variables declaration//GEN-END:variables
+
+    
 }
