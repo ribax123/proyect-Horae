@@ -185,6 +185,8 @@ public class Interfaz extends javax.swing.JFrame {
                         // si la condicion se cumple abre una nueva interfaz
                         new Administrador().setVisible(true);
 
+                    } else if (estado.equals("Inactivo")) {
+                        JOptionPane.showMessageDialog(null, "¡El usuario se encuentra inactivo!");
                     } else if (nivel.equalsIgnoreCase("Auxiliar") && estado.equalsIgnoreCase("Activo")) {
                         dispose();
                         new Auxiliar().setVisible(true);

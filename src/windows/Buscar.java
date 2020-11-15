@@ -2,6 +2,7 @@ package windows;
 
 import java.sql.Connection;
 import clases.conexion;
+import java.awt.Color;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
@@ -28,12 +29,9 @@ public class Buscar extends javax.swing.JPanel {
     private void initComponents() {
 
         addFecha = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jTex_Tipo = new javax.swing.JTextField();
         jText_ID = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        buscarID = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 51, 102));
@@ -42,13 +40,7 @@ public class Buscar extends javax.swing.JPanel {
         addFecha.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         addFecha.setForeground(new java.awt.Color(255, 255, 255));
         addFecha.setText("fecha");
-        add(addFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, -1, -1));
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Tipo:");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, -1, -1));
-        add(jTex_Tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, 150, 23));
+        add(addFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 350, -1, -1));
 
         jText_ID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,18 +49,17 @@ public class Buscar extends javax.swing.JPanel {
         });
         add(jText_ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 150, 23));
 
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        buscarID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                buscarIDActionPerformed(evt);
             }
         });
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, 25, 25));
+        add(buscarID, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, 20, 25));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Light", 0, 36)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Buscar");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, -1, -1));
-        add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 300, 25, 25));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -76,9 +67,18 @@ public class Buscar extends javax.swing.JPanel {
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void buscarIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarIDActionPerformed
         
         ids = jText_ID.getText().trim();
+        other mensaID = new other();
+        boolean val = mensaID.validacion(ids);
+        
+        if(val != true){
+            jText_ID.setBackground(Color.ORANGE);
+            JOptionPane.showMessageDialog(null, "Solo puedes ingresar valores numericos.");
+            return;
+        }
+        
         
         try {
             Connection cn = conexion.conectar();
@@ -108,7 +108,7 @@ public class Buscar extends javax.swing.JPanel {
         }
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_buscarIDActionPerformed
 
     private void jText_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText_IDActionPerformed
         // TODO add your handling code here:
@@ -117,12 +117,9 @@ public class Buscar extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel addFecha;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton buscarID;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField jTex_Tipo;
     private javax.swing.JTextField jText_ID;
     // End of variables declaration//GEN-END:variables
 

@@ -115,7 +115,7 @@ public class Stock extends javax.swing.JPanel {
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, -1, -1));
         add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, 350, 10));
 
-        buscarTipo.setText("Filtrar");
+        buscarTipo.setText("Actulizar");
         buscarTipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buscarTipoActionPerformed(evt);

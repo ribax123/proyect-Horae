@@ -112,6 +112,12 @@ public class informacionUsu extends javax.swing.JFrame {
         jLabel_permisos.setText("Estado:");
         getContentPane().add(jLabel_permisos, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, -1, -1));
         getContentPane().add(jTextField_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 160, -1));
+
+        jTextField_Nombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField_NombreActionPerformed(evt);
+            }
+        });
         getContentPane().add(jTextField_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 160, -1));
 
         jLabel_Nombre2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -259,6 +265,10 @@ public class informacionUsu extends javax.swing.JFrame {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton_ActualizarUActionPerformed
+
+    private void jTextField_NombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_NombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_NombreActionPerformed
 
     /**
      * @param args the command line arguments

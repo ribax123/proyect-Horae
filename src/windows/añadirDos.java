@@ -11,7 +11,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-
 /**
  *
  * @author fabia_000
@@ -26,10 +25,10 @@ public class añadirDos extends javax.swing.JPanel {
      */
     public añadirDos() {
         initComponents();
-        other fecha1 = new other();
+        other mensajero = new other();
         user = Interfaz.user;
-        fecha = fecha1.getAnio() + "-" + fecha1.getMes() + "-" + fecha1.getDia();
-        
+        fecha = mensajero.getAnio() + "-" + mensajero.getMes() + "-" + mensajero.getDia();
+
     }
 
     /**
@@ -70,72 +69,86 @@ public class añadirDos extends javax.swing.JPanel {
 
     private void bton_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bton_agregarActionPerformed
         int tipo_cmb, validacion = 0;
-        String Descripcion,unidades,tipo_string = "";
-        
+        String Descripcion, unidades, tipo_string = "";
+        other mesajeroDos = new other();
+
         // definir variables
         Descripcion = añadirDes.getText().trim();
         unidades = añadirUnidad.getText().trim();
-        
-        tipo_cmb= cbxTipo.getSelectedIndex() + 1;
-        
-         if(Descripcion.equals("")){
-        
-        añadirDes.setBackground(Color.orange);
-        validacion++;
-        
+        boolean vali = mesajeroDos.validacion(unidades);
+
+        tipo_cmb = cbxTipo.getSelectedIndex() + 1;
+
+        if (Descripcion.equals("")) {
+
+            añadirDes.setBackground(Color.orange);
+            validacion++;
+
         }
-        if(unidades.equals("")){
-        
-        añadirUnidad.setBackground(Color.orange);
-        validacion++;
-        
+        if (unidades.equals("")) {
+
+            añadirUnidad.setBackground(Color.orange);
+            validacion++;
+
         }
+        
+        
+        if (vali != true) {
+            añadirUnidad.setBackground(Color.orange);
+            validacion++;
+            JOptionPane.showMessageDialog(null, "No pudes ingresar Texto");
+            return;             
+        } 
+
         //
-        if(tipo_cmb == 1){
+        if (tipo_cmb == 1) {
             tipo_string = "PC";
-        }else if(tipo_cmb == 2){
+        } else if (tipo_cmb == 2) {
             tipo_string = "Movil";
-        }else if(tipo_cmb == 3){
+        } else if (tipo_cmb == 3) {
             tipo_string = "Cargador";
-        }else if(tipo_cmb == 4 ){
+        } else if (tipo_cmb == 4) {
             tipo_string = "Audifonos";
-        }else if(tipo_cmb == 5){
+        } else if (tipo_cmb == 5) {
             tipo_string = "Reloj";
-        }else if(tipo_cmb == 6){
+        } else if (tipo_cmb == 6) {
             tipo_string = "TV";
-        }else if(tipo_cmb == 7){
+        } else if (tipo_cmb == 7) {
             tipo_string = "Consola";
         }
+
         
+        
+        //
         if (validacion == 0) {
-                    try {
-                        Connection cn2 = conexion.conectar();
-                        PreparedStatement pst2 = cn2.prepareStatement(
-                            " insert into inventario values (?,?,?,?,?,?)");
-                        
-                        pst2.setInt(1,0);
-                        pst2.setString(2,Descripcion);
-                        pst2.setString(3,unidades);
-                        pst2.setString(4,tipo_string);
-                        pst2.setString(5,fecha);
-                        pst2.setString(6,user);
-                        
-                        pst2.executeUpdate();
-                        cn2.close();
-                        
-                        añadirDes.setBackground(Color.green);
-                        añadirUnidad.setBackground(Color.green);
-                         JOptionPane.showMessageDialog(null, "Registro exitoso");
-                        
-               
-                    } catch (SQLException e) {
-                        System.err.println("ERROR al registrar el producto");
-                        JOptionPane.showMessageDialog(null, "¡¡ERROR al registrar!!, contacte al administrador");
-                    }}else {
-                    JOptionPane.showMessageDialog(null, "Debes llenar todos los campos");
-                }
-        
-       
+            try {
+                Connection cn2 = conexion.conectar();
+                PreparedStatement pst2 = cn2.prepareStatement(
+                        " insert into inventario values (?,?,?,?,?,?)");
+
+                pst2.setInt(1, 0);
+                pst2.setString(2, Descripcion);
+                pst2.setString(3, unidades);
+                pst2.setString(4, tipo_string);
+                pst2.setString(5, fecha);
+                pst2.setString(6, user);
+
+                pst2.executeUpdate();
+                cn2.close();
+
+                añadirDes.setBackground(Color.green);
+                añadirUnidad.setBackground(Color.green);
+                JOptionPane.showMessageDialog(null, "Registro exitoso");
+
+            } catch (SQLException e) {
+                System.err.println("ERROR al registrar el producto");
+                JOptionPane.showMessageDialog(null, "¡¡ERROR al registrar!!, contacte al administrador");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Debes llenar todos los campos");
+        }
+
+
     }//GEN-LAST:event_bton_agregarActionPerformed
 
     private void cbxTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxTipoActionPerformed

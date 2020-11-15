@@ -93,7 +93,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="buscarTipo">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Filtrar"/>
+        <Property name="text" type="java.lang.String" value="Actulizar"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buscarTipoActionPerformed"/>

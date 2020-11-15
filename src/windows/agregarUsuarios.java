@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 package windows;
+
 import java.util.*;
-import clases.conexion; 
+import clases.conexion;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -13,13 +14,12 @@ import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 
-
 /**
  *
  * @author fabia_000
  */
 public class agregarUsuarios extends javax.swing.JFrame {
-    
+
     String user;
 
     /**
@@ -28,17 +28,16 @@ public class agregarUsuarios extends javax.swing.JFrame {
     public agregarUsuarios() {
         initComponents();
         user = Interfaz.user;
-        
+
         setTitle("Registrar nuevo usuario - sesion de " + user);
         setResizable(false);
         setLocationRelativeTo(null);
-        
+
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        
-       
+
     }
-    
-    public Image getIconImage(){
+
+    public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("iconos/iconopequeño.png"));
         return retValue;
     }
@@ -61,7 +60,7 @@ public class agregarUsuarios extends javax.swing.JFrame {
         jTex_Nombre = new javax.swing.JTextField();
         listaBox = new javax.swing.JComboBox<>();
         jLabel_Nombre4 = new javax.swing.JLabel();
-        jButton1_add = new javax.swing.JButton();
+        Btn_add = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel_FAU = new javax.swing.JLabel();
 
@@ -105,18 +104,18 @@ public class agregarUsuarios extends javax.swing.JFrame {
         jLabel_Nombre4.setText("Nombre :");
         getContentPane().add(jLabel_Nombre4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
 
-        jButton1_add.setBackground(new java.awt.Color(153, 255, 255));
-        jButton1_add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/add.png"))); // NOI18N
-        jButton1_add.addActionListener(new java.awt.event.ActionListener() {
+        Btn_add.setBackground(new java.awt.Color(153, 255, 255));
+        Btn_add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/add.png"))); // NOI18N
+        Btn_add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1_addActionPerformed(evt);
+                Btn_addActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, 105, 105));
+        getContentPane().add(Btn_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, 105, 105));
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Creado por el equipo 7  ®");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 290, -1, -1));
+        jLabel2.setText("Creado por ribax@gimail.com ®");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, -1, -1));
 
         jLabel_FAU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/fondoRegis.jpg"))); // NOI18N
         getContentPane().add(jLabel_FAU, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 320));
@@ -128,106 +127,112 @@ public class agregarUsuarios extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_listaBoxActionPerformed
 
-    private void jButton1_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_addActionPerformed
+    private void Btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_addActionPerformed
 
-       
         // tipo Variables para los campos "agregar usuarios"
-        
         int permisos_cmb, validacion = 0;
-        String nombre,username,pass,permisos_string = "";
-        
+        String nombre, username, pass, permisos_string = "";
+
         // definir variables
         nombre = jTex_Nombre.getText().trim();
         username = jTex_Username.getText().trim();
         pass = jPassword_add.getText().trim();
         permisos_cmb = listaBox.getSelectedIndex() + 1;
-        
+        other mensAdd = new other();
+        boolean val = mensAdd.validacion(nombre,0);
+
         // validaciones para que no quede ningun campo vacio
-        if(nombre.equals("")){
-        
-        jTex_Nombre.setBackground(Color.orange);
-        validacion++;
-        
+        if (val != true) {
+            jTex_Nombre.setBackground(Color.orange);
+            validacion++;
+            JOptionPane.showMessageDialog(null, "El nombre no puede contener numeros");
+            return;
         }
-        if(username.equals("")){
-        
-        jTex_Username.setBackground(Color.orange);
-        validacion++;
-        
+        if (nombre.equals("")) {
+
+            jTex_Nombre.setBackground(Color.orange);
+            validacion++;
+
         }
-        if(pass.equals("")){
-        
-        jPassword_add.setBackground(Color.orange);
-        validacion++;
-        
+        if (username.equals("")) {
+
+            jTex_Username.setBackground(Color.orange);
+            validacion++;
+
         }
-        
+        if (pass.equals("")) {
+
+            jPassword_add.setBackground(Color.orange);
+            validacion++;
+
+        }
+
         // validaciones para asignar los estados        
-        if(permisos_cmb == 1){
+        if (permisos_cmb == 1) {
             permisos_string = "Administrador";
-        }else if(permisos_cmb == 2){
+        } else if (permisos_cmb == 2) {
             permisos_string = "Auxliar";
         }
-        
+
         //validacion en base de datos de ususarios disponibles
         try {
             Connection cn = conexion.conectar();
-            PreparedStatement pst = cn.prepareStatement(   
-                "select username from usuarios where username = '" + username + "'");
-           
+            PreparedStatement pst = cn.prepareStatement(
+                    "select username from usuarios where username = '" + username + "'");
+
             ResultSet rs = pst.executeQuery();
-            
-            if(rs.next()){
+
+            if (rs.next()) {
                 jTex_Username.setBackground(Color.ORANGE);
-                JOptionPane.showMessageDialog(null,"Nombre de usuario no disponible");
+                JOptionPane.showMessageDialog(null, "Nombre de usuario no disponible");
                 cn.close();
-            }else{
-                
+            } else {
+
                 cn.close();
-                
+
                 // Ingresar nuevos usuarios a la base de datos
                 if (validacion == 0) {
                     try {
                         Connection cn2 = conexion.conectar();
                         // instrucciones colsultas
                         PreparedStatement pst2 = cn2.prepareStatement(
-                            " insert into usuarios values (?,?,?,?,?,?)");
-                        
-                        pst2.setInt(1,0);
-                        pst2.setString(2,nombre);
-                        pst2.setString(3,username);
-                        pst2.setString(4,pass);
-                        pst2.setString(5,permisos_string);
-                        pst2.setString(6,"Activo");
-                        
+                                " insert into usuarios values (?,?,?,?,?,?)");
+
+                        pst2.setInt(1, 0);
+                        pst2.setString(2, nombre);
+                        pst2.setString(3, username);
+                        pst2.setString(4, pass);
+                        pst2.setString(5, permisos_string);
+                        pst2.setString(6, "Activo");
+
                         pst2.executeUpdate();
                         cn2.close();
-                        
+
                         Limpiar();
-                        
+
                         jTex_Nombre.setBackground(Color.green);
                         jTex_Username.setBackground(Color.green);
                         jPassword_add.setBackground(Color.green);
-                        
+
                         JOptionPane.showMessageDialog(null, "Registro exitoso");
                         this.dispose();
-               
+
                     } catch (SQLException e) {
                         System.err.println("ERROR al registrar el usuario");
                         JOptionPane.showMessageDialog(null, "¡¡ERROR al registrar!!, contacte al administrador");
                     }
-                }else {
+                } else {
                     JOptionPane.showMessageDialog(null, "Debes llenar todos los campos");
                 }
-                
+
             }
         } catch (SQLException e) {
             System.err.println("Error al validar el nombre de usuario." + e);
-            JOptionPane.showMessageDialog(null,"¡¡ ERROR al comparar usuario!!, contacte al administrador.");
+            JOptionPane.showMessageDialog(null, "¡¡ ERROR al comparar usuario!!, contacte al administrador.");
         }
-        
-        
-    }//GEN-LAST:event_jButton1_addActionPerformed
+
+
+    }//GEN-LAST:event_Btn_addActionPerformed
 
     /**
      * @param args the command line arguments
@@ -265,7 +270,7 @@ public class agregarUsuarios extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1_add;
+    private javax.swing.JButton Btn_add;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel_FAU;
@@ -279,11 +284,11 @@ public class agregarUsuarios extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> listaBox;
     // End of variables declaration//GEN-END:variables
 
-public void Limpiar(){
-    jTex_Nombre.setText("");
-    jTex_Username.setText("");
-    jPassword_add.setText("");
-    listaBox.setSelectedIndex(0);   
+    public void Limpiar() {
+        jTex_Nombre.setText("");
+        jTex_Username.setText("");
+        jPassword_add.setText("");
+        listaBox.setSelectedIndex(0);
     }
-    
+
 }

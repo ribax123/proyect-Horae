@@ -14,8 +14,8 @@ public class other {
     public String m2 = "";
 
     public void other() {
-      m1 = "Exito al guardar";
-     
+        m1 = "Exito al guardar";
+
     }
 
     Calendar c1 = Calendar.getInstance();
@@ -24,8 +24,32 @@ public class other {
     private String mes = Integer.toString(c1.get(Calendar.MONTH));
     private String anio = Integer.toString(c1.get(Calendar.YEAR));
 
-   
+    public boolean validacion(String vali) {
+        int num;
+        try {
+            num = Integer.parseInt(vali);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    public boolean validacion(String value, int num) {
 
+        return value.matches("[a-zA-Z ]*");
+    }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+   
     /**
      * @return the dia
      */
