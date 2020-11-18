@@ -43,28 +43,71 @@ public class añadirDos extends javax.swing.JPanel {
         bton_agregar = new javax.swing.JButton();
         cbxTipo = new javax.swing.JComboBox<>();
         añadirUnidad = new javax.swing.JTextField();
-        añadirDes = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        añadirDes1 = new javax.swing.JTextField();
+        jSeparator3 = new javax.swing.JSeparator();
 
+        setBackground(new java.awt.Color(0, 51, 102));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        bton_agregar.setText("jButton1");
+        bton_agregar.setText("Guardar registro");
         bton_agregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bton_agregarActionPerformed(evt);
             }
         });
-        add(bton_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(383, 179, -1, -1));
+        add(bton_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, 150, -1));
 
+        cbxTipo.setBackground(new java.awt.Color(0, 51, 153));
+        cbxTipo.setForeground(new java.awt.Color(255, 255, 255));
         cbxTipo.setMaximumRowCount(10);
-        cbxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pc", "Movil", "Cargador", "Audifonos", "Reloj", "TV", "Conso" }));
+        cbxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pc", "Movil", "Cargador", "Audifonos", "Reloj", "TV", "Consola" }));
         cbxTipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxTipoActionPerformed(evt);
             }
         });
-        add(cbxTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, -1, -1));
-        add(añadirUnidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 120, 50));
-        add(añadirDes, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 110, 40));
+        add(cbxTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, -1, -1));
+
+        añadirUnidad.setBackground(new java.awt.Color(0, 51, 102));
+        añadirUnidad.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        añadirUnidad.setForeground(new java.awt.Color(255, 255, 255));
+        añadirUnidad.setBorder(null);
+        add(añadirUnidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 173, 180, 27));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Tipo :");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Descripción / Producto :");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Unidades :");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI Symbol", 1, 32)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Registrar producto");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, -1, -1));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, 300, -1));
+        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 200, 200, -1));
+
+        añadirDes1.setBackground(new java.awt.Color(0, 51, 102));
+        añadirDes1.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        añadirDes1.setForeground(new java.awt.Color(255, 255, 255));
+        añadirDes1.setBorder(null);
+        add(añadirDes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 103, 180, 27));
+        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, 200, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void bton_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bton_agregarActionPerformed
@@ -73,7 +116,7 @@ public class añadirDos extends javax.swing.JPanel {
         other mesajeroDos = new other();
 
         // definir variables
-        Descripcion = añadirDes.getText().trim();
+        Descripcion = añadirDes1.getText().trim();
         unidades = añadirUnidad.getText().trim();
         boolean vali = mesajeroDos.validacion(unidades);
 
@@ -81,13 +124,13 @@ public class añadirDos extends javax.swing.JPanel {
 
         if (Descripcion.equals("")) {
 
-            añadirDes.setBackground(Color.orange);
+            añadirUnidad.setBackground(Color.orange);
             validacion++;
 
         }
         if (unidades.equals("")) {
 
-            añadirUnidad.setBackground(Color.orange);
+            añadirDes1.setBackground(Color.orange);
             validacion++;
 
         }
@@ -136,9 +179,12 @@ public class añadirDos extends javax.swing.JPanel {
                 pst2.executeUpdate();
                 cn2.close();
 
-                añadirDes.setBackground(Color.green);
+                añadirDes1.setBackground(Color.green);
                 añadirUnidad.setBackground(Color.green);
                 JOptionPane.showMessageDialog(null, "Registro exitoso");
+                
+                añadirDes1.setText("");
+                añadirUnidad.setText("");
 
             } catch (SQLException e) {
                 System.err.println("ERROR al registrar el producto");
@@ -157,9 +203,16 @@ public class añadirDos extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField añadirDes;
+    private javax.swing.JTextField añadirDes1;
     private javax.swing.JTextField añadirUnidad;
     private javax.swing.JButton bton_agregar;
     private javax.swing.JComboBox<String> cbxTipo;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     // End of variables declaration//GEN-END:variables
 }

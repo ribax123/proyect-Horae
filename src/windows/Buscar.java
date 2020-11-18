@@ -40,21 +40,21 @@ public class Buscar extends javax.swing.JPanel {
         addFecha.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         addFecha.setForeground(new java.awt.Color(255, 255, 255));
         addFecha.setText("fecha");
-        add(addFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 350, -1, -1));
+        add(addFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, -1, -1));
 
         jText_ID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jText_IDActionPerformed(evt);
             }
         });
-        add(jText_ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 150, 23));
+        add(jText_ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 150, 23));
 
         buscarID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buscarIDActionPerformed(evt);
             }
         });
-        add(buscarID, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, 20, 25));
+        add(buscarID, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 20, 25));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Light", 0, 36)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -64,7 +64,7 @@ public class Buscar extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("ID :");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, -1, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void buscarIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarIDActionPerformed

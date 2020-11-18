@@ -6,9 +6,8 @@
 package windows;
 
 import java.util.Calendar;
-import java.util.Date;
 
-public class other {
+public  class other {
 
     public String m1 = "";
     public String m2 = "";
@@ -37,19 +36,13 @@ public class other {
 
         return value.matches("[a-zA-Z ]*");
     }
-
     
+    public boolean validacion (int num, String value){
     
+        return value.matches("[a-zA-Z0-9]{8,15}");
     
+    }
     
-    
-    
-    
-    
-    
-    
-    
-   
     /**
      * @return the dia
      */

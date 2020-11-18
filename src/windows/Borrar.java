@@ -5,6 +5,12 @@
  */
 package windows;
 
+import clases.conexion;
+import java.awt.Color;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author fabia_000
@@ -27,21 +33,100 @@ public class Borrar extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setBackground(new java.awt.Color(0, 0, 204));
+        jDialog1 = new javax.swing.JDialog();
+        jDialog2 = new javax.swing.JDialog();
+        bton_borrar = new javax.swing.JButton();
+        txt_borrar = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        lbl_Borrar = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 400, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 300, Short.MAX_VALUE)
         );
+
+        javax.swing.GroupLayout jDialog2Layout = new javax.swing.GroupLayout(jDialog2.getContentPane());
+        jDialog2.getContentPane().setLayout(jDialog2Layout);
+        jDialog2Layout.setHorizontalGroup(
+            jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jDialog2Layout.setVerticalGroup(
+            jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        setBackground(new java.awt.Color(0, 0, 204));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        bton_borrar.setText("Borrar");
+        bton_borrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bton_borrarActionPerformed(evt);
+            }
+        });
+        add(bton_borrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, -1, -1));
+
+        txt_borrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_borrarActionPerformed(evt);
+            }
+        });
+        add(txt_borrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 90, 27));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("ID");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, -1, -1));
+
+        lbl_Borrar.setFont(new java.awt.Font("Segoe UI Semilight", 1, 24)); // NOI18N
+        lbl_Borrar.setForeground(new java.awt.Color(255, 255, 255));
+        add(lbl_Borrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bton_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bton_borrarActionPerformed
+
+        int i = JOptionPane.showConfirmDialog(this, "Estas seguro de borrar el registro?");
+
+        if (i == 0) {
+            try {
+                Connection cn = conexion.conectar();
+                PreparedStatement pst = cn.prepareStatement("delete from inventario where Id = ?");
+
+                pst.setString(1, txt_borrar.getText().trim());
+                pst.executeUpdate();
+
+                JOptionPane.showMessageDialog(null, "El resgistro ha sido borrado con exito.");
+                txt_borrar.setText("");
+
+            } catch (Exception e) {
+            }
+        } else if (i == 1) {
+            txt_borrar.setText("");
+        } else {
+
+        }
+
+
+    }//GEN-LAST:event_bton_borrarActionPerformed
+
+    private void txt_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_borrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_borrarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bton_borrar;
+    private javax.swing.JDialog jDialog1;
+    private javax.swing.JDialog jDialog2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lbl_Borrar;
+    private javax.swing.JTextField txt_borrar;
     // End of variables declaration//GEN-END:variables
 }

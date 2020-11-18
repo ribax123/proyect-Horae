@@ -139,13 +139,21 @@ public class agregarUsuarios extends javax.swing.JFrame {
         pass = jPassword_add.getText().trim();
         permisos_cmb = listaBox.getSelectedIndex() + 1;
         other mensAdd = new other();
-        boolean val = mensAdd.validacion(nombre,0);
+        boolean val = mensAdd.validacion(nombre,0);       
+        boolean va2 = mensAdd.validacion(0, pass);
 
         // validaciones para que no quede ningun campo vacio
+        
+        if (va2 != true) {
+            jTex_Nombre.setBackground(Color.orange);
+            validacion++;
+            JOptionPane.showMessageDialog(null, "!La contraseña debe contener almenos 8 caracteres entre letras y numeros!");
+            return;
+        }
         if (val != true) {
             jTex_Nombre.setBackground(Color.orange);
             validacion++;
-            JOptionPane.showMessageDialog(null, "El nombre no puede contener numeros");
+            JOptionPane.showMessageDialog(null, "El nombre no puede tener caracteres numericos");
             return;
         }
         if (nombre.equals("")) {
