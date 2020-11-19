@@ -8,7 +8,12 @@ public class conexion {
     public static Connection conectar() {
         try {
             
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/bd_ds", "root", "");
+            String url= "jdbc:mysql://sql10.freesqldatabase.com:3306/sql10377605";
+            String user = "sql10377605";
+            String pass= "RaJuPKNgpg";
+            
+            
+            Connection cn = DriverManager.getConnection("jdbc:mysql://sql10.freesqldatabase.com:3306/sql10377605", "sql10377605", "RaJuPKNgpg");
             return cn;
         } catch (SQLException e) {
             System.out.println("Error en la conexion" + e);
