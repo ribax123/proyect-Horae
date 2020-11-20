@@ -22,15 +22,17 @@ public class informacionUsu extends javax.swing.JFrame {
     // cosntructor   
     public informacionUsu() {
         initComponents();
+        this.setVisible(true);
 
         // variables de usuario
         user = Interfaz.user;
         user_update = gestionarUsuarios.user_Update;
 
         // Dimenciones y pocisión de la intefaz
-        setSize(452, 295);
+        
+        setSize(450, 260);
         setResizable(false);
-        setTitle("Información del usuario " + " -  " + user);
+        
         setLocationRelativeTo(null);
 
         // metodo para evitar el cierre total del programa
@@ -78,7 +80,6 @@ public class informacionUsu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel_titulo = new javax.swing.JLabel();
         jLabel_Nombre = new javax.swing.JLabel();
         jLabel_permisos = new javax.swing.JLabel();
         jTextField_username = new javax.swing.JTextField();
@@ -89,18 +90,17 @@ public class informacionUsu extends javax.swing.JFrame {
         jComboBox_permios = new javax.swing.JComboBox<>();
         jButton_ActualizarU = new javax.swing.JButton();
         botton_pass = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jLabel_titulo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        fondoInfo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
+        setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(400, 200));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel_titulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel_titulo.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_titulo.setText("Información del usuario");
-        getContentPane().add(jLabel_titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
 
         jLabel_Nombre.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel_Nombre.setForeground(new java.awt.Color(255, 255, 255));
@@ -146,6 +146,8 @@ public class informacionUsu extends javax.swing.JFrame {
         });
         getContentPane().add(jComboBox_permios, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 100, -1));
 
+        jButton_ActualizarU.setBackground(new java.awt.Color(0, 51, 102));
+        jButton_ActualizarU.setForeground(new java.awt.Color(255, 255, 255));
         jButton_ActualizarU.setText("Actualizar Usuario");
         jButton_ActualizarU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,6 +156,8 @@ public class informacionUsu extends javax.swing.JFrame {
         });
         getContentPane().add(jButton_ActualizarU, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, 160, -1));
 
+        botton_pass.setBackground(new java.awt.Color(0, 51, 102));
+        botton_pass.setForeground(new java.awt.Color(255, 255, 255));
         botton_pass.setText("Actualizar password");
         botton_pass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,12 +166,46 @@ public class informacionUsu extends javax.swing.JFrame {
         });
         getContentPane().add(botton_pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 160, -1));
 
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Creado por el equipo 7  ®");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, -1, -1));
+        jPanel1.setBackground(new java.awt.Color(0, 51, 102));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        fondoInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/fondoINfo.jpg"))); // NOI18N
-        getContentPane().add(fondoInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 260));
+        jButton2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(0, 153, 153));
+        jButton2.setText("x");
+        jButton2.setContentAreaFilled(false);
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, -10, 50, 40));
+
+        jButton1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 36)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 153, 153));
+        jButton1.setText("-");
+        jButton1.setContentAreaFilled(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, -10, 50, 40));
+
+        jLabel_titulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel_titulo.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_titulo.setText("Información del usuario");
+        jPanel1.add(jLabel_titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Creado por ribax123@gmail.com ®");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 260));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -270,6 +308,14 @@ public class informacionUsu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_NombreActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.setExtendedState(ICONIFIED);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -307,7 +353,8 @@ public class informacionUsu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botton_pass;
-    private javax.swing.JLabel fondoInfo;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton_ActualizarU;
     private javax.swing.JComboBox<String> jComboBox_estado;
     private javax.swing.JComboBox<String> jComboBox_permios;
@@ -317,6 +364,7 @@ public class informacionUsu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_permisos;
     private javax.swing.JLabel jLabel_permisos1;
     private javax.swing.JLabel jLabel_titulo;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField_Nombre;
     private javax.swing.JTextField jTextField_username;
     // End of variables declaration//GEN-END:variables

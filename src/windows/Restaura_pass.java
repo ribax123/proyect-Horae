@@ -19,8 +19,7 @@ public class Restaura_pass extends javax.swing.JFrame {
         user = Interfaz.user;
         user_update = gestionarUsuarios.user_Update;
 
-        setResizable(false);
-        setTitle("Restablecer contraseña para " + user_update);
+        setResizable(false);        
         setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -41,13 +40,18 @@ public class Restaura_pass extends javax.swing.JFrame {
         jLabel_pass1 = new javax.swing.JLabel();
         jLabel_pass2 = new javax.swing.JLabel();
         jBu_add = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         jTex_Confirmarpass = new javax.swing.JPasswordField();
         jTex_pass = new javax.swing.JPasswordField();
-        jLabel_wall = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        footh = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel_titulo.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
@@ -65,7 +69,7 @@ public class Restaura_pass extends javax.swing.JFrame {
         jLabel_pass2.setText("Contraseña :");
         getContentPane().add(jLabel_pass2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
 
-        jBu_add.setBackground(new java.awt.Color(204, 255, 255));
+        jBu_add.setBackground(new java.awt.Color(0, 51, 102));
         jBu_add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/add-pass.png"))); // NOI18N
         jBu_add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,12 +78,15 @@ public class Restaura_pass extends javax.swing.JFrame {
         });
         getContentPane().add(jBu_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, 70, 70));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Creado por el equipo 7 ®");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, -1, -1));
+        jTex_Confirmarpass.setBackground(new java.awt.Color(0, 51, 102));
+        jTex_Confirmarpass.setForeground(new java.awt.Color(255, 255, 255));
+        jTex_Confirmarpass.setBorder(null);
         getContentPane().add(jTex_Confirmarpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 200, 27));
 
+        jTex_pass.setBackground(new java.awt.Color(0, 51, 102));
+        jTex_pass.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
+        jTex_pass.setForeground(new java.awt.Color(255, 255, 255));
+        jTex_pass.setBorder(null);
         jTex_pass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTex_passActionPerformed(evt);
@@ -87,8 +94,41 @@ public class Restaura_pass extends javax.swing.JFrame {
         });
         getContentPane().add(jTex_pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 200, 27));
 
-        jLabel_wall.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/fondopass.jpg"))); // NOI18N
-        getContentPane().add(jLabel_wall, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 220));
+        jPanel1.setBackground(new java.awt.Color(0, 51, 102));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 36)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 153, 153));
+        jButton1.setText("-");
+        jButton1.setContentAreaFilled(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, -10, 50, 40));
+
+        jButton2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(0, 153, 153));
+        jButton2.setText("x");
+        jButton2.setContentAreaFilled(false);
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, -10, 50, 40));
+
+        footh.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        footh.setForeground(new java.awt.Color(255, 255, 255));
+        footh.setText("Creado por ribax123@gmail.com ®");
+        jPanel1.add(footh, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, -1, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 97, 200, -1));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 167, 200, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 220));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -146,6 +186,14 @@ public class Restaura_pass extends javax.swing.JFrame {
        
     }//GEN-LAST:event_jTex_passActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.setExtendedState(ICONIFIED);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -180,12 +228,16 @@ public class Restaura_pass extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel footh;
     private javax.swing.JButton jBu_add;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel_pass1;
     private javax.swing.JLabel jLabel_pass2;
     private javax.swing.JLabel jLabel_titulo;
-    private javax.swing.JLabel jLabel_wall;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JPasswordField jTex_Confirmarpass;
     private javax.swing.JPasswordField jTex_pass;
     // End of variables declaration//GEN-END:variables

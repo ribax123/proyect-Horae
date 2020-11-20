@@ -1,6 +1,7 @@
 package clases;
 
 import java.sql.*;
+import javax.swing.JOptionPane;
 
 public class conexion {
 
@@ -8,15 +9,12 @@ public class conexion {
     public static Connection conectar() {
         try {
             
-            String url= "jdbc:mysql://sql10.freesqldatabase.com:3306/sql10377605";
-            String user = "sql10377605";
-            String pass= "RaJuPKNgpg";
-            
-            
+        
             Connection cn = DriverManager.getConnection("jdbc:mysql://sql10.freesqldatabase.com:3306/sql10377605", "sql10377605", "RaJuPKNgpg");
             return cn;
         } catch (SQLException e) {
-            System.out.println("Error en la conexion" + e);
+            JOptionPane.showMessageDialog(null, "¡Error en la conexión!");
+            System.out.println("Error en la conexión" + e);
         }
         return (null);
     }

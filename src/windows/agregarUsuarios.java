@@ -29,7 +29,7 @@ public class agregarUsuarios extends javax.swing.JFrame {
         initComponents();
         user = Interfaz.user;
 
-        setTitle("Registrar nuevo usuario - sesion de " + user);
+       
         setResizable(false);
         setLocationRelativeTo(null);
 
@@ -61,11 +61,17 @@ public class agregarUsuarios extends javax.swing.JFrame {
         listaBox = new javax.swing.JComboBox<>();
         jLabel_Nombre4 = new javax.swing.JLabel();
         Btn_add = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jLabel_FAU = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
@@ -87,9 +93,24 @@ public class agregarUsuarios extends javax.swing.JFrame {
         jLabel_Nombre3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_Nombre3.setText("Nivel :");
         getContentPane().add(jLabel_Nombre3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
+
+        jPassword_add.setBackground(new java.awt.Color(0, 51, 102));
+        jPassword_add.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
+        jPassword_add.setForeground(new java.awt.Color(255, 255, 255));
+        jPassword_add.setBorder(null);
         getContentPane().add(jPassword_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, 170, 27));
-        getContentPane().add(jTex_Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 170, 27));
-        getContentPane().add(jTex_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 170, 27));
+
+        jTex_Username.setBackground(new java.awt.Color(0, 51, 102));
+        jTex_Username.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
+        jTex_Username.setForeground(new java.awt.Color(255, 255, 255));
+        jTex_Username.setBorder(null);
+        getContentPane().add(jTex_Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 95, 170, 27));
+
+        jTex_Nombre.setBackground(new java.awt.Color(0, 51, 102));
+        jTex_Nombre.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
+        jTex_Nombre.setForeground(new java.awt.Color(255, 255, 255));
+        jTex_Nombre.setBorder(null);
+        getContentPane().add(jTex_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 95, 170, 27));
 
         listaBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Auxiliar" }));
         listaBox.addActionListener(new java.awt.event.ActionListener() {
@@ -104,7 +125,7 @@ public class agregarUsuarios extends javax.swing.JFrame {
         jLabel_Nombre4.setText("Nombre :");
         getContentPane().add(jLabel_Nombre4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
 
-        Btn_add.setBackground(new java.awt.Color(153, 255, 255));
+        Btn_add.setBackground(new java.awt.Color(0, 51, 102));
         Btn_add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/add.png"))); // NOI18N
         Btn_add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,12 +134,43 @@ public class agregarUsuarios extends javax.swing.JFrame {
         });
         getContentPane().add(Btn_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, 105, 105));
 
+        jPanel1.setBackground(new java.awt.Color(0, 51, 102));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 122, 170, 10));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 122, 170, 10));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 197, 170, 10));
+
+        jButton1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 36)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 153, 153));
+        jButton1.setText("-");
+        jButton1.setContentAreaFilled(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 0, 50, 40));
+
+        jButton2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(0, 153, 153));
+        jButton2.setText("x");
+        jButton2.setContentAreaFilled(false);
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 0, 50, 40));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Creado por ribax@gimail.com ®");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 290, -1, -1));
 
-        jLabel_FAU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/fondoRegis.jpg"))); // NOI18N
-        getContentPane().add(jLabel_FAU, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 320));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 320));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -242,6 +294,14 @@ public class agregarUsuarios extends javax.swing.JFrame {
 
     }//GEN-LAST:event_Btn_addActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.setExtendedState(ICONIFIED);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -279,14 +339,19 @@ public class agregarUsuarios extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Btn_add;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel_FAU;
     private javax.swing.JLabel jLabel_Nombre;
     private javax.swing.JLabel jLabel_Nombre2;
     private javax.swing.JLabel jLabel_Nombre3;
     private javax.swing.JLabel jLabel_Nombre4;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPassword_add;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTextField jTex_Nombre;
     private javax.swing.JTextField jTex_Username;
     private javax.swing.JComboBox<String> listaBox;

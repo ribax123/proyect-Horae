@@ -55,6 +55,7 @@ public class añadirDos extends javax.swing.JPanel {
         setBackground(new java.awt.Color(0, 51, 102));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        bton_agregar.setBackground(new java.awt.Color(0, 51, 102));
         bton_agregar.setText("Guardar registro");
         bton_agregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

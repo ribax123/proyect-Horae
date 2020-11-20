@@ -30,7 +30,6 @@ public class Administrador extends javax.swing.JFrame {
 
         // Dimenciones y pocisión de la interfaz
         setResizable(false);
-        setTitle("Administrador - " + user);
         setLocationRelativeTo(null);
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -72,18 +71,21 @@ public class Administrador extends javax.swing.JFrame {
 
         jLabel_nameUsuario = new javax.swing.JLabel();
         jButton_regisU = new javax.swing.JButton();
-        jButton_gestionU = new javax.swing.JButton();
-        jButton_MenuAux = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel_wallp = new javax.swing.JLabel();
+        wallpap = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jButton_gestionU = new javax.swing.JButton();
+        jButton_MenuAux = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
         setIconImages(getIconImages());
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel_nameUsuario.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
@@ -91,7 +93,7 @@ public class Administrador extends javax.swing.JFrame {
         jLabel_nameUsuario.setText("Administrador");
         getContentPane().add(jLabel_nameUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, -1, -1));
 
-        jButton_regisU.setBackground(new java.awt.Color(204, 255, 255));
+        jButton_regisU.setBackground(new java.awt.Color(0, 51, 102));
         jButton_regisU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/add-user.png"))); // NOI18N
         jButton_regisU.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton_regisU.addActionListener(new java.awt.event.ActionListener() {
@@ -100,30 +102,6 @@ public class Administrador extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton_regisU, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 125, 110));
-
-        jButton_gestionU.setBackground(new java.awt.Color(204, 255, 255));
-        jButton_gestionU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/141-user-1.png"))); // NOI18N
-        jButton_gestionU.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton_gestionU.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_gestionUActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton_gestionU, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 190, 125, 110));
-
-        jButton_MenuAux.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/137-briefcase.png"))); // NOI18N
-        jButton_MenuAux.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton_MenuAux.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_MenuAuxActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton_MenuAux, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, 125, 110));
-
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Gestionar usuario");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -135,16 +113,68 @@ public class Administrador extends javax.swing.JFrame {
         jLabel3.setText("Agregar usuario");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 310, -1, -1));
 
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Creado por el equipo 7  ®");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 370, -1, -1));
-
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/HORAE.png"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 0, 190, 150));
 
-        jLabel_wallp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/fondo.jpeg"))); // NOI18N
-        jLabel_wallp.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        getContentPane().add(jLabel_wallp, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 0, 699, 400));
+        wallpap.setBackground(new java.awt.Color(0, 51, 102));
+        wallpap.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Creado por ribax123@gmail.com ®");
+        wallpap.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 370, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Gestionar usuario");
+        wallpap.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 310, -1, -1));
+
+        jButton_gestionU.setBackground(new java.awt.Color(0, 51, 102));
+        jButton_gestionU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/141-user-1.png"))); // NOI18N
+        jButton_gestionU.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton_gestionU.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_gestionUActionPerformed(evt);
+            }
+        });
+        wallpap.add(jButton_gestionU, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, 125, 110));
+
+        jButton_MenuAux.setBackground(new java.awt.Color(0, 51, 102));
+        jButton_MenuAux.setForeground(new java.awt.Color(0, 51, 102));
+        jButton_MenuAux.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/137-briefcase.png"))); // NOI18N
+        jButton_MenuAux.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton_MenuAux.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_MenuAuxActionPerformed(evt);
+            }
+        });
+        wallpap.add(jButton_MenuAux, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 190, 125, 110));
+
+        jButton1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 36)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 153, 153));
+        jButton1.setText("-");
+        jButton1.setContentAreaFilled(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        wallpap.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 0, 50, 40));
+
+        jButton2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(0, 153, 153));
+        jButton2.setText("x");
+        jButton2.setContentAreaFilled(false);
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        wallpap.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 0, 50, 40));
+
+        getContentPane().add(wallpap, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 400));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -175,6 +205,14 @@ public class Administrador extends javax.swing.JFrame {
         auxiliar.setVisible(true);
 
     }//GEN-LAST:event_jButton_MenuAuxActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       this.setExtendedState(ICONIFIED);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -212,6 +250,8 @@ public class Administrador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton_MenuAux;
     private javax.swing.JButton jButton_gestionU;
     private javax.swing.JButton jButton_regisU;
@@ -221,6 +261,6 @@ public class Administrador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel_nameUsuario;
-    private javax.swing.JLabel jLabel_wallp;
+    private javax.swing.JPanel wallpap;
     // End of variables declaration//GEN-END:variables
 }
