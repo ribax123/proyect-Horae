@@ -77,12 +77,12 @@ public class Stock extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_product = new javax.swing.JTable();
-        CREADO = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         buscarTipo = new javax.swing.JButton();
         comboTipo = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 0, 0));
@@ -104,10 +104,6 @@ public class Stock extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTable_product);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 640, 240));
-
-        CREADO.setForeground(new java.awt.Color(255, 255, 255));
-        CREADO.setText("Creado por el equipo 6  ®");
-        add(CREADO, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 390, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Light", 1, 28)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -135,6 +131,11 @@ public class Stock extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Tipo");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Creado por ribax123@gmail.com ®");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, -1, -1));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/sTOCK.png"))); // NOI18N
         fondo.setText("jLabel1");
@@ -194,12 +195,12 @@ public class Stock extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel CREADO;
     private javax.swing.JButton buscarTipo;
     private javax.swing.JComboBox<String> comboTipo;
     private javax.swing.JLabel fondo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable_product;

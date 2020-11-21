@@ -48,9 +48,8 @@ public class añadirDos extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jSeparator2 = new javax.swing.JSeparator();
         añadirDes1 = new javax.swing.JTextField();
-        jSeparator3 = new javax.swing.JSeparator();
+        jLabel5 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 51, 102));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -62,7 +61,7 @@ public class añadirDos extends javax.swing.JPanel {
                 bton_agregarActionPerformed(evt);
             }
         });
-        add(bton_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, 150, -1));
+        add(bton_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, 150, -1));
 
         cbxTipo.setBackground(new java.awt.Color(0, 51, 153));
         cbxTipo.setForeground(new java.awt.Color(255, 255, 255));
@@ -73,18 +72,18 @@ public class añadirDos extends javax.swing.JPanel {
                 cbxTipoActionPerformed(evt);
             }
         });
-        add(cbxTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, -1, -1));
+        add(cbxTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, -1, -1));
 
         añadirUnidad.setBackground(new java.awt.Color(0, 51, 102));
         añadirUnidad.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         añadirUnidad.setForeground(new java.awt.Color(255, 255, 255));
-        añadirUnidad.setBorder(null);
-        add(añadirUnidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 173, 180, 27));
+        añadirUnidad.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
+        add(añadirUnidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 180, 27));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Tipo :");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -94,21 +93,24 @@ public class añadirDos extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Unidades :");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Symbol", 1, 32)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Registrar producto");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, -1, -1));
         add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, 300, -1));
-        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 200, 200, -1));
 
         añadirDes1.setBackground(new java.awt.Color(0, 51, 102));
         añadirDes1.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         añadirDes1.setForeground(new java.awt.Color(255, 255, 255));
-        añadirDes1.setBorder(null);
-        add(añadirDes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 103, 180, 27));
-        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, 200, -1));
+        añadirDes1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        add(añadirDes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, 180, 27));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Creado por ribax123@gmail.com ®");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void bton_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bton_agregarActionPerformed
@@ -212,8 +214,7 @@ public class añadirDos extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
     // End of variables declaration//GEN-END:variables
 }

@@ -16,12 +16,15 @@ import javax.swing.JOptionPane;
  * @author fabia_000
  */
 public class Borrar extends javax.swing.JPanel {
-
+     
+     public static String borrar ="";
     /**
+     * 
      * Creates new form Borrar
      */
     public Borrar() {
         initComponents();
+        
     }
 
     /**
@@ -39,6 +42,11 @@ public class Borrar extends javax.swing.JPanel {
         txt_borrar = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         lbl_Borrar = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel5 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -62,56 +70,58 @@ public class Borrar extends javax.swing.JPanel {
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
-        setBackground(new java.awt.Color(0, 0, 204));
+        setBackground(new java.awt.Color(0, 51, 102));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        bton_borrar.setText("Borrar");
+        bton_borrar.setBackground(new java.awt.Color(0, 51, 102));
+        bton_borrar.setText("Comfirmar");
         bton_borrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bton_borrarActionPerformed(evt);
             }
         });
-        add(bton_borrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, -1, -1));
+        add(bton_borrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 210, -1));
 
         txt_borrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_borrarActionPerformed(evt);
             }
         });
-        add(txt_borrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 90, 27));
+        add(txt_borrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 50, 27));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI Light", 1, 32)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("ID");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, -1, -1));
+        jLabel1.setText("Eliminar Registros");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 290, 40));
 
         lbl_Borrar.setFont(new java.awt.Font("Segoe UI Semilight", 1, 24)); // NOI18N
         lbl_Borrar.setForeground(new java.awt.Color(255, 255, 255));
         add(lbl_Borrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/borrar (1).png"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, -1, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/base-de-datos-en-la-nube.png"))); // NOI18N
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText(" ID :");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, -1, -1));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 330, 20));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Creado por ribax@gimail.com ®");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void bton_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bton_borrarActionPerformed
-
-        int i = JOptionPane.showConfirmDialog(this, "Estas seguro de borrar el registro?");
-
-        if (i == 0) {
-            try {
-                Connection cn = conexion.conectar();
-                PreparedStatement pst = cn.prepareStatement("delete from inventario where Id = ?");
-
-                pst.setString(1, txt_borrar.getText().trim());
-                pst.executeUpdate();
-
-                JOptionPane.showMessageDialog(null, "El resgistro ha sido borrado con exito.");
-                txt_borrar.setText("");
-
-            } catch (Exception e) {
-            }
-        } else if (i == 1) {
-            txt_borrar.setText("");
-        } else {
-
-        }
+        borrar = txt_borrar.getText().trim();
+        segur mjr = new segur();
+        mjr.setVisible(true);
+        
+        
 
 
     }//GEN-LAST:event_bton_borrarActionPerformed
@@ -126,6 +136,11 @@ public class Borrar extends javax.swing.JPanel {
     private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lbl_Borrar;
     private javax.swing.JTextField txt_borrar;
     // End of variables declaration//GEN-END:variables

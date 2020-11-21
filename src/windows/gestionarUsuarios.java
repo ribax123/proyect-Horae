@@ -35,7 +35,7 @@ public class gestionarUsuarios extends javax.swing.JFrame {
         user = Interfaz.user;
 
         // Dimensiones de la interfaz
-        setTitle("Usuarios resgistrados - Sesion de " + user);
+        
         setResizable(false);
         setLocationRelativeTo(null);
 
@@ -49,6 +49,7 @@ public class gestionarUsuarios extends javax.swing.JFrame {
                     " select id_usuario, nombre_usuario, username, nivel, estado from usuarios");
 
             ResultSet rs = pst.executeQuery();
+            
 
             jTable_usuarios = new JTable(model);
             jScrollPane1.setViewportView(jTable_usuarios);

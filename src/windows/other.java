@@ -23,6 +23,10 @@ public  class other {
     private String mes = Integer.toString(c1.get(Calendar.MONTH));
     private String anio = Integer.toString(c1.get(Calendar.YEAR));
 
+    
+    
+// validacion numeros    
+    
     public boolean validacion(String vali) {
         int num;
         try {
@@ -32,6 +36,7 @@ public  class other {
             return false;
         }
     }
+    // validacion letras
     public boolean validacion(String value, int num) {
 
         return value.matches("[a-zA-Z ]*");
