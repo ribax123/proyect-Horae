@@ -10,9 +10,9 @@ public class conexion {
         try {
             
         
-            // Connection cn = DriverManager.getConnection("jdbc:mysql://sql10.freesqldatabase.com:3306/sql10377605", "sql10377605", "RaJuPKNgpg");
+             Connection cn = DriverManager.getConnection("jdbc:mysql://sql10.freesqldatabase.com:3306/sql10377605", "sql10377605", "RaJuPKNgpg");
            
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/bd_ds", "root", "");
+            //Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/bd_ds", "root", "");
             return cn;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "¡Error en la conexión!");

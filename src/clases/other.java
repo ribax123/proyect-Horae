@@ -38,7 +38,7 @@ public class other {
 
         return value.matches("[a-zA-Z ]*");
     }
-
+    //validacion cantidad de caracteres permitidos
     public boolean validacion(int num, String value) {
 
         return value.matches("[a-zA-Z0-9]{8,15}");
