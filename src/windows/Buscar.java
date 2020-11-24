@@ -2,6 +2,7 @@ package windows;
 
 import java.sql.Connection;
 import clases.conexion;
+import clases.other;
 import java.awt.Color;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,16 +19,19 @@ public class Buscar extends javax.swing.JPanel {
     public static String tips = "";
     public static String fechs = "";
     public static String autors = "";
+    public static other fecha1;
+    public static String dia = "";
 
     DefaultTableModel model = new DefaultTableModel();
 
     public Buscar() {
         initComponents();
-        other fecha1 = new other();
+        fecha1 = new other();
+        addFecha.setText(fecha1.fechaActual());
 
-        addFecha.setText(fecha1.getAnio() + "-" + fecha1.getMes() + "-" + fecha1.getDia());
         todaConexion();
     }
+// metodo para llenar una tabla
 
     public void todaConexion() {
         model.setRowCount(0);
@@ -213,14 +217,14 @@ public class Buscar extends javax.swing.JPanel {
             System.out.println("Error al conectarse al servidor " + e);
         }
 
-        // TODO add your handling code here:
     }//GEN-LAST:event_buscarIDActionPerformed
 
     private void jText_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText_IDActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jText_IDActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
         ids = jText_ID.getText().trim();
         other mensaID = new other();
         boolean val = mensaID.validacion(ids);
@@ -243,7 +247,7 @@ public class Buscar extends javax.swing.JPanel {
             if (!rs1.next()) {
                 JOptionPane.showMessageDialog(null, "El registro no ha sido actualizado");
                 cn1.close();
-                
+
             } else {
                 cn1.close();
 

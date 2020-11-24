@@ -1,32 +1,28 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package windows;
+package clases;
 
 import java.util.Calendar;
 
-public  class other {
+public class other {
 
-    public String m1 = "";
-    public String m2 = "";
+   private String dia;
+   private String mes;
+   private String anio;
 
-    public void other() {
-        m1 = "Exito al guardar";
+  
+   
+    public String fechaActual() {
 
+        Calendar c1 = Calendar.getInstance();
+
+        dia = Integer.toString(c1.get(Calendar.DATE));
+        mes = Integer.toString(c1.get(Calendar.MONTH));
+        anio = Integer.toString(c1.get(Calendar.YEAR));
+        int mes = Integer.parseInt(getMes());
+        
+        return getAnio() + "-" + (mes+1) + "-" + getDia();
     }
-
-    Calendar c1 = Calendar.getInstance();
-
-    private String dia = Integer.toString(c1.get(Calendar.DATE));
-    private String mes = Integer.toString(c1.get(Calendar.MONTH));
-    private String anio = Integer.toString(c1.get(Calendar.YEAR));
-
-    
-    
 // validacion numeros    
-    
+
     public boolean validacion(String vali) {
         int num;
         try {
@@ -36,17 +32,20 @@ public  class other {
             return false;
         }
     }
+
     // validacion letras
     public boolean validacion(String value, int num) {
 
         return value.matches("[a-zA-Z ]*");
     }
-    
-    public boolean validacion (int num, String value){
-    
+
+    public boolean validacion(int num, String value) {
+
         return value.matches("[a-zA-Z0-9]{8,15}");
-    
+
     }
+     
+    // Encapsulamiento para acceder  dia - mes - año actual
     
     /**
      * @return the dia
@@ -68,5 +67,6 @@ public  class other {
     public String getAnio() {
         return anio;
     }
-
 }
+
+    

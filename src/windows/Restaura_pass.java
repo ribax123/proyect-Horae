@@ -1,17 +1,19 @@
-
 package windows;
 
-import java.sql.*;
-import clases.conexion;
+import clases.file;
+import clases.recurs;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
-import javax.swing.JOptionPane;
+
 import javax.swing.WindowConstants;
 
 public class Restaura_pass extends javax.swing.JFrame {
 
-    String user = "", user_update = "";
+    public String user = "";
+    public static String password;
+    public static String user_update;
+    public static String confirmacion_password;
 
     public Restaura_pass() {
         initComponents();
@@ -19,13 +21,13 @@ public class Restaura_pass extends javax.swing.JFrame {
         user = Interfaz.user;
         user_update = gestionarUsuarios.user_Update;
 
-        setResizable(false);        
+        setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
     }
 
-    // icono pequeño
+    // icono 
     @Override
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("iconos/iconopequeño.png"));
@@ -135,55 +137,29 @@ public class Restaura_pass extends javax.swing.JFrame {
 
     private void jBu_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBu_addActionPerformed
 
-        String password, confirmacion_password;
-
         password = jTex_pass.getText().trim();
         confirmacion_password = jTex_Confirmarpass.getText().trim();
 
-        if (!password.equals("") && !confirmacion_password.equals("")) {
+        file union = new recurs();
+        union.variable();
+        boolean bnra = recurs.bandera;
 
-            if (password.equals(confirmacion_password)) {
-
-                try {
-                    // conexion al la base de datos.
-                    Connection cn = conexion.conectar();
-                    PreparedStatement pst = cn.prepareStatement(
-                            "update usuarios set password=? where username = '" + user_update + "'");
-
-                    pst.setString(1, password);
-
-                    pst.executeUpdate();
-                    cn.close();
-
-                    jTex_pass.setBackground(Color.GREEN);
-                    jTex_Confirmarpass.setBackground(Color.GREEN);
-
-                    JOptionPane.showMessageDialog(null, "Restauración exitosa");
-                    // cierra la venta cuando se ejecuta exitosamente
-                    this.dispose();
-
-                } catch (SQLException e) {
-                    System.err.println("Error en restaurar la contraseña " + e);
-                }
-
-            } else {
-                jTex_Confirmarpass.setBackground(Color.ORANGE);
-                JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
-
-            }
+        if (bnra == false) {
+            jTex_pass.setBackground(Color.orange);
+            jTex_Confirmarpass.setBackground(Color.orange);
+            System.out.println(bnra + " +");
 
         } else {
-            jTex_pass.setBackground(Color.ORANGE);
-            jTex_Confirmarpass.setBackground(Color.ORANGE);
-            JOptionPane.showMessageDialog(null, "No se admiten campos vacios.");
+            jTex_pass.setBackground(Color.green);
+            jTex_Confirmarpass.setBackground(Color.green);
 
         }
 
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jBu_addActionPerformed
 
     private void jTex_passActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTex_passActionPerformed
-       
+
     }//GEN-LAST:event_jTex_passActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -191,10 +167,9 @@ public class Restaura_pass extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        System.exit(0);
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
