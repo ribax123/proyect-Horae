@@ -69,9 +69,8 @@ public class Stock extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         btn_pdf = new javax.swing.JButton();
-        fondo = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(0, 0, 0));
+        setBackground(new java.awt.Color(0, 51, 102));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable_product.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
@@ -130,10 +129,6 @@ public class Stock extends javax.swing.JPanel {
             }
         });
         add(btn_pdf, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, -1, -1));
-
-        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/sTOCK.png"))); // NOI18N
-        fondo.setText("jLabel1");
-        add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 430));
     }// </editor-fold>//GEN-END:initComponents
 
     private void buscarTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarTipoActionPerformed
@@ -197,7 +192,6 @@ public class Stock extends javax.swing.JPanel {
     private javax.swing.JButton btn_pdf;
     private javax.swing.JButton buscarTipo;
     private javax.swing.JComboBox<String> comboTipo;
-    private javax.swing.JLabel fondo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;

@@ -2,9 +2,6 @@ package windows;
 
 import java.awt.Image;
 import java.awt.Toolkit;
-import java.sql.*;
-import clases.conexion;
-import javax.swing.JOptionPane;
 import clases.other;
 import clases.file;
 import clases.type;
@@ -119,7 +116,7 @@ public class Interfaz extends javax.swing.JFrame {
         jSeparator2.setForeground(new java.awt.Color(0, 102, 102));
         jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, 280, -1));
 
-        jButton_salir.setBackground(new java.awt.Color(0, 0, 0));
+        jButton_salir.setBackground(new java.awt.Color(0, 51, 102));
         jButton_salir.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jButton_salir.setForeground(new java.awt.Color(255, 255, 255));
         jButton_salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/boton-de-encendido-apagado.png"))); // NOI18N

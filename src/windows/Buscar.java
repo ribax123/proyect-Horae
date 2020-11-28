@@ -123,7 +123,7 @@ public class Buscar extends javax.swing.JPanel {
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Light", 0, 36)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Gestionar");
+        jLabel4.setText("Novedades");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
@@ -181,40 +181,47 @@ public class Buscar extends javax.swing.JPanel {
         ids = jText_ID.getText().trim();
         other mensaID = new other();
         boolean val = mensaID.validacion(ids);
+        int control = 0;
 
-        if (val != true) {
+        if (!ids.equals("")) {
 
-            jText_ID.setBackground(Color.ORANGE);
-            JOptionPane.showMessageDialog(null, "Solo puedes ingresar valores numericos y no deben haber campos vacios.");
-            return;
-
-        }
-
-        try {
-            Connection cn = conexion.conectar();
-            PreparedStatement ps = cn.prepareStatement("select * from inventario where Id =?");
-            ps.setString(1, ids);
-
-            ResultSet rs = ps.executeQuery();
-
-            if (rs.next()) {
-
-                ids = rs.getString("Id");
-                descri = rs.getString("Descripcion");
-                unidads = rs.getString("Unidades");
-                tips = rs.getString("Tipo");
-                fechs = rs.getString("Fecha");
-                autors = rs.getString("Autor");
-
-                resultado_Id resusltado = new resultado_Id();
-                resusltado.setVisible(true);
-
-            } else {
-                JOptionPane.showMessageDialog(null, "El ID no existe");
+            if (val != true) {
+                JOptionPane.showMessageDialog(null, "Solo puedes ingresar valores numericos.");
+                control++;
             }
 
-        } catch (Exception e) {
-            System.out.println("Error al conectarse al servidor " + e);
+            if (control == 0) {
+
+                try {
+                    Connection cn = conexion.conectar();
+                    PreparedStatement ps = cn.prepareStatement("select * from inventario where Id =?");
+                    ps.setString(1, ids);
+
+                    ResultSet rs = ps.executeQuery();
+
+                    if (rs.next()) {
+
+                        ids = rs.getString("Id");
+                        descri = rs.getString("Descripcion");
+                        unidads = rs.getString("Unidades");
+                        tips = rs.getString("Tipo");
+                        fechs = rs.getString("Fecha");
+                        autors = rs.getString("Autor");
+
+                        resultado_Id resusltado = new resultado_Id();
+                        resusltado.setVisible(true);
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "El ID no existe");
+                    }
+
+                } catch (Exception e) {
+                    System.out.println("Error al conectarse al servidor " + e);
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "El ID no puede estar vacio.");
+            jText_ID.setBackground(Color.ORANGE);
         }
 
     }//GEN-LAST:event_buscarIDActionPerformed
@@ -228,60 +235,70 @@ public class Buscar extends javax.swing.JPanel {
         ids = jText_ID.getText().trim();
         other mensaID = new other();
         boolean val = mensaID.validacion(ids);
+        int control = 0;
 
-        if (val == false) {
-            JOptionPane.showMessageDialog(null, "no espacios vacios o letras ");
-        }
+        if (!ids.equals("")) {
+            if (val != true) {
+                JOptionPane.showMessageDialog(null, "Solo puedes ingresar valores numericos.");
+                control++;
+            }
 
-        model.setRowCount(0);
-        model.setColumnCount(0);
+            if (control == 0) {
 
-        try {
-
-            Connection cn1 = conexion.conectar();
-            PreparedStatement pst1 = cn1.prepareStatement(
-                    "select id from actualizacion_inventario where id = '" + ids + "'");
-
-            ResultSet rs1 = pst1.executeQuery();
-
-            if (!rs1.next()) {
-                JOptionPane.showMessageDialog(null, "El registro no ha sido actualizado");
-                cn1.close();
-
-            } else {
-                cn1.close();
+                model.setRowCount(0);
+                model.setColumnCount(0);
 
                 try {
 
-                    Connection cn = conexion.conectar();
-                    PreparedStatement pst = cn.prepareStatement(
-                            "select resgistro, id, usuario, fecha from actualizacion_inventario where id = '" + ids + "'");
+                    Connection cn1 = conexion.conectar();
+                    PreparedStatement pst1 = cn1.prepareStatement(
+                            "select id from actualizacion_inventario where id = '" + ids + "'");
 
-                    ResultSet rs = pst.executeQuery();
+                    ResultSet rs1 = pst1.executeQuery();
 
-                    tabla_actualizaciones = new JTable(model);
-                    jScrollPane1.setViewportView(tabla_actualizaciones);
+                    if (!rs1.next()) {
+                        JOptionPane.showMessageDialog(null, "El registro no ha sido actualizado");
+                        todaConexion();
 
-                    model.addColumn("Registro");
-                    model.addColumn("Id");
-                    model.addColumn("Usuario");
-                    model.addColumn("Fecha");
+                    } else {
+                        cn1.close();
 
-                    while (rs.next()) {
-                        Object[] fila = new Object[4];
+                        try {
 
-                        for (int i = 0; i < 4; i++) {
-                            fila[i] = rs.getObject(i + 1);
+                            Connection cn = conexion.conectar();
+                            PreparedStatement pst = cn.prepareStatement(
+                                    "select resgistro, id, usuario, fecha from actualizacion_inventario where id = '" + ids + "'");
+
+                            ResultSet rs = pst.executeQuery();
+
+                            tabla_actualizaciones = new JTable(model);
+                            jScrollPane1.setViewportView(tabla_actualizaciones);
+
+                            model.addColumn("Registro");
+                            model.addColumn("Id");
+                            model.addColumn("Usuario");
+                            model.addColumn("Fecha");
+
+                            while (rs.next()) {
+                                Object[] fila = new Object[4];
+
+                                for (int i = 0; i < 4; i++) {
+                                    fila[i] = rs.getObject(i + 1);
+                                }
+                                model.addRow(fila);
+                            }
+
+                        } catch (SQLException e) {
+                            System.err.print("Error al llenar la tabla" + e);
+                            JOptionPane.showMessageDialog(null, "Error al mostrar imformacion, ¡Contacte al administrador!");
                         }
-                        model.addRow(fila);
                     }
-
-                } catch (SQLException e) {
-                    System.err.print("Error al llenar la tabla" + e);
-                    JOptionPane.showMessageDialog(null, "Error al mostrar imformacion, ¡Contacte al administrador!");
+                } catch (Exception e) {
                 }
             }
-        } catch (Exception e) {
+        } else {
+            JOptionPane.showMessageDialog(null, "El ID no puede estar vacio.");
+            jText_ID.setBackground(Color.ORANGE);
         }
 
 

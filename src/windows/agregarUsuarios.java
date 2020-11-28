@@ -51,7 +51,9 @@ public class agregarUsuarios extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JSeparator();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        jLainstru = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLainstru1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
@@ -82,6 +84,11 @@ public class agregarUsuarios extends javax.swing.JFrame {
         jPassword_add.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
         jPassword_add.setForeground(new java.awt.Color(255, 255, 255));
         jPassword_add.setBorder(null);
+        jPassword_add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPassword_addActionPerformed(evt);
+            }
+        });
         getContentPane().add(jPassword_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, 170, 27));
 
         jTex_Username.setBackground(new java.awt.Color(0, 51, 102));
@@ -149,10 +156,20 @@ public class agregarUsuarios extends javax.swing.JFrame {
         });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 0, 50, 40));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Creado por ribax@gimail.com ®");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 290, -1, -1));
+        jLainstru.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLainstru.setForeground(new java.awt.Color(255, 255, 255));
+        jLainstru.setText("numeros y letras.");
+        jPanel1.add(jLainstru, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Creado por ribax@gimail.com ®");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 290, -1, -1));
+
+        jLainstru1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLainstru1.setForeground(new java.awt.Color(255, 255, 255));
+        jLainstru1.setText("Minimo 8 caracteres entre  ");
+        jPanel1.add(jLainstru1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 320));
 
@@ -177,102 +194,92 @@ public class agregarUsuarios extends javax.swing.JFrame {
         other mensAdd = new other();
         boolean val = mensAdd.validacion(nombre, 0);
         boolean va2 = mensAdd.validacion(0, pass);
+        boolean va3 = mensAdd.validacion(username, username);
 
-        // validaciones para que no quede ningun campo vacio
-        if (va2 != true) {
-            jPassword_add.setBackground(Color.orange);
+        if (!nombre.equals("") || !username.equals("") || !pass.equals("")) {
 
-            validacion++;
-            JOptionPane.showMessageDialog(null, "!La contraseña debe contener almenos 8 caracteres entre letras y numeros!");
-            return;
-        }
-        if (val != true) {
-            jTex_Nombre.setBackground(Color.orange);
-            validacion++;
-            JOptionPane.showMessageDialog(null, "El nombre no puede contener numeros");
-            return;
-        }
-        if (nombre.equals("")) {
-
-            jTex_Nombre.setBackground(Color.orange);
-            validacion++;
-
-        }
-        if (username.equals("")) {
-
-            jTex_Username.setBackground(Color.orange);
-            validacion++;
-
-        }
-        if (pass.equals("")) {
-
-            jPassword_add.setBackground(Color.orange);
-            validacion++;
-
-        }
-
-        // validaciones para asignar los estados        
-        if (permisos_cmb == 1) {
-            permisos_string = "Administrador";
-        } else if (permisos_cmb == 2) {
-            permisos_string = "Auxliar";
-        }
-
-        //validacion en base de datos de ususarios disponibles
-        try {
-            Connection cn = conexion.conectar();
-            PreparedStatement pst = cn.prepareStatement(
-                    "select username from usuarios where username = '" + username + "'");
-
-            ResultSet rs = pst.executeQuery();
-
-            if (rs.next()) {
-                jTex_Username.setBackground(Color.ORANGE);
-                JOptionPane.showMessageDialog(null, "Nombre de usuario no disponible");
-                cn.close();
-            } else {
-
-                cn.close();
-
-                // Ingresar nuevos usuarios a la base de datos
-                if (validacion == 0) {
-                    try {
-                        Connection cn2 = conexion.conectar();
-                        // instrucciones colsultas
-                        PreparedStatement pst2 = cn2.prepareStatement(
-                                " insert into usuarios values (?,?,?,?,?,?)");
-
-                        pst2.setInt(1, 0);
-                        pst2.setString(2, nombre);
-                        pst2.setString(3, username);
-                        pst2.setString(4, pass);
-                        pst2.setString(5, permisos_string);
-                        pst2.setString(6, "Activo");
-
-                        pst2.executeUpdate();
-                        cn2.close();
-
-                        Limpiar();
-
-                        jTex_Nombre.setBackground(Color.green);
-                        jTex_Username.setBackground(Color.green);
-                        jPassword_add.setBackground(Color.green);
-
-                        JOptionPane.showMessageDialog(null, "Registro exitoso");
-                        this.dispose();
-
-                    } catch (SQLException e) {
-                        System.err.println("ERROR al registrar el usuario");
-                        JOptionPane.showMessageDialog(null, "¡¡ERROR al registrar!!, contacte al administrador");
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Debes llenar todos los campos");
-                }
-
+            
+            if(val == false){
+                JOptionPane.showMessageDialog(null, "El nombre debe  contener carateres alfabeticos y minimo 10 letras");
+                validacion++;
             }
-        } catch (SQLException e) {
-            System.err.println("Error al validar el nombre de usuario." + e);
-            JOptionPane.showMessageDialog(null, "¡¡ ERROR al comparar usuario!!, contacte al administrador.");
+            else if (va3 == false){
+                 JOptionPane.showMessageDialog(null, "El usuario debe contener 6 caracteres minimos entre letras y numeros");
+                 validacion++;
+            }else if(va2 == false){
+                JOptionPane.showMessageDialog(null, "La contraseña debe contener 8 caracteres minimos entre letras y numeros");
+                validacion++;
+            }
+            
+            
+            
+// validaciones para asignar los estados        
+            if (permisos_cmb == 1) {
+                permisos_string = "Administrador";
+            } else if (permisos_cmb == 2) {
+                permisos_string = "Auxliar";
+            }
+
+            if (validacion == 0) {
+                try {
+                    Connection cn = conexion.conectar();
+                    PreparedStatement pst = cn.prepareStatement(
+                            "select username from usuarios where username = '" + username + "'");
+
+                    ResultSet rs = pst.executeQuery();
+
+                    if (rs.next()) {
+                        jTex_Username.setBackground(Color.ORANGE);
+                        JOptionPane.showMessageDialog(null, "Nombre de usuario no disponible");
+                        cn.close();
+                    } else {
+
+                        cn.close();
+
+                        // Ingresar nuevos usuarios a la base de datos
+                        if (validacion == 0) {
+                            try {
+                                Connection cn2 = conexion.conectar();
+                                // instrucciones colsultas
+                                PreparedStatement pst2 = cn2.prepareStatement(
+                                        " insert into usuarios values (?,?,?,?,?,?)");
+
+                                pst2.setInt(1, 0);
+                                pst2.setString(2, nombre);
+                                pst2.setString(3, username);
+                                pst2.setString(4, pass);
+                                pst2.setString(5, permisos_string);
+                                pst2.setString(6, "Activo");
+
+                                pst2.executeUpdate();
+                                cn2.close();
+
+                                Limpiar();
+
+                                jTex_Nombre.setBackground(Color.green);
+                                jTex_Username.setBackground(Color.green);
+                                jPassword_add.setBackground(Color.green);
+
+                                JOptionPane.showMessageDialog(null, "Registro exitoso");
+                                this.dispose();
+
+                            } catch (SQLException e) {
+                                System.err.println("ERROR al registrar el usuario");
+                                JOptionPane.showMessageDialog(null, "¡¡ERROR al registrar!!, contacte al administrador");
+                            }
+                        } else {
+
+                        }
+
+                    }
+                } catch (SQLException e) {
+                    System.err.println("Error al validar el nombre de usuario." + e);
+                    JOptionPane.showMessageDialog(null, "¡¡ ERROR al comparar usuario!!, contacte al administrador.");
+                }
+            } 
+
+            }else {
+                JOptionPane.showMessageDialog(null, "Los campos no puede estar vacios");
         }
 
 
@@ -285,6 +292,10 @@ public class agregarUsuarios extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jPassword_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPassword_addActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPassword_addActionPerformed
 
     /**
      * @param args the command line arguments
@@ -326,11 +337,13 @@ public class agregarUsuarios extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel_Nombre;
     private javax.swing.JLabel jLabel_Nombre2;
     private javax.swing.JLabel jLabel_Nombre3;
     private javax.swing.JLabel jLabel_Nombre4;
+    private javax.swing.JLabel jLainstru;
+    private javax.swing.JLabel jLainstru1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPassword_add;
     private javax.swing.JSeparator jSeparator1;

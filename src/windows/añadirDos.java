@@ -41,6 +41,7 @@ public class añadirDos extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         bton_agregar.setBackground(new java.awt.Color(0, 51, 102));
+        bton_agregar.setForeground(new java.awt.Color(255, 255, 255));
         bton_agregar.setText("Guardar registro");
         bton_agregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,23 +110,21 @@ public class añadirDos extends javax.swing.JPanel {
         Descripcion = añadirDes1.getText().trim();
         unidades = añadirUnidad.getText().trim();
         boolean vali = mesajeroDos.validacion(unidades);
+        boolean val = mesajeroDos.validacion(Descripcion, 0);
 
         tipo_cmb = cbxTipo.getSelectedIndex() + 1;
 
-        if (Descripcion.equals("")) {
+        if (!Descripcion.equals("") || !unidades.equals("")) {
 
-            añadirDes1.setBackground(Color.orange);
-            validacion++;
-        } else if (unidades.equals("")) {
-
-            añadirUnidad.setBackground(Color.orange);
-            validacion++;
+            if (val == false) {
+                JOptionPane.showMessageDialog(null, "El nombre debe  contener carateres alfabeticos y minimo 10 letras");
+                validacion++;
+            
 
         } else if (vali != true) {
             añadirUnidad.setBackground(Color.orange);
             validacion++;
-            JOptionPane.showMessageDialog(null, "Solo caracteres numericos.");
-            return;
+            JOptionPane.showMessageDialog(null, "Unidades solo admite caracteres numericos.");
         }
 
         //seleccion del comboBox
@@ -172,12 +171,17 @@ public class añadirDos extends javax.swing.JPanel {
                 System.err.println("ERROR al registrar el producto");
                 JOptionPane.showMessageDialog(null, "¡¡ERROR al registrar!!, contacte al administrador");
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "Debes llenar todos los campos");
-            añadirDes1.setBackground(Color.orange);          
-            añadirUnidad.setBackground(Color.orange);
-            
         }
+    }
+
+    
+        else {
+            JOptionPane.showMessageDialog(null, "Debes llenar todos los campos");
+        añadirDes1.setBackground(Color.orange);
+        añadirUnidad.setBackground(Color.orange);
+        validacion++;
+
+    }
 
 
     }//GEN-LAST:event_bton_agregarActionPerformed

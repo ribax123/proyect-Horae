@@ -33,17 +33,31 @@ public class other {
         }
     }
 
-    // validacion letras
+    // validacion letras nombre
     public boolean validacion(String value, int num) {
 
-        return value.matches("[a-zA-Z ]*");
+        return value.matches("[a-zA-Z ]{10,40}");
     }
-    //validacion cantidad de caracteres permitidos
+    
+    
+    
+    //validacion cantidad de caracteres permitidos pass
     public boolean validacion(int num, String value) {
 
-        return value.matches("[a-zA-Z0-9]{8,15}");
+        return value.matches("[a-zA-Z0-9]{8,30}");
 
     }
+    //validacion cantidad de caracteres permitidos Username 
+    public boolean validacion(String value, String valuedos) {
+
+        return value.matches("[a-zA-Z0-9]{6,20}");      
+        
+    }
+    
+
+        
+
+    
      
     // Encapsulamiento para acceder  dia - mes - año actual
     
@@ -67,6 +81,5 @@ public class other {
     public String getAnio() {
         return anio;
     }
-}
 
-    
+}

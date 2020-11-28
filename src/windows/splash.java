@@ -5,6 +5,7 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+//l2vHX%!$u$)2
 
 public class splash extends javax.swing.JFrame implements Runnable {
 
@@ -17,6 +18,7 @@ public class splash extends javax.swing.JFrame implements Runnable {
         AWTUtilities.setWindowOpaque(this, false);
         time = new Thread(this);
         time.start();
+        setSize(688, 487);
 
     }
 
@@ -35,8 +37,8 @@ public class splash extends javax.swing.JFrame implements Runnable {
         jPanel2 = new javax.swing.JPanel();
         carga = new javax.swing.JLabel();
         cargandopuntos = new javax.swing.JLabel();
-        jLabel_Fodeer = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel_Fodeer = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
@@ -57,6 +59,10 @@ public class splash extends javax.swing.JFrame implements Runnable {
         cargandopuntos.setText("Cargarndo...");
         jPanel2.add(cargandopuntos, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, -1, -1));
 
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Creado por ribax123@gmail.com ®");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 60, 260, 40));
+
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 690, 110));
 
         jLabel_Fodeer.setBackground(new java.awt.Color(255, 255, 255));
@@ -64,14 +70,10 @@ public class splash extends javax.swing.JFrame implements Runnable {
         jLabel_Fodeer.setText("Creado por ribax123@gmail.com ®");
         jPanel1.add(jLabel_Fodeer, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 540, -1, -1));
 
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Creado por ribax123@gmail.com ®");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 260, 40));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 688, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(

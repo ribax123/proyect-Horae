@@ -1,6 +1,7 @@
 package windows;
 
 import clases.conexion;
+import clases.other;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -219,21 +220,25 @@ public class informacionUsu extends javax.swing.JFrame {
     private void jButton_ActualizarUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ActualizarUActionPerformed
 
         int status_cm, nivel_cm, control = 0;
-        String nombre, usuario, password, nivel = "", estado = "";
+        String nombre, usuario, nivel = "", estado = "";
 
         nombre = jTextField_Nombre.getText().trim();
         usuario = jTextField_username.getText().trim();
         status_cm = jComboBox_estado.getSelectedIndex() + 1;
         nivel_cm = jComboBox_permios.getSelectedIndex() + 1;
+        other men = new other();
+        boolean val = men.validacion(nombre, 0);
+        boolean va3 = men.validacion(usuario, estado);
 
-        if (nombre.equals("")) {
-            jTextField_Nombre.setBackground(Color.ORANGE);
-            control++;
-        } else if (usuario.equals("")) {
-            jTextField_username.setBackground(Color.ORANGE);
-            control++;
-        }
-        if (control == 0) {
+        if (!nombre.equals("") || !usuario.equals("")) {
+
+            if (val == false) {
+                JOptionPane.showMessageDialog(null, "El nombre debe  contener carateres alfabeticos y minimo 10 letras");
+                control++;
+            } else if (va3 == false) {
+                JOptionPane.showMessageDialog(null, "El usuario debe contener 6 caracteres minimos entre letras y numeros");
+                control++;
+            }
 
             if (nivel_cm == 1) {
                 nivel = "Administrador";
@@ -247,49 +252,55 @@ public class informacionUsu extends javax.swing.JFrame {
                 estado = "Inactivo";
             }
 
-            try {
+            if (control == 0) {
 
-                Connection cn = conexion.conectar();
-                PreparedStatement pst = cn.prepareStatement(
-                        "select username from usuarios where username = '" + usuario + "' and not id_usuario = '"
-                        + ID + "'");
+                try {
 
-                ResultSet rs = pst.executeQuery();
+                    Connection cn = conexion.conectar();
+                    PreparedStatement pst = cn.prepareStatement(
+                            "select username from usuarios where username = '" + usuario + "' and not id_usuario = '"
+                            + ID + "'");
 
-                if (rs.next()) {
+                    ResultSet rs = pst.executeQuery();
 
-                    JOptionPane.showMessageDialog(null, "Nombre de usuario no disponible.");
-                    jTextField_username.setBackground(Color.ORANGE);
-                    cn.close();
+                    if (rs.next()) {
 
-                } else {
+                        JOptionPane.showMessageDialog(null, "Nombre de usuario no disponible.");
+                        jTextField_username.setBackground(Color.ORANGE);
+                        cn.close();
 
-                    Connection cn2 = conexion.conectar();
-                    PreparedStatement pst2 = cn2.prepareStatement(
-                            "update usuarios set nombre_usuario=?, username=?, nivel=?, estado=? "
-                            + "where id_usuario = '" + ID + "'");
+                    } else {
 
-                    pst2.setString(1, nombre);
-                    pst2.setString(2, usuario);
-                    pst2.setString(3, nivel);
-                    pst2.setString(4, estado);
+                        Connection cn2 = conexion.conectar();
+                        PreparedStatement pst2 = cn2.prepareStatement(
+                                "update usuarios set nombre_usuario=?, username=?, nivel=?, estado=? "
+                                + "where id_usuario = '" + ID + "'");
 
-                    pst2.executeUpdate();
-                    cn2.close();
+                        pst2.setString(1, nombre);
+                        pst2.setString(2, usuario);
+                        pst2.setString(3, nivel);
+                        pst2.setString(4, estado);
 
-                    JOptionPane.showMessageDialog(null, "Actualizacion de usuario exitosa.");
-                    jTextField_Nombre.setBackground(Color.GREEN);
-                    jTextField_username.setBackground(Color.GREEN);
+                        pst2.executeUpdate();
+                        cn2.close();
+
+                        JOptionPane.showMessageDialog(null, "Actualizacion de usuario exitosa.");
+                        jTextField_Nombre.setBackground(Color.GREEN);
+                        jTextField_username.setBackground(Color.GREEN);
+
+                    }
+
+                } catch (SQLException e) {
+                    System.out.println("Error al Actualizar" + e);
 
                 }
-
-            } catch (SQLException e) {
-                System.out.println("Error al Actualizar" + e);
-
             }
 
         } else {
             JOptionPane.showMessageDialog(null, "Debes llenar todos los campos");
+            jTextField_Nombre.setBackground(Color.ORANGE);
+            jTextField_username.setBackground(Color.ORANGE);
+            control++;
         }
 
         // TODO add your handling code here:

@@ -4,6 +4,7 @@ import java.awt.Color;
 import clases.file;
 import clases.metoth;
 import clases.type;
+import javax.swing.JOptionPane;
 
 public class Borrar extends javax.swing.JPanel {
 
@@ -104,12 +105,13 @@ public class Borrar extends javax.swing.JPanel {
        
         borrar = txt_borrar.getText().trim();
         metoth union = new type();
-        union.borrar();
+       
         boolean bra = file.bandera;
 
-        if (bra == false) {
-            txt_borrar.setText("");
-            txt_borrar.setBackground(Color.orange);
+        if (!borrar.equals("")) {
+            union.borrar();
+        }else{
+            JOptionPane.showMessageDialog(null, "Los campos no deben estar vacios");
         }
 
 

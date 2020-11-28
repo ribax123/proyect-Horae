@@ -77,7 +77,7 @@ public class type extends file implements metoth, documen {
         }
 
     }
-//Accede a una base de datos y extrae el nombre del usuario.
+//Accede a una base de datos y extrae el nombre del usuario. administrador
     @Override
     public void nombreusuario() {
         try {
@@ -98,9 +98,10 @@ public class type extends file implements metoth, documen {
         }
 
     }
-//Verifica en la base de datos si el Id ingresado se encuentra registrado.
+//Verifica en la base de datos si el Id ingresado se encuentra registrado. validación para borrar
     @Override
     public void borrar() {
+       
         borrar = borrarr;
         other vali = new other();
         validar = vali.validacion(borrar);
@@ -115,18 +116,11 @@ public class type extends file implements metoth, documen {
             if (rs.next()) {
                 segur mjr = new segur();
                 mjr.setVisible(true);
-
-            } else if (borrar.equals("")) {
-
-                JOptionPane.showMessageDialog(null, "el campo no puede estar vacio");
-                bandera = false;
-
+           
             } else if (validar != true) {
                 JOptionPane.showMessageDialog(null, "este campo solo acepta numeros");
             } else {
-                JOptionPane.showMessageDialog(null, "El ID no existe");
-                bandera = false;
-
+                JOptionPane.showMessageDialog(null, "El ID no existe");               
             }
             cn.close();
 
@@ -134,7 +128,7 @@ public class type extends file implements metoth, documen {
             System.out.println("Error al conectarse al servidor " + e);
         }
     }
-//public void pdfReport()
+//public void pdfReport() crea un reporte/registro formato.pdf
     @Override
     public void pdfReport() {
 
@@ -192,6 +186,11 @@ public class type extends file implements metoth, documen {
         } catch (Exception e) {
         }
 
+    }
+
+    @Override
+    public void numeroDLetras() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
