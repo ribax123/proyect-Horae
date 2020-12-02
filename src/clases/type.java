@@ -94,7 +94,7 @@ public class type extends file implements metoth, documen {
             }
 
         } catch (Exception e) {
-            System.err.println("error en la conexion desde la interfaz Administrador");
+            System.err.println("ERROR en la conexión desde la interfaz administrador");
         }
 
     }
@@ -118,14 +118,14 @@ public class type extends file implements metoth, documen {
                 mjr.setVisible(true);
            
             } else if (validar != true) {
-                JOptionPane.showMessageDialog(null, "este campo solo acepta numeros");
+                JOptionPane.showMessageDialog(null, "Éste campo solo acepta carácteres númericos");
             } else {
                 JOptionPane.showMessageDialog(null, "El ID no existe");               
             }
             cn.close();
 
         } catch (SQLException e) {
-            System.out.println("Error al conectarse al servidor " + e);
+            System.out.println("ERROR al conectarse al servidor " + e);
         }
     }
 //public void pdfReport() crea un reporte/registro formato.pdf
