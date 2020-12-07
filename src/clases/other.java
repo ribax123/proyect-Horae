@@ -13,16 +13,14 @@ public class other {
     public String fechaActual() {
 
         Calendar c1 = Calendar.getInstance();
-
         dia = Integer.toString(c1.get(Calendar.DATE));
         mes = Integer.toString(c1.get(Calendar.MONTH));
         anio = Integer.toString(c1.get(Calendar.YEAR));
-        int mes = Integer.parseInt(getMes());
-        
+        int mes = Integer.parseInt(getMes());       
         return getAnio() + "-" + (mes+1) + "-" + getDia();
     }
-// validacion numeros    
-
+    
+// validacion ... solo numeros    
     public boolean validacion(String vali) {
         int num;
         try {
@@ -33,10 +31,10 @@ public class other {
         }
     }
 
-    // validacion letras nombre
+    // validacion letras nombre y cantidad de caràcteres permitidos
     public boolean validacion(String value, int num) {
 
-        return value.matches("[a-zA-Z ]{10,40}");
+        return value.matches("[a-zA-Z0-9 ]{4,40}");
     }
     
     
@@ -47,7 +45,7 @@ public class other {
         return value.matches("[a-zA-Z0-9]{8,30}");
 
     }
-    //validacion cantidad de caracteres permitidos Username 
+    //validacion cantidad de caracteres permitidos Username (letras y numeros) 
     public boolean validacion(String value, String valuedos) {
 
         return value.matches("[a-zA-Z0-9]{6,20}");      

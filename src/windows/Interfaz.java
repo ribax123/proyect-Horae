@@ -224,9 +224,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField_User;
     // End of variables declaration//GEN-END:variables
 
-    /**
-     * @return the pass
-     */
+  
     public static String getPass() {
         return pass;
     }

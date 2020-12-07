@@ -25,7 +25,6 @@ public class type extends file implements metoth, documen {
 //Dar ingreso a la aplicación, especificando el permiso por medio de una consulta a la base de datos- login.
     @Override
     public void variable() {
-
         // validaciones campos vacios
         if (!usero.equals("") || !pasw.equals("")) {
 
