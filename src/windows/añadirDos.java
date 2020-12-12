@@ -36,6 +36,8 @@ public class añadirDos extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         añadirDes1 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        txtReferencia = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 51, 102));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -92,29 +94,47 @@ public class añadirDos extends javax.swing.JPanel {
         añadirDes1.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         añadirDes1.setForeground(new java.awt.Color(255, 255, 255));
         añadirDes1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        añadirDes1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                añadirDes1ActionPerformed(evt);
+            }
+        });
         add(añadirDes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, 180, 27));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Creado por ribax123@gmail.com ®");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, -1, -1));
+
+        txtReferencia.setBackground(new java.awt.Color(0, 51, 102));
+        txtReferencia.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        txtReferencia.setForeground(new java.awt.Color(255, 255, 255));
+        txtReferencia.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
+        add(txtReferencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 260, 180, 27));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Referencia");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void bton_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bton_agregarActionPerformed
 
         int tipo_cmb, validacion = 0;
-        String Descripcion, unidades, tipo_string = "";
+        String descripcion, unidades, referencia, tipo_string = "";
         other mesajeroDos = new other();
 
         // definir variables
-        Descripcion = añadirDes1.getText().trim();
+        referencia = txtReferencia.getText().trim();
+        descripcion = añadirDes1.getText().trim();
         unidades = añadirUnidad.getText().trim();
+        
         boolean vali = mesajeroDos.validacion(unidades);
-        boolean val = mesajeroDos.validacion(Descripcion, 0);
+        boolean val = mesajeroDos.validacion(descripcion, 0);
 
         tipo_cmb = cbxTipo.getSelectedIndex() + 1;
 
-        if (!Descripcion.equals("") || !unidades.equals("")) {
+        if (!descripcion.equals("") || !unidades.equals("") || !referencia.equals("")) {
 
             if (val == false) {
                 JOptionPane.showMessageDialog(null, "El nombre debe  contener carateres alfabeticos y minimo 10 letras");
@@ -148,14 +168,15 @@ public class añadirDos extends javax.swing.JPanel {
             try {
                 Connection cn2 = conexion.conectar();
                 PreparedStatement pst2 = cn2.prepareStatement(
-                        " insert into inventario values (?,?,?,?,?,?)");
+                        " insert into inventario values (?,?,?,?,?,?,?)");
 
                 pst2.setInt(1, 0);
-                pst2.setString(2, Descripcion);
-                pst2.setString(3, unidades);
-                pst2.setString(4, tipo_string);
-                pst2.setString(5, fecha);
-                pst2.setString(6, user);
+                pst2.setString(2,referencia);
+                pst2.setString(3, descripcion);
+                pst2.setString(4, unidades);
+                pst2.setString(5, tipo_string);
+                pst2.setString(6, fecha);
+                pst2.setString(7, user);
 
                 pst2.executeUpdate();
                 cn2.close();
@@ -168,7 +189,7 @@ public class añadirDos extends javax.swing.JPanel {
                 añadirUnidad.setText("");
 
             } catch (SQLException e) {
-                System.err.println("ERROR al registrar el producto");
+                System.err.println("ERROR al registrar el producto" + e);
                 JOptionPane.showMessageDialog(null, "¡¡ERROR al registrar!!, contacte al administrador");
             }
         }
@@ -190,6 +211,10 @@ public class añadirDos extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbxTipoActionPerformed
 
+    private void añadirDes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadirDes1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_añadirDes1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField añadirDes1;
@@ -201,6 +226,8 @@ public class añadirDos extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTextField txtReferencia;
     // End of variables declaration//GEN-END:variables
 }

@@ -26,7 +26,7 @@ public class Stock extends javax.swing.JPanel {
         try {
             Connection cn = conexion.conectar();
             PreparedStatement pst = cn.prepareStatement(
-                    " select Id, Descripcion, Unidades, Tipo, Fecha, Autor from inventario");
+                    " select Id,Referencia, Descripcion, Unidades, Tipo, Fecha, Autor from inventario");
 
             ResultSet rs = pst.executeQuery();
 
@@ -34,6 +34,7 @@ public class Stock extends javax.swing.JPanel {
             jScrollPane1.setViewportView(jTable_product);
 
             model.addColumn("Id");
+            model.addColumn("Referencia");
             model.addColumn("Descripcion");
             model.addColumn("Unidades");
             model.addColumn("Tipo");
@@ -41,9 +42,9 @@ public class Stock extends javax.swing.JPanel {
             model.addColumn("Autor");
 
             while (rs.next()) {
-                Object[] fila = new Object[6];
+                Object[] fila = new Object[7];
 
-                for (int i = 0; i < 6; i++) {
+                for (int i = 0; i < 7; i++) {
                     fila[i] = rs.getObject(i + 1);
                 }
                 model.addRow(fila);

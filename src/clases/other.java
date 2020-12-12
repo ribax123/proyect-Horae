@@ -36,7 +36,7 @@ public class other {
     // validacion letras nombre
     public boolean validacion(String value, int num) {
 
-        return value.matches("[a-zA-Z ]{10,40}");
+        return value.matches("[a-zA-Z1-9 ]{8,40}");
     }
     
     

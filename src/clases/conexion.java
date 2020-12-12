@@ -19,4 +19,17 @@ public class conexion {
         }
         return (null);
     }
+     public static Connection conectarDos() {
+        try {
+
+            //Connection cn = DriverManager.getConnection("jdbc:mysql://server.hostingbricks.com:3306/horaeibx_bd_ds?useSSL=false", "horaeibx", "oprresion029294");
+
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/facturacion", "root", "");
+            return cn;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "¡Error en la conexión!");
+            System.out.println("Error en la conexión" + e);
+        }
+        return (null);
+    }
 }
