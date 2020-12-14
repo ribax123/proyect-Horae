@@ -55,6 +55,7 @@ public class Borrar extends javax.swing.JPanel {
         );
 
         setBackground(new java.awt.Color(0, 51, 102));
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         bton_borrar.setBackground(new java.awt.Color(0, 51, 102));

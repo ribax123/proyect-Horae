@@ -40,6 +40,7 @@ public class añadirDos extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 51, 102));
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         bton_agregar.setBackground(new java.awt.Color(0, 51, 102));
@@ -50,7 +51,7 @@ public class añadirDos extends javax.swing.JPanel {
                 bton_agregarActionPerformed(evt);
             }
         });
-        add(bton_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, 150, -1));
+        add(bton_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 340, 150, -1));
 
         cbxTipo.setBackground(new java.awt.Color(0, 51, 153));
         cbxTipo.setForeground(new java.awt.Color(255, 255, 255));
@@ -61,22 +62,22 @@ public class añadirDos extends javax.swing.JPanel {
                 cbxTipoActionPerformed(evt);
             }
         });
-        add(cbxTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, -1, -1));
+        add(cbxTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 280, -1, -1));
 
         añadirUnidad.setBackground(new java.awt.Color(0, 51, 102));
         añadirUnidad.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         añadirUnidad.setForeground(new java.awt.Color(255, 255, 255));
         añadirUnidad.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
-        add(añadirUnidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 180, 27));
+        add(añadirUnidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, 180, 27));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Tipo :");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Descripción / Producto :");
+        jLabel2.setText("Descripción :");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
@@ -99,7 +100,7 @@ public class añadirDos extends javax.swing.JPanel {
                 añadirDes1ActionPerformed(evt);
             }
         });
-        add(añadirDes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, 180, 27));
+        add(añadirDes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, 180, 27));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -110,12 +111,12 @@ public class añadirDos extends javax.swing.JPanel {
         txtReferencia.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         txtReferencia.setForeground(new java.awt.Color(255, 255, 255));
         txtReferencia.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
-        add(txtReferencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 260, 180, 27));
+        add(txtReferencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 180, 27));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Referencia");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, -1, -1));
+        jLabel6.setText("Referencia :");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void bton_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bton_agregarActionPerformed

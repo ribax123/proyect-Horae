@@ -94,6 +94,7 @@ public class Buscar extends javax.swing.JPanel {
         jLabel1.setText("jLabel1");
 
         setBackground(new java.awt.Color(0, 51, 102));
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         addFecha.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N

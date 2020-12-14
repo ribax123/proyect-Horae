@@ -26,7 +26,7 @@ public class Stock extends javax.swing.JPanel {
         try {
             Connection cn = conexion.conectar();
             PreparedStatement pst = cn.prepareStatement(
-                    " select Id,Referencia, Descripcion, Unidades, Tipo, Fecha, Autor from inventario");
+                    " select Id, Referencia, Descripcion, Unidades, Tipo, Fecha, Autor from inventario");
 
             ResultSet rs = pst.executeQuery();
 
@@ -72,6 +72,7 @@ public class Stock extends javax.swing.JPanel {
         btn_pdf = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 51, 102));
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable_product.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
@@ -129,7 +130,7 @@ public class Stock extends javax.swing.JPanel {
                 btn_pdfActionPerformed(evt);
             }
         });
-        add(btn_pdf, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, -1, -1));
+        add(btn_pdf, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void buscarTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarTipoActionPerformed
@@ -144,9 +145,9 @@ public class Stock extends javax.swing.JPanel {
             Connection cn1 = conexion.conectar();
 
             if (Selecion.equals("Todos")) {
-                query = "select Id, Descripcion, Unidades, Tipo, Fecha, Autor from inventario";
+                query = "select Id, Referencia, Descripcion, Unidades, Tipo, Fecha, Autor from inventario";
             } else {
-                query = "select Id, Descripcion, Unidades, Tipo, Fecha, Autor from inventario where Tipo = '" + Selecion + "'";
+                query = "select Id, Referencia, Descripcion, Unidades, Tipo, Fecha, Autor from inventario where Tipo = '" + Selecion + "'";
             }
             PreparedStatement ps1 = cn1.prepareStatement(query);
             ResultSet rs = ps1.executeQuery();
@@ -155,6 +156,7 @@ public class Stock extends javax.swing.JPanel {
             jScrollPane1.setViewportView(jTable_product);
 
             model.addColumn("Id");
+            model.addColumn("Referencia");
             model.addColumn("Descripcion");
             model.addColumn("Unidades");
             model.addColumn("Tipo");
