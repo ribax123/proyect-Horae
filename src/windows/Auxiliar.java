@@ -1,8 +1,6 @@
 package windows;
 
-import clases.other;
 import java.awt.Image;
-import java.awt.PopupMenu;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -30,6 +28,7 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
 
         // mostrar panel principal "Inicio"
         contenedor.add(inicio);
+        
 
         // botones paneles de la interfaz
         bt_añardir.addActionListener(this);
@@ -63,6 +62,7 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
         jButton_Salir = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(getIconImage());
@@ -71,15 +71,15 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
         contenedor.setPreferredSize(new java.awt.Dimension(610, 400));
         contenedor.setLayout(new java.awt.BorderLayout());
 
-        jPanel1.setBackground(new java.awt.Color(0, 102, 153));
+        jPanel1.setBackground(new java.awt.Color(0, 51, 102));
         jPanel1.setPreferredSize(new java.awt.Dimension(150, 540));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        bt_buscar.setBackground(new java.awt.Color(0, 102, 153));
+        bt_buscar.setBackground(new java.awt.Color(0, 51, 102));
         bt_buscar.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
         bt_buscar.setForeground(new java.awt.Color(255, 255, 255));
         bt_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/activo.png"))); // NOI18N
-        bt_buscar.setText("Novedades");
+        bt_buscar.setText("Update");
         bt_buscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bt_buscar.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         bt_buscar.addActionListener(new java.awt.event.ActionListener() {
@@ -89,7 +89,7 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
         });
         jPanel1.add(bt_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 132, 40));
 
-        bt_stock.setBackground(new java.awt.Color(0, 102, 153));
+        bt_stock.setBackground(new java.awt.Color(0, 51, 102));
         bt_stock.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
         bt_stock.setForeground(new java.awt.Color(255, 255, 255));
         bt_stock.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/lista.png"))); // NOI18N
@@ -103,7 +103,7 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
         });
         jPanel1.add(bt_stock, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 132, 40));
 
-        bt_Inicio.setBackground(new java.awt.Color(0, 102, 153));
+        bt_Inicio.setBackground(new java.awt.Color(0, 51, 102));
         bt_Inicio.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
         bt_Inicio.setForeground(new java.awt.Color(255, 255, 255));
         bt_Inicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/casa.png"))); // NOI18N
@@ -117,12 +117,12 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
         });
         jPanel1.add(bt_Inicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 132, 40));
 
-        bt_añardir.setBackground(new java.awt.Color(0, 102, 153));
+        bt_añardir.setBackground(new java.awt.Color(0, 51, 102));
         bt_añardir.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
         bt_añardir.setForeground(new java.awt.Color(255, 255, 255));
         bt_añardir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/anadir.png"))); // NOI18N
         bt_añardir.setText("Registrar");
-        bt_añardir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        bt_añardir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bt_añardir.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         bt_añardir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,7 +131,7 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
         });
         jPanel1.add(bt_añardir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 132, 40));
 
-        bt_borrar.setBackground(new java.awt.Color(0, 102, 153));
+        bt_borrar.setBackground(new java.awt.Color(0, 51, 102));
         bt_borrar.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
         bt_borrar.setForeground(new java.awt.Color(255, 255, 255));
         bt_borrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/borrar.png"))); // NOI18N
@@ -162,6 +162,11 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
         jLabel2.setText("jLabel2");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-50, -10, 180, 150));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 100, -1));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Version 1.0");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 440, -1, -1));
 
         contenedor.add(jPanel1, java.awt.BorderLayout.LINE_START);
 
@@ -240,6 +245,7 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
     private javax.swing.JPanel contenedor;
     private javax.swing.JButton jButton_Salir;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables

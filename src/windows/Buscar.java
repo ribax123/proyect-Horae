@@ -90,10 +90,12 @@ public class Buscar extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         btn_actu = new javax.swing.JButton();
+        version = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
 
         setBackground(new java.awt.Color(0, 51, 102));
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         addFecha.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
@@ -174,6 +176,11 @@ public class Buscar extends javax.swing.JPanel {
             }
         });
         add(btn_actu, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 270, -1, -1));
+
+        version.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        version.setForeground(new java.awt.Color(255, 255, 255));
+        version.setText("Version 1.0");
+        add(version, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 390, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void buscarIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarIDActionPerformed
@@ -323,6 +330,7 @@ public class Buscar extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jText_ID;
     private javax.swing.JTable tabla_actualizaciones;
+    private javax.swing.JLabel version;
     // End of variables declaration//GEN-END:variables
 
 }

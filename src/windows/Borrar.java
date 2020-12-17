@@ -31,6 +31,7 @@ public class Borrar extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -55,6 +56,7 @@ public class Borrar extends javax.swing.JPanel {
         );
 
         setBackground(new java.awt.Color(0, 51, 102));
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         bton_borrar.setBackground(new java.awt.Color(0, 51, 102));
@@ -99,6 +101,11 @@ public class Borrar extends javax.swing.JPanel {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Creado por ribax@gimail.com ®");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Version 1.0");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 400, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void bton_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bton_borrarActionPerformed
@@ -131,6 +138,7 @@ public class Borrar extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lbl_Borrar;
     private javax.swing.JTextField txt_borrar;
