@@ -1,6 +1,7 @@
 package windows;
 
 import clases.conexion;
+import clases.other;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,7 +9,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import imprimir.Imprimir;
+import java.text.DecimalFormat;
 
 public class tablaProductos extends javax.swing.JFrame {
 
@@ -17,17 +18,16 @@ public class tablaProductos extends javax.swing.JFrame {
     public static int valorTotal;
     DefaultTableModel model = new DefaultTableModel();
     String user;
-    
 
     public tablaProductos() {
         initComponents();
         setResizable(false);
         setLocationRelativeTo(this);
-        
+
         try {
             Connection cn = conexion.conectar();
             PreparedStatement pst = cn.prepareStatement(
-                    " select Referencia, Descripcion, Unidades from inventario");
+                    " select Referencia, Descripcion from inventario");
 
             ResultSet rs = pst.executeQuery();
 
@@ -36,7 +36,7 @@ public class tablaProductos extends javax.swing.JFrame {
 
             model.addColumn("Referencia");
             model.addColumn("Descripción");
-            model.addColumn("Unidades");
+            
 
             // ciclo para llenar la tabla
             /* cuando hay una solicitud  para generar 
@@ -45,9 +45,9 @@ public class tablaProductos extends javax.swing.JFrame {
              de las posiciones e insertar cada uno de los datos en las 
             posiciones de las filas*/
             while (rs.next()) {
-                Object[] fila = new Object[3];
+                Object[] fila = new Object[2];
 
-                for (int i = 0; i < 3; i++) {
+                for (int i = 0; i < 2; i++) {
                     fila[i] = rs.getObject(i + 1);
                 }
                 model.addRow(fila);
@@ -62,44 +62,63 @@ public class tablaProductos extends javax.swing.JFrame {
     }
 
     public void llenarTablaDos() {
+        boolean validacionCantidad;
+        boolean validacionValor;
+        other vali = new other();
+        String nameDos;
+        String name = JOptionPane.showInputDialog("Unidades:");
 
-        String name = JOptionPane.showInputDialog("Cantidad:");
-        String nameDos = JOptionPane.showInputDialog("valor:");
-        int filasSleccionada = jTable_usuariosTres.getSelectedRow();
-        String val;
-        String datos[] = new String[5];
+        validacionCantidad = vali.validacion(name);
 
-        int valor = Integer.parseInt(name);
-        int valorDos = Integer.parseInt(nameDos);
-        String cantidadTabla;
-        int cantidadTotal;
-        int totalActualizado;
+        if (!name.equals("") && validacionCantidad == true) {
+            nameDos = JOptionPane.showInputDialog("Valor:");
+            validacionValor = vali.validacion(nameDos);
 
-        valorTotal = valor * valorDos;
+            if (!nameDos.equals("") && validacionValor == true) {
 
-        val = String.valueOf(valorTotal);
+                int filasSleccionada = jTable_usuariosTres.getSelectedRow();
+                String val;
+                String datos[] = new String[5];
+                DecimalFormat formatea = new DecimalFormat("###,###.##");
+                int valor = Integer.parseInt(name);
+                int valorDos = Integer.parseInt(nameDos);
+                String nameTres = String.valueOf(formatea.format(valorDos));
+                String cantidadTabla;
+                int cantidadTotal;
+                int totalActualizado;
 
-        datos[0] = jTable_usuariosTres.getValueAt(filasSleccionada, 0).toString();
-        datos[1] = jTable_usuariosTres.getValueAt(filasSleccionada, 1).toString();
-        datos[2] = name;
-        datos[3] = nameDos;
-        datos[4] = val;
-        cantidadTabla = jTable_usuariosTres.getValueAt(filasSleccionada, 2).toString();
-        cantidadTotal = Integer.parseInt(cantidadTabla);
-        totalActualizado = cantidadTotal - valor;
+                valorTotal = valor * valorDos;
 
-        Facturacion.modelDos.addRow((datos));
-        
+                val = String.valueOf(formatea.format(valorTotal));
 
-        try {
-            Connection cn = conexion.conectar();
-            PreparedStatement pst = cn.prepareStatement("UPDATE inventario SET Unidades = '" + totalActualizado + "' WHERE Referencia = '" + jTable_usuariosTres.getValueAt(filasSleccionada, 0).toString() + "' ");
+                datos[0] = jTable_usuariosTres.getValueAt(filasSleccionada, 0).toString();
+                datos[1] = jTable_usuariosTres.getValueAt(filasSleccionada, 1).toString();
+                datos[2] = name;
+                datos[3] = nameTres;
+                datos[4] = val;
+                cantidadTabla = jTable_usuariosTres.getValueAt(filasSleccionada, 2).toString();
+                cantidadTotal = Integer.parseInt(cantidadTabla);
 
-            pst.executeUpdate();
+                // aumenta o disminuye  la cantidad en el stock
+                totalActualizado = cantidadTotal - valor;
 
-        } catch (Exception e) {
+                Facturacion.modelDos.addRow((datos));
+
+                try {
+                    Connection cn = conexion.conectar();
+                    PreparedStatement pst = cn.prepareStatement("UPDATE inventario SET Unidades = '" + totalActualizado + "' WHERE Referencia = '" + jTable_usuariosTres.getValueAt(filasSleccionada, 0).toString() + "' ");
+
+                    pst.executeUpdate();
+
+                } catch (Exception e) {
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "NO pueden haber campos vacios, ni  caracteres alfabeticos");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "NO pueden haber campos vacios, ni  caracteres alfabeticos");
         }
-
     }
 
     public void buscarPrductos(String buscar) {
@@ -141,7 +160,7 @@ public class tablaProductos extends javax.swing.JFrame {
         }
 
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -198,7 +217,7 @@ public class tablaProductos extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(0, 51, 102));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Seleccionar");
+        jButton1.setText("Insertar");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -209,7 +228,7 @@ public class tablaProductos extends javax.swing.JFrame {
 
         jButton2.setBackground(new java.awt.Color(0, 51, 102));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("salir");
+        jButton2.setText("Volver");
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -226,7 +245,7 @@ public class tablaProductos extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         llenarTablaDos();
-       
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTable_usuariosTresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_usuariosTresMouseClicked
@@ -238,7 +257,7 @@ public class tablaProductos extends javax.swing.JFrame {
     }//GEN-LAST:event_txtBuscarKeyReleased
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      dispose();
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -255,16 +274,24 @@ public class tablaProductos extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(tablaProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(tablaProductos.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(tablaProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(tablaProductos.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(tablaProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(tablaProductos.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(tablaProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(tablaProductos.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>

@@ -54,6 +54,7 @@ public class agregarUsuarios extends javax.swing.JFrame {
         jLainstru = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLainstru1 = new javax.swing.JLabel();
+        version = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
@@ -170,6 +171,11 @@ public class agregarUsuarios extends javax.swing.JFrame {
         jLainstru1.setForeground(new java.awt.Color(255, 255, 255));
         jLainstru1.setText("Minimo 8 caracteres entre  ");
         jPanel1.add(jLainstru1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, -1, -1));
+
+        version.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        version.setForeground(new java.awt.Color(255, 255, 255));
+        version.setText("Vs. 1.0");
+        jPanel1.add(version, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 300, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 320));
 
@@ -352,6 +358,7 @@ public class agregarUsuarios extends javax.swing.JFrame {
     private javax.swing.JTextField jTex_Nombre;
     private javax.swing.JTextField jTex_Username;
     private javax.swing.JComboBox<String> listaBox;
+    private javax.swing.JLabel version;
     // End of variables declaration//GEN-END:variables
 
     public void Limpiar() {

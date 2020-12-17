@@ -1,6 +1,7 @@
 package clases;
 
 import java.util.Calendar;
+import javax.swing.JOptionPane;
 
 public class other {
 
@@ -24,19 +25,19 @@ public class other {
 // validacion numeros    
 
     public boolean validacion(String vali) {
-        int num;
         try {
-            num = Integer.parseInt(vali);
-            return true;
+            return vali.matches("[0-9.]{1,40}");
         } catch (Exception e) {
-            return false;
+            System.out.println("Operación cancelada");
         }
+        return false;
+
     }
 
-    // validacion letras nombre
+    // validacion letras nombre de productos
     public boolean validacion(String value, int num) {
 
-        return value.matches("[a-zA-Z1-9 ]{8,40}");
+        return value.matches("[a-zA-Z0-9 ]{5,40}");
     }
     
     
@@ -44,7 +45,7 @@ public class other {
     //validacion cantidad de caracteres permitidos pass
     public boolean validacion(int num, String value) {
 
-        return value.matches("[a-zA-Z0-9]{8,30}");
+        return value.matches("[a-zA-Z0-9]{4,30}");
 
     }
     //validacion cantidad de caracteres permitidos Username 
@@ -52,6 +53,10 @@ public class other {
 
         return value.matches("[a-zA-Z0-9]{6,20}");      
         
+    }
+    // validacion nombre de usuarios
+    public  boolean  validacionNombre(String value){
+    return value.matches("[a-zA-Z ]{6,20}");
     }
     
 

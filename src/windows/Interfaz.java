@@ -5,6 +5,10 @@ import java.awt.Toolkit;
 import clases.other;
 import clases.file;
 import clases.type;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
+import javax.swing.Timer;
 
 // clase
 public class Interfaz extends javax.swing.JFrame {
@@ -18,6 +22,7 @@ public class Interfaz extends javax.swing.JFrame {
     public Interfaz() {
         initComponents();
         this.setLocationRelativeTo(null);
+        gifPlse.setVisible(false);
 
     }
 
@@ -26,6 +31,29 @@ public class Interfaz extends javax.swing.JFrame {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("iconos/iconopequeño.png"));
         return retValue;
     }
+
+    public void entrar() {
+        user = jTextField_User.getText().trim();
+        pass = jPassword_txt.getText().trim();
+        file union = new type();
+        union.variable();
+        boolean bandr = type.bandera;
+
+        if (bandr == true) {
+            dispose();
+        } else {
+            jTextField_User.setText("");
+            jPassword_txt.setText("");
+            gifPlse.setVisible(false);
+        }
+
+    }
+
+    Timer timer = new Timer(4000, new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            entrar();
+        }
+    });
 
     // icono miniatura
     @SuppressWarnings("unchecked")
@@ -43,7 +71,9 @@ public class Interfaz extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jButton_salir = new javax.swing.JButton();
+        version = new javax.swing.JLabel();
         jLabel_icon = new javax.swing.JLabel();
+        gifPlse = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel_Fondo = new javax.swing.JLabel();
@@ -129,8 +159,16 @@ public class Interfaz extends javax.swing.JFrame {
         });
         jPanel2.add(jButton_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, 30, 30));
 
+        version.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        version.setForeground(new java.awt.Color(255, 255, 255));
+        version.setText("Version 1.0");
+        jPanel2.add(version, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 540, -1, -1));
+
         jLabel_icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/HORAE.png"))); // NOI18N
         jPanel2.add(jLabel_icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 200));
+
+        gifPlse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Pulse-1s-70px.gif"))); // NOI18N
+        jPanel2.add(gifPlse, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 440, 90, 60));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 410, 570));
 
@@ -155,18 +193,13 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_salirActionPerformed
 
     private void botton_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botton_ingresarActionPerformed
-      
-        user = jTextField_User.getText().trim();
-        pass = jPassword_txt.getText().trim();
-        file union = new type();
-        union.variable();
-        boolean bandr = type.bandera;
-
-        if (bandr == true) {
-            dispose();
-        } else {
-            jTextField_User.setText("");
-            jPassword_txt.setText("");
+        
+        if(!jTextField_User.getText().equals("") || !jPassword_txt.getText().equals("")){
+        gifPlse.setVisible(true);
+        timer.start();
+        timer.setRepeats(false);
+        }else{
+            JOptionPane.showMessageDialog(null, "Campos obligatorios");
         }
 
     }//GEN-LAST:event_botton_ingresarActionPerformed
@@ -208,6 +241,7 @@ public class Interfaz extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botton_ingresar;
+    private javax.swing.JLabel gifPlse;
     private javax.swing.JButton jButton_salir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel1_Usuario;
@@ -222,6 +256,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTextField jTextField_User;
+    private javax.swing.JLabel version;
     // End of variables declaration//GEN-END:variables
 
     /**

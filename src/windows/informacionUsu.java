@@ -80,12 +80,13 @@ public class informacionUsu extends javax.swing.JFrame {
         jLabel_permisos1 = new javax.swing.JLabel();
         jComboBox_permios = new javax.swing.JComboBox<>();
         jButton_ActualizarU = new javax.swing.JButton();
-        botton_pass = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel_titulo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        version = new javax.swing.JLabel();
+        botton_pass = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
@@ -147,16 +148,6 @@ public class informacionUsu extends javax.swing.JFrame {
         });
         getContentPane().add(jButton_ActualizarU, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, 160, -1));
 
-        botton_pass.setBackground(new java.awt.Color(0, 51, 102));
-        botton_pass.setForeground(new java.awt.Color(255, 255, 255));
-        botton_pass.setText("Actualizar password");
-        botton_pass.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botton_passActionPerformed(evt);
-            }
-        });
-        getContentPane().add(botton_pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 160, -1));
-
         jPanel1.setBackground(new java.awt.Color(0, 51, 102));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -195,6 +186,21 @@ public class informacionUsu extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Creado por ribax123@gmail.com ®");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, -1, -1));
+
+        version.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        version.setForeground(new java.awt.Color(255, 255, 255));
+        version.setText("Vs. 1.0");
+        jPanel1.add(version, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 240, -1, -1));
+
+        botton_pass.setBackground(new java.awt.Color(0, 51, 102));
+        botton_pass.setForeground(new java.awt.Color(255, 255, 255));
+        botton_pass.setText("Actualizar password");
+        botton_pass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botton_passActionPerformed(evt);
+            }
+        });
+        jPanel1.add(botton_pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 195, 160, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 260));
 
@@ -369,5 +375,6 @@ public class informacionUsu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField_Nombre;
     private javax.swing.JTextField jTextField_username;
+    private javax.swing.JLabel version;
     // End of variables declaration//GEN-END:variables
 }

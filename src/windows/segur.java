@@ -35,6 +35,7 @@ public class segur extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        version = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -97,6 +98,11 @@ public class segur extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Usuario:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, -1, -1));
+
+        version.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        version.setForeground(new java.awt.Color(255, 255, 255));
+        version.setText("Vs. 1.0");
+        jPanel1.add(version, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 190, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -244,5 +250,6 @@ public class segur extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPassword_txt;
     private javax.swing.JTextField jTextField_User;
+    private javax.swing.JLabel version;
     // End of variables declaration//GEN-END:variables
 }

@@ -52,6 +52,8 @@ public class Administrador extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
@@ -92,8 +94,8 @@ public class Administrador extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Creado por ribax123@gmail.com ®");
-        wallpap.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 520, -1, -1));
+        jLabel5.setText("Version 1.0");
+        wallpap.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 520, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -160,6 +162,24 @@ public class Administrador extends javax.swing.JFrame {
         jLabel6.setText("Gestionar usuario");
         wallpap.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 480, -1, -1));
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Creado por ribax123@gmail.com ®");
+        wallpap.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 520, -1, -1));
+
+        jButton4.setBackground(new java.awt.Color(0, 51, 102));
+        jButton4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setText("URLS");
+        jButton4.setContentAreaFilled(false);
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        wallpap.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 520, -1, -1));
+
         getContentPane().add(wallpap, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 550));
 
         pack();
@@ -201,12 +221,20 @@ public class Administrador extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        Facturacion fact = new Facturacion();
-        fact.setVisible(true);
+       java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Facturacion().setVisible(true);
+            }
+        });
 
         //tablaVendedores tblaV = new tablaVendedores();
         //tblaV.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        Url url =new Url();
+        url.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -247,6 +275,7 @@ public class Administrador extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton_MenuAux;
     private javax.swing.JButton jButton_gestionU;
     private javax.swing.JButton jButton_regisU;
@@ -256,6 +285,7 @@ public class Administrador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel_nameUsuario;
     private javax.swing.JPanel wallpap;
     // End of variables declaration//GEN-END:variables

@@ -62,6 +62,7 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
         jButton_Salir = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(getIconImage());
@@ -162,6 +163,11 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-50, -10, 180, 150));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 100, -1));
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Version 1.0");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 440, -1, -1));
+
         contenedor.add(jPanel1, java.awt.BorderLayout.LINE_START);
 
         getContentPane().add(contenedor, java.awt.BorderLayout.CENTER);
@@ -239,6 +245,7 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
     private javax.swing.JPanel contenedor;
     private javax.swing.JButton jButton_Salir;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables

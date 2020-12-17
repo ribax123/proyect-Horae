@@ -63,6 +63,7 @@ public class Stock extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_product = new javax.swing.JTable();
+        version = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         buscarTipo = new javax.swing.JButton();
@@ -90,7 +91,12 @@ public class Stock extends javax.swing.JPanel {
         jTable_product.setGridColor(new java.awt.Color(153, 0, 0));
         jScrollPane1.setViewportView(jTable_product);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 640, 240));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 640, 240));
+
+        version.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        version.setForeground(new java.awt.Color(255, 255, 255));
+        version.setText("Vs. 1.0");
+        add(version, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 400, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Light", 1, 28)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -201,6 +207,7 @@ public class Stock extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable_product;
+    private javax.swing.JLabel version;
     // End of variables declaration//GEN-END:variables
 
 }

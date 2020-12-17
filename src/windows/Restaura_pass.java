@@ -50,6 +50,7 @@ public class Restaura_pass extends javax.swing.JFrame {
         footh = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
+        version = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
@@ -129,6 +130,11 @@ public class Restaura_pass extends javax.swing.JFrame {
         jPanel1.add(footh, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, -1, -1));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 97, 200, -1));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 167, 200, -1));
+
+        version.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        version.setForeground(new java.awt.Color(255, 255, 255));
+        version.setText("Vs. 1.0");
+        jPanel1.add(version, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 200, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 220));
 
@@ -215,5 +221,6 @@ public class Restaura_pass extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JPasswordField jTex_Confirmarpass;
     private javax.swing.JPasswordField jTex_pass;
+    private javax.swing.JLabel version;
     // End of variables declaration//GEN-END:variables
 }
