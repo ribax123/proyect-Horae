@@ -119,6 +119,7 @@ public class agregarUsuarios extends javax.swing.JFrame {
 
         Btn_add.setBackground(new java.awt.Color(0, 51, 102));
         Btn_add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/add.png"))); // NOI18N
+        Btn_add.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Btn_add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_addActionPerformed(evt);

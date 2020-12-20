@@ -136,7 +136,7 @@ public class informacionUsu extends javax.swing.JFrame {
                 jComboBox_permiosItemStateChanged(evt);
             }
         });
-        getContentPane().add(jComboBox_permios, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 100, -1));
+        getContentPane().add(jComboBox_permios, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 160, -1));
 
         jButton_ActualizarU.setBackground(new java.awt.Color(0, 51, 102));
         jButton_ActualizarU.setForeground(new java.awt.Color(255, 255, 255));

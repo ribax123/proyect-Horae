@@ -2,6 +2,8 @@ package windows;
 
 import clases.conexion;
 import clases.other;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -36,7 +38,6 @@ public class tablaProductos extends javax.swing.JFrame {
 
             model.addColumn("Referencia");
             model.addColumn("Descripción");
-            
 
             // ciclo para llenar la tabla
             /* cuando hay una solicitud  para generar 
@@ -62,6 +63,7 @@ public class tablaProductos extends javax.swing.JFrame {
     }
 
     public void llenarTablaDos() {
+        
         boolean validacionCantidad;
         boolean validacionValor;
         other vali = new other();
@@ -69,56 +71,65 @@ public class tablaProductos extends javax.swing.JFrame {
         String name = JOptionPane.showInputDialog("Unidades:");
 
         validacionCantidad = vali.validacion(name);
+        
+        try {
+            if (!name.equals("") && validacionCantidad == true) {
+                nameDos = JOptionPane.showInputDialog("Valor:");
+                validacionValor = vali.validacion(nameDos);
 
-        if (!name.equals("") && validacionCantidad == true) {
-            nameDos = JOptionPane.showInputDialog("Valor:");
-            validacionValor = vali.validacion(nameDos);
+                if (!nameDos.equals("") && validacionValor == true) {
 
-            if (!nameDos.equals("") && validacionValor == true) {
+                    int filasSleccionada = jTable_usuariosTres.getSelectedRow();
+                    String val;
+                    String datos[] = new String[5];
+                    DecimalFormat formatea = new DecimalFormat("###,###.##");
+                    int valor = Integer.parseInt(name);
+                    int valorDos = Integer.parseInt(nameDos);
+                    String nameTres = String.valueOf(formatea.format(valorDos));
+                    //String cantidadTabla;
+                    //int cantidadTotal;
+                    //int totalActualizado;
 
-                int filasSleccionada = jTable_usuariosTres.getSelectedRow();
-                String val;
-                String datos[] = new String[5];
-                DecimalFormat formatea = new DecimalFormat("###,###.##");
-                int valor = Integer.parseInt(name);
-                int valorDos = Integer.parseInt(nameDos);
-                String nameTres = String.valueOf(formatea.format(valorDos));
-                String cantidadTabla;
-                int cantidadTotal;
-                int totalActualizado;
+                    valorTotal = valor * valorDos;
 
-                valorTotal = valor * valorDos;
+                    val = String.valueOf(formatea.format(valorTotal));
 
-                val = String.valueOf(formatea.format(valorTotal));
+                    datos[0] = jTable_usuariosTres.getValueAt(filasSleccionada, 0).toString();
+                    datos[1] = jTable_usuariosTres.getValueAt(filasSleccionada, 1).toString();
+                    datos[2] = name;
+                    datos[3] = nameTres;
+                    datos[4] = val;
+                    //cantidadTabla = jTable_usuariosTres.getValueAt(filasSleccionada, 2).toString();
+                    //cantidadTotal = Integer.parseInt(cantidadTabla);
 
-                datos[0] = jTable_usuariosTres.getValueAt(filasSleccionada, 0).toString();
-                datos[1] = jTable_usuariosTres.getValueAt(filasSleccionada, 1).toString();
-                datos[2] = name;
-                datos[3] = nameTres;
-                datos[4] = val;
-                cantidadTabla = jTable_usuariosTres.getValueAt(filasSleccionada, 2).toString();
-                cantidadTotal = Integer.parseInt(cantidadTabla);
+                    // aumenta o disminuye  la cantidad en el stock
+                    //totalActualizado = cantidadTotal - valor;
+                    Facturacion.modelDos.addRow((datos));
 
-                // aumenta o disminuye  la cantidad en el stock
-                totalActualizado = cantidadTotal - valor;
-
-                Facturacion.modelDos.addRow((datos));
-
-                try {
-                    Connection cn = conexion.conectar();
-                    PreparedStatement pst = cn.prepareStatement("UPDATE inventario SET Unidades = '" + totalActualizado + "' WHERE Referencia = '" + jTable_usuariosTres.getValueAt(filasSleccionada, 0).toString() + "' ");
-
-                    pst.executeUpdate();
-
-                } catch (Exception e) {
+                    /**
+                     * try { Connection cn = conexion.conectar();
+                     * PreparedStatement pst = cn.prepareStatement("UPDATE
+                     * inventario SET Unidades = '" + totalActualizado + "'
+                     * WHERE Referencia = '" +
+                     * jTable_usuariosTres.getValueAt(filasSleccionada,
+                     * 0).toString() + "' ");
+                     *
+                     * pst.executeUpdate();
+                     *
+                     * } catch (Exception e) {
                 }
+                     */
+                } else {
+                    JOptionPane.showMessageDialog(null, "NO pueden haber campos vacios, ni  caracteres alfabeticos");
+                }
+            
 
-            } else {
-                JOptionPane.showMessageDialog(null, "NO pueden haber campos vacios, ni  caracteres alfabeticos");
-            }
-        } else {
+        }else {
             JOptionPane.showMessageDialog(null, "NO pueden haber campos vacios, ni  caracteres alfabeticos");
-        }
+        }}catch (Exception e) {
+                System.out.println("acción cancelada");
+               return;
+            }
     }
 
     public void buscarPrductos(String buscar) {
@@ -161,6 +172,12 @@ public class tablaProductos extends javax.swing.JFrame {
 
     }
 
+    @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("iconos/iconopequeño.png"));
+        return retValue;
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -173,6 +190,8 @@ public class tablaProductos extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
+        setIconImage(getIconImage());
+        setIconImages(getIconImages());
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 

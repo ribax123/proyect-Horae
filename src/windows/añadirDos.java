@@ -60,6 +60,7 @@ public class añadirDos extends javax.swing.JPanel {
         bton_agregar.setBackground(new java.awt.Color(0, 51, 102));
         bton_agregar.setForeground(new java.awt.Color(255, 255, 255));
         bton_agregar.setText("Guardar registro");
+        bton_agregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bton_agregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bton_agregarActionPerformed(evt);
@@ -91,6 +92,7 @@ public class añadirDos extends javax.swing.JPanel {
         cbxTipo.setForeground(new java.awt.Color(255, 255, 255));
         cbxTipo.setMaximumRowCount(10);
         cbxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Movil", "Accesorio", " " }));
+        cbxTipo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cbxTipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxTipoActionPerformed(evt);

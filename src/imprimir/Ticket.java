@@ -5,9 +5,7 @@
  */
 package imprimir;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
+
 import javax.print.DocFlavor;
 import javax.print.DocPrintJob;
 import javax.print.PrintService;
@@ -23,13 +21,19 @@ public class Ticket {
 
     //Ticket attribute content
     public String contentTicket
-            = "                   -{{nameLocal}}-              \n\n"
+            = "        *****{{nameLocal}}*****          \n"
+            + "            movil-tech.com               \n"
+            + "        moviltech111@gmail.com           \n"
+            + "       Contacto@movil-tech.com           \n\n"
+            + "  SAN ANDRESITO DE LA 38 \n"
+            + "  DIRECCION: cra38 #9-45 BOGOTA D.C. \n"
             + "  SUCURSAL: {{expedition}}\n"
-            + "  ============================================\n"
-            + "  BOGOTA.DC\n"
+            + "  LOCAL # {{box}}\n"
+            + "  ============================================\n"           
             + "  RICARDO CASTELLANOS\n"
-            + "  TELEFONO: 313 4485808\n"
-            + "  LOCAL # {{box}} - Factura # {{ticket}}\n"
+            + "  TELEFONO: 313 4485808- 305 8078808\n"
+            + "  TELEFONO: 031-4673364\n"
+            + "  Factura # {{ticket}}\n"
             + "  VENDEDOR: {{cajero}}\n"
             + "  FECHA :{{dateTime}}\n"
             + "  ============================================\n"
@@ -38,8 +42,7 @@ public class Ticket {
             + "  SUBTOTAL: {{subTotal}}\n"
             + "  IVA: {{tax}}\n"
             + "  TOTAL: {{total}}\n\n"
-            + "  RECIBIDO: {{recibo}}\n"
-            + "  CAMBIO: {{change}}\n\n"
+            + "  GARANTIA: {{garantia}}\n\n"
             + "  ============================================\n"
             + "  GRACIAS POR SU COMPRA...\n"
             + "  ESPERAMOS SU VISITA NUEVAMENTE {{nameLocal}}.\n"
@@ -53,7 +56,7 @@ public class Ticket {
             + "\n";
 
     //El constructor que setea los valores a la instancia
-    public Ticket(String nameLocal, String expedition, String box, String ticket, String caissier, String dateTime, String items, String subTotal, String tax, String total, String recibo, String change) {
+    public Ticket(String nameLocal, String expedition, String box, String ticket, String caissier, String dateTime, String items, String subTotal, String tax, String total, String garantia) {
         this.contentTicket = this.contentTicket.replace("{{nameLocal}}", nameLocal);
         this.contentTicket = this.contentTicket.replace("{{expedition}}", expedition);
         this.contentTicket = this.contentTicket.replace("{{box}}", box);
@@ -63,9 +66,8 @@ public class Ticket {
         this.contentTicket = this.contentTicket.replace("{{items}}", items);
         this.contentTicket = this.contentTicket.replace("{{subTotal}}", subTotal);
         this.contentTicket = this.contentTicket.replace("{{tax}}", tax);
-        this.contentTicket = this.contentTicket.replace("{{total}}", total);
-        this.contentTicket = this.contentTicket.replace("{{recibo}}", recibo);
-        this.contentTicket = this.contentTicket.replace("{{change}}", change);
+        this.contentTicket = this.contentTicket.replace("{{total}}", total);      
+        this.contentTicket = this.contentTicket.replace("{{garantia}}", garantia);
     }
 
     public void print() {

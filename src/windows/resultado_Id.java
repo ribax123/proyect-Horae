@@ -41,6 +41,7 @@ public class resultado_Id extends javax.swing.JFrame {
         texAutor.setText(Buscar.autors);
 
     }
+   
 
     // actualizar datos
     public void actualizacion() {
