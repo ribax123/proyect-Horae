@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import windows.Restaura_pass;
 
-public class recurs extends type {
+public class recurs extends Functions {
 
 //Consulta a base de datos para actualizar un password de ingreso.
     @Override

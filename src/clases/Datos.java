@@ -2,7 +2,7 @@ package clases;
 
 import java.util.Calendar;
 
-public class other {
+public class Datos {
 
    private String dia;
    private String mes;

@@ -1,7 +1,7 @@
 package windows;
 
 import clases.conexion;
-import clases.other;
+import clases.Datos;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -232,7 +232,7 @@ public class informacionUsu extends javax.swing.JFrame {
         usuario = jTextField_username.getText().trim();
         status_cm = jComboBox_estado.getSelectedIndex() + 1;
         nivel_cm = jComboBox_permios.getSelectedIndex() + 1;
-        other men = new other();
+        Datos men = new Datos();
         boolean val = men.validacion(nombre, 0);
         boolean va3 = men.validacion(usuario, estado);
 

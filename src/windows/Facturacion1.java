@@ -1,16 +1,14 @@
 package windows;
 
 import clases.conexion;
-import clases.other;
+import clases.Datos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
 import java.awt.Toolkit;
-
 import javax.swing.JTable;
 
 public class Facturacion1 extends javax.swing.JFrame {
@@ -18,7 +16,7 @@ public class Facturacion1 extends javax.swing.JFrame {
     public static String nombreCliente;
 
     String user_updateDos = tablaProductos.user_UpdateDos;
-    other datos;
+    Datos datos;
     String user = "";
     String producto;
     String fecha = "";
@@ -54,7 +52,7 @@ public class Facturacion1 extends javax.swing.JFrame {
         setLocationRelativeTo(this);
         setSize(690, 610);
         
-        datos = new other();
+        datos = new Datos();
         txtFecha.setText(datos.fechaActual());
         user = Interfaz.user;               
     }

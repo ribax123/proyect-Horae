@@ -2,7 +2,7 @@ package windows;
 
 import java.util.*;
 import clases.conexion;
-import clases.other;
+import clases.Datos;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -198,7 +198,7 @@ public class agregarUsuarios extends javax.swing.JFrame {
         username = jTex_Username.getText().trim();
         pass = jPassword_add.getText().trim();
         permisos_cmb = listaBox.getSelectedIndex() + 1;
-        other mensAdd = new other();
+        Datos mensAdd = new Datos();
         boolean val = mensAdd.validacion(nombre, 0);
         boolean va2 = mensAdd.validacion(0, pass);
         boolean va3 = mensAdd.validacion(username, username);

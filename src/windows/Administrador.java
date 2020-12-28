@@ -1,10 +1,10 @@
 package windows;
 
-import clases.metoth;
-import clases.type;
+import clases.Functions;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.WindowConstants;
+import clases.Interface_Functions;
 
 public class Administrador extends javax.swing.JFrame {
 
@@ -19,12 +19,12 @@ public class Administrador extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        metoth union = new type();
+        Interface_Functions union = new Functions();
         union.nombreusuario();
-        boolean bra = type.bandera;
+        boolean bra = Functions.bandera;
 
         if (bra == true) {
-            jLabel_nameUsuario.setText(type.nombre_usero);
+            jLabel_nameUsuario.setText(Functions.nombre_usero);
         }
     }
 

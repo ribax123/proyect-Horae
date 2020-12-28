@@ -1,10 +1,10 @@
 package clases;
 
-public interface metoth {
+public interface Interface_Functions {
 
     public void nombreusuario();
 
     public void borrar();
 
-    public void numeroDLetras();
+   
 }

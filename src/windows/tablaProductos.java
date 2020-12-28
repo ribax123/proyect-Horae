@@ -1,7 +1,7 @@
 package windows;
 
 import clases.conexion;
-import clases.other;
+import clases.Datos;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.sql.Connection;
@@ -66,7 +66,7 @@ public class tablaProductos extends javax.swing.JFrame {
         
         boolean validacionCantidad;
         boolean validacionValor;
-        other vali = new other();
+        Datos vali = new Datos();
         String nameDos;
         String name = JOptionPane.showInputDialog("Unidades:");
 
@@ -197,6 +197,17 @@ public class tablaProductos extends javax.swing.JFrame {
 
         jScrollPane2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        jTable_usuariosTres = new JTable(){
+            public boolean isCellEditable(int row, int colum){
+                for(int i = 0; i< jTable_usuariosTres.getRowCount(); i++){
+
+                    if (row == i){
+                        return true;
+                    }
+                }
+                return false;
+            }
+        };
         jTable_usuariosTres.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -268,7 +279,10 @@ public class tablaProductos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTable_usuariosTresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_usuariosTresMouseClicked
-
+            if (evt.getClickCount() == 1){
+                llenarTablaDos();
+                JOptionPane.showMessageDialog(null, "nada");
+            }
     }//GEN-LAST:event_jTable_usuariosTresMouseClicked
 
     private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased

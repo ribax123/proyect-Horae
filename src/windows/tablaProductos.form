@@ -65,6 +65,9 @@
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTable_usuariosTresMouseClicked"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jTable_usuariosTres = new JTable(){&#xa;    public boolean isCellEditable(int row, int colum){&#xa;    for(int i = 0; i&lt; jTable_usuariosTres.getRowCount(); i++){   &#xa;        &#xa;        if (row == i){&#xa;            return true;&#xa;            }&#xa;        }&#xa;    return false;&#xa;    }&#xa;};"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

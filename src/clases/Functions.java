@@ -1,13 +1,5 @@
 package clases;
 
-import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.Chunk;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.Image;
-import com.itextpdf.text.FontFactory;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.Desktop;
 import java.awt.Font;
 import java.io.File;
@@ -17,12 +9,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -35,8 +28,9 @@ import windows.Facturacion;
 import static windows.Interfaz.getPass;
 import windows.segur;
 
-public class type extends file implements metoth, documen {
+public class Functions extends file implements Interface_Functions {
 //Dar ingreso a la aplicación, especificando el permiso por medio de una consulta a la base de datos- login.
+
     @Override
     public void variable() {
 
@@ -92,6 +86,7 @@ public class type extends file implements metoth, documen {
 
     }
 //Accede a una base de datos y extrae el nombre del usuario. administrador
+
     @Override
     public void nombreusuario() {
         try {
@@ -113,11 +108,12 @@ public class type extends file implements metoth, documen {
 
     }
 //Verifica en la base de datos si el Id ingresado se encuentra registrado. validación para borrar
+
     @Override
     public void borrar() {
-       
+
         borrar = borrarr;
-        other vali = new other();
+        Datos vali = new Datos();
         validar = vali.validacion(borrar);
 
         try {
@@ -130,11 +126,11 @@ public class type extends file implements metoth, documen {
             if (rs.next()) {
                 segur mjr = new segur();
                 mjr.setVisible(true);
-           
+
             } else if (validar != true) {
                 JOptionPane.showMessageDialog(null, "este campo solo acepta numeros");
             } else {
-                JOptionPane.showMessageDialog(null, "El ID no existe");               
+                JOptionPane.showMessageDialog(null, "El ID no existe");
             }
             cn.close();
 
@@ -142,11 +138,11 @@ public class type extends file implements metoth, documen {
             System.out.println("Error al conectarse al servidor " + e);
         }
     }
-    
-    public void delete(String indentificador, String tablaCodigo, String esto){
+
+    public void delete(String indentificador, String tablaCodigo, String esto) {
         try {
-            
-            String query = "delete  from "  +tablaCodigo+ " where " +indentificador+ " = ?";
+
+            String query = "delete  from " + tablaCodigo + " where " + indentificador + " = ?";
             Connection cn = conexion.conectar();
             PreparedStatement ps = cn.prepareStatement(query);
             ps.setString(1, esto);
@@ -157,66 +153,9 @@ public class type extends file implements metoth, documen {
         }
     }
 //public void pdfReport() crea un reporte/registro formato.pdf
-    @Override
-    public void pdfReport() {
 
-        Document documento = new Document();
 
-        try {
-            String ruta = System.getProperty("user.home");
-            PdfWriter.getInstance(documento, new FileOutputStream(ruta + "/Desktop/Inventario.pdf"));
-            
-            Image header = com.itextpdf.text.Image.getInstance("src/iconos/banner.png");
-            header.scaleToFit(550, 900);
-            header.setAlignment(Chunk.ALIGN_CENTER);
-            
-            Paragraph title = new Paragraph();
-            title.setAlignment(Paragraph.ALIGN_CENTER);
-            title.add("Registros de inventario en stock. \n\n");
-            title.setFont(FontFactory.getFont("Arial", 16, Font.BOLD,BaseColor.DARK_GRAY));
-            
-            documento.open();
-            documento.add(header);
-            documento.add(title);
-
-            PdfPTable tabla = new PdfPTable(6);
-            tabla.addCell("ID");
-            tabla.addCell("Descripcion");
-            tabla.addCell("Unidades");
-            tabla.addCell("Tipo");
-            tabla.addCell("Fecha");
-            tabla.addCell("Autor");
-
-            try {
-                Connection cn = conexion.conectar();
-                PreparedStatement ps = cn.prepareStatement("select * from inventario");
-                
-                ResultSet rs = ps.executeQuery();
-                
-                if (rs.next()) {
-                    
-                     do {                        
-                        tabla.addCell(rs.getString(1));
-                        tabla.addCell(rs.getString(2));
-                        tabla.addCell(rs.getString(3));
-                        tabla.addCell(rs.getString(4));
-                        tabla.addCell(rs.getString(5));
-                        tabla.addCell(rs.getString(6));
-                    } while (rs.next());
-                     documento.add(tabla);
-                    
-                }
-
-            } catch (Exception  e) {
-            }
-            documento.close();
-            JOptionPane.showMessageDialog(null, "Documento creado.");
-        } catch (Exception e) {
-        }
-
-    }
-
-    @Override
+    /*  @Override
     public void numeroDLetras() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -305,9 +244,7 @@ public class type extends file implements metoth, documen {
             documento.close();
             JOptionPane.showMessageDialog(null, "Documento creado.");
         } catch (Exception e) {
-        }
-
-    }
+        }*/
     public void exportarExcel(JTable t) throws IOException, java.io.IOException {
         JFileChooser chooser = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos de excel", "xls");
@@ -357,7 +294,53 @@ public class type extends file implements metoth, documen {
                 throw e;
             }
         }
-    
 
-}
+    }
+
+    public void buscar(String buscar, DefaultTableModel tableModel, JTable tabla, JScrollPane scrollPane, String qery) {
+        tableModel.setRowCount(0);
+        tableModel.setColumnCount(0);
+
+        try {
+            Connection cn = conexion.conectar();
+            PreparedStatement pst = cn.prepareStatement(qery);
+
+            ResultSet rs = pst.executeQuery();
+
+            tabla = new JTable(tableModel);
+            scrollPane.setViewportView(tabla);
+
+            tableModel.addColumn("Id");
+            tableModel.addColumn("Referencia");
+            tableModel.addColumn("Descripcion");
+            tableModel.addColumn("Unidades");
+            tableModel.addColumn("Tipo");
+            tableModel.addColumn("Fecha");
+            tableModel.addColumn("Autor");
+
+            // ciclo para llenar la tabla
+            /* cuando hay una solicitud  para generar 
+            la lista, se crea un ciclo con un objeto...
+             se crea un nuevo ciclo para iterar cada una
+             de las posiciones e insertar cada uno de los datos en las 
+            posiciones de las filas*/
+            while (rs.next()) {
+                Object[] fila = new Object[7];
+
+                for (int i = 0; i < 7; i++) {
+                    fila[i] = rs.getObject(i + 1);
+
+                }
+
+                tableModel.addRow(fila);
+            }
+            cn.close();
+
+        } catch (SQLException e) {
+            System.err.print("Error al llenar la tabla" + e);
+            JOptionPane.showMessageDialog(null, "Error al mostrar imformacion, ¡Contacte al administrador!");
+        }
+
+    }
+
 }

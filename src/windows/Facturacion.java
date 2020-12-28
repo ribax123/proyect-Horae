@@ -1,7 +1,7 @@
 package windows;
 
 import clases.conexion;
-import clases.other;
+import clases.Datos;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
@@ -31,7 +31,7 @@ public class Facturacion extends javax.swing.JFrame {
     public static String nombreCliente;
 
     String user_updateDos = tablaProductos.user_UpdateDos;
-    other datos;
+    Datos datos;
     String user = "";
     String producto;
     String fecha = "";
@@ -69,7 +69,7 @@ public class Facturacion extends javax.swing.JFrame {
         setLocationRelativeTo(this);
         txtNumeroFactura.setText(codigoIn());
         setSize(830, 530);
-        datos = new other();
+        datos = new Datos();
         txtFecha.setText(datos.fechaActual());
         user = Interfaz.user;
         modelDos.setRowCount(0);
@@ -272,7 +272,7 @@ public class Facturacion extends javax.swing.JFrame {
     public void imprimirTicket() {
         datosF();
 
-        Ticket ticket = new Ticket("MOVILTECH OLINE", "CC BAHIA", "128B", txtNumeroFactura.getText(), vendedor, fecha, todoo, txtTotal.getText(), "", txtTotal.getText(),"");
+        Ticket ticket = new Ticket("MOVILTECH OLINE", "CC BAHIA", "128B", txtNumeroFactura.getText(), vendedor, fecha, todoo, txtTotal.getText(), "", txtTotal.getText(), txtGarantia.getText());
         ticket.print();
         System.out.println(todoo);
         todoo = "";
@@ -302,6 +302,7 @@ public class Facturacion extends javax.swing.JFrame {
         txtDireccion.setText("");
         txAreaComentarios.setText("");
         txtNumeroFactura.setText(codigoIn());
+        txtTelefono.setText("");
 
     }
 
@@ -351,6 +352,7 @@ public class Facturacion extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         txtTelefono = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         txtFecha2 = new javax.swing.JLabel();
         txtFecha = new javax.swing.JLabel();
@@ -504,6 +506,18 @@ public class Facturacion extends javax.swing.JFrame {
             }
         });
         jpanel_datos.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 140, 26));
+
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setForeground(new java.awt.Color(0, 51, 153));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/add-folder.png"))); // NOI18N
+        jButton1.setToolTipText("Añadir al inventario");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jpanel_datos.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 7, 60, 55));
 
         jPanel1.add(jpanel_datos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 630, 160));
 
@@ -709,7 +723,7 @@ public class Facturacion extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        other validar = new other();
+        Datos validar = new Datos();
         boolean valN = validar.validacion(txtDocumento1.getText());
         boolean valL = validar.validacionNombre(txtNombreCliente.getText());
         boolean valT = validar.validacion(txtTelefono.getText());
@@ -748,7 +762,7 @@ public class Facturacion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProductoActionPerformed
 
     private void btnGuardarImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarImprimirActionPerformed
-        other validar = new other();
+        Datos validar = new Datos();
         boolean valN = validar.validacion(txtDocumento1.getText());
         boolean valL = validar.validacionNombre(txtNombreCliente.getText());
         if (txtGarantia.getText().equals("") || txtDocumento1.getText().equals("") || txtTotal.getText().equals("0") || txtNombreCliente.getText().equals("")) {
@@ -822,6 +836,11 @@ public class Facturacion extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTelefonoActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Auxiliar registrar = new Auxiliar();
+        registrar.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -841,6 +860,7 @@ public class Facturacion extends javax.swing.JFrame {
     private javax.swing.JButton btn_Facturas;
     private javax.swing.JButton bton_limpiarCampos;
     private javax.swing.JButton bton_limpiarTabla;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;

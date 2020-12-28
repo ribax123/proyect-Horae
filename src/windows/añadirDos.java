@@ -1,7 +1,7 @@
 package windows;
 
 import clases.conexion;
-import clases.other;
+import clases.Datos;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,9 +19,9 @@ public class añadirDos extends javax.swing.JPanel {
     public añadirDos() {
         initComponents();
         txtExito.setVisible(false);
-        other mensajero = new other();
+        Datos mensajero = new Datos();
         user = Interfaz.user;
-        other fh = new other();
+        Datos fh = new Datos();
         fecha = fh.fechaActual();
     }
     
@@ -155,7 +155,7 @@ public class añadirDos extends javax.swing.JPanel {
 
         int tipo_cmb, validacion = 0;
         String descripcion, unidades, referencia, tipo_string = "";
-        other mesajeroDos = new other();
+        Datos mesajeroDos = new Datos();
 
         // definir variables
         referencia = txtReferencia.getText().trim();
@@ -215,8 +215,8 @@ public class añadirDos extends javax.swing.JPanel {
                     cn2.close();
 
                     añadirDes1.setBackground(Color.CYAN);
-                    añadirUnidad.setBackground(Color.BLUE);
-                    txtReferencia.setBackground(Color.BLUE);
+                    añadirUnidad.setBackground(Color.CYAN);
+                    txtReferencia.setBackground(Color.CYAN);
                     txtExito.setVisible(true);
                     timer.start();
                     timer.setRepeats(false);

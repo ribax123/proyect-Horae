@@ -1,15 +1,16 @@
 package windows;
 
 import clases.conexion;
-import clases.documen;
-import clases.type;
+import clases.Functions;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 public class Stock extends javax.swing.JPanel {
 
@@ -22,7 +23,12 @@ public class Stock extends javax.swing.JPanel {
         initComponents();
         user = Interfaz.user;
 
-        // conexión a la base de datos e instrucciones CONSULTAS llenar tabla
+    }
+
+    public void llenarStock() {
+        model.setRowCount(0);
+        model.setColumnCount(0);
+// conexión a la base de datos e instrucciones CONSULTAS llenar tabla
         try {
             Connection cn = conexion.conectar();
             PreparedStatement pst = cn.prepareStatement(
@@ -66,11 +72,10 @@ public class Stock extends javax.swing.JPanel {
         version = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        buscarTipo = new javax.swing.JButton();
-        comboTipo = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        btn_pdf = new javax.swing.JButton();
+        txtBuscar = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 51, 102));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
@@ -91,7 +96,7 @@ public class Stock extends javax.swing.JPanel {
         jTable_product.setGridColor(new java.awt.Color(153, 0, 0));
         jScrollPane1.setViewportView(jTable_product);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 640, 240));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 640, 240));
 
         version.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         version.setForeground(new java.awt.Color(255, 255, 255));
@@ -104,109 +109,57 @@ public class Stock extends javax.swing.JPanel {
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, -1, -1));
         add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, 350, 10));
 
-        buscarTipo.setText("Actulizar");
-        buscarTipo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarTipoActionPerformed(evt);
-            }
-        });
-        add(buscarTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, -1, -1));
-
-        comboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Movil", "PC", "Cargador", "Audifonos", "Consola", "Reloj", "TV", " " }));
-        comboTipo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboTipoActionPerformed(evt);
-            }
-        });
-        add(comboTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, -1, 32));
-
         jLabel1.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Tipo");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
+        jLabel1.setText("Buscar");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Creado por ribax123@gmail.com ®");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, -1, -1));
 
-        btn_pdf.setText("Crear Documento");
-        btn_pdf.addActionListener(new java.awt.event.ActionListener() {
+        txtBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_pdfActionPerformed(evt);
+                txtBuscarActionPerformed(evt);
             }
         });
-        add(btn_pdf, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, -1, -1));
+        txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBuscarKeyReleased(evt);
+            }
+        });
+        add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 90, 210, 27));
+
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Vendedor/ N° FActura/ Fecha");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, 170, 30));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buscarTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarTipoActionPerformed
+    private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
 
-        String Selecion = comboTipo.getSelectedItem().toString();
-        String query = "";
+        Functions functions = new Functions();
+        functions.buscar(txtBuscar.getText(), model, jTable_product, jScrollPane1,
+                " select Id, Referencia, Descripcion, Unidades, Tipo, Fecha, Autor from inventario"
+                + " where Referencia like '%" + txtBuscar.getText() + "%' or Descripcion like '%" + txtBuscar.getText() + "%' or Fecha like '%" + txtBuscar.getText() + "%'");
 
-        model.setRowCount(0);
-        model.setColumnCount(0);
+    }//GEN-LAST:event_txtBuscarKeyReleased
 
-        try {
-            Connection cn1 = conexion.conectar();
-
-            if (Selecion.equals("Todos")) {
-                query = "select Id, Referencia, Descripcion, Unidades, Tipo, Fecha, Autor from inventario";
-            } else {
-                query = "select Id, Referencia, Descripcion, Unidades, Tipo, Fecha, Autor from inventario where Tipo = '" + Selecion + "'";
-            }
-            PreparedStatement ps1 = cn1.prepareStatement(query);
-            ResultSet rs = ps1.executeQuery();
-
-            jTable_product = new JTable(model);
-            jScrollPane1.setViewportView(jTable_product);
-
-            model.addColumn("Id");
-            model.addColumn("Referencia");
-            model.addColumn("Descripcion");
-            model.addColumn("Unidades");
-            model.addColumn("Tipo");
-            model.addColumn("Fecha");
-            model.addColumn("Autor");
-
-            while (rs.next()) {
-                Object[] fila = new Object[6];
-
-                for (int i = 0; i < 6; i++) {
-                    fila[i] = rs.getObject(i + 1);
-                }
-                model.addRow(fila);
-            }
-            cn1.close();
-
-        } catch (SQLException e) {
-            System.err.print("Error al llenar la tabla TIPO" + e);
-            JOptionPane.showMessageDialog(null, "Error al mostrar imformacion, ¡Contacte al administrador! TIPO");
-        }
-    }//GEN-LAST:event_buscarTipoActionPerformed
-
-    private void comboTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboTipoActionPerformed
+    private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_comboTipoActionPerformed
-
-    private void btn_pdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pdfActionPerformed
-
-        documen doc = new type();
-        doc.pdfReport();
-
-    }//GEN-LAST:event_btn_pdfActionPerformed
+    }//GEN-LAST:event_txtBuscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_pdf;
-    private javax.swing.JButton buscarTipo;
-    private javax.swing.JComboBox<String> comboTipo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable_product;
+    private javax.swing.JTextField txtBuscar;
     private javax.swing.JLabel version;
     // End of variables declaration//GEN-END:variables
 

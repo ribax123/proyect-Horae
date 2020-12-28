@@ -2,7 +2,7 @@ package windows;
 
 import java.sql.Connection;
 import clases.conexion;
-import clases.other;
+import clases.Datos;
 import java.awt.Color;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,14 +19,14 @@ public class Buscar extends javax.swing.JPanel {
     public static String tips = "";
     public static String fechs = "";
     public static String autors = "";
-    public static other fecha1;
+    public static Datos fecha1;
     public static String dia = "";
 
     DefaultTableModel model = new DefaultTableModel();
 
     public Buscar() {
         initComponents();
-        fecha1 = new other();
+        fecha1 = new Datos();
         addFecha.setText(fecha1.fechaActual());
 
         todaConexion();
@@ -186,7 +186,7 @@ public class Buscar extends javax.swing.JPanel {
     private void buscarIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarIDActionPerformed
 
         ids = jText_ID.getText().trim();
-        other mensaID = new other();
+        Datos mensaID = new Datos();
         boolean val = mensaID.validacion(ids);
         int control = 0;
 
@@ -240,7 +240,7 @@ public class Buscar extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         ids = jText_ID.getText().trim();
-        other mensaID = new other();
+        Datos mensaID = new Datos();
         boolean val = mensaID.validacion(ids);
         int control = 0;
 
