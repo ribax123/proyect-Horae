@@ -1,7 +1,7 @@
 package windows;
 
 import clases.conexion;
-import clases.other;
+import clases.Datos;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,9 +19,9 @@ public class añadirDos extends javax.swing.JPanel {
     public añadirDos() {
         initComponents();
         txtExito.setVisible(false);
-        other mensajero = new other();
+        Datos mensajero = new Datos();
         user = Interfaz.user;
-        other fh = new other();
+        Datos fh = new Datos();
         fecha = fh.fechaActual();
     }
     
@@ -60,6 +60,7 @@ public class añadirDos extends javax.swing.JPanel {
         bton_agregar.setBackground(new java.awt.Color(0, 51, 102));
         bton_agregar.setForeground(new java.awt.Color(255, 255, 255));
         bton_agregar.setText("Guardar registro");
+        bton_agregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bton_agregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bton_agregarActionPerformed(evt);
@@ -91,6 +92,7 @@ public class añadirDos extends javax.swing.JPanel {
         cbxTipo.setForeground(new java.awt.Color(255, 255, 255));
         cbxTipo.setMaximumRowCount(10);
         cbxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Movil", "Accesorio", " " }));
+        cbxTipo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cbxTipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxTipoActionPerformed(evt);
@@ -153,7 +155,7 @@ public class añadirDos extends javax.swing.JPanel {
 
         int tipo_cmb, validacion = 0;
         String descripcion, unidades, referencia, tipo_string = "";
-        other mesajeroDos = new other();
+        Datos mesajeroDos = new Datos();
 
         // definir variables
         referencia = txtReferencia.getText().trim();
@@ -213,8 +215,8 @@ public class añadirDos extends javax.swing.JPanel {
                     cn2.close();
 
                     añadirDes1.setBackground(Color.CYAN);
-                    añadirUnidad.setBackground(Color.BLUE);
-                    txtReferencia.setBackground(Color.BLUE);
+                    añadirUnidad.setBackground(Color.CYAN);
+                    txtReferencia.setBackground(Color.CYAN);
                     txtExito.setVisible(true);
                     timer.start();
                     timer.setRepeats(false);

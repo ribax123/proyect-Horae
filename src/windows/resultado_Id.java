@@ -2,7 +2,7 @@ package windows;
 
 import java.sql.Connection;
 import clases.conexion;
-import clases.other;
+import clases.Datos;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -26,9 +26,9 @@ public class resultado_Id extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
 
-        other mensajero = new other();
+        Datos mensajero = new Datos();
         user = Interfaz.user;
-        other fc = new other();
+        Datos fc = new Datos();
         fecha = fc.fechaActual();
         ID = Buscar.ids;
         texID.setText(ID);
@@ -41,6 +41,7 @@ public class resultado_Id extends javax.swing.JFrame {
         texAutor.setText(Buscar.autors);
 
     }
+   
 
     // actualizar datos
     public void actualizacion() {

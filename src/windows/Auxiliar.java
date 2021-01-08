@@ -1,5 +1,6 @@
 package windows;
 
+import clases.Functions;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -28,7 +29,6 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
 
         // mostrar panel principal "Inicio"
         contenedor.add(inicio);
-        
 
         // botones paneles de la interfaz
         bt_añardir.addActionListener(this);
@@ -36,8 +36,6 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
         bt_borrar.addActionListener(this);
         bt_stock.addActionListener(this);
         bt_buscar.addActionListener(this);
-        
-        
 
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
     }
@@ -188,7 +186,9 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
     }//GEN-LAST:event_bt_buscarActionPerformed
 
     private void bt_stockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_stockActionPerformed
-        // TODO add your handling code here:
+        Stock stocks = new Stock();
+        stock.llenarStock();
+
     }//GEN-LAST:event_bt_stockActionPerformed
 
     private void bt_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_borrarActionPerformed

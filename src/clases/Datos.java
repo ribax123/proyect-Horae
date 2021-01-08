@@ -1,9 +1,8 @@
 package clases;
 
 import java.util.Calendar;
-import javax.swing.JOptionPane;
 
-public class other {
+public class Datos {
 
    private String dia;
    private String mes;
@@ -41,8 +40,12 @@ public class other {
     // validacion letras nombre de productos
     public boolean validacion(String value, int num) {
 
+<<<<<<< HEAD:src/clases/other.java
         return value.matches("[a-zA-Z0-9 ]{5,40}");
 >>>>>>> pcfabian
+=======
+        return value.matches("[a-zA-ZñÑ0-9 ]{3,40}");
+>>>>>>> pcfabian:src/clases/Datos.java
     }
     
     
@@ -61,7 +64,7 @@ public class other {
     }
     // validacion nombre de usuarios
     public  boolean  validacionNombre(String value){
-    return value.matches("[a-zA-Z ]{6,20}");
+    return value.matches("[a-zA-ZñÑ ]{3,20}");
     }
     
 

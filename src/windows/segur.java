@@ -1,6 +1,8 @@
 package windows;
 
 import clases.conexion;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,6 +22,11 @@ public class segur extends javax.swing.JFrame {
         setLocationRelativeTo(null);
 
     }
+     @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("iconos/iconopequeño.png"));
+        return retValue;
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -38,6 +45,7 @@ public class segur extends javax.swing.JFrame {
         version = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(0, 51, 102));

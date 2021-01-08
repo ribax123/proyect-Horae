@@ -2,9 +2,9 @@ package windows;
 
 import java.awt.Image;
 import java.awt.Toolkit;
-import clases.other;
+import clases.Datos;
 import clases.file;
-import clases.type;
+import clases.Functions;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
@@ -16,7 +16,7 @@ public class Interfaz extends javax.swing.JFrame {
     //  variasble global usuario
     public static String user = "";
     private static String pass = "";
-    public static other icon;
+    public static Datos icon;
 
     //constructor
     public Interfaz() {
@@ -35,9 +35,9 @@ public class Interfaz extends javax.swing.JFrame {
     public void entrar() {
         user = jTextField_User.getText().trim();
         pass = jPassword_txt.getText().trim();
-        file union = new type();
+        file union = new Functions();
         union.variable();
-        boolean bandr = type.bandera;
+        boolean bandr = Functions.bandera;
 
         if (bandr == true) {
             dispose();
@@ -49,7 +49,7 @@ public class Interfaz extends javax.swing.JFrame {
 
     }
 
-    Timer timer = new Timer(4000, new ActionListener() {
+    Timer timer = new Timer(2000, new ActionListener() {
         public void actionPerformed(ActionEvent e) {
             entrar();
         }
@@ -110,6 +110,11 @@ public class Interfaz extends javax.swing.JFrame {
         jPassword_txt.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jPassword_txt.setForeground(new java.awt.Color(0, 153, 153));
         jPassword_txt.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPassword_txt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPassword_txtActionPerformed(evt);
+            }
+        });
         jPanel2.add(jPassword_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 360, 220, 30));
 
         jTextField_User.setBackground(new java.awt.Color(0, 51, 102));
@@ -124,11 +129,12 @@ public class Interfaz extends javax.swing.JFrame {
         });
         jPanel2.add(jTextField_User, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 220, 30));
 
-        botton_ingresar.setBackground(new java.awt.Color(0, 153, 153));
+        botton_ingresar.setBackground(new java.awt.Color(0, 51, 102));
         botton_ingresar.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         botton_ingresar.setForeground(new java.awt.Color(255, 255, 255));
-        botton_ingresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/entrar.png"))); // NOI18N
+        botton_ingresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/entrar (1).png"))); // NOI18N
         botton_ingresar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        botton_ingresar.setBorderPainted(false);
         botton_ingresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botton_ingresar.setSelected(true);
         botton_ingresar.addActionListener(new java.awt.event.ActionListener() {
@@ -146,18 +152,19 @@ public class Interfaz extends javax.swing.JFrame {
         jSeparator2.setForeground(new java.awt.Color(0, 102, 102));
         jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, 280, -1));
 
-        jButton_salir.setBackground(new java.awt.Color(0, 51, 102));
-        jButton_salir.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jButton_salir.setForeground(new java.awt.Color(255, 255, 255));
-        jButton_salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/boton-de-encendido-apagado.png"))); // NOI18N
+        jButton_salir.setBackground(new java.awt.Color(0, 102, 102));
+        jButton_salir.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jButton_salir.setForeground(new java.awt.Color(0, 153, 153));
+        jButton_salir.setText("x");
         jButton_salir.setBorder(null);
+        jButton_salir.setContentAreaFilled(false);
         jButton_salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton_salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_salirActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, 30, 30));
+        jPanel2.add(jButton_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 30, 30));
 
         version.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         version.setForeground(new java.awt.Color(255, 255, 255));
@@ -205,8 +212,25 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_botton_ingresarActionPerformed
 
     private void jTextField_UserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_UserActionPerformed
-
+        
+        if(!jTextField_User.getText().equals("") || !jPassword_txt.getText().equals("")){
+        gifPlse.setVisible(true);
+        timer.start();
+        timer.setRepeats(false);
+        }else{
+            JOptionPane.showMessageDialog(null, "Campos obligatorios");
+        }
     }//GEN-LAST:event_jTextField_UserActionPerformed
+
+    private void jPassword_txtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPassword_txtActionPerformed
+         if(!jTextField_User.getText().equals("") || !jPassword_txt.getText().equals("")){
+        gifPlse.setVisible(true);
+        timer.start();
+        timer.setRepeats(false);
+        }else{
+            JOptionPane.showMessageDialog(null, "Campos obligatorios");
+        }
+    }//GEN-LAST:event_jPassword_txtActionPerformed
 
     public static void main(String args[]) {
 

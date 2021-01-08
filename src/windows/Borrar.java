@@ -2,9 +2,9 @@ package windows;
 
 import java.awt.Color;
 import clases.file;
-import clases.metoth;
-import clases.type;
+import clases.Functions;
 import javax.swing.JOptionPane;
+import clases.Interface_Functions;
 
 public class Borrar extends javax.swing.JPanel {
 
@@ -111,7 +111,7 @@ public class Borrar extends javax.swing.JPanel {
     private void bton_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bton_borrarActionPerformed
        
         borrar = txt_borrar.getText().trim();
-        metoth union = new type();
+        Interface_Functions union = new Functions();
        
         boolean bra = file.bandera;
 

@@ -1,7 +1,9 @@
 package windows;
 
 import clases.conexion;
-import clases.type;
+import clases.Functions;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,6 +12,8 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import static windows.Facturacion.modelDos;
+import static windows.Facturacion1.modelcinco;
 
 public class tablaFacturas extends javax.swing.JFrame {
 
@@ -28,7 +32,7 @@ public class tablaFacturas extends javax.swing.JFrame {
         try {
             Connection cn = conexion.conectar();
             PreparedStatement pst = cn.prepareStatement(
-                    " select * from factura");
+                    " select Num_Factura, Nombre_Cliente, Documento, Telefono, Direccion, Vendedor, Forma_Pago, Total, Fecha from factura");
 
             ResultSet rs = pst.executeQuery();
 
@@ -74,7 +78,7 @@ public class tablaFacturas extends javax.swing.JFrame {
         try {
             Connection cn = conexion.conectar();
             PreparedStatement pst = cn.prepareStatement(
-                    " select * from  factura where Num_Factura like '%" + buscar + "%' or Vendedor like '%" + buscar + "%' or Fecha like '%" + buscar + "%'");
+                    " select Num_Factura, Nombre_Cliente, Documento, Telefono, Direccion, Vendedor, Forma_Pago, Total, Fecha from  factura where Num_Factura like '%" + buscar + "%' or Vendedor like '%" + buscar + "%' or Fecha like '%" + buscar + "%'");
 
             ResultSet rs = pst.executeQuery();
 
@@ -115,6 +119,7 @@ public class tablaFacturas extends javax.swing.JFrame {
         }
 
     }
+
     //abrir 
     public void seleciof() {
         int filasSleccionada = jTable_facturas.getSelectedRow();
@@ -123,8 +128,8 @@ public class tablaFacturas extends javax.swing.JFrame {
         String datos;
         datos = jTable_facturas.getValueAt(filasSleccionada, 0).toString();
         //abrir
-        
-        String url = ruta+ Url.UrlPFa + "Factura" + datos + ".pdf";
+
+        String url = ruta + Url.UrlPFa + "\\Factura" + datos + ".pdf";
 
         try {
             Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + url);
@@ -132,6 +137,12 @@ public class tablaFacturas extends javax.swing.JFrame {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Archivo no encontrado!");
         }
+    }
+
+    @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("iconos/iconopequeño.png"));
+        return retValue;
     }
 
     @SuppressWarnings("unchecked")
@@ -152,10 +163,11 @@ public class tablaFacturas extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
 
         jLabel2.setText("jLabel2");
 
+        setIconImage(getIconImage());
+        setIconImages(getIconImages());
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -168,6 +180,11 @@ public class tablaFacturas extends javax.swing.JFrame {
         jLabel1.setText("Facturas");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, 30));
 
+        txtBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBuscarActionPerformed(evt);
+            }
+        });
         txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtBuscarKeyReleased(evt);
@@ -257,14 +274,6 @@ public class tablaFacturas extends javax.swing.JFrame {
         });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 335, -1, -1));
 
-        jButton3.setText("jButton3");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, -1, -1));
-
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 380));
 
         pack();
@@ -283,18 +292,24 @@ public class tablaFacturas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCerrarActionPerformed
 
     private void btnAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirActionPerformed
+        modelcinco.setRowCount(0);
+        modelcinco.setColumnCount(0);
+        Facturacion1 llamarT = new Facturacion1();
+        llamarT.llenarFactura(jTable_facturas);
+        llamarT.descagarFactura(jTable_facturas, modelcinco);      
+        llamarT.setVisible(true);
 
-        try {
+        /* try {
             seleciof();
         } catch (Exception e) {
             System.out.println(e);
             JOptionPane.showMessageDialog(null, "¡Selecciona un registro!");
-        }
+        }*/
     }//GEN-LAST:event_btnAbrirActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        type exType = new type();
+        Functions exType = new Functions();
         try {
             exType.exportarExcel(jTable_facturas);
         } catch (Exception e) {
@@ -311,7 +326,7 @@ public class tablaFacturas extends javax.swing.JFrame {
             String datos;
             datos = jTable_facturas.getValueAt(filasSleccionada, 0).toString();
             System.out.println(datos);
-            type delete = new type();
+            Functions delete = new Functions();
             delete.delete("Num_Factura", "factura", datos);
         } catch (Exception e) {
             System.out.println(e);
@@ -319,9 +334,9 @@ public class tablaFacturas extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        System.out.println( System.getProperty("user.home"));
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -374,7 +389,6 @@ public class tablaFacturas extends javax.swing.JFrame {
     private javax.swing.JButton btnCerrar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

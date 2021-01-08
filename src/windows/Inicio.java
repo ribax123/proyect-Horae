@@ -1,6 +1,6 @@
 package windows;
 
-import clases.other;
+import clases.Datos;
 
 public class Inicio extends javax.swing.JPanel {
 
@@ -12,7 +12,7 @@ public class Inicio extends javax.swing.JPanel {
         initComponents();
         user = Interfaz.user;
         jtex_bienvenido.setText("¡Bienvenido " + user + "!");
-        other o = new other();
+        Datos o = new Datos();
 
         fecha = o.fechaActual();
 

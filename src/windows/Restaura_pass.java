@@ -74,6 +74,7 @@ public class Restaura_pass extends javax.swing.JFrame {
 
         jBu_add.setBackground(new java.awt.Color(0, 51, 102));
         jBu_add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/add-pass.png"))); // NOI18N
+        jBu_add.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBu_add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBu_addActionPerformed(evt);

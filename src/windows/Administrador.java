@@ -1,10 +1,10 @@
 package windows;
 
-import clases.metoth;
-import clases.type;
+import clases.Functions;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.WindowConstants;
+import clases.Interface_Functions;
 
 public class Administrador extends javax.swing.JFrame {
 
@@ -19,12 +19,12 @@ public class Administrador extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        metoth union = new type();
+        Interface_Functions union = new Functions();
         union.nombreusuario();
-        boolean bra = type.bandera;
+        boolean bra = Functions.bandera;
 
         if (bra == true) {
-            jLabel_nameUsuario.setText(type.nombre_usero);
+            jLabel_nameUsuario.setText(Functions.nombre_usero);
         }
     }
 
@@ -169,7 +169,7 @@ public class Administrador extends javax.swing.JFrame {
 
         jButton4.setBackground(new java.awt.Color(0, 51, 102));
         jButton4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setForeground(new java.awt.Color(153, 0, 102));
         jButton4.setText("URLS");
         jButton4.setContentAreaFilled(false);
         jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));

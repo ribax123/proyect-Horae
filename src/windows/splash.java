@@ -37,7 +37,6 @@ public class splash extends javax.swing.JFrame implements Runnable {
         jPanel2 = new javax.swing.JPanel();
         carga = new javax.swing.JLabel();
         cargandopuntos = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel_Fodeer = new javax.swing.JLabel();
         version = new javax.swing.JLabel();
 
@@ -59,11 +58,6 @@ public class splash extends javax.swing.JFrame implements Runnable {
 
         cargandopuntos.setText("Cargarndo...");
         jPanel2.add(cargandopuntos, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, -1, -1));
-
-        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setText("Creado por ribax123@gmail.com ®");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 60, 260, 40));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 690, 110));
 
@@ -128,7 +122,6 @@ public class splash extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel carga;
     private javax.swing.JLabel cargandopuntos;
     private javax.swing.JLabel horaelogo;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel_Fodeer;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -141,7 +134,7 @@ public class splash extends javax.swing.JFrame implements Runnable {
 
         while (time != null) {
             try {
-                Thread.sleep(6000);
+                Thread.sleep(4000);
                 new Interfaz().setVisible(true);
                 this.dispose();
                 break;

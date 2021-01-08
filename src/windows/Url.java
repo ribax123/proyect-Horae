@@ -6,7 +6,8 @@
 package windows;
 
 import clases.conexion;
-import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,9 +15,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import static windows.Urls.UrlExel;
-import static windows.Urls.UrlPFa;
-import static windows.Urls.UrlPIN;
+
 
 /**
  *
@@ -33,6 +32,8 @@ public class Url extends javax.swing.JFrame {
 
         initComponents();
         obtenerUrl();
+        setLocationRelativeTo(this);
+        setResizable(false);
     }
 
     public void obtenerUrl() {
@@ -61,6 +62,7 @@ public class Url extends javax.swing.JFrame {
         }
 
     }
+    
 
     public void actualizarURL() {
             
@@ -84,6 +86,12 @@ public class Url extends javax.swing.JFrame {
             Logger.getLogger(Url.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+    
+     @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("iconos/iconopequeño.png"));
+        return retValue;
     }
 
     /**
@@ -110,6 +118,8 @@ public class Url extends javax.swing.JFrame {
         jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImages(getIconImages());
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(0, 51, 102));
