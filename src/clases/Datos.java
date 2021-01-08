@@ -31,21 +31,12 @@ public class Datos {
 
     }
 
-<<<<<<< HEAD
-    // validacion letras nombre y cantidad de caràcteres permitidos
-    public boolean validacion(String value, int num) {
 
-        return value.matches("[a-zA-Z0-9 ]{4,40}");
-=======
     // validacion letras nombre de productos
     public boolean validacion(String value, int num) {
+        
 
-<<<<<<< HEAD:src/clases/other.java
-        return value.matches("[a-zA-Z0-9 ]{5,40}");
->>>>>>> pcfabian
-=======
         return value.matches("[a-zA-ZñÑ0-9 ]{3,40}");
->>>>>>> pcfabian:src/clases/Datos.java
     }
     
     
