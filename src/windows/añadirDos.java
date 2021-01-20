@@ -153,7 +153,8 @@ public class añadirDos extends javax.swing.JPanel {
 
     private void bton_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bton_agregarActionPerformed
 
-        int tipo_cmb, validacion = 0;
+        String tipo_cmb;
+        int validacion = 0;
         String descripcion, unidades, referencia, tipo_string = "";
         Datos mesajeroDos = new Datos();
 
@@ -165,7 +166,7 @@ public class añadirDos extends javax.swing.JPanel {
         boolean vali = mesajeroDos.validacion(unidades);
         boolean val = mesajeroDos.validacion(descripcion, 0);
 
-        tipo_cmb = cbxTipo.getSelectedIndex() + 1;
+        tipo_cmb = cbxTipo.getSelectedItem().toString();
 
         if (!descripcion.equals("") || !unidades.equals("") || !referencia.equals("")) {
 
@@ -181,21 +182,7 @@ public class añadirDos extends javax.swing.JPanel {
             }
 
             //seleccion del comboBox
-            if (tipo_cmb == 1) {
-                tipo_string = "PC";
-            } else if (tipo_cmb == 2) {
-                tipo_string = "Movil";
-            } else if (tipo_cmb == 3) {
-                tipo_string = "Cargador";
-            } else if (tipo_cmb == 4) {
-                tipo_string = "Audifonos";
-            } else if (tipo_cmb == 5) {
-                tipo_string = "Reloj";
-            } else if (tipo_cmb == 6) {
-                tipo_string = "TV";
-            } else if (tipo_cmb == 7) {
-                tipo_string = "Consola";
-            }
+           
 
             if (validacion == 0) {
                 try {
@@ -207,7 +194,7 @@ public class añadirDos extends javax.swing.JPanel {
                     pst2.setString(2, referencia);
                     pst2.setString(3, descripcion);
                     pst2.setString(4, unidades);
-                    pst2.setString(5, tipo_string);
+                    pst2.setString(5, tipo_cmb);
                     pst2.setString(6, fecha);
                     pst2.setString(7, user);
 

@@ -138,7 +138,7 @@ public class tablaFacturas extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Archivo no encontrado!");
         }
     }
-
+    
     @Override
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("iconos/iconopequeño.png"));

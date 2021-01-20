@@ -1,6 +1,6 @@
 package windows;
 
-import clases.Functions;
+
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;

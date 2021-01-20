@@ -2,14 +2,6 @@ package windows;
 
 import clases.conexion;
 import clases.Datos;
-import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.Chunk;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.FontFactory;
-import com.itextpdf.text.Image;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,12 +11,9 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import imprimir.Ticket;
-import java.awt.Font;
 import java.awt.Toolkit;
-import java.io.FileOutputStream;
 import java.text.DecimalFormat;
-import javax.swing.JTable;
-import static windows.Facturacion1.modelcinco;
+
 
 public class Facturacion extends javax.swing.JFrame {
 
