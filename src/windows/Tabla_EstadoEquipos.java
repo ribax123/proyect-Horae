@@ -29,7 +29,7 @@ public class Tabla_EstadoEquipos extends javax.swing.JFrame {
         try {
             Connection cn = conexion.conectar();
             PreparedStatement pst = cn.prepareStatement(
-                    " select Nombre_cliente, Referencia, Descripcion, Funcion, Fecha from control_equipos ");
+                    " select Nombre_cliente, Referencia, Descripcion, Cantidad, responsable, Funcion, Fecha from control_equipos ");
 
             ResultSet rs = pst.executeQuery();
 
@@ -39,13 +39,15 @@ public class Tabla_EstadoEquipos extends javax.swing.JFrame {
             model.addColumn("Cliente");
             model.addColumn("Referencia");
             model.addColumn("Descripcion");
+            model.addColumn("Cantidad");
+            model.addColumn("Responsable");
             model.addColumn("Estado");
             model.addColumn("Fecha");
 
             while (rs.next()) {
-                Object[] fila = new Object[5];
+                Object[] fila = new Object[7];
 
-                for (int i = 0; i < 5; i++) {
+                for (int i = 0; i < 7; i++) {
                     fila[i] = rs.getObject(i + 1);
                 }
                 model.addRow(fila);
@@ -64,23 +66,25 @@ public class Tabla_EstadoEquipos extends javax.swing.JFrame {
         try {
             Connection cn = conexion.conectar();
             PreparedStatement pst = cn.prepareStatement(
-                    " select Nombre_cliente, Referencia, Descripcion, Funcion, Fecha from  control_equipos where Fecha like '%" + buscar + "%' or Funcion like '%" + buscar + "%' or Nombre_cliente like '%" + buscar + "%' or Referencia like '%" + buscar + "%'");
+                    " select Nombre_cliente, Referencia, Descripcion, Cantidad, responsable, Funcion, Fecha from  control_equipos where Fecha like '%" + buscar + "%' or responsable like '%" + buscar + "%' or Descripcion like '%" + buscar + "%' or Funcion like '%" + buscar + "%' or Nombre_cliente like '%" + buscar + "%' or Referencia like '%" + buscar + "%'");
 
             ResultSet rs = pst.executeQuery();
 
             jtable_estadoEquipos = new JTable(model);
             jScrollPane1.setViewportView(jtable_estadoEquipos);
-
+           
             model.addColumn("Cliente");
             model.addColumn("Referencia");
             model.addColumn("Descripcion");
+            model.addColumn("Cantidad");
+            model.addColumn("Responsable");
             model.addColumn("Estado");
             model.addColumn("Fecha");
 
             while (rs.next()) {
-                Object[] fila = new Object[5];
+                Object[] fila = new Object[7];
 
-                for (int i = 0; i < 5; i++) {
+                for (int i = 0; i < 7; i++) {
                     fila[i] = rs.getObject(i + 1);
                 }
                 model.addRow(fila);
@@ -235,7 +239,7 @@ public class Tabla_EstadoEquipos extends javax.swing.JFrame {
             public void run() {
                 new Tabla_EstadoEquipos().setVisible(true);
             }
-            
+
         });
     }
 

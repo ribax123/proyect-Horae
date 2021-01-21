@@ -22,8 +22,11 @@ public class Manejo_equipos extends javax.swing.JFrame {
     String funcion;
     String fecha;
     String serial;
-    DefaultTableModel model = new DefaultTableModel();
     String user;
+    String cantidad;
+    String responsable;
+    DefaultTableModel model = new DefaultTableModel();
+    DefaultTableModel modelt = new DefaultTableModel();
 
     public Manejo_equipos() {
         initComponents();
@@ -32,12 +35,20 @@ public class Manejo_equipos extends javax.swing.JFrame {
 
         Datos datos = new Datos();
         fecha = datos.fechaActual();
-
         txt_fecha.setText(fecha);
+
+        tablaCargo();
+        tablaEquipos();
+
+    }
+
+    public void tablaEquipos() {
+       
+
         try {
             Connection cn = conexion.conectar();
             PreparedStatement pst = cn.prepareStatement(
-                    " select Referencia, Descripcion from inventario");
+                    " select Descripcion, Referencia from inventario");
 
             ResultSet rs = pst.executeQuery();
 
@@ -67,15 +78,61 @@ public class Manejo_equipos extends javax.swing.JFrame {
             System.err.print("Error al llenar la tabla" + e);
             JOptionPane.showMessageDialog(null, "Error al mostrar imformacion, ¡Contacte al administrador!");
         }
-
     }
 
-    public void seleccionado() {
+    public void tablaCargo() {
+       
+
+        try {
+            Connection cn = conexion.conectar();
+            PreparedStatement pst = cn.prepareStatement(
+                    " select Codigo, Nombre,  Cargo from Colaboradores");
+
+            ResultSet rs = pst.executeQuery();
+
+            jtable_equipos1 = new JTable(modelt);
+            jScrollPane4.setViewportView(jtable_equipos1);
+
+            modelt.addColumn("Codigo");
+            modelt.addColumn("Nombre");
+            modelt.addColumn("Cargo");
+
+            // ciclo para llenar la tabla
+            /* cuando hay una solicitud  para generar 
+            la lista, se crea un ciclo con un objeto...
+             se crea un nuevo ciclo para iterar cada una
+             de las posiciones e insertar cada uno de los datos en las 
+            posiciones de las filas*/
+            while (rs.next()) {
+                Object[] fila = new Object[3];
+
+                for (int i = 0; i < 3; i++) {
+                    fila[i] = rs.getObject(i + 1);
+                }
+                modelt.addRow(fila);
+            }
+            cn.close();
+
+        } catch (SQLException e) {
+            System.err.print("Error al llenar la tabla" + e);
+            JOptionPane.showMessageDialog(null, "Error al mostrar imformacion, ¡Contacte al administrador!");
+        }
+    }
+
+    public void seleccionEquipo() {
         int filasSleccionada = jtable_equipos.getSelectedRow();
         String seleccionar;
 
-        seleccionar = jtable_equipos.getValueAt(filasSleccionada, 1).toString();
+        seleccionar = jtable_equipos.getValueAt(filasSleccionada, 0).toString();
         txt_descripcion.setText(seleccionar);
+
+    }
+    public void seleccionColaborador() {
+        int filasSleccionada = jtable_equipos1.getSelectedRow();
+        String seleccionar;
+
+        seleccionar = jtable_equipos1.getValueAt(filasSleccionada, 1).toString();
+        txt_colaborador.setText(seleccionar);
 
     }
 
@@ -92,6 +149,8 @@ public class Manejo_equipos extends javax.swing.JFrame {
         serial = txt_referencia.getText().trim();
         descripcion = txt_descripcion.getText().trim();
         funcion = cmb_fun.getSelectedItem().toString();
+        cantidad = txt_cantidad.getText().trim();
+        responsable = txt_colaborador.getText().trim();
 
     }
 
@@ -102,13 +161,15 @@ public class Manejo_equipos extends javax.swing.JFrame {
 
             Connection cn2 = conexion.conectar();
             PreparedStatement pst2 = cn2.prepareStatement(
-                    " insert into control_equipos values (?,?,?,?,?)");
+                    " insert into control_equipos values (?,?,?,?,?,?,?)");
 
             pst2.setString(1, nombreCliente);
             pst2.setString(2, serial);
             pst2.setString(3, descripcion);
-            pst2.setString(4, funcion);
-            pst2.setString(5, fecha);
+            pst2.setString(4, cantidad);
+            pst2.setString(5, responsable);
+            pst2.setString(6, funcion);
+            pst2.setString(7, fecha);
 
             pst2.executeUpdate();
             cn2.close();
@@ -128,8 +189,6 @@ public class Manejo_equipos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         txt_referencia = new javax.swing.JTextField();
         txt_descripcion = new javax.swing.JTextField();
@@ -146,19 +205,12 @@ public class Manejo_equipos extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jtable_equipos1 = new javax.swing.JTable();
+        btn_elegirC = new javax.swing.JButton();
+        txt_colaborador = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        txt_cantidad = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -167,24 +219,26 @@ public class Manejo_equipos extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txt_referencia.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jPanel1.add(txt_referencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 310, 30));
+        jPanel1.add(txt_referencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 140, 310, 30));
 
         txt_descripcion.setBackground(new java.awt.Color(0, 51, 102));
+        txt_descripcion.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        txt_descripcion.setForeground(new java.awt.Color(255, 255, 255));
         txt_descripcion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        jPanel1.add(txt_descripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 500, 290, 30));
+        jPanel1.add(txt_descripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 500, 290, 30));
 
         txt_cliente.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jPanel1.add(txt_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 310, 30));
+        jPanel1.add(txt_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 310, 30));
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Serial :");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, 30));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 140, -1, 30));
 
         accion.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         accion.setForeground(new java.awt.Color(255, 255, 255));
         accion.setText("Función :");
-        jPanel1.add(accion, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 70, -1, 30));
+        jPanel1.add(accion, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 80, -1, 30));
 
         txt_fecha.setBackground(new java.awt.Color(255, 255, 255));
         txt_fecha.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -195,10 +249,15 @@ public class Manejo_equipos extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Nombre cliente :");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, 30));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, 30));
 
         cmb_fun.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Instalación", "Migración", "Traslado", "Devolución", "Retiro", "Cambio\t" }));
-        jPanel1.add(cmb_fun, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 70, 150, 30));
+        cmb_fun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_funActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmb_fun, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 80, 150, 30));
 
         btn_elegir.setText("Insertar Equipo");
         btn_elegir.addActionListener(new java.awt.event.ActionListener() {
@@ -206,7 +265,7 @@ public class Manejo_equipos extends javax.swing.JFrame {
                 btn_elegirActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_elegir, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 500, 160, 30));
+        jPanel1.add(btn_elegir, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 500, 160, 30));
 
         jtable_equipos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtable_equipos.setModel(new javax.swing.table.DefaultTableModel(
@@ -222,7 +281,7 @@ public class Manejo_equipos extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jtable_equipos);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 1040, 280));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 190, 490, 280));
 
         btn_guardar.setText("Guardar Regitro");
         btn_guardar.addActionListener(new java.awt.event.ActionListener() {
@@ -261,6 +320,44 @@ public class Manejo_equipos extends javax.swing.JFrame {
         });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 10, 50, 40));
 
+        jtable_equipos1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jtable_equipos1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane4.setViewportView(jtable_equipos1);
+
+        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 490, 280));
+
+        btn_elegirC.setText("Insertar responsable");
+        btn_elegirC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_elegirCActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_elegirC, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 500, 160, 30));
+
+        txt_colaborador.setBackground(new java.awt.Color(0, 51, 102));
+        txt_colaborador.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        txt_colaborador.setForeground(new java.awt.Color(255, 255, 255));
+        txt_colaborador.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        jPanel1.add(txt_colaborador, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 500, 290, 30));
+
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Cantidad :");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, -1, 30));
+
+        txt_cantidad.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jPanel1.add(txt_cantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 310, 30));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -276,7 +373,7 @@ public class Manejo_equipos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_elegirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_elegirActionPerformed
-        seleccionado();
+        seleccionEquipo();
     }//GEN-LAST:event_btn_elegirActionPerformed
 
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
@@ -291,6 +388,14 @@ public class Manejo_equipos extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void btn_elegirCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_elegirCActionPerformed
+        seleccionColaborador();
+    }//GEN-LAST:event_btn_elegirCActionPerformed
+
+    private void cmb_funActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_funActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmb_funActionPerformed
 
     /**
      * @param args the command line arguments
@@ -330,19 +435,23 @@ public class Manejo_equipos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel accion;
     private javax.swing.JButton btn_elegir;
+    private javax.swing.JButton btn_elegirC;
     private javax.swing.JButton btn_guardar;
     private javax.swing.JComboBox<String> cmb_fun;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jtable_equipos;
+    private javax.swing.JTable jtable_equipos1;
+    private javax.swing.JTextField txt_cantidad;
     private javax.swing.JTextField txt_cliente;
+    private javax.swing.JTextField txt_colaborador;
     private javax.swing.JTextField txt_descripcion;
     private javax.swing.JLabel txt_fecha;
     private javax.swing.JTextField txt_referencia;
