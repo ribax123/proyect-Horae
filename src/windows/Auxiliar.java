@@ -16,14 +16,15 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
     añadirDos añadir = new añadirDos();
     Buscar buscar = new Buscar();
     Stock stock = new Stock();
-    Borrar borrar = new Borrar();
+    
 
     //constutor
     public Auxiliar() {
         initComponents();
+        setSize(1273, 559);
 
         // // Dimenciones y pocisión de la intefaz 
-        setSize(810, 423);
+       
         setLocationRelativeTo(null);
         user = Interfaz.user;
 
@@ -33,7 +34,6 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
         // botones paneles de la interfaz
         bt_añardir.addActionListener(this);
         bt_Inicio.addActionListener(this);
-        bt_borrar.addActionListener(this);
         bt_stock.addActionListener(this);
         bt_buscar.addActionListener(this);
 
@@ -56,7 +56,6 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
         bt_stock = new javax.swing.JButton();
         bt_Inicio = new javax.swing.JButton();
         bt_añardir = new javax.swing.JButton();
-        bt_borrar = new javax.swing.JButton();
         jButton_Salir = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -129,19 +128,6 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
         });
         jPanel1.add(bt_añardir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 132, 40));
 
-        bt_borrar.setBackground(new java.awt.Color(0, 51, 102));
-        bt_borrar.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
-        bt_borrar.setForeground(new java.awt.Color(255, 255, 255));
-        bt_borrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/borrar.png"))); // NOI18N
-        bt_borrar.setText("Eliminar");
-        bt_borrar.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        bt_borrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_borrarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(bt_borrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 132, 40));
-
         jButton_Salir.setBackground(new java.awt.Color(0, 102, 153));
         jButton_Salir.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jButton_Salir.setForeground(new java.awt.Color(0, 204, 204));
@@ -164,7 +150,7 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Version 1.0");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 440, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 540, 80, -1));
 
         contenedor.add(jPanel1, java.awt.BorderLayout.LINE_START);
 
@@ -190,10 +176,6 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
         stock.llenarStock();
 
     }//GEN-LAST:event_bt_stockActionPerformed
-
-    private void bt_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_borrarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bt_borrarActionPerformed
 
     private void jButton_SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SalirActionPerformed
 
@@ -239,7 +221,6 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_Inicio;
     private javax.swing.JButton bt_añardir;
-    private javax.swing.JButton bt_borrar;
     private javax.swing.JButton bt_buscar;
     private javax.swing.JButton bt_stock;
     private javax.swing.JPanel contenedor;
@@ -261,7 +242,7 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
             inicio.setVisible(true);
             buscar.setVisible(false);
             añadir.setVisible(false);
-            borrar.setVisible(false);
+            
             stock.setVisible(false);
 
             contenedor.add(inicio);
@@ -271,27 +252,17 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
             inicio.setVisible(false);
             buscar.setVisible(false);
             añadir.setVisible(true);
-            borrar.setVisible(false);
+            
             stock.setVisible(false);
 
             contenedor.add(añadir);
             contenedor.validate();
 
-        } else if (evt.equals(bt_borrar)) {
-            inicio.setVisible(false);
-            buscar.setVisible(false);
-            añadir.setVisible(false);
-            borrar.setVisible(true);
-            stock.setVisible(false);
-
-            contenedor.add(borrar);
-            contenedor.validate();
-
-        } else if (evt.equals(bt_buscar)) {
+        }  else if (evt.equals(bt_buscar)) {
             inicio.setVisible(false);
             buscar.setVisible(true);
             añadir.setVisible(false);
-            borrar.setVisible(false);
+            
             stock.setVisible(false);
 
             contenedor.add(buscar);
@@ -301,7 +272,7 @@ public class Auxiliar extends javax.swing.JFrame implements ActionListener {
             inicio.setVisible(false);
             buscar.setVisible(false);
             añadir.setVisible(false);
-            borrar.setVisible(false);
+            
             stock.setVisible(true);
 
             contenedor.add(stock);

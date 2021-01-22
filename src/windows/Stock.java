@@ -32,7 +32,7 @@ public class Stock extends javax.swing.JPanel {
         try {
             Connection cn = conexion.conectar();
             PreparedStatement pst = cn.prepareStatement(
-                    " select Id, Referencia, Descripcion, Unidades, Tipo, Fecha, Autor from inventario");
+                    " select Id, Referencia, Descripcion, Unidades, Origen, Fecha, Autor from inventario");
 
             ResultSet rs = pst.executeQuery();
 
@@ -43,7 +43,8 @@ public class Stock extends javax.swing.JPanel {
             model.addColumn("Referencia");
             model.addColumn("Descripcion");
             model.addColumn("Unidades");
-            model.addColumn("Tipo");
+            model.addColumn("Origen");
+            
             model.addColumn("Fecha");
             model.addColumn("Autor");
 
@@ -75,7 +76,7 @@ public class Stock extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         txtBuscar = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        bton_borrar = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 51, 102));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
@@ -96,28 +97,28 @@ public class Stock extends javax.swing.JPanel {
         jTable_product.setGridColor(new java.awt.Color(153, 0, 0));
         jScrollPane1.setViewportView(jTable_product);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 640, 240));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 970, 310));
 
         version.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         version.setForeground(new java.awt.Color(255, 255, 255));
         version.setText("Vs. 1.0");
-        add(version, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 400, -1, -1));
+        add(version, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 530, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Light", 1, 28)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Inventario en Stock");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, -1, -1));
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, 350, 10));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, -1, -1));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 50, 350, 10));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Buscar");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Creado por ribax123@gmail.com ®");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, -1, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 530, -1, -1));
 
         txtBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,19 +130,24 @@ public class Stock extends javax.swing.JPanel {
                 txtBuscarKeyReleased(evt);
             }
         });
-        add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 90, 210, 27));
+        add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 210, 27));
 
-        jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Vendedor/ N° FActura/ Fecha");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, 170, 30));
+        bton_borrar.setBackground(new java.awt.Color(0, 51, 102));
+        bton_borrar.setForeground(new java.awt.Color(255, 255, 255));
+        bton_borrar.setText("Eliminar");
+        bton_borrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bton_borrarActionPerformed(evt);
+            }
+        });
+        add(bton_borrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 480, 210, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
 
         Functions functions = new Functions();
         functions.buscar(txtBuscar.getText(), model, jTable_product, jScrollPane1,
-                " select Id, Referencia, Descripcion, Unidades, Tipo, Fecha, Autor from inventario"
+                " select Id, Referencia, Descripcion, Unidades,Origen, Fecha, Autor from inventario"
                 + " where Referencia like '%" + txtBuscar.getText() + "%' or Descripcion like '%" + txtBuscar.getText() + "%' or Fecha like '%" + txtBuscar.getText() + "%'");
 
     }//GEN-LAST:event_txtBuscarKeyReleased
@@ -150,11 +156,16 @@ public class Stock extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBuscarActionPerformed
 
+    private void bton_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bton_borrarActionPerformed
+   
+
+    }//GEN-LAST:event_bton_borrarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bton_borrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;

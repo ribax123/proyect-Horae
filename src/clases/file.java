@@ -2,7 +2,7 @@ package clases;
 
 
 import windows.Interfaz;
-import windows.Borrar;
+
 
 public abstract class file {
 
@@ -22,8 +22,7 @@ public abstract class file {
 
         usero = Interfaz.user;
         pasw = Interfaz.getPass();
-        borrarr = Borrar.borrar; 
-       
+              
     }
 
     public abstract void variable();

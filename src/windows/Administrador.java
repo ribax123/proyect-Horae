@@ -254,7 +254,9 @@ public class Administrador extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton_regisU1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_regisU1ActionPerformed
-        // TODO add your handling code here:
+        Agregar_colaboradores colaboradores = new Agregar_colaboradores();
+        colaboradores.setVisible(true);
+        
     }//GEN-LAST:event_jButton_regisU1ActionPerformed
 
     /**

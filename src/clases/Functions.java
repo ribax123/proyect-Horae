@@ -23,10 +23,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import windows.Administrador;
 import windows.Auxiliar;
-import static windows.Borrar.borrar;
-import windows.Facturacion;
 import static windows.Interfaz.getPass;
-import windows.segur;
 
 public class Functions extends file implements Interface_Functions {
 //Dar ingreso a la aplicación, especificando el permiso por medio de una consulta a la base de datos- login.
@@ -108,35 +105,7 @@ public class Functions extends file implements Interface_Functions {
     }
 //Verifica en la base de datos si el Id ingresado se encuentra registrado. validación para borrar
 
-    @Override
-    public void borrar() {
-
-        borrar = borrarr;
-        Datos vali = new Datos();
-        validar = vali.validacion(borrar);
-
-        try {
-            Connection cn = conexion.conectar();
-            PreparedStatement ps = cn.prepareStatement("select Id from inventario where Id =?");
-            ps.setString(1, borrar);
-
-            ResultSet rs = ps.executeQuery();
-
-            if (rs.next()) {
-                segur mjr = new segur();
-                mjr.setVisible(true);
-
-            } else if (validar != true) {
-                JOptionPane.showMessageDialog(null, "Éste campo solo acepta carácteres númericos");
-            } else {
-                JOptionPane.showMessageDialog(null, "El ID no existe");
-            }
-            cn.close();
-
-        } catch (SQLException e) {
-            System.out.println("ERROR al conectarse al servidor " + e);
-        }
-    }
+    
 
     public void delete(String indentificador, String tablaCodigo, String esto) {
         try {
@@ -313,7 +282,7 @@ public class Functions extends file implements Interface_Functions {
             tableModel.addColumn("Referencia");
             tableModel.addColumn("Descripcion");
             tableModel.addColumn("Unidades");
-            tableModel.addColumn("Tipo");
+            tableModel.addColumn("Origen");
             tableModel.addColumn("Fecha");
             tableModel.addColumn("Autor");
 
@@ -340,6 +309,11 @@ public class Functions extends file implements Interface_Functions {
             JOptionPane.showMessageDialog(null, "Error al mostrar imformacion, ¡Contacte al administrador!");
         }
 
+    }
+
+    @Override
+    public void borrar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

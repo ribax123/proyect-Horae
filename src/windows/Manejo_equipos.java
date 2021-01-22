@@ -163,6 +163,7 @@ public class Manejo_equipos extends javax.swing.JFrame {
             PreparedStatement pst2 = cn2.prepareStatement(
                     " insert into control_equipos values (?,?,?,?,?,?,?)");
 
+            
             pst2.setString(1, nombreCliente);
             pst2.setString(2, serial);
             pst2.setString(3, descripcion);
