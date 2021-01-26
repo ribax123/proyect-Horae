@@ -55,8 +55,8 @@ public class Manejo_equipos extends javax.swing.JFrame {
             jtable_equipos = new JTable(model);
             jScrollPane2.setViewportView(jtable_equipos);
 
-            model.addColumn("Referencia");
             model.addColumn("Descripción");
+            model.addColumn("Referencia");
 
             // ciclo para llenar la tabla
             /* cuando hay una solicitud  para generar 

@@ -21,6 +21,8 @@ public class Buscar extends javax.swing.JPanel {
     public static String autors = "";
     public static Datos fecha1;
     public static String dia = "";
+    public static String estado = "";
+    public static String origen = "";
 
     DefaultTableModel model = new DefaultTableModel();
 
@@ -211,7 +213,8 @@ public class Buscar extends javax.swing.JPanel {
                         ids = rs.getString("Id");
                         descri = rs.getString("Descripcion");
                         unidads = rs.getString("Unidades");
-                        tips = rs.getString("Tipo");
+                        estado = rs.getString("Estado");
+                        origen= rs.getString("Origen");
                         fechs = rs.getString("Fecha");
                         autors = rs.getString("Autor");
 

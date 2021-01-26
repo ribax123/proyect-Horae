@@ -35,20 +35,23 @@ public class Inicio extends javax.swing.JPanel {
         recordatorioMes = new javax.swing.JLabel();
         btn_movimientos = new javax.swing.JButton();
         btn_movimientos1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 51, 102));
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 390, 10));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 60, 390, 10));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Light", 0, 36)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Movimientos");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 0, -1, 50));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, -1, 50));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Creado por ribax123@gmail.com ®");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 405, 270, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 510, 200, -1));
 
         jtex_bienvenido.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jtex_bienvenido.setForeground(new java.awt.Color(0, 204, 204));
@@ -59,21 +62,35 @@ public class Inicio extends javax.swing.JPanel {
         recordatorioMes.setForeground(new java.awt.Color(0, 204, 51));
         add(recordatorioMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 70, 300, 30));
 
-        btn_movimientos.setText("Estado de equipos");
+        btn_movimientos.setBackground(new java.awt.Color(0, 51, 102));
+        btn_movimientos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/149-diagram.png"))); // NOI18N
+        btn_movimientos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_movimientos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_movimientosActionPerformed(evt);
             }
         });
-        add(btn_movimientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, -1, -1));
+        add(btn_movimientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, 110, 110));
 
-        btn_movimientos1.setText("Manejo de equipos");
+        btn_movimientos1.setBackground(new java.awt.Color(0, 51, 102));
+        btn_movimientos1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/039-shuffle.png"))); // NOI18N
+        btn_movimientos1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_movimientos1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_movimientos1ActionPerformed(evt);
             }
         });
-        add(btn_movimientos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 160, -1));
+        add(btn_movimientos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 110, 110));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Estado de equipos");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 290, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Manejo de equipos");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_movimientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_movimientosActionPerformed
@@ -93,7 +110,9 @@ public class Inicio extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_movimientos;
     private javax.swing.JButton btn_movimientos1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel jtex_bienvenido;

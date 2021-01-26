@@ -322,8 +322,8 @@ public class tablaFacturas extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
-            int filasSleccionada = jTable_facturas.getSelectedRow();
             String datos;
+            int filasSleccionada = jTable_facturas.getSelectedRow();
             datos = jTable_facturas.getValueAt(filasSleccionada, 0).toString();
             System.out.println(datos);
             Functions delete = new Functions();

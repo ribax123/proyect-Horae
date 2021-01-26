@@ -1,5 +1,6 @@
 package windows;
 
+import clases.Datos;
 import clases.conexion;
 import clases.Functions;
 import java.sql.Connection;
@@ -7,10 +8,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
 public class Stock extends javax.swing.JPanel {
 
@@ -18,6 +17,16 @@ public class Stock extends javax.swing.JPanel {
     String tipo;
     public static int user_Update = 0;
     public DefaultTableModel model = new DefaultTableModel();
+    public static String ids = "";
+    public static String descri = "";
+    public static String unidads = "";
+    public static String tips = "";
+    public static String fechs = "";
+    public static String autors = "";
+    public static Datos fecha1;
+    public static String dia = "";
+    public static String estado = "";
+    public static String origen = "";
 
     public Stock() {
         initComponents();
@@ -32,7 +41,7 @@ public class Stock extends javax.swing.JPanel {
         try {
             Connection cn = conexion.conectar();
             PreparedStatement pst = cn.prepareStatement(
-                    " select Id, Referencia, Descripcion, Unidades, Origen, Fecha, Autor from inventario");
+                    " select Id, Referencia, Descripcion, Unidades, Origen,Estado, Fecha, Autor from inventario");
 
             ResultSet rs = pst.executeQuery();
 
@@ -43,15 +52,15 @@ public class Stock extends javax.swing.JPanel {
             model.addColumn("Referencia");
             model.addColumn("Descripcion");
             model.addColumn("Unidades");
-            model.addColumn("Origen");
-            
+            model.addColumn("Procedencia");
+            model.addColumn("Estado");
             model.addColumn("Fecha");
             model.addColumn("Autor");
 
             while (rs.next()) {
-                Object[] fila = new Object[7];
+                Object[] fila = new Object[8];
 
-                for (int i = 0; i < 7; i++) {
+                for (int i = 0; i < 8; i++) {
                     fila[i] = rs.getObject(i + 1);
                 }
                 model.addRow(fila);
@@ -77,6 +86,7 @@ public class Stock extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         txtBuscar = new javax.swing.JTextField();
         bton_borrar = new javax.swing.JButton();
+        buscarID = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 51, 102));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
@@ -97,7 +107,7 @@ public class Stock extends javax.swing.JPanel {
         jTable_product.setGridColor(new java.awt.Color(153, 0, 0));
         jScrollPane1.setViewportView(jTable_product);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 970, 310));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 970, 310));
 
         version.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         version.setForeground(new java.awt.Color(255, 255, 255));
@@ -113,7 +123,7 @@ public class Stock extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Buscar");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -130,7 +140,7 @@ public class Stock extends javax.swing.JPanel {
                 txtBuscarKeyReleased(evt);
             }
         });
-        add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 210, 27));
+        add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 210, 27));
 
         bton_borrar.setBackground(new java.awt.Color(0, 51, 102));
         bton_borrar.setForeground(new java.awt.Color(255, 255, 255));
@@ -141,6 +151,16 @@ public class Stock extends javax.swing.JPanel {
             }
         });
         add(bton_borrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 480, 210, -1));
+
+        buscarID.setBackground(new java.awt.Color(0, 51, 102));
+        buscarID.setForeground(new java.awt.Color(255, 255, 255));
+        buscarID.setText("Gestionar producto");
+        buscarID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarIDActionPerformed(evt);
+            }
+        });
+        add(buscarID, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 480, 200, 25));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
@@ -157,13 +177,50 @@ public class Stock extends javax.swing.JPanel {
     }//GEN-LAST:event_txtBuscarActionPerformed
 
     private void bton_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bton_borrarActionPerformed
-   
+
 
     }//GEN-LAST:event_bton_borrarActionPerformed
+
+    private void buscarIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarIDActionPerformed
+
+        String datos;
+        int filasSleccionada = jTable_product.getSelectedRow();
+        datos = jTable_product.getValueAt(filasSleccionada, 0).toString();
+         System.out.println(datos);
+
+        try {
+            Connection cn = conexion.conectar();
+            PreparedStatement ps = cn.prepareStatement("select * from inventario where Id =?");
+            ps.setString(1, datos);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+
+                ids = rs.getString("Id");
+                descri = rs.getString("Descripcion");
+                unidads = rs.getString("Unidades");
+                estado = rs.getString("Estado");
+                origen = rs.getString("Origen");
+                fechs = rs.getString("Fecha");
+                autors = rs.getString("Autor");
+
+                resultado_Id resusltado = new resultado_Id();
+                resusltado.setVisible(true);
+
+            } else {
+               
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error al conectarse al servidor " + e);
+        }
+    }//GEN-LAST:event_buscarIDActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bton_borrar;
+    private javax.swing.JButton buscarID;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;

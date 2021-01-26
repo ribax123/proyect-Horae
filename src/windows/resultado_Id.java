@@ -25,6 +25,7 @@ public class resultado_Id extends javax.swing.JFrame {
     public resultado_Id() {
         initComponents();
         setLocationRelativeTo(null);
+        setSize(813,549);
 
         Datos mensajero = new Datos();
         user = Interfaz.user;
@@ -34,19 +35,25 @@ public class resultado_Id extends javax.swing.JFrame {
         texID.setText(ID);
 
         // llenar los campos con los datos solicitados
-        texDescr.setText(Buscar.descri);
-        texUni.setText(Buscar.unidads);
-        texTipo.setText(Buscar.tips);
-        texfecha.setText(Buscar.fechs);
-        texAutor.setText(Buscar.autors);
+        texDescr.setText(Stock.descri);
+        texUni.setText(Stock.unidads);
+        txt_estado.setText(Stock.tips);
+        texfecha.setText(Stock.fechs);
+        texAutor.setText(Stock.autors);
+        txt_estado.setText(Stock.estado);
+        txt_procedencia.setText(Stock.origen);
+        
 
     }
    
 
     // actualizar datos
     public void actualizacion() {
-        tip = texTipo.getText().trim();
+        String proce ;
+        proce = txt_procedencia.getText().trim();
+        tip = txt_estado.getText().trim();
         unds = texUni.getText().trim();
+        
 
         try {
 
@@ -55,17 +62,18 @@ public class resultado_Id extends javax.swing.JFrame {
 
             } else {
                 Connection cn = conexion.conectar();
-                PreparedStatement ps = cn.prepareStatement("update  inventario set Unidades=?, Tipo=?"
+                PreparedStatement ps = cn.prepareStatement("update  inventario set Unidades=?, Estado=?, Origen=?"
                         + "where Id = '" + ID + "'");
 
                 ps.setString(1, unds);
                 ps.setString(2, tip);
+                ps.setString(3, proce);
 
                 ps.executeUpdate();
                 cn.close();
 
                 JOptionPane.showMessageDialog(null, "Actualizacion de registro exitosa.");
-                texTipo.setBackground(Color.GREEN);
+                txt_estado.setBackground(Color.GREEN);
                 texUni.setBackground(Color.GREEN);
             }
 
@@ -107,10 +115,10 @@ public class resultado_Id extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         texUni = new javax.swing.JTextField();
-        texTipo = new javax.swing.JTextField();
+        txt_estado = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        procedencia = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         texID = new javax.swing.JLabel();
@@ -122,6 +130,9 @@ public class resultado_Id extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         texAutor = new javax.swing.JLabel();
+        txt_procedencia = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        texID2 = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
 
@@ -143,45 +154,50 @@ public class resultado_Id extends javax.swing.JFrame {
                 texUniActionPerformed(evt);
             }
         });
-        jPanel1.add(texUni, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 180, 30));
+        jPanel1.add(texUni, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 210, 180, 30));
 
-        texTipo.setBackground(new java.awt.Color(0, 51, 102));
-        texTipo.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
-        texTipo.setForeground(new java.awt.Color(255, 255, 255));
-        texTipo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        texTipo.setCaretColor(new java.awt.Color(255, 255, 255));
-        jPanel1.add(texTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, 180, 30));
+        txt_estado.setBackground(new java.awt.Color(0, 51, 102));
+        txt_estado.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
+        txt_estado.setForeground(new java.awt.Color(255, 255, 255));
+        txt_estado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        txt_estado.setCaretColor(new java.awt.Color(255, 255, 255));
+        txt_estado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_estadoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txt_estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, 180, 30));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Descripción:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, -1, -1));
+        jLabel3.setText("Descripción :");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Unidades:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, -1, -1));
+        jLabel4.setText("Unidades :");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Tipo:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, -1, -1));
+        procedencia.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
+        procedencia.setForeground(new java.awt.Color(255, 255, 255));
+        procedencia.setText("procedencia :");
+        jPanel1.add(procedencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 320, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Fecha:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, -1, -1));
+        jLabel6.setText("Fecha :");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 380, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Autor:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, -1, -1));
+        jLabel7.setText("Autor :");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 430, -1, -1));
 
         texID.setBackground(new java.awt.Color(255, 255, 255));
         texID.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
         texID.setForeground(new java.awt.Color(255, 255, 255));
         texID.setText("ID");
-        jPanel1.add(texID, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, -1, -1));
+        jPanel1.add(texID, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, -1, -1));
 
         jButton1.setBackground(new java.awt.Color(0, 51, 102));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
@@ -191,22 +207,22 @@ public class resultado_Id extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, -1, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(247, 470, 350, -1));
 
-        texID1.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
+        texID1.setFont(new java.awt.Font("Segoe UI Emoji", 1, 24)); // NOI18N
         texID1.setForeground(new java.awt.Color(255, 255, 255));
-        texID1.setText("Registro :");
-        jPanel1.add(texID1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, -1, -1));
+        texID1.setText("Gestion de Inventario");
+        jPanel1.add(texID1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 30, -1, -1));
 
         texDescr.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
         texDescr.setForeground(new java.awt.Color(255, 255, 255));
         texDescr.setText("jLabel2");
-        jPanel1.add(texDescr, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 95, -1, -1));
+        jPanel1.add(texDescr, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 160, -1, -1));
 
         texfecha.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
         texfecha.setForeground(new java.awt.Color(255, 255, 255));
         texfecha.setText("jLabel2");
-        jPanel1.add(texfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 245, -1, -1));
+        jPanel1.add(texfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 370, -1, -1));
 
         jButton2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
         jButton2.setForeground(new java.awt.Color(0, 153, 153));
@@ -218,7 +234,7 @@ public class resultado_Id extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 10, 50, 40));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, 50, 40));
 
         jButton3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 36)); // NOI18N
         jButton3.setForeground(new java.awt.Color(0, 153, 153));
@@ -230,29 +246,44 @@ public class resultado_Id extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, 50, 40));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 10, 50, 40));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Creado por ribax123@gmail.com ®");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 440, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 510, -1, -1));
 
         texAutor.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
         texAutor.setForeground(new java.awt.Color(255, 255, 255));
         texAutor.setText("jLabel2");
-        jPanel1.add(texAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 295, -1, -1));
+        jPanel1.add(texAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 420, -1, -1));
+
+        txt_procedencia.setBackground(new java.awt.Color(0, 51, 102));
+        txt_procedencia.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
+        txt_procedencia.setForeground(new java.awt.Color(255, 255, 255));
+        txt_procedencia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        txt_procedencia.setCaretColor(new java.awt.Color(255, 255, 255));
+        jPanel1.add(txt_procedencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 310, 180, 30));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Estado :");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, -1, -1));
+
+        texID2.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
+        texID2.setForeground(new java.awt.Color(255, 255, 255));
+        texID2.setText("Registro :");
+        jPanel1.add(texID2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 863, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 488, Short.MAX_VALUE)
         );
 
         pack();
@@ -277,6 +308,10 @@ public class resultado_Id extends javax.swing.JFrame {
     private void texUniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_texUniActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_texUniActionPerformed
+
+    private void txt_estadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_estadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_estadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -321,17 +356,20 @@ public class resultado_Id extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel procedencia;
     private javax.swing.JLabel texAutor;
     private javax.swing.JLabel texDescr;
     private javax.swing.JLabel texID;
     private javax.swing.JLabel texID1;
-    private javax.swing.JTextField texTipo;
+    private javax.swing.JLabel texID2;
     private javax.swing.JTextField texUni;
     private javax.swing.JLabel texfecha;
+    private javax.swing.JTextField txt_estado;
+    private javax.swing.JTextField txt_procedencia;
     // End of variables declaration//GEN-END:variables
 
 }

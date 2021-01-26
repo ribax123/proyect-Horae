@@ -183,7 +183,7 @@ public class Administrador extends javax.swing.JFrame {
         wallpap.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 520, -1, -1));
 
         jButton_regisU1.setBackground(new java.awt.Color(0, 51, 102));
-        jButton_regisU1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/add-user.png"))); // NOI18N
+        jButton_regisU1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/152-followers.png"))); // NOI18N
         jButton_regisU1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton_regisU1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,7 +194,7 @@ public class Administrador extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Agregar usuario");
+        jLabel8.setText("Agregar empleado ");
         wallpap.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 470, -1, -1));
 
         getContentPane().add(wallpap, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 550));
