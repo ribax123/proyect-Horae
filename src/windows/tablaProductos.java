@@ -110,9 +110,7 @@ public class tablaProductos extends javax.swing.JFrame {
                      * try { Connection cn = conexion.conectar();
                      * PreparedStatement pst = cn.prepareStatement("UPDATE
                      * inventario SET Unidades = '" + totalActualizado + "'
-                     * WHERE Referencia = '" +
-                     * jTable_usuariosTres.getValueAt(filasSleccionada,
-                     * 0).toString() + "' ");
+                     * WHERE Referencia = '"jTable_usuariosTres.getValueAt(filasSleccionada,0).toString()"' ");
                      *
                      * pst.executeUpdate();
                      *

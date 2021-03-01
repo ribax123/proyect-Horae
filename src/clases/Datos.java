@@ -23,7 +23,7 @@ public class Datos {
 // validacion ... solo numeros    
     public boolean validacion(String vali) {
         try {
-            return vali.matches("[0-9.]{1,40}");
+            return vali.matches("[0-9.-]{1,40}");
         } catch (Exception e) {
             System.out.println("Operación cancelada");
         }

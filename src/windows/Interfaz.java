@@ -49,7 +49,7 @@ public class Interfaz extends javax.swing.JFrame {
 
     }
 
-    Timer timer = new Timer(2000, new ActionListener() {
+    Timer timer = new Timer(1000, new ActionListener() {
         public void actionPerformed(ActionEvent e) {
             entrar();
         }

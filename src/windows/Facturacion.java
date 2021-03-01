@@ -54,6 +54,7 @@ public class Facturacion extends javax.swing.JFrame {
         //txtVendedor.disable();
         txtTotal.disable();
         btnGuardarImprimir.setEnabled(false);
+        btn_Facturas.setEnabled(false);
         setResizable(false);
         setLocationRelativeTo(this);
         txtNumeroFactura.setText(codigoIn());
@@ -68,8 +69,11 @@ public class Facturacion extends javax.swing.JFrame {
         modelDos.addColumn("Unidades");
         modelDos.addColumn("Valor unitario");
         modelDos.addColumn("Total");
+        
 
         jTabla_Dos.setModel(modelDos);
+        
+        
 
         try {
             Connection cn = conexion.conectar();

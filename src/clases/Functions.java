@@ -115,7 +115,7 @@ public class Functions extends file implements Interface_Functions {
             PreparedStatement ps = cn.prepareStatement(query);
             ps.setString(1, esto);
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Registro eliminado!");
+            
         } catch (SQLException ex) {
             System.out.println("Error" + ex);
         }

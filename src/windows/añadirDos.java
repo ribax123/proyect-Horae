@@ -61,14 +61,14 @@ public class añadirDos extends javax.swing.JPanel {
         bton_agregar.setBackground(new java.awt.Color(0, 51, 102));
         bton_agregar.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         bton_agregar.setForeground(new java.awt.Color(255, 255, 255));
-        bton_agregar.setText("Guardar registro");
+        bton_agregar.setText("GUARDAR ");
         bton_agregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bton_agregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bton_agregarActionPerformed(evt);
             }
         });
-        add(bton_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 450, 530, -1));
+        add(bton_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 450, 520, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Symbol", 1, 32)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -99,15 +99,11 @@ public class añadirDos extends javax.swing.JPanel {
         jLabel6.setText("Modelo/ Codigo :");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, -1, -1));
 
-        txtReferencia.setBackground(new java.awt.Color(0, 51, 102));
         txtReferencia.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        txtReferencia.setForeground(new java.awt.Color(255, 255, 255));
         txtReferencia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
         jPanel1.add(txtReferencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 480, 30));
 
-        añadirDes1.setBackground(new java.awt.Color(0, 51, 102));
         añadirDes1.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        añadirDes1.setForeground(new java.awt.Color(255, 255, 255));
         añadirDes1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
         añadirDes1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,9 +117,7 @@ public class añadirDos extends javax.swing.JPanel {
         jLabel3.setText("Unidades :");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, -1, -1));
 
-        añadirUnidad.setBackground(new java.awt.Color(0, 51, 102));
         añadirUnidad.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        añadirUnidad.setForeground(new java.awt.Color(255, 255, 255));
         añadirUnidad.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
         jPanel1.add(añadirUnidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, 120, 30));
 
@@ -132,16 +126,14 @@ public class añadirDos extends javax.swing.JPanel {
         txtExito.setText("Registro guardado!");
         jPanel1.add(txtExito, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 300, -1, -1));
 
-        txt_Envio.setBackground(new java.awt.Color(0, 51, 102));
         txt_Envio.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        txt_Envio.setForeground(new java.awt.Color(255, 255, 255));
         txt_Envio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
         jPanel1.add(txt_Envio, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 480, 30));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI Symbol", 0, 20)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("   Procedencia :");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, -1, -1));
+        jLabel7.setText("Procedencia / Envio :");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI Symbol", 0, 20)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));

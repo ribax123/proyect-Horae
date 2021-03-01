@@ -25,7 +25,7 @@ public class resultado_Id extends javax.swing.JFrame {
     public resultado_Id() {
         initComponents();
         setLocationRelativeTo(null);
-        setSize(813,549);
+        setSize(863, 488);
 
         Datos mensajero = new Datos();
         user = Interfaz.user;
@@ -180,7 +180,7 @@ public class resultado_Id extends javax.swing.JFrame {
 
         procedencia.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
         procedencia.setForeground(new java.awt.Color(255, 255, 255));
-        procedencia.setText("procedencia :");
+        procedencia.setText("Procedencia :");
         jPanel1.add(procedencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 320, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
@@ -234,7 +234,7 @@ public class resultado_Id extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, 50, 40));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 10, 50, 40));
 
         jButton3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 36)); // NOI18N
         jButton3.setForeground(new java.awt.Color(0, 153, 153));
@@ -246,7 +246,7 @@ public class resultado_Id extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 10, 50, 40));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 10, 50, 40));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -279,7 +279,7 @@ public class resultado_Id extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 863, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 863, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -35,9 +35,14 @@ public class Stock extends javax.swing.JPanel {
     }
 
     public void llenarStock() {
+
+        tablaInventario();
+
+    }
+
+    public void tablaInventario() {
         model.setRowCount(0);
         model.setColumnCount(0);
-// conexión a la base de datos e instrucciones CONSULTAS llenar tabla
         try {
             Connection cn = conexion.conectar();
             PreparedStatement pst = cn.prepareStatement(
@@ -107,7 +112,7 @@ public class Stock extends javax.swing.JPanel {
         jTable_product.setGridColor(new java.awt.Color(153, 0, 0));
         jScrollPane1.setViewportView(jTable_product);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 970, 310));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 970, 330));
 
         version.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         version.setForeground(new java.awt.Color(255, 255, 255));
@@ -116,9 +121,9 @@ public class Stock extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Light", 1, 28)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Inventario en Stock");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, -1, -1));
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 50, 350, 10));
+        jLabel2.setText("Inventario ");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, -1, -1));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, 290, 10));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -150,7 +155,7 @@ public class Stock extends javax.swing.JPanel {
                 bton_borrarActionPerformed(evt);
             }
         });
-        add(bton_borrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 480, 210, -1));
+        add(bton_borrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 480, 210, -1));
 
         buscarID.setBackground(new java.awt.Color(0, 51, 102));
         buscarID.setForeground(new java.awt.Color(255, 255, 255));
@@ -160,7 +165,7 @@ public class Stock extends javax.swing.JPanel {
                 buscarIDActionPerformed(evt);
             }
         });
-        add(buscarID, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 480, 200, 25));
+        add(buscarID, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 480, 200, 25));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
@@ -177,7 +182,23 @@ public class Stock extends javax.swing.JPanel {
     }//GEN-LAST:event_txtBuscarActionPerformed
 
     private void bton_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bton_borrarActionPerformed
+        int resp = JOptionPane.showConfirmDialog(null, "¿Estas seguro que deseas eliminar el registro?", "Alerta!", JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE);
+        if (resp == 0) {
+            try {
+                String datos;
+                int filasSleccionada = jTable_product.getSelectedRow();
+                datos = jTable_product.getValueAt(filasSleccionada, 0).toString();
+                System.out.println(datos);
+                Functions delete = new Functions();
+                delete.delete("Id", "inventario", datos);
+                tablaInventario();
 
+            } catch (Exception e) {
+                System.out.println(e);
+                JOptionPane.showMessageDialog(null, "¡Selecciona un registro!");
+            }
+
+        }
 
     }//GEN-LAST:event_bton_borrarActionPerformed
 
@@ -186,7 +207,7 @@ public class Stock extends javax.swing.JPanel {
         String datos;
         int filasSleccionada = jTable_product.getSelectedRow();
         datos = jTable_product.getValueAt(filasSleccionada, 0).toString();
-         System.out.println(datos);
+        System.out.println(datos);
 
         try {
             Connection cn = conexion.conectar();
@@ -209,7 +230,7 @@ public class Stock extends javax.swing.JPanel {
                 resusltado.setVisible(true);
 
             } else {
-               
+
             }
 
         } catch (Exception e) {

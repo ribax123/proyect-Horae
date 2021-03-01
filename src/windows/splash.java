@@ -134,7 +134,7 @@ public class splash extends javax.swing.JFrame implements Runnable {
 
         while (time != null) {
             try {
-                Thread.sleep(4000);
+                Thread.sleep(2000);
                 new Interfaz().setVisible(true);
                 this.dispose();
                 break;

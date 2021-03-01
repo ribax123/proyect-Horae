@@ -17,6 +17,10 @@ import javax.swing.table.DefaultTableModel;
 
 public class Manejo_equipos extends javax.swing.JFrame {
 
+    int total;
+
+    String validarD;
+    String valor;
     String nombreCliente;
     String descripcion;
     String funcion;
@@ -25,6 +29,9 @@ public class Manejo_equipos extends javax.swing.JFrame {
     String user;
     String cantidad;
     String responsable;
+    String valorTabla;
+    String referenciaTabla;
+
     DefaultTableModel model = new DefaultTableModel();
     DefaultTableModel modelt = new DefaultTableModel();
 
@@ -43,7 +50,6 @@ public class Manejo_equipos extends javax.swing.JFrame {
     }
 
     public void tablaEquipos() {
-       
 
         try {
             Connection cn = conexion.conectar();
@@ -81,7 +87,6 @@ public class Manejo_equipos extends javax.swing.JFrame {
     }
 
     public void tablaCargo() {
-       
 
         try {
             Connection cn = conexion.conectar();
@@ -115,7 +120,7 @@ public class Manejo_equipos extends javax.swing.JFrame {
 
         } catch (SQLException e) {
             System.err.print("Error al llenar la tabla" + e);
-            JOptionPane.showMessageDialog(null, "Error al mostrar imformacion, ¡Contacte al administrador!");
+            JOptionPane.showMessageDialog(null, "Error al mostrar imformación, ¡Contacte al administrador!");
         }
     }
 
@@ -127,6 +132,7 @@ public class Manejo_equipos extends javax.swing.JFrame {
         txt_descripcion.setText(seleccionar);
 
     }
+
     public void seleccionColaborador() {
         int filasSleccionada = jtable_equipos1.getSelectedRow();
         String seleccionar;
@@ -146,12 +152,70 @@ public class Manejo_equipos extends javax.swing.JFrame {
 
     public void obtenerDatos() {
         nombreCliente = txt_cliente.getText().trim();
-        serial = txt_referencia.getText().trim();
+        serial = txt_serial.getText().trim();
         descripcion = txt_descripcion.getText().trim();
         funcion = cmb_fun.getSelectedItem().toString();
         cantidad = txt_cantidad.getText().trim();
         responsable = txt_colaborador.getText().trim();
 
+    }
+
+   
+    public void descontar() {
+
+        try {
+
+            int filasSleccionada = jtable_equipos.getSelectedRow();
+            referenciaTabla = jtable_equipos.getValueAt(filasSleccionada, 1).toString();
+            Connection cn = conexion.conectar();
+            PreparedStatement ps = cn.prepareStatement("select Unidades from inventario where referencia =?");
+            ps.setString(1, referenciaTabla);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+
+                valorTabla = rs.getString("Unidades");
+                System.out.println(valorTabla);
+
+            } else {
+
+                System.out.println("no hay valor" + valorTabla);
+
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error al conectarse al servidor " + e);
+        }
+
+        //aumenta o disminuye la cantidad en el stock
+        try {
+
+            int valorTablaTotal;
+
+            int valorCambio;
+            valor = txt_cantidad.getText().trim();
+            valorCambio = Integer.parseInt(valor);
+            valorTablaTotal = Integer.parseInt(valorTabla);
+            total = valorTablaTotal - valorCambio;
+            System.out.println(total);
+
+            if (total < 1) {
+
+                JOptionPane.showMessageDialog(null, "Cantidad fuera de rango");
+
+            } else {
+
+                Connection cn = conexion.conectar();
+                PreparedStatement pst = cn.prepareStatement("UPDATE inventario SET Unidades =  '" + total + "' WHERE Referencia = '" + referenciaTabla + "'");
+
+                pst.executeUpdate();
+               guardarDatos();
+            }
+
+        } catch (Exception e) {
+            System.out.println("error " + e);
+        }
     }
 
     public void guardarDatos() {
@@ -163,7 +227,6 @@ public class Manejo_equipos extends javax.swing.JFrame {
             PreparedStatement pst2 = cn2.prepareStatement(
                     " insert into control_equipos values (?,?,?,?,?,?,?)");
 
-            
             pst2.setString(1, nombreCliente);
             pst2.setString(2, serial);
             pst2.setString(3, descripcion);
@@ -191,7 +254,7 @@ public class Manejo_equipos extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        txt_referencia = new javax.swing.JTextField();
+        txt_serial = new javax.swing.JTextField();
         txt_descripcion = new javax.swing.JTextField();
         txt_cliente = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -217,12 +280,12 @@ public class Manejo_equipos extends javax.swing.JFrame {
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(0, 51, 102));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txt_referencia.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jPanel1.add(txt_referencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 140, 310, 30));
+        txt_serial.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jPanel1.add(txt_serial, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 140, 310, 30));
 
-        txt_descripcion.setBackground(new java.awt.Color(0, 51, 102));
         txt_descripcion.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         txt_descripcion.setForeground(new java.awt.Color(255, 255, 255));
         txt_descripcion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
@@ -233,13 +296,13 @@ public class Manejo_equipos extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Serial :");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 140, -1, 30));
+        jLabel1.setText("Serial-S/N :");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 140, -1, 30));
 
-        accion.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        accion.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
         accion.setForeground(new java.awt.Color(255, 255, 255));
         accion.setText("Función :");
-        jPanel1.add(accion, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 80, -1, 30));
+        jPanel1.add(accion, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 90, -1, 30));
 
         txt_fecha.setBackground(new java.awt.Color(255, 255, 255));
         txt_fecha.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -258,15 +321,15 @@ public class Manejo_equipos extends javax.swing.JFrame {
                 cmb_funActionPerformed(evt);
             }
         });
-        jPanel1.add(cmb_fun, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 80, 150, 30));
+        jPanel1.add(cmb_fun, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 90, 150, 30));
 
-        btn_elegir.setText("Insertar Equipo");
+        btn_elegir.setText("Seleccionar equipo");
         btn_elegir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_elegirActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_elegir, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 500, 160, 30));
+        jPanel1.add(btn_elegir, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 500, 190, 30));
 
         jtable_equipos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtable_equipos.setModel(new javax.swing.table.DefaultTableModel(
@@ -284,7 +347,7 @@ public class Manejo_equipos extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 190, 490, 280));
 
-        btn_guardar.setText("Guardar Regitro");
+        btn_guardar.setText("Guardar Registro");
         btn_guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_guardarActionPerformed(evt);
@@ -337,15 +400,14 @@ public class Manejo_equipos extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 490, 280));
 
-        btn_elegirC.setText("Insertar responsable");
+        btn_elegirC.setText("Seleccionar responsable");
         btn_elegirC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_elegirCActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_elegirC, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 500, 160, 30));
+        jPanel1.add(btn_elegirC, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 500, 190, 30));
 
-        txt_colaborador.setBackground(new java.awt.Color(0, 51, 102));
         txt_colaborador.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         txt_colaborador.setForeground(new java.awt.Color(255, 255, 255));
         txt_colaborador.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
@@ -378,8 +440,23 @@ public class Manejo_equipos extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_elegirActionPerformed
 
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
-        // TODO add your handling code here:
-        guardarDatos();
+        boolean validarCantidad;
+        Datos data = new Datos();
+        validarCantidad = data.validacion(txt_cantidad.getText());
+        if (!txt_cantidad.getText().equals("")
+                || !txt_cliente.getText().equals("") || !txt_colaborador.getText().equals("")
+                || !txt_descripcion.getText().equals("") || !txt_serial.getText().equals("")) {
+            if (validarCantidad == true) {
+                
+                descontar();
+
+            } else {
+                JOptionPane.showMessageDialog(null, "El campo CANTIDAD no es valido");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Debes llenar todos los campos");
+        }
+
     }//GEN-LAST:event_btn_guardarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -455,6 +532,6 @@ public class Manejo_equipos extends javax.swing.JFrame {
     private javax.swing.JTextField txt_colaborador;
     private javax.swing.JTextField txt_descripcion;
     private javax.swing.JLabel txt_fecha;
-    private javax.swing.JTextField txt_referencia;
+    private javax.swing.JTextField txt_serial;
     // End of variables declaration//GEN-END:variables
 }
