@@ -30,6 +30,7 @@ public class TablaProgramaInstalaciones extends javax.swing.JFrame {
     String telefono;
     String tipo;
     String barrio;
+    String administrador;
 
     DefaultTableModel model = new DefaultTableModel();
 
@@ -41,6 +42,7 @@ public class TablaProgramaInstalaciones extends javax.swing.JFrame {
         setLocationRelativeTo(this);
         setResizable(false);
         setSize(1190, 560);
+        administrador = Interfaz.user;
         
 
         tabla();
@@ -65,6 +67,7 @@ public class TablaProgramaInstalaciones extends javax.swing.JFrame {
             model.addColumn("Barrio");
             model.addColumn("Tipo");
             model.addColumn("Telefono");
+            model.addColumn("Administrador");
             model.addColumn("Fecha");
 
             // ciclo para llenar la tabla
@@ -74,13 +77,13 @@ public class TablaProgramaInstalaciones extends javax.swing.JFrame {
              de las posiciones e insertar cada uno de los datos en las 
             posiciones de las filas*/
             while (rs.next()) {
-                Object[] fila = new Object[6];
+                Object[] fila = new Object[7];
 
-                for (int i = 0; i < 6; i++) {
+                for (int i = 0; i < 7; i++) {
                     fila[i] = rs.getObject(i + 1);
                 }
                 model.addRow(fila);
-                contar();
+                contar(jtable_Instalaciones);
             }
             cn.close();
 
@@ -102,7 +105,7 @@ public class TablaProgramaInstalaciones extends javax.swing.JFrame {
         try {
             Connection cn = conexion.conectar();
             PreparedStatement pst = cn.prepareStatement(
-                    " select Nombre_cliente, Direccion, Barrio, TIpo, Telefono, Fecha  from  tabla_instalaciones where Nombre_cliente like '%" + buscar + "%' or Fecha like '%" + buscar + "%' or  TIpo like '%" + buscar + "%' or  Barrio like '%" + buscar + "%'");
+                    " select Nombre_cliente, Direccion, Barrio, TIpo, Telefono, Administrador, Fecha  from  tabla_instalaciones where Nombre_cliente like '%" + buscar + "%' or Fecha like '%" + buscar + "%' or  TIpo like '%" + buscar + "%' or  Barrio like '%" + buscar + "%'");
 
             ResultSet rs = pst.executeQuery();
 
@@ -114,6 +117,7 @@ public class TablaProgramaInstalaciones extends javax.swing.JFrame {
             model.addColumn("Barrio");
             model.addColumn("Tipo");
             model.addColumn("Telefono");
+            model.addColumn("Administrador");
             model.addColumn("Fecha");
 
             // ciclo para llenar la tabla
@@ -123,9 +127,9 @@ public class TablaProgramaInstalaciones extends javax.swing.JFrame {
              de las posiciones e insertar cada uno de los datos en las 
             posiciones de las filas*/
             while (rs.next()) {
-                Object[] fila = new Object[6];
+                Object[] fila = new Object[7];
 
-                for (int i = 0; i < 6; i++) {
+                for (int i = 0; i < 7; i++) {
                     fila[i] = rs.getObject(i + 1);
                 }
                 model.addRow(fila);
@@ -168,7 +172,7 @@ public class TablaProgramaInstalaciones extends javax.swing.JFrame {
             pst2.setString(2, direccion);
             pst2.setString(3, barrio);
             pst2.setString(4, tipo);
-            pst2.setString(5, telefono);
+            pst2.setString(5, telefono);       
             pst2.setString(6, fecha);
 
             pst2.executeUpdate();
@@ -206,6 +210,7 @@ public class TablaProgramaInstalaciones extends javax.swing.JFrame {
                 barrio = rs.getString("Barrio");
                 tipo = rs.getString("TIpo");
                 telefono = rs.getString("Telefono");
+                administrador = rs.getString("administrador");
 
             } else {
 
@@ -216,13 +221,13 @@ public class TablaProgramaInstalaciones extends javax.swing.JFrame {
         }
     }
 
-    public void contar() {
+    public void contar(JTable table) {
         String r;
-        for (int i = 1; i <= jtable_Instalaciones.getRowCount(); i++) {
+        for (int i = 1; i <= table.getRowCount(); i++) {
             
                 r = String.valueOf(i);
                 numero_inst.setText(r);
-                System.out.println(r);
+                
             }
         
         
@@ -253,6 +258,7 @@ public class TablaProgramaInstalaciones extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(getIconImage());
@@ -277,15 +283,15 @@ public class TablaProgramaInstalaciones extends javax.swing.JFrame {
         ));
         scrrol_Instalaciones.setViewportView(jtable_Instalaciones);
 
-        jPanel1.add(scrrol_Instalaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 1140, 390));
+        jPanel1.add(scrrol_Instalaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 1140, 380));
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Filtrar :");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
 
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 65, 440, 20));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 80, 440, 20));
 
         txt_Filtrar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txt_Filtrar.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -293,9 +299,9 @@ public class TablaProgramaInstalaciones extends javax.swing.JFrame {
                 txt_FiltrarKeyReleased(evt);
             }
         });
-        jPanel1.add(txt_Filtrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 200, 34));
+        jPanel1.add(txt_Filtrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 200, 34));
 
-        numero_inst.setFont(new java.awt.Font("Arial", 0, 27)); // NOI18N
+        numero_inst.setFont(new java.awt.Font("Segoe UI Emoji", 1, 25)); // NOI18N
         numero_inst.setForeground(new java.awt.Color(255, 255, 255));
         numero_inst.setText("0");
         jPanel1.add(numero_inst, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 520, -1, -1));
@@ -349,12 +355,15 @@ public class TablaProgramaInstalaciones extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Arial", 0, 27)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Programa de instalaciones CTC");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 50, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Arial", 0, 27)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI Emoji", 1, 25)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Intalaciones programadas :");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 520, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Sin título.png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 560));
 
@@ -367,7 +376,7 @@ public class TablaProgramaInstalaciones extends javax.swing.JFrame {
 
     private void txt_instalacionOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_instalacionOKActionPerformed
         actualizarLista();
-        contar();
+        contar(jtable_Instalaciones);
     }//GEN-LAST:event_txt_instalacionOKActionPerformed
 
     private void txt_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_borrarActionPerformed
@@ -382,7 +391,7 @@ public class TablaProgramaInstalaciones extends javax.swing.JFrame {
                 Functions delete = new Functions();
                 delete.delete("Direccion", "tabla_instalaciones", datos);
                 tabla();
-                contar();
+                contar(jtable_Instalaciones);
             } catch (Exception e) {
                 System.out.println(e);
                 JOptionPane.showMessageDialog(null, "¡Selecciona un registro!");
@@ -446,6 +455,7 @@ public class TablaProgramaInstalaciones extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;

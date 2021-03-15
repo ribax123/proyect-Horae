@@ -34,6 +34,13 @@ public class TablaServicios extends javax.swing.JFrame {
         setSize(1190, 550);
         
         
+                
+        
+        tabla();
+    }
+    
+    public void tabla (){
+        
         try {
             Connection cn = conexion.conectar();
             PreparedStatement pst = cn.prepareStatement(
@@ -41,8 +48,8 @@ public class TablaServicios extends javax.swing.JFrame {
 
             ResultSet rs = pst.executeQuery();
 
-            jtable_Instalaciones= new JTable(model);
-            scrrol_Instalaciones.setViewportView(jtable_Instalaciones);
+            jtable_Instalaciones1= new JTable(model);
+            scrrol_Instalaciones.setViewportView(jtable_Instalaciones1);
 
             model.addColumn("Nombre cliente");
             model.addColumn("Dirección");
@@ -64,6 +71,8 @@ public class TablaServicios extends javax.swing.JFrame {
                     fila[i] = rs.getObject(i + 1);
                 }
                 model.addRow(fila);
+                contar(jtable_Instalaciones1);
+                
             }
             cn.close();
 
@@ -71,8 +80,7 @@ public class TablaServicios extends javax.swing.JFrame {
             System.err.print("Error al llenar la tabla" + e);
             JOptionPane.showMessageDialog(null, "Error al mostrar imformacion, ¡Contacte al administrador!");
         }
-
-    }
+        }
     
     // Imagen logo miniatura
     public Image getIconImage() {
@@ -80,6 +88,14 @@ public class TablaServicios extends javax.swing.JFrame {
         return retValue;
     }
    
+    public void contar(JTable table) {
+        String r;
+        for (int i = 1; i <= table.getRowCount(); i++) {
+            
+                r = String.valueOf(i);
+                numero_inst.setText(r);
+                
+            }}
     
     public void buscarInstalaciones(String buscar) {
         model.setRowCount(0);
@@ -91,8 +107,8 @@ public class TablaServicios extends javax.swing.JFrame {
 
             ResultSet rs = pst.executeQuery();
 
-            jtable_Instalaciones = new JTable(model);
-            scrrol_Instalaciones.setViewportView(jtable_Instalaciones);
+            jtable_Instalaciones1 = new JTable(model);
+            scrrol_Instalaciones.setViewportView(jtable_Instalaciones1);
 
              model.addColumn("Nombre cliente");
             model.addColumn("Direccion");
@@ -136,13 +152,16 @@ public class TablaServicios extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         scrrol_Instalaciones = new javax.swing.JScrollPane();
-        jtable_Instalaciones = new javax.swing.JTable();
+        jtable_Instalaciones1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         txt_Filtrar = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        numero_inst = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(getIconImage());
@@ -152,7 +171,7 @@ public class TablaServicios extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 102, 153));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jtable_Instalaciones.setModel(new javax.swing.table.DefaultTableModel(
+        jtable_Instalaciones1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -163,9 +182,9 @@ public class TablaServicios extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        scrrol_Instalaciones.setViewportView(jtable_Instalaciones);
+        scrrol_Instalaciones.setViewportView(jtable_Instalaciones1);
 
-        jPanel1.add(scrrol_Instalaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 1140, 390));
+        jPanel1.add(scrrol_Instalaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 1140, 370));
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -173,7 +192,7 @@ public class TablaServicios extends javax.swing.JFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
 
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 65, 440, 20));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 70, 440, 20));
 
         txt_Filtrar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txt_Filtrar.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -185,8 +204,8 @@ public class TablaServicios extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 27)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Instalaciones CTC");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, -1, -1));
+        jLabel2.setText("Servicios activos CTC");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 40, -1, -1));
 
         jButton1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 36)); // NOI18N
         jButton1.setForeground(new java.awt.Color(0, 153, 153));
@@ -211,6 +230,19 @@ public class TablaServicios extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 10, 50, 40));
+
+        numero_inst.setFont(new java.awt.Font("Segoe UI Emoji", 1, 25)); // NOI18N
+        numero_inst.setForeground(new java.awt.Color(255, 255, 255));
+        numero_inst.setText("0");
+        jPanel1.add(numero_inst, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 520, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI Emoji", 1, 25)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Servicios activos : ");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 520, -1, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Sin título.png"))); // NOI18N
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 0, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1210, 560));
 
@@ -276,9 +308,12 @@ public class TablaServicios extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jtable_Instalaciones;
+    private javax.swing.JTable jtable_Instalaciones1;
+    private javax.swing.JLabel numero_inst;
     private javax.swing.JScrollPane scrrol_Instalaciones;
     private javax.swing.JTextField txt_Filtrar;
     // End of variables declaration//GEN-END:variables

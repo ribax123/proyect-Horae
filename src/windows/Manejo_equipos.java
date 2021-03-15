@@ -91,7 +91,7 @@ public class Manejo_equipos extends javax.swing.JFrame {
         try {
             Connection cn = conexion.conectar();
             PreparedStatement pst = cn.prepareStatement(
-                    " select Codigo, Nombre,  Cargo from Colaboradores");
+                    " select Codigo, Nombre,  Cargo from colaboradores");
 
             ResultSet rs = pst.executeQuery();
 

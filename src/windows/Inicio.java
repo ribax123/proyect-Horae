@@ -17,9 +17,9 @@ public class Inicio extends javax.swing.JPanel {
         fecha = o.fechaActual();
 
         if (o.getDia().equals("30")) {
-            recordatorioMes.setText("¡Hoy es dia de inventrio General!");
+           // recordatorioMes.setText("¡Hoy es dia de inventrio General!");
         } else {
-            recordatorioMes.setText(fecha);
+           // recordatorioMes.setText(fecha);
         }
 
     }
@@ -32,7 +32,6 @@ public class Inicio extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jtex_bienvenido = new javax.swing.JLabel();
-        recordatorioMes = new javax.swing.JLabel();
         btn_movimientos = new javax.swing.JButton();
         btn_movimientos1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -42,6 +41,7 @@ public class Inicio extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         txt_serv = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
+        logo = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 51, 102));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
@@ -60,12 +60,8 @@ public class Inicio extends javax.swing.JPanel {
 
         jtex_bienvenido.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jtex_bienvenido.setForeground(new java.awt.Color(0, 204, 204));
-        add(jtex_bienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 75, -1, -1));
-
-        recordatorioMes.setBackground(new java.awt.Color(204, 0, 0));
-        recordatorioMes.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        recordatorioMes.setForeground(new java.awt.Color(0, 204, 51));
-        add(recordatorioMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 490, 300, 30));
+        jtex_bienvenido.setText("bienbenido");
+        add(jtex_bienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 170, -1, -1));
 
         btn_movimientos.setBackground(new java.awt.Color(0, 51, 102));
         btn_movimientos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/149-diagram.png"))); // NOI18N
@@ -75,7 +71,7 @@ public class Inicio extends javax.swing.JPanel {
                 btn_movimientosActionPerformed(evt);
             }
         });
-        add(btn_movimientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 200, 120, 120));
+        add(btn_movimientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 260, 120, 120));
 
         btn_movimientos1.setBackground(new java.awt.Color(0, 51, 102));
         btn_movimientos1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/039-shuffle.png"))); // NOI18N
@@ -85,22 +81,22 @@ public class Inicio extends javax.swing.JPanel {
                 btn_movimientos1ActionPerformed(evt);
             }
         });
-        add(btn_movimientos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, 120, 120));
+        add(btn_movimientos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, 120, 120));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Estado de equipos");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 400, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Manejo de equipos");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 400, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Arial", 0, 22)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Comunicaciones Terrestres De colombia S.A.S");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, -1, -1));
+        jLabel5.setText("Comunicaciones Terrestres De Colombia S.A.S");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 120, -1, -1));
 
         txt_intalaciones.setBackground(new java.awt.Color(0, 51, 102));
         txt_intalaciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/045-align-right.png"))); // NOI18N
@@ -110,12 +106,12 @@ public class Inicio extends javax.swing.JPanel {
                 txt_intalacionesActionPerformed(evt);
             }
         });
-        add(txt_intalaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 200, 120, 120));
+        add(txt_intalaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 260, 120, 120));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Programación");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 340, -1, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 400, -1, -1));
 
         txt_serv.setBackground(new java.awt.Color(0, 51, 102));
         txt_serv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/121-paste.png"))); // NOI18N
@@ -125,12 +121,15 @@ public class Inicio extends javax.swing.JPanel {
                 txt_servActionPerformed(evt);
             }
         });
-        add(txt_serv, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 200, 120, 120));
+        add(txt_serv, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 260, 120, 120));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Servicios");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 340, -1, -1));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 400, -1, -1));
+
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Sin título.png"))); // NOI18N
+        add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_movimientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_movimientosActionPerformed
@@ -150,7 +149,7 @@ public class Inicio extends javax.swing.JPanel {
         TablaProgramaInstalaciones progra = new TablaProgramaInstalaciones();
         progra.setVisible(true);
         TablaProgramaInstalaciones cantidadInsta = new TablaProgramaInstalaciones();
-        cantidadInsta.contar();
+        
     }//GEN-LAST:event_txt_intalacionesActionPerformed
 
     private void txt_servActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_servActionPerformed
@@ -171,7 +170,7 @@ public class Inicio extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel jtex_bienvenido;
-    private javax.swing.JLabel recordatorioMes;
+    private javax.swing.JLabel logo;
     private javax.swing.JButton txt_intalaciones;
     private javax.swing.JButton txt_serv;
     // End of variables declaration//GEN-END:variables

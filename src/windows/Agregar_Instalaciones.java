@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 
 public class Agregar_Instalaciones extends javax.swing.JFrame {
     
-
+    String administrador;
     String responsable;
     String user;
     String fecha;
@@ -46,6 +46,9 @@ public class Agregar_Instalaciones extends javax.swing.JFrame {
         fecha = lbl_Fecha.getText();
         telefono = txt_Telefono.getText();
         tipo = cbx_tipo.getSelectedItem().toString();
+        administrador = lb_Nombre.getText();
+        
+        
     }
 
     @Override
@@ -78,6 +81,8 @@ public class Agregar_Instalaciones extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         lbl_Fecha = new javax.swing.JLabel();
         lb_Nombre = new javax.swing.JLabel();
+        lb_Nombre1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
@@ -198,9 +203,17 @@ public class Agregar_Instalaciones extends javax.swing.JFrame {
         lb_Nombre.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         lb_Nombre.setForeground(new java.awt.Color(255, 255, 255));
         lb_Nombre.setText("Nombre");
-        jPanel2.add(lb_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        jPanel2.add(lb_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 370, 180, 70));
+        lb_Nombre1.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        lb_Nombre1.setForeground(new java.awt.Color(255, 255, 255));
+        lb_Nombre1.setText("Sesión de ");
+        jPanel2.add(lb_Nombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 370, 270, 70));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Sin título.png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 507));
 
@@ -248,14 +261,15 @@ public class Agregar_Instalaciones extends javax.swing.JFrame {
                                 Connection cn2 = conexion.conectar();
                                 // instrucciones colsultas
                                 PreparedStatement pst2 = cn2.prepareStatement(
-                                        " insert into tabla_instalaciones values (?,?,?,?,?,?)");
+                                        " insert into tabla_instalaciones values (?,?,?,?,?,?,?)");
 
                                 pst2.setString(1, cliente);
                                 pst2.setString(2, direccion);
                                 pst2.setString(3, barrio);
                                 pst2.setString(4, tipo);
                                 pst2.setString(5, telefono);
-                                pst2.setString(6, fecha);
+                                pst2.setString(6, administrador);
+                                pst2.setString(7, fecha);
                                 
 
                                 pst2.executeUpdate();
@@ -282,7 +296,7 @@ public class Agregar_Instalaciones extends javax.swing.JFrame {
             } 
 
             }else {
-                JOptionPane.showMessageDialog(null, "Los campos no pueden estar vacios");
+                JOptionPane.showMessageDialog(null, "Llene todos los campos vacios");
         }
 
 
@@ -340,6 +354,7 @@ public class Agregar_Instalaciones extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel_Nombre1;
     private javax.swing.JLabel jLabel_Nombre2;
@@ -349,6 +364,7 @@ public class Agregar_Instalaciones extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lb_Nombre;
+    private javax.swing.JLabel lb_Nombre1;
     private javax.swing.JLabel lbl_Fecha;
     private javax.swing.JTextField txt_Barrio;
     private javax.swing.JTextField txt_Cliente;
