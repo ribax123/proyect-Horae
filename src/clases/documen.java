@@ -1,6 +1,5 @@
 package clases;
 
-import javax.swing.JTable;
 
 public interface documen {
     

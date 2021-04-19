@@ -15,11 +15,17 @@ public class Datos {
         Calendar c1 = Calendar.getInstance();
         dia = Integer.toString(c1.get(Calendar.DATE));
         mes = Integer.toString(c1.get(Calendar.MONTH));
-        anio = Integer.toString(c1.get(Calendar.YEAR));
+        
         int mes = Integer.parseInt(getMes());       
         return getAnio() + "-" + (mes+1) + "-" + getDia();
     }
     
+    public String Anio (){
+        
+        Calendar anios = Calendar.getInstance();
+        anio = Integer.toString(anios.get(Calendar.YEAR));
+        return anio;
+    }
 // validacion ... solo numeros    
     public boolean validacion(String vali) {
         try {
