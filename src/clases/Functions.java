@@ -9,11 +9,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JComboBox;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.UIManager;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -105,8 +107,6 @@ public class Functions extends file implements Interface_Functions {
     }
 //Verifica en la base de datos si el Id ingresado se encuentra registrado. validación para borrar
 
-    
-
     public void delete(String indentificador, String tablaCodigo, String esto) {
         try {
 
@@ -115,7 +115,7 @@ public class Functions extends file implements Interface_Functions {
             PreparedStatement ps = cn.prepareStatement(query);
             ps.setString(1, esto);
             ps.executeUpdate();
-            
+
         } catch (SQLException ex) {
             System.out.println("Error" + ex);
         }
@@ -314,6 +314,112 @@ public class Functions extends file implements Interface_Functions {
     @Override
     public void borrar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void llenar_cmbx(JComboBox cmbx, String sql) {
+
+        cmbx.addItem("--selecciona una opción--");
+
+        try {
+
+            Connection cn = conexion.conectar();
+            PreparedStatement pst = cn.prepareStatement(sql);
+
+            ResultSet result = pst.executeQuery();
+
+            while (result.next()) {
+
+                cmbx.addItem(result.getString("Nombre"));
+
+            }
+
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(null, "Error al ejecutar la accion, contacte al administrador ");
+            System.out.println("Error " + e);
+
+        }
+
+    }
+
+    public String trimestre() {
+        String trms = "";
+        String mes;
+        int mesint;
+
+        Datos datos = new Datos();
+
+        mesint = Integer.valueOf(datos.Mes());
+
+        if (mesint <= 3) {
+
+            trms = "1";
+
+        }
+        if (mesint >= 4 && mesint < 6) {
+
+            trms = "2";
+
+        } else if (mesint >= 6 && mesint < 9) {
+
+            trms = "3";
+
+        } else if (mesint >= 9 && mesint <= 12) {
+
+            trms = "4";
+
+        }
+        return trms;
+    }
+
+    public String mesTrimes() {
+
+        Datos tim = new Datos();
+        String mes;
+        mes = tim.Mes();
+        String mesString = "0";
+
+        switch (mes) {
+            case "1":
+                mesString = "1";
+                break;
+            case "2":
+                mesString = "2";
+                break;
+            case "3":
+                mesString = "3";
+                break;
+            case "4":
+                mesString = "1";
+                break;
+            case "5":
+                mesString = "2";
+                break;
+            case "6":
+                mesString = "3";
+                break;
+            case "7":
+                mesString = "1";
+                break;
+            case "8":
+                mesString = "2";
+                break;
+            case "9":
+                mesString = "3";
+                break;
+            case "10":
+                mesString = "1";
+                break;
+            case "11":
+                mesString = "2";
+                break;
+            case "12":
+                mesString = "3";
+                break;
+            default:
+                System.err.println("intentalo de nuevo");
+        }
+        return mesString;
     }
 
 }
