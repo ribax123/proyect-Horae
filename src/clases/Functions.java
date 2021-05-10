@@ -1,5 +1,7 @@
 package clases;
 
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Chunk;
 import java.awt.Desktop;
 import java.awt.Font;
 import java.io.File;
@@ -9,7 +11,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javafx.scene.control.RadioButton;
+import javax.swing.ButtonGroup;
 import javax.swing.JComboBox;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.awt.Image;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -18,6 +29,7 @@ import javax.swing.JTable;
 import javax.swing.UIManager;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
+
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -25,6 +37,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import windows.Administrador;
 import windows.Auxiliar;
+import windows.Facturacion;
 import static windows.Interfaz.getPass;
 
 public class Functions extends file implements Interface_Functions {
@@ -126,18 +139,18 @@ public class Functions extends file implements Interface_Functions {
     /*  @Override
     public void numeroDLetras() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    }*/ 
 
-    @Override
-    public void pdfFactura() {
+    
+    public void pdfFactura(String parametro) {
          Document documento = new Document();
 
         try {
             String ruta = System.getProperty("user.home");
             PdfWriter.getInstance(documento, new FileOutputStream(ruta + "/Desktop/factura.pdf"));
             
-            Image header = com.itextpdf.text.Image.getInstance("src/iconos/banner.png");
-            header.scaleToFit(550, 900);
+             com.itextpdf.text.Image header = com.itextpdf.text.Image.getInstance("src/iconos/banner.png");
+            header.scaleToFit(420, 900);
             header.setAlignment(Chunk.ALIGN_CENTER);
             
             Paragraph title = new Paragraph();
@@ -179,7 +192,7 @@ public class Functions extends file implements Interface_Functions {
             documento.add(vendedor);
             documento.add(fPago);
 
-            PdfPTable tabla = new PdfPTable(6);
+            PdfPTable tabla = new PdfPTable(5);
             tabla.addCell("Referencia");
             tabla.addCell("Descripcion");
             tabla.addCell("Unidades");
@@ -189,7 +202,7 @@ public class Functions extends file implements Interface_Functions {
 
             try {
                 Connection cn = conexion.conectar();
-                PreparedStatement ps = cn.prepareStatement("select * from inventario");
+                PreparedStatement ps = cn.prepareStatement("select Referencia, Descripcion, Unidades, Valor_Unitario, Total from tabla_facturas WHERE Num_Factura = '" + parametro+ "'");
                 
                 ResultSet rs = ps.executeQuery();
                 
@@ -201,7 +214,8 @@ public class Functions extends file implements Interface_Functions {
                         tabla.addCell(rs.getString(3));
                         tabla.addCell(rs.getString(4));
                         tabla.addCell(rs.getString(5));
-                        tabla.addCell(rs.getString(6));
+                        
+                        
                     } while (rs.next());
                      documento.add(tabla);
                     
@@ -212,7 +226,8 @@ public class Functions extends file implements Interface_Functions {
             documento.close();
             JOptionPane.showMessageDialog(null, "Documento creado.");
         } catch (Exception e) {
-        }*/
+        }}
+        
     public void exportarExcel(JTable t) throws IOException, java.io.IOException {
         JFileChooser chooser = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos de excel", "xls");
@@ -421,5 +436,6 @@ public class Functions extends file implements Interface_Functions {
         }
         return mesString;
     }
+     
 
 }

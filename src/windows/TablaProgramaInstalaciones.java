@@ -294,7 +294,15 @@ public class TablaProgramaInstalaciones extends javax.swing.JFrame {
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 80, 440, 20));
 
         txt_Filtrar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_Filtrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_FiltrarActionPerformed(evt);
+            }
+        });
         txt_Filtrar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_FiltrarKeyPressed(evt);
+            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txt_FiltrarKeyReleased(evt);
             }
@@ -409,6 +417,14 @@ public class TablaProgramaInstalaciones extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void txt_FiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_FiltrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_FiltrarActionPerformed
+
+    private void txt_FiltrarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_FiltrarKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_FiltrarKeyPressed
 
     /**
      * @param args the command line arguments

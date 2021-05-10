@@ -1,7 +1,7 @@
 package clases;
 
 
-public interface documen {
+public interface documenss {
     
     public void pdfReport();
     public void pdfFactura();
