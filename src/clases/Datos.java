@@ -20,6 +20,33 @@ public class Datos {
         int mes = Integer.parseInt(getMes());       
         return getAnio() + "-" + (mes+1) + "-" + getDia();
     }
+    public String fechaVencimiento() {
+
+        Calendar c1 = Calendar.getInstance();
+        String vencimiento ="";
+        dia = Integer.toString(c1.get(Calendar.DATE));
+        mes = Integer.toString(c1.get(Calendar.MONTH));
+        anio = Integer.toString(c1.get(Calendar.YEAR));
+        
+        int mes = Integer.parseInt(getMes()); 
+        int dia = Integer.parseInt(getDia());
+        
+        if (dia+1 <= 25){
+          vencimiento= getAnio() + "-" + (mes+1) + "-" + (dia+5);  
+        }if (dia+1 == 26){
+            vencimiento= getAnio() + "-" + (mes+2) + "-" + (dia-25);
+        }if (dia+1 == 27){
+            vencimiento= getAnio() + "-" + (mes+2) + "-" + (dia-25);
+        }if (dia+1 == 28){
+            vencimiento= getAnio() + "-" + (mes+2) + "-" + (dia-25);
+        }if (dia+1 == 29){
+            vencimiento= getAnio() + "-" + (mes+2) + "-" + (dia-25);
+        }if (dia+1 == 30){
+            vencimiento= getAnio() + "-" + (mes+2) + "-" + (dia-25);
+        }
+       return vencimiento;
+        
+    }
     
     public String Anio (){
         

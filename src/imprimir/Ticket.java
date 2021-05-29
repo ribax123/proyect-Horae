@@ -70,6 +70,10 @@ public class Ticket {
         this.contentTicket = this.contentTicket.replace("{{garantia}}", garantia);
     }
 
+    public Ticket(String moviltech_oline, String cc_bahia, String b, String text, String vendedor, String fecha, String todoo, String text0, String string, String text1) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public void print() {
         //Especificamos el tipo de dato a imprimir
         //Tipo: bytes; Subtipo: autodetectado

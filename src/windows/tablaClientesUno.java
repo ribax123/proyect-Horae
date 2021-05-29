@@ -2,8 +2,10 @@ package windows;
 
 import clases.conexion;
 import clases.Datos;
+import com.sun.glass.events.MouseEvent;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,16 +14,25 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import java.text.DecimalFormat;
+import javax.swing.JTextField;
+import static windows.Facturacion.txtDireccion;
+import static windows.Facturacion.txtDocumento1;
+import static windows.Facturacion.txtNombreCliente;
+import static windows.Facturacion.txtTelefono;
 
-public class tablaProductos extends javax.swing.JFrame {
+public class tablaClientesUno extends javax.swing.JFrame {
 
     public static String vendedor;
     public static String user_UpdateDos = "";
     public static int valorTotal;
+    public static String NnombreCliente;
+    public static String documento = "hola";
+    public static String Ntelefono;
+    public static String Ddireccion = "adios";
     DefaultTableModel model = new DefaultTableModel();
     String user;
 
-    public tablaProductos() {
+    public tablaClientesUno() {
         initComponents();
         setResizable(false);
         setLocationRelativeTo(this);
@@ -29,17 +40,20 @@ public class tablaProductos extends javax.swing.JFrame {
         try {
             Connection cn = conexion.conectar();
             PreparedStatement pst = cn.prepareStatement(
-                    " select Codigo, Descripcion, Valor from servicios");
+                    " select Nombre_Cliente, documento, telefono, direccion, megabyts, ubicacion from clientesuribia");
 
             ResultSet rs = pst.executeQuery();
 
-            jTable_usuariosTres = new JTable(model);
-            jScrollPane2.setViewportView(jTable_usuariosTres);
+            jTable_Clientes = new JTable(model);
+            jScrollPane2.setViewportView(jTable_Clientes);
 
-            model.addColumn("Codigo");
-            model.addColumn("Descripción");
-            
-            
+            model.addColumn("Nombre");
+            model.addColumn("Documento");
+            model.addColumn("Telefono");
+            model.addColumn("Dirección");
+            model.addColumn("Velocidad");
+            model.addColumn("Ubicación");
+
             // ciclo para llenar la tabla
             /* cuando hay una solicitud  para generar 
             la lista, se crea un ciclo con un objeto...
@@ -47,9 +61,9 @@ public class tablaProductos extends javax.swing.JFrame {
              de las posiciones e insertar cada uno de los datos en las 
             posiciones de las filas*/
             while (rs.next()) {
-                Object[] fila = new Object[2];
+                Object[] fila = new Object[4];
 
-                for (int i = 0; i < 2; i++) {
+                for (int i = 0; i < 4; i++) {
                     fila[i] = rs.getObject(i + 1);
                 }
                 model.addRow(fila);
@@ -63,72 +77,15 @@ public class tablaProductos extends javax.swing.JFrame {
 
     }
 
-    public void llenarTablaDos() {
-        
-        boolean validacionCantidad;
-        boolean validacionValor;
-        Datos vali = new Datos();
-        String nameDos;
-        String name = JOptionPane.showInputDialog("Unidades:");
+    public void obtenerDatos(JTable tabla) {
+        tablaClientesUno datos = new tablaClientesUno();
 
-        validacionCantidad = vali.validacion(name);
-        
-        try {
-            if (!name.equals("") && validacionCantidad == true) {
-                nameDos = JOptionPane.showInputDialog("Valor:");
-                validacionValor = vali.validacion(nameDos);
+        int filasSleccionada = tabla.getSelectedRow();
+        NnombreCliente = tabla.getValueAt(filasSleccionada, 0).toString();
+        documento = tabla.getValueAt(filasSleccionada, 1).toString();
+        Ntelefono = tabla.getValueAt(filasSleccionada, 2).toString();
+        Ddireccion = tabla.getValueAt(filasSleccionada, 3).toString();
 
-                if (!nameDos.equals("") && validacionValor == true) {
-
-                    int filasSleccionada = jTable_usuariosTres.getSelectedRow();
-                    String val;
-                    String datos[] = new String[5];
-                    DecimalFormat formatea = new DecimalFormat("###,###.##");
-                    int valor = Integer.parseInt(name);
-                    int valorDos = Integer.parseInt(nameDos);
-                    String nameTres = String.valueOf(formatea.format(valorDos));
-                    //String cantidadTabla;
-                    //int cantidadTotal;
-                    //int totalActualizado;
-
-                    valorTotal = valor * valorDos;
-
-                    val = String.valueOf(formatea.format(valorTotal));
-
-                    datos[0] = jTable_usuariosTres.getValueAt(filasSleccionada, 0).toString();
-                    datos[1] = jTable_usuariosTres.getValueAt(filasSleccionada, 1).toString();
-                    datos[2] = name;
-                    datos[3] = nameTres;
-                    datos[4] = val;
-                    //cantidadTabla = jTable_usuariosTres.getValueAt(filasSleccionada, 2).toString();
-                    //cantidadTotal = Integer.parseInt(cantidadTabla);
-
-                    // aumenta o disminuye  la cantidad en el stock
-                    //totalActualizado = cantidadTotal - valor;
-                    Facturacion.modelDos.addRow((datos));
-
-                    /**
-                     * try { Connection cn = conexion.conectar();
-                     * PreparedStatement pst = cn.prepareStatement("UPDATE
-                     * inventario SET Unidades = '" + totalActualizado + "'
-                     * WHERE Referencia = '"jTable_usuariosTres.getValueAt(filasSleccionada,0).toString()"' ");
-                     *
-                     * pst.executeUpdate();
-                     *
-                     * } catch (Exception e) {
-                }
-                     */
-                } else {
-                    JOptionPane.showMessageDialog(null, "NO pueden haber campos vacios, ni  caracteres alfabeticos");
-                }
-            
-
-        }else {
-            JOptionPane.showMessageDialog(null, "NO pueden haber campos vacios, ni  caracteres alfabeticos");
-        }}catch (Exception e) {
-                System.out.println("acción cancelada");
-               return;
-            }
     }
 
     /*public void buscarPrductos(String buscar) {
@@ -171,6 +128,15 @@ public class tablaProductos extends javax.swing.JFrame {
 
     }*/
 
+    public void datos() {
+        obtenerDatos(jTable_Clientes);
+        txtDocumento1.setText(documento);
+        txtDireccion.setText(Ddireccion);
+        txtNombreCliente.setText(NnombreCliente);
+        txtTelefono.setText(Ntelefono);
+        
+    }
+
     @Override
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("iconos/iconopequeño.png"));
@@ -182,12 +148,11 @@ public class tablaProductos extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable_usuariosTres = new javax.swing.JTable();
+        jTable_Clientes = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtBuscar = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnInsert = new javax.swing.JButton();
 
         setIconImage(getIconImage());
         setIconImages(getIconImages());
@@ -196,9 +161,9 @@ public class tablaProductos extends javax.swing.JFrame {
 
         jScrollPane2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jTable_usuariosTres = new JTable(){
+        jTable_Clientes = new JTable(){
             public boolean isCellEditable(int row, int colum){
-                for(int i = 0; i< jTable_usuariosTres.getRowCount(); i++){
+                for(int i = 0; i< jTable_Clientes.getRowCount(); i++){
 
                     if (row == i){
                         return true;
@@ -207,7 +172,7 @@ public class tablaProductos extends javax.swing.JFrame {
                 return false;
             }
         };
-        jTable_usuariosTres.setModel(new javax.swing.table.DefaultTableModel(
+        jTable_Clientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -218,15 +183,23 @@ public class tablaProductos extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jTable_usuariosTres.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jTable_usuariosTres.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTable_Clientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jTable_Clientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable_usuariosTresMouseClicked(evt);
+                jTable_ClientesMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTable_ClientesMousePressed(evt);
             }
         });
-        jScrollPane2.setViewportView(jTable_usuariosTres);
+        jTable_Clientes.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTable_ClientesKeyPressed(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jTable_Clientes);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 63, 380, 253));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 63, 620, 253));
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
@@ -244,54 +217,47 @@ public class tablaProductos extends javax.swing.JFrame {
         });
         jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 145, -1));
 
-        jButton1.setBackground(new java.awt.Color(0, 51, 102));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Insertar");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnInsert.setBackground(new java.awt.Color(0, 51, 102));
+        btnInsert.setForeground(new java.awt.Color(255, 255, 255));
+        btnInsert.setText("Insertar");
+        btnInsert.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnInsert.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnInsertActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, 120, -1));
+        jPanel1.add(btnInsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 340, 230, -1));
 
-        jButton2.setBackground(new java.awt.Color(0, 51, 102));
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Volver");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, -1, -1));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 390));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 390));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertActionPerformed
 
-        llenarTablaDos();
+        datos();
         dispose();
 
-    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jTable_usuariosTresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_usuariosTresMouseClicked
-            if (evt.getClickCount() == 1){
-                llenarTablaDos();
-                JOptionPane.showMessageDialog(null, "nada");
-            }
-    }//GEN-LAST:event_jTable_usuariosTresMouseClicked
+    }//GEN-LAST:event_btnInsertActionPerformed
+
+    private void jTable_ClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_ClientesMouseClicked
+
+    }//GEN-LAST:event_jTable_ClientesMouseClicked
 
     private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
-  //      buscarPrductos(txtBuscar.getText());
+        //      buscarPrductos(txtBuscar.getText());
     }//GEN-LAST:event_txtBuscarKeyReleased
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void jTable_ClientesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_ClientesMousePressed
+
+
+    }//GEN-LAST:event_jTable_ClientesMousePressed
+
+    private void jTable_ClientesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable_ClientesKeyPressed
+
+
+    }//GEN-LAST:event_jTable_ClientesKeyPressed
 
     /**
      * @param args the command line arguments
@@ -311,39 +277,40 @@ public class tablaProductos extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(tablaProductos.class
+            java.util.logging.Logger.getLogger(tablaClientesUno.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(tablaProductos.class
+            java.util.logging.Logger.getLogger(tablaClientesUno.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(tablaProductos.class
+            java.util.logging.Logger.getLogger(tablaClientesUno.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(tablaProductos.class
+            java.util.logging.Logger.getLogger(tablaClientesUno.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new tablaProductos().setVisible(true);
+                new tablaClientesUno().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnInsert;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable_usuariosTres;
+    private javax.swing.JTable jTable_Clientes;
     private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
 }

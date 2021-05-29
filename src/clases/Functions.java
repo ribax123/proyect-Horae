@@ -139,58 +139,63 @@ public class Functions extends file implements Interface_Functions {
     /*  @Override
     public void numeroDLetras() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }*/ 
-
-    
+    }*/
     public void pdfFactura(String parametro) {
-         Document documento = new Document();
+        Document documento = new Document();
+        Datos datos = new Datos();
 
         try {
             String ruta = System.getProperty("user.home");
-            PdfWriter.getInstance(documento, new FileOutputStream(ruta + "/Desktop/factura.pdf"));
-            
-             com.itextpdf.text.Image header = com.itextpdf.text.Image.getInstance("src/iconos/banner.png");
-            header.scaleToFit(420, 900);
+            PdfWriter.getInstance(documento, new FileOutputStream(ruta + "/Desktop/factura" + parametro + ".pdf"));
+
+            com.itextpdf.text.Image header = com.itextpdf.text.Image.getInstance("src/iconos/banner.png");
+            header.scaleToFit(550, 1300);
             header.setAlignment(Chunk.ALIGN_CENTER);
-            
+
             Paragraph title = new Paragraph();
             Paragraph nombre = new Paragraph();
             Paragraph numDocumen = new Paragraph();
-            Paragraph vendedor = new Paragraph();
+            Paragraph direccion = new Paragraph();
             Paragraph fPago = new Paragraph();
-            
+            Paragraph fechaV = new Paragraph();
+            Paragraph ciudad = new Paragraph();
+
             title.setAlignment(Paragraph.ALIGN_CENTER);
+            title.setFont(FontFactory.getFont("Arial", 16, Font.BOLD, BaseColor.DARK_GRAY));
             title.add("Factura N° " + Facturacion.codigoFactura + "\n\n");
-            title.setFont(FontFactory.getFont("Arial", 22, Font.BOLD,BaseColor.DARK_GRAY));
-            
+
             nombre.setAlignment(Paragraph.ALIGN_LEFT);
-            nombre.add("Nombre del cliente: " + Facturacion.nombreCliente + "\n\n");
-            nombre.setFont(FontFactory.getFont("Arial", 16, Font.PLAIN,BaseColor.BLACK));
-            
+            nombre.setFont(FontFactory.getFont("Arial", 9, Font.PLAIN, BaseColor.BLACK));
+            nombre.add("Nombre del cliente: " + Facturacion.nombreCliente + "\n");
+
             numDocumen.setAlignment(Paragraph.ALIGN_LEFT);
-            numDocumen.add("Documento: " + Facturacion.cedula + "\n\n");
-            numDocumen.setFont(FontFactory.getFont("Arial", 16, Font.PLAIN,BaseColor.BLACK));
-            
-            vendedor.setAlignment(Paragraph.ALIGN_LEFT);
-            vendedor.add("Vendedor: " + Facturacion.cedula + "\n\n");
-            vendedor.setFont(FontFactory.getFont("Arial", 16, Font.PLAIN,BaseColor.BLACK));
-            
-            fPago.setAlignment(Paragraph.ALIGN_LEFT);
-            fPago.add("Forma de pago: " + Facturacion.formaPa + "\n\n");
-            fPago.setFont(FontFactory.getFont("Arial", 16, Font.PLAIN,BaseColor.BLACK));
-            
-            
-            
-            
-            
-            
+            numDocumen.setFont(FontFactory.getFont("Arial", 9, Font.PLAIN, BaseColor.BLACK));
+            numDocumen.add("Documento: " + Facturacion.cedula + "\n");
+
+            direccion.setAlignment(Paragraph.ALIGN_LEFT);
+            direccion.setFont(FontFactory.getFont("Arial", 9, Font.PLAIN, BaseColor.BLACK));
+            direccion.add("Dirección : " + Facturacion.direccion + "\n");
+
+            ciudad.setAlignment(Paragraph.ALIGN_LEFT);
+            ciudad.setFont(FontFactory.getFont("Arial", 9, Font.PLAIN, BaseColor.BLACK));
+            ciudad.add("Ciudad : " + Facturacion.ciudad + "\n\n");
+   
+            fechaV.setAlignment(Paragraph.ALIGN_LEFT);
+            fechaV.setFont(FontFactory.getFont("Arial", 9, Font.PLAIN, BaseColor.BLACK));
+            fechaV.add("\n" + "Paguese antes del " + datos.fechaVencimiento() + "\n\n");
+
+            fPago.setAlignment(Paragraph.ALIGN_CENTER);
+            fPago.setFont(FontFactory.getFont("Arial", 8, Font.PLAIN, BaseColor.BLACK));
+            fPago.add( "Puede realizar sus pagos, en las oficinas de la empresa, carrera 27 Nº10-13 barrio el paraiso" + "\n"
+                    + "recuerde pagar antes de la fecha de vencimiento para" + "\n" + "evitar suspencion del servicio y acarrear costos reconexción.");
+
             documento.open();
             documento.add(header);
             documento.add(title);
             documento.add(nombre);
             documento.add(numDocumen);
-            documento.add(vendedor);
-            documento.add(fPago);
+            documento.add(direccion);
+            documento.add(ciudad);
 
             PdfPTable tabla = new PdfPTable(5);
             tabla.addCell("Referencia");
@@ -198,36 +203,38 @@ public class Functions extends file implements Interface_Functions {
             tabla.addCell("Unidades");
             tabla.addCell("Valor Uni");
             tabla.addCell("Total");
-           
 
             try {
                 Connection cn = conexion.conectar();
-                PreparedStatement ps = cn.prepareStatement("select Referencia, Descripcion, Unidades, Valor_Unitario, Total from tabla_facturas WHERE Num_Factura = '" + parametro+ "'");
-                
+                PreparedStatement ps = cn.prepareStatement("select Referencia, Descripcion, Unidades, Valor_Unitario, Total from tabla_facturas WHERE Num_Factura = '" + parametro + "'");
+
                 ResultSet rs = ps.executeQuery();
-                
+
                 if (rs.next()) {
-                    
-                     do {                        
+
+                    do {
                         tabla.addCell(rs.getString(1));
                         tabla.addCell(rs.getString(2));
                         tabla.addCell(rs.getString(3));
                         tabla.addCell(rs.getString(4));
                         tabla.addCell(rs.getString(5));
-                        
-                        
+
                     } while (rs.next());
-                     documento.add(tabla);
+                    documento.add(tabla);
                     
+
                 }
 
-            } catch (Exception  e) {
+            } catch (Exception e) {
             }
+            documento.add(fechaV);
+            documento.add(fPago);
             documento.close();
             JOptionPane.showMessageDialog(null, "Documento creado.");
         } catch (Exception e) {
-        }}
-        
+        }
+    }
+
     public void exportarExcel(JTable t) throws IOException, java.io.IOException {
         JFileChooser chooser = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos de excel", "xls");
@@ -436,6 +443,5 @@ public class Functions extends file implements Interface_Functions {
         }
         return mesString;
     }
-     
 
 }

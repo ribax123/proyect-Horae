@@ -28,7 +28,7 @@ public class Facturacion extends javax.swing.JFrame {
 
     public static int total = 0;
     public static String cedula = "";
-    public static String formaPa;
+    public static String formaPa = "nn";
     public static String codigoFactura;
     public static String datosTotales;
     public static String datosUno;
@@ -46,7 +46,8 @@ public class Facturacion extends javax.swing.JFrame {
     public static String direccion;
     public static String telefono;
     public static String Observaciones;
-    public static String garantia;
+    public static String ciudad;
+    public static String garantia = "Ninguna";
 
     public Facturacion() {
         initComponents();
@@ -54,7 +55,7 @@ public class Facturacion extends javax.swing.JFrame {
         //txtVendedor.disable();
         txtTotal.disable();
         btnGuardarImprimir.setEnabled(false);
-        btn_Facturas.setEnabled(false);
+        //btn_Facturas.setEnabled(false);
         setResizable(false);
         setLocationRelativeTo(this);
         txtNumeroFactura.setText(codigoIn());
@@ -72,7 +73,7 @@ public class Facturacion extends javax.swing.JFrame {
 
         jTabla_Dos.setModel(modelDos);
 
-        try {
+        /* try {
             Connection cn = conexion.conectar();
             PreparedStatement pst = cn.prepareStatement(
                     //nstrucciones de consulta a la base de datos
@@ -88,8 +89,7 @@ public class Facturacion extends javax.swing.JFrame {
         } catch (SQLException e) {
             System.err.println("Error al cargar el usuario" + e);
             JOptionPane.showMessageDialog(null, "¡¡Error al cargar!!, contacte al administrador.");
-        }
-
+        }*/
     }
 
     public void Sumar() {
@@ -152,19 +152,19 @@ public class Facturacion extends javax.swing.JFrame {
     public void datosF() {
         String convertir;
         codigoFactura = txtNumeroFactura.getText().trim();
-        vendedor = txtVendedor.getText().trim();
+        //vendedor = txtVendedor.getText().trim();
         producto = jTabla_Dos.getColumnName(0);
         fecha = txtFecha.getText();
         nombreCliente = txtNombreCliente.getText().trim();
         cedula = txtDocumento1.getText().trim();
-        formaPa = CBx_formaDePago.getSelectedItem().toString();
+        ciudad = CBx_ciudad.getSelectedItem().toString();
         convertir = txtTotal.getText();
         total = Integer.parseInt(convertir.replace(".", ""));
         telefono = txtTelefono.getText().trim();
         direccion = txtDireccion.getText().trim();
         comentarios = this.txAreaComentarios.getText();
-        garantia = txtGarantia.getText();
 
+        //  garantia = txtGarantia.getText();
     }
 
     public void guardarTabla() {
@@ -196,6 +196,7 @@ public class Facturacion extends javax.swing.JFrame {
             System.out.println("Error SQL " + ex);
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("tabla vacia" + e);
+
         }
 
     }
@@ -263,7 +264,7 @@ public class Facturacion extends javax.swing.JFrame {
     public void imprimirTicket() {
         datosF();
 
-        Ticket ticket = new Ticket("MOVILTECH OLINE", "CC BAHIA", "128B", txtNumeroFactura.getText(), vendedor, fecha, todoo, txtTotal.getText(), "", txtTotal.getText(), txtGarantia.getText());
+        Ticket ticket = new Ticket("MOVILTECH OLINE", "CC BAHIA", "128B", txtNumeroFactura.getText(), vendedor, fecha, todoo, txtTotal.getText(), "", txtTotal.getText());
         ticket.print();
         System.out.println(todoo);
         todoo = "";
@@ -287,7 +288,7 @@ public class Facturacion extends javax.swing.JFrame {
         limpiarTablaDos();
         txtNombreCliente.setText("");
         txtDocumento1.setText("");
-        txtGarantia.setText("");
+//        txtGarantia.setText("");
         txtDireccion.setText("");
         txAreaComentarios.setText("");
         txtNumeroFactura.setText(codigoIn());
@@ -298,19 +299,19 @@ public class Facturacion extends javax.swing.JFrame {
     public void disableDatos() {
         txtNombreCliente.disable();
         txtDocumento1.disable();
-        txtGarantia.disable();
+        //  txtGarantia.disable();
         txtDireccion.disable();
         txAreaComentarios.disable();
-        CBx_formaDePago.disable();
+        CBx_ciudad.disable();
     }
 
     public void Aenable() {
         txtNombreCliente.enable();
         txtDocumento1.enable();
-        txtGarantia.enable();
+        //  txtGarantia.enable();
         txtDireccion.enable();
         txAreaComentarios.enable();
-        CBx_formaDePago.enable();
+        CBx_ciudad.enable();
     }
 
     @SuppressWarnings("unchecked")
@@ -326,16 +327,12 @@ public class Facturacion extends javax.swing.JFrame {
         txtNumeroFactura = new javax.swing.JLabel();
         jpanel_datos = new javax.swing.JPanel();
         txtNombreCliente = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        CBx_formaDePago = new javax.swing.JComboBox<>();
+        CBx_ciudad = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         txtDocumento1 = new javax.swing.JTextField();
-        txtGarantia = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtDireccion = new javax.swing.JTextField();
-        txtVendedor = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         txtTelefono = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
@@ -360,7 +357,6 @@ public class Facturacion extends javax.swing.JFrame {
         bton_limpiarCampos = new javax.swing.JButton();
         btn_Facturas = new javax.swing.JButton();
         bton_limpiarTabla = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
@@ -393,7 +389,7 @@ public class Facturacion extends javax.swing.JFrame {
         jTabla_Dos.setSelectionBackground(new java.awt.Color(153, 153, 153));
         jScrollPane1.setViewportView(jTabla_Dos);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 630, 100));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 630, 110));
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
         jLabel2.setText("Nombre del cliente:");
@@ -422,17 +418,14 @@ public class Facturacion extends javax.swing.JFrame {
         });
         jpanel_datos.add(txtNombreCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 310, 26));
 
-        jLabel4.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
-        jLabel4.setText("Garantia:");
-        jpanel_datos.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 103, -1, -1));
-
-        CBx_formaDePago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Contado", "Credito" }));
-        CBx_formaDePago.addActionListener(new java.awt.event.ActionListener() {
+        CBx_ciudad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Uribia", "Maicao", "Paraguachon" }));
+        CBx_ciudad.setSelectedIndex(2);
+        CBx_ciudad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CBx_formaDePagoActionPerformed(evt);
+                CBx_ciudadActionPerformed(evt);
             }
         });
-        jpanel_datos.add(CBx_formaDePago, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 67, 100, 29));
+        jpanel_datos.add(CBx_ciudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, 110, 29));
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
         jLabel7.setText("Documento N°:");
@@ -446,14 +439,6 @@ public class Facturacion extends javax.swing.JFrame {
         });
         jpanel_datos.add(txtDocumento1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, 310, 26));
 
-        txtGarantia.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
-        txtGarantia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtGarantiaActionPerformed(evt);
-            }
-        });
-        jpanel_datos.add(txtGarantia, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 100, 140, 26));
-
         jLabel3.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
         jLabel3.setText("Teléfono:");
         jpanel_datos.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
@@ -464,27 +449,20 @@ public class Facturacion extends javax.swing.JFrame {
                 txtDireccionActionPerformed(evt);
             }
         });
-        jpanel_datos.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, 220, 26));
-
-        txtVendedor.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
-        txtVendedor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtVendedorActionPerformed(evt);
+        txtDireccion.addVetoableChangeListener(new java.beans.VetoableChangeListener() {
+            public void vetoableChange(java.beans.PropertyChangeEvent evt)throws java.beans.PropertyVetoException {
+                txtDireccionVetoableChange(evt);
             }
         });
-        jpanel_datos.add(txtVendedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 310, 26));
+        jpanel_datos.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, 220, 26));
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
         jLabel6.setText("Dirección:");
         jpanel_datos.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
-        jLabel9.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
-        jLabel9.setText("Vendedor:");
-        jpanel_datos.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
-
         jLabel10.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
-        jLabel10.setText("Forma de pago:");
-        jpanel_datos.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 73, -1, -1));
+        jLabel10.setText("Ciudad :");
+        jpanel_datos.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, -1, -1));
 
         txtTelefono.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
         txtTelefono.addActionListener(new java.awt.event.ActionListener() {
@@ -496,17 +474,17 @@ public class Facturacion extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setForeground(new java.awt.Color(0, 51, 153));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/add-folder.png"))); // NOI18N
-        jButton1.setToolTipText("Añadir al inventario");
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/cliente.png"))); // NOI18N
+        jButton1.setToolTipText("Clientes");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jpanel_datos.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 7, 60, 55));
+        jpanel_datos.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, 80, 75));
 
-        jPanel1.add(jpanel_datos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 630, 160));
+        jPanel1.add(jpanel_datos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 630, 150));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 153)));
@@ -613,9 +591,11 @@ public class Facturacion extends javax.swing.JFrame {
         });
         jPanel4.add(btnGuardarImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 110, 110));
 
-        btnProducto.setBackground(new java.awt.Color(0, 51, 204));
-        btnProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/productos.png"))); // NOI18N
-        btnProducto.setToolTipText("Tabla de productos");
+        btnProducto.setBackground(new java.awt.Color(255, 255, 255));
+        btnProducto.setForeground(new java.awt.Color(255, 255, 255));
+        btnProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/121-paste.png"))); // NOI18N
+        btnProducto.setToolTipText("Tabla de servicios");
+        btnProducto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 204)));
         btnProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnProducto.setName("Agregar productos"); // NOI18N
         btnProducto.addActionListener(new java.awt.event.ActionListener() {
@@ -681,22 +661,10 @@ public class Facturacion extends javax.swing.JFrame {
 
         jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 430, 250, 90));
 
-        jButton5.setText("jButton5");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 360, -1, -1));
-
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 530));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtGarantiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGarantiaActionPerformed
-
-    }//GEN-LAST:event_txtGarantiaActionPerformed
 
     private void txtTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalActionPerformed
         // TODO add your handling code here:
@@ -718,34 +686,33 @@ public class Facturacion extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        Datos validar = new Datos();
+        //  Datos validar = new Datos();
         Functions fs = new Functions();
-        boolean valN = validar.validacion(txtDocumento1.getText());
-        boolean valL = validar.validacionNombre(txtNombreCliente.getText());
-        boolean valT = validar.validacion(txtTelefono.getText());
-        if (txtGarantia.getText().equals("") || txtDocumento1.getText().equals("") || txtNombreCliente.getText().equals("") || txtDireccion.equals("")) {
+        //  boolean valN = validar.validacion(txtDocumento1.getText());
+        //  boolean valL = validar.validacionNombre(txtNombreCliente.getText());
+        //  boolean valT = validar.validacion(txtTelefono.getText());
+        if (txtDocumento1.getText().equals("") || txtNombreCliente.getText().equals("") || txtDireccion.equals("")) {
             JOptionPane.showMessageDialog(null, "Debes llenar todos los campos");
 
-        } else if (txtTotal.getText().equals("0")) {
-            JOptionPane.showMessageDialog(null, "El total no pude estar vacio");
-
-        } else if (valL == false) {
-            JOptionPane.showMessageDialog(null, "El campo: Nombre del cliente,  Solo admite letras");
-
-        } else if (valN == false) {
-            JOptionPane.showMessageDialog(null, "El campo: Documento,  Solo admite numeros");
-
-        } else if (valT == false) {
-            JOptionPane.showMessageDialog(null, "El campo: Telefono,  Solo admite numeros");
-        } else {
-            datosF();  
+        }//else if (txtTotal.getText().equals("0")) {
+        // JOptionPane.showMessageDialog(null, "El total no pude estar vacio");
+        //} 
+        //else if (valL == false) {
+        // JOptionPane.showMessageDialog(null, "El campo: Nombre del cliente,  Solo admite letras");
+        // } else if (valN == false) {
+        //    JOptionPane.showMessageDialog(null, "El campo: Documento,  Solo admite numeros");
+        //} else if (valT == false) {
+        //  JOptionPane.showMessageDialog(null, "El campo: Telefono,  Solo admite numeros");
+        // } 
+        else {
+            datosF();
             guardarDatos();
             disableDatos();
             guardarTabla();
             btnProducto.setEnabled(false);
             btnGuardarImprimir.setEnabled(true);
             bton_limpiarTabla.setEnabled(false);
-            btnGuardar.setEnabled(false);                   
+            btnGuardar.setEnabled(false);
             fs.pdfFactura(codigoFactura);
             System.out.println(codigoFactura);
 
@@ -764,7 +731,7 @@ public class Facturacion extends javax.swing.JFrame {
         Datos validar = new Datos();
         boolean valN = validar.validacion(txtDocumento1.getText());
         boolean valL = validar.validacionNombre(txtNombreCliente.getText());
-        if (txtGarantia.getText().equals("") || txtDocumento1.getText().equals("") || txtTotal.getText().equals("0") || txtNombreCliente.getText().equals("")) {
+        if (txtDocumento1.getText().equals("") || txtTotal.getText().equals("0") || txtNombreCliente.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Debes llenar todos los campos");
 
         } else if (txtTotal.getText().equals("")) {
@@ -801,10 +768,6 @@ public class Facturacion extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDireccionActionPerformed
 
-    private void txtVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVendedorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtVendedorActionPerformed
-
     private void txtTotalKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTotalKeyReleased
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTotalKeyReleased
@@ -822,9 +785,9 @@ public class Facturacion extends javax.swing.JFrame {
         facturast.setVisible(true);
     }//GEN-LAST:event_btn_FacturasActionPerformed
 
-    private void CBx_formaDePagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBx_formaDePagoActionPerformed
+    private void CBx_ciudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBx_ciudadActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CBx_formaDePagoActionPerformed
+    }//GEN-LAST:event_CBx_ciudadActionPerformed
 
     private void bton_limpiarTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bton_limpiarTablaActionPerformed
         limpiarTablaDos();
@@ -836,14 +799,15 @@ public class Facturacion extends javax.swing.JFrame {
     }//GEN-LAST:event_txtTelefonoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Auxiliar registrar = new Auxiliar();
-        registrar.setVisible(true);
+        tablaClientesUno clientesParagu = new tablaClientesUno();
+        clientesParagu.setVisible(true);
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-
-
-    }//GEN-LAST:event_jButton5ActionPerformed
+    private void txtDireccionVetoableChange(java.beans.PropertyChangeEvent evt)throws java.beans.PropertyVetoException {//GEN-FIRST:event_txtDireccionVetoableChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDireccionVetoableChange
 
     public static void main(String args[]) {
 
@@ -857,7 +821,7 @@ public class Facturacion extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> CBx_formaDePago;
+    private javax.swing.JComboBox<String> CBx_ciudad;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnGuardarImprimir;
     private javax.swing.JButton btnProducto;
@@ -868,17 +832,14 @@ public class Facturacion extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -891,16 +852,14 @@ public class Facturacion extends javax.swing.JFrame {
     private javax.swing.JPanel jpanel_datos;
     private javax.swing.JPanel panel_Codigo;
     private javax.swing.JTextArea txAreaComentarios;
-    private javax.swing.JTextField txtDireccion;
-    private javax.swing.JTextField txtDocumento1;
+    public static javax.swing.JTextField txtDireccion;
+    public static javax.swing.JTextField txtDocumento1;
     private javax.swing.JLabel txtFecha;
     private javax.swing.JLabel txtFecha2;
-    private javax.swing.JTextField txtGarantia;
-    private javax.swing.JTextField txtNombreCliente;
+    public static javax.swing.JTextField txtNombreCliente;
     private javax.swing.JLabel txtNumeroFactura;
-    private javax.swing.JTextField txtTelefono;
+    public static javax.swing.JTextField txtTelefono;
     private javax.swing.JTextField txtTotal;
-    private javax.swing.JTextField txtVendedor;
     // End of variables declaration//GEN-END:variables
 
 }
