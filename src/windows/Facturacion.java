@@ -418,7 +418,7 @@ public class Facturacion extends javax.swing.JFrame {
         });
         jpanel_datos.add(txtNombreCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 310, 26));
 
-        CBx_ciudad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Uribia", "Maicao", "Paraguachon" }));
+        CBx_ciudad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Uribia", "Maicao", "Paraguachon", "Carraipia" }));
         CBx_ciudad.setSelectedIndex(2);
         CBx_ciudad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -462,7 +462,7 @@ public class Facturacion extends javax.swing.JFrame {
 
         jLabel10.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
         jLabel10.setText("Ciudad :");
-        jpanel_datos.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, -1, -1));
+        jpanel_datos.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, -1, -1));
 
         txtTelefono.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
         txtTelefono.addActionListener(new java.awt.event.ActionListener() {
@@ -595,7 +595,7 @@ public class Facturacion extends javax.swing.JFrame {
         btnProducto.setForeground(new java.awt.Color(255, 255, 255));
         btnProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/121-paste.png"))); // NOI18N
         btnProducto.setToolTipText("Tabla de servicios");
-        btnProducto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 204)));
+        btnProducto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         btnProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnProducto.setName("Agregar productos"); // NOI18N
         btnProducto.addActionListener(new java.awt.event.ActionListener() {
@@ -713,8 +713,8 @@ public class Facturacion extends javax.swing.JFrame {
             btnGuardarImprimir.setEnabled(true);
             bton_limpiarTabla.setEnabled(false);
             btnGuardar.setEnabled(false);
-            fs.pdfFactura(codigoFactura);
-            System.out.println(codigoFactura);
+            fs.pdfFactura(nombreCliente);
+            System.out.println(nombreCliente);
 
         }
 
@@ -785,10 +785,6 @@ public class Facturacion extends javax.swing.JFrame {
         facturast.setVisible(true);
     }//GEN-LAST:event_btn_FacturasActionPerformed
 
-    private void CBx_ciudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBx_ciudadActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CBx_ciudadActionPerformed
-
     private void bton_limpiarTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bton_limpiarTablaActionPerformed
         limpiarTablaDos();
 
@@ -808,6 +804,10 @@ public class Facturacion extends javax.swing.JFrame {
     private void txtDireccionVetoableChange(java.beans.PropertyChangeEvent evt)throws java.beans.PropertyVetoException {//GEN-FIRST:event_txtDireccionVetoableChange
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDireccionVetoableChange
+
+    private void CBx_ciudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBx_ciudadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CBx_ciudadActionPerformed
 
     public static void main(String args[]) {
 

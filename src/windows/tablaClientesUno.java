@@ -61,9 +61,9 @@ public class tablaClientesUno extends javax.swing.JFrame {
              de las posiciones e insertar cada uno de los datos en las 
             posiciones de las filas*/
             while (rs.next()) {
-                Object[] fila = new Object[4];
+                Object[] fila = new Object[6];
 
-                for (int i = 0; i < 4; i++) {
+                for (int i = 0; i < 6; i++) {
                     fila[i] = rs.getObject(i + 1);
                 }
                 model.addRow(fila);
@@ -150,9 +150,9 @@ public class tablaClientesUno extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable_Clientes = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        txtBuscar = new javax.swing.JTextField();
         btnInsert = new javax.swing.JButton();
+        btn_Regresar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setIconImage(getIconImage());
         setIconImages(getIconImages());
@@ -205,20 +205,8 @@ public class tablaClientesUno extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Buscar :");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, 30));
-
-        txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtBuscarKeyReleased(evt);
-            }
-        });
-        jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 145, -1));
-
-        btnInsert.setBackground(new java.awt.Color(0, 51, 102));
-        btnInsert.setForeground(new java.awt.Color(255, 255, 255));
+        btnInsert.setBackground(new java.awt.Color(255, 255, 255));
+        btnInsert.setForeground(new java.awt.Color(102, 102, 102));
         btnInsert.setText("Insertar");
         btnInsert.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnInsert.addActionListener(new java.awt.event.ActionListener() {
@@ -226,7 +214,23 @@ public class tablaClientesUno extends javax.swing.JFrame {
                 btnInsertActionPerformed(evt);
             }
         });
-        jPanel1.add(btnInsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 340, 230, -1));
+        jPanel1.add(btnInsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, 390, -1));
+
+        btn_Regresar.setBackground(new java.awt.Color(255, 255, 255));
+        btn_Regresar.setForeground(new java.awt.Color(255, 255, 255));
+        btn_Regresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/atras.png"))); // NOI18N
+        btn_Regresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_Regresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_RegresarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_Regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 40, 40));
+
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Clientes");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 390));
 
@@ -245,10 +249,6 @@ public class tablaClientesUno extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jTable_ClientesMouseClicked
 
-    private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
-        //      buscarPrductos(txtBuscar.getText());
-    }//GEN-LAST:event_txtBuscarKeyReleased
-
     private void jTable_ClientesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_ClientesMousePressed
 
 
@@ -258,6 +258,10 @@ public class tablaClientesUno extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_jTable_ClientesKeyPressed
+
+    private void btn_RegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RegresarActionPerformed
+        dispose();
+    }//GEN-LAST:event_btn_RegresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -307,10 +311,10 @@ public class tablaClientesUno extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnInsert;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btn_Regresar;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable_Clientes;
-    private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
 }

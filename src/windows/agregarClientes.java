@@ -41,14 +41,12 @@ public class agregarClientes extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JSeparator();
         txt_nombre = new javax.swing.JTextField();
         txt_telefono = new javax.swing.JTextField();
-        txt_documento = new javax.swing.JPasswordField();
         txt_dieccion = new javax.swing.JTextField();
         cbx_servicio = new javax.swing.JComboBox<>();
         cbx_megas = new javax.swing.JComboBox<>();
         Btn_add = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jLainstru = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLainstru1 = new javax.swing.JLabel();
         version = new javax.swing.JLabel();
@@ -59,6 +57,10 @@ public class agregarClientes extends javax.swing.JFrame {
         jLabel_Nombre6 = new javax.swing.JLabel();
         jLabel_Nombre4 = new javax.swing.JLabel();
         jLabel_Nombre = new javax.swing.JLabel();
+        txt_documento = new javax.swing.JTextField();
+        txt_Ubicacion = new javax.swing.JTextField();
+        jLabel_Nombre7 = new javax.swing.JLabel();
+        jSeparator5 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
@@ -75,7 +77,7 @@ public class agregarClientes extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 260, 170, 10));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 170, 10));
-        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 170, 10));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 170, 10));
 
         txt_nombre.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
         txt_nombre.setForeground(new java.awt.Color(102, 102, 102));
@@ -87,20 +89,10 @@ public class agregarClientes extends javax.swing.JFrame {
         txt_telefono.setBorder(null);
         jPanel1.add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 170, 27));
 
-        txt_documento.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
-        txt_documento.setForeground(new java.awt.Color(102, 102, 102));
-        txt_documento.setBorder(null);
-        txt_documento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_documentoActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txt_documento, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 170, 27));
-
         txt_dieccion.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
         txt_dieccion.setForeground(new java.awt.Color(102, 102, 102));
         txt_dieccion.setBorder(null);
-        jPanel1.add(txt_dieccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 170, 27));
+        jPanel1.add(txt_dieccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, 170, 27));
 
         cbx_servicio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ANTENA", "GPON", "CABLEADO" }));
         cbx_servicio.addActionListener(new java.awt.event.ActionListener() {
@@ -108,16 +100,15 @@ public class agregarClientes extends javax.swing.JFrame {
                 cbx_servicioActionPerformed(evt);
             }
         });
-        jPanel1.add(cbx_servicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, 170, 27));
+        jPanel1.add(cbx_servicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, 170, 27));
 
-        cbx_megas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "4", "6", "8", "10", "15", "20", "50" }));
-        cbx_megas.setSelectedIndex(3);
+        cbx_megas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "4 Mbps", "6 Mbps", "8 Mbps", "10 Mbps", "15 Mbps", "20 Mbps", "50 Mbps" }));
         cbx_megas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbx_megasActionPerformed(evt);
             }
         });
-        jPanel1.add(cbx_megas, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 380, 170, 27));
+        jPanel1.add(cbx_megas, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 420, 170, 27));
 
         Btn_add.setBackground(new java.awt.Color(0, 51, 102));
         Btn_add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/add.png"))); // NOI18N
@@ -153,11 +144,6 @@ public class agregarClientes extends javax.swing.JFrame {
         });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 0, 50, 40));
 
-        jLainstru.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLainstru.setForeground(new java.awt.Color(255, 255, 255));
-        jLainstru.setText("numeros y letras.");
-        jPanel1.add(jLainstru, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, -1, -1));
-
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Creado por ribax@gimail.com ®");
@@ -176,14 +162,14 @@ public class agregarClientes extends javax.swing.JFrame {
         jLabel_Nombre3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel_Nombre3.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel_Nombre3.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel_Nombre3.setText("Mbs");
-        jPanel1.add(jLabel_Nombre3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, -1, -1));
+        jLabel_Nombre3.setText("Mbps");
+        jPanel1.add(jLabel_Nombre3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 380, -1, -1));
 
         jLabel_Nombre2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel_Nombre2.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel_Nombre2.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel_Nombre2.setText("Documento :");
-        jPanel1.add(jLabel_Nombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, -1));
+        jLabel_Nombre2.setText("Ubicación :");
+        jPanel1.add(jLabel_Nombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, -1, -1));
 
         jLabel_Nombre5.setBackground(new java.awt.Color(0, 0, 0));
         jLabel_Nombre5.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
@@ -196,7 +182,7 @@ public class agregarClientes extends javax.swing.JFrame {
         jLabel_Nombre6.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel_Nombre6.setForeground(new java.awt.Color(51, 51, 51));
         jLabel_Nombre6.setText("Tipo de servicio :");
-        jPanel1.add(jLabel_Nombre6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, -1, -1));
+        jPanel1.add(jLabel_Nombre6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, -1, -1));
 
         jLabel_Nombre4.setBackground(new java.awt.Color(0, 0, 0));
         jLabel_Nombre4.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
@@ -210,6 +196,28 @@ public class agregarClientes extends javax.swing.JFrame {
         jLabel_Nombre.setText("Telefono :");
         jPanel1.add(jLabel_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, -1, -1));
 
+        txt_documento.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
+        txt_documento.setForeground(new java.awt.Color(102, 102, 102));
+        txt_documento.setBorder(null);
+        jPanel1.add(txt_documento, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 170, 27));
+
+        txt_Ubicacion.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
+        txt_Ubicacion.setForeground(new java.awt.Color(102, 102, 102));
+        txt_Ubicacion.setBorder(null);
+        txt_Ubicacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_UbicacionActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txt_Ubicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 170, 27));
+
+        jLabel_Nombre7.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel_Nombre7.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        jLabel_Nombre7.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel_Nombre7.setText("Documento :");
+        jPanel1.add(jLabel_Nombre7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, -1));
+        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 170, 10));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 490));
 
         pack();
@@ -222,7 +230,7 @@ public class agregarClientes extends javax.swing.JFrame {
     private void Btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_addActionPerformed
 
         // tipo Variables para los campos "agregar usuarios"
-        String megas_cmb, servicio;
+        String megas_cmb, servicio,ubicacion;
         String nombre, telefono, documento, direccion = "";
 
         // definir variables
@@ -230,6 +238,7 @@ public class agregarClientes extends javax.swing.JFrame {
         telefono = txt_telefono.getText().trim();
         documento = txt_documento.getText().trim();
         direccion = txt_dieccion.getText().trim();
+        ubicacion = txt_Ubicacion.getText().trim();
         megas_cmb = cbx_megas.getSelectedItem().toString();
         servicio = cbx_servicio.getSelectedItem().toString();
         Datos mensAdd = new Datos();
@@ -245,7 +254,7 @@ public class agregarClientes extends javax.swing.JFrame {
                                 Connection cn2 = conexion.conectar();
                                 // instrucciones colsultas
                                 PreparedStatement pst2 = cn2.prepareStatement(
-                                        " insert into clientesuribia values (?,?,?,?,?,?,?)");
+                                        " insert into clientesuribia values (?,?,?,?,?,?,?,?)");
 
                                 
                                 pst2.setString(1, nombre);
@@ -255,6 +264,7 @@ public class agregarClientes extends javax.swing.JFrame {
                                 pst2.setString(5, mensAdd.fechaActual());
                                 pst2.setString(6, servicio);
                                 pst2.setString(7, megas_cmb);
+                                pst2.setString(8, ubicacion);
 
                                 pst2.executeUpdate();
                                 cn2.close();
@@ -288,13 +298,13 @@ public class agregarClientes extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void txt_documentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_documentoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_documentoActionPerformed
-
     private void cbx_servicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_servicioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbx_servicioActionPerformed
+
+    private void txt_UbicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_UbicacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_UbicacionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -346,15 +356,17 @@ public class agregarClientes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_Nombre4;
     private javax.swing.JLabel jLabel_Nombre5;
     private javax.swing.JLabel jLabel_Nombre6;
-    private javax.swing.JLabel jLainstru;
+    private javax.swing.JLabel jLabel_Nombre7;
     private javax.swing.JLabel jLainstru1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JTextField txt_Ubicacion;
     private javax.swing.JTextField txt_dieccion;
-    private javax.swing.JPasswordField txt_documento;
+    private javax.swing.JTextField txt_documento;
     private javax.swing.JTextField txt_nombre;
     private javax.swing.JTextField txt_telefono;
     private javax.swing.JLabel version;

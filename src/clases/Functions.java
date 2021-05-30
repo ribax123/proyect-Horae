@@ -146,7 +146,7 @@ public class Functions extends file implements Interface_Functions {
 
         try {
             String ruta = System.getProperty("user.home");
-            PdfWriter.getInstance(documento, new FileOutputStream(ruta + "/Desktop/factura" + parametro + ".pdf"));
+            PdfWriter.getInstance(documento, new FileOutputStream(ruta + "/Desktop/documentos/Factura " + parametro + ".pdf"));
 
             com.itextpdf.text.Image header = com.itextpdf.text.Image.getInstance("src/iconos/banner.png");
             header.scaleToFit(550, 1300);
@@ -182,7 +182,7 @@ public class Functions extends file implements Interface_Functions {
    
             fechaV.setAlignment(Paragraph.ALIGN_LEFT);
             fechaV.setFont(FontFactory.getFont("Arial", 9, Font.PLAIN, BaseColor.BLACK));
-            fechaV.add("\n" + "Paguese antes del " + datos.fechaVencimiento() + "\n\n");
+            fechaV.add("\n" + "Paguese los primeros 5 dias del mes de Junio " + "\n\n");
 
             fPago.setAlignment(Paragraph.ALIGN_CENTER);
             fPago.setFont(FontFactory.getFont("Arial", 8, Font.PLAIN, BaseColor.BLACK));
