@@ -140,7 +140,7 @@ public class Functions extends file implements Interface_Functions {
     public void numeroDLetras() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }*/
-    public void pdfFactura(String parametro) {
+    public void pdfFactura(String parametro,String codigo) {
         Document documento = new Document();
         Datos datos = new Datos();
 
@@ -159,6 +159,7 @@ public class Functions extends file implements Interface_Functions {
             Paragraph fPago = new Paragraph();
             Paragraph fechaV = new Paragraph();
             Paragraph ciudad = new Paragraph();
+            Paragraph total = new Paragraph();
 
             title.setAlignment(Paragraph.ALIGN_CENTER);
             title.setFont(FontFactory.getFont("Arial", 16, Font.BOLD, BaseColor.DARK_GRAY));
@@ -182,12 +183,16 @@ public class Functions extends file implements Interface_Functions {
    
             fechaV.setAlignment(Paragraph.ALIGN_LEFT);
             fechaV.setFont(FontFactory.getFont("Arial", 9, Font.PLAIN, BaseColor.BLACK));
-            fechaV.add("\n" + "Paguese los primeros 5 dias del mes de Junio " + "\n\n");
+            fechaV.add("\n" + "Paguese los primeros 5 dias del mes de Junio. " + "\n\n");
+           
+            total.setAlignment(Paragraph.ALIGN_LEFT);
+            total.setFont(FontFactory.getFont("Arial", 9, Font.BOLD, BaseColor.BLACK));
+            total.add("\n" + "Total a pagar : $" + Facturacion.TotalString + " Pesos.");
 
             fPago.setAlignment(Paragraph.ALIGN_CENTER);
             fPago.setFont(FontFactory.getFont("Arial", 8, Font.PLAIN, BaseColor.BLACK));
             fPago.add( "Puede realizar sus pagos, en las oficinas de la empresa, carrera 27 Nº10-13 barrio el paraiso" + "\n"
-                    + "recuerde pagar antes de la fecha de vencimiento para" + "\n" + "evitar suspencion del servicio y acarrear costos reconexción.");
+                    + "recuerde pagar antes de la fecha de vencimiento para" + "\n" + "evitar suspencion del servicio y acarrear costos de reconexción.");
 
             documento.open();
             documento.add(header);
@@ -206,7 +211,7 @@ public class Functions extends file implements Interface_Functions {
 
             try {
                 Connection cn = conexion.conectar();
-                PreparedStatement ps = cn.prepareStatement("select Referencia, Descripcion, Unidades, Valor_Unitario, Total from tabla_facturas WHERE Num_Factura = '" + parametro + "'");
+                PreparedStatement ps = cn.prepareStatement("select Referencia, Descripcion, Unidades, Valor_Unitario, Total from tabla_facturas WHERE Num_Factura = '" + codigo + "'");
 
                 ResultSet rs = ps.executeQuery();
 
@@ -227,6 +232,7 @@ public class Functions extends file implements Interface_Functions {
 
             } catch (Exception e) {
             }
+            documento.add(total);
             documento.add(fechaV);
             documento.add(fPago);
             documento.close();

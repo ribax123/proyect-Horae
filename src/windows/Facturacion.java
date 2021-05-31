@@ -48,6 +48,7 @@ public class Facturacion extends javax.swing.JFrame {
     public static String Observaciones;
     public static String ciudad;
     public static String garantia = "Ninguna";
+    public static String TotalString;
 
     public Facturacion() {
         initComponents();
@@ -163,6 +164,7 @@ public class Facturacion extends javax.swing.JFrame {
         telefono = txtTelefono.getText().trim();
         direccion = txtDireccion.getText().trim();
         comentarios = this.txAreaComentarios.getText();
+        TotalString = txtTotal.getText().trim();
 
         //  garantia = txtGarantia.getText();
     }
@@ -686,12 +688,13 @@ public class Facturacion extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        //  Datos validar = new Datos();
+datosF();        
+//  Datos validar = new Datos();
         Functions fs = new Functions();
         //  boolean valN = validar.validacion(txtDocumento1.getText());
         //  boolean valL = validar.validacionNombre(txtNombreCliente.getText());
         //  boolean valT = validar.validacion(txtTelefono.getText());
-        if (txtDocumento1.getText().equals("") || txtNombreCliente.getText().equals("") || txtDireccion.equals("")) {
+        if (txtDocumento1.getText().equals("") || txtNombreCliente.getText().equals("") || txtDireccion.equals("")|| TotalString.equals("0")) {
             JOptionPane.showMessageDialog(null, "Debes llenar todos los campos");
 
         }//else if (txtTotal.getText().equals("0")) {
@@ -713,7 +716,7 @@ public class Facturacion extends javax.swing.JFrame {
             btnGuardarImprimir.setEnabled(true);
             bton_limpiarTabla.setEnabled(false);
             btnGuardar.setEnabled(false);
-            fs.pdfFactura(nombreCliente);
+            fs.pdfFactura(nombreCliente, codigoFactura);
             System.out.println(nombreCliente);
 
         }
@@ -859,7 +862,7 @@ public class Facturacion extends javax.swing.JFrame {
     public static javax.swing.JTextField txtNombreCliente;
     private javax.swing.JLabel txtNumeroFactura;
     public static javax.swing.JTextField txtTelefono;
-    private javax.swing.JTextField txtTotal;
+    public static javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 
 }
