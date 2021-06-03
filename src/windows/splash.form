@@ -86,7 +86,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="cargandopuntos">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Cargarndo..."/>
+                <Property name="text" type="java.lang.String" value="Cargando..."/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

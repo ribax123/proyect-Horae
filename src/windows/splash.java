@@ -56,7 +56,7 @@ public class splash extends javax.swing.JFrame implements Runnable {
         carga.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Pulse-1s-200px.gif"))); // NOI18N
         jPanel2.add(carga, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, -10, 180, 120));
 
-        cargandopuntos.setText("Cargarndo...");
+        cargandopuntos.setText("Cargando...");
         jPanel2.add(cargandopuntos, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, -1, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 690, 110));

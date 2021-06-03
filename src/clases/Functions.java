@@ -140,7 +140,7 @@ public class Functions extends file implements Interface_Functions {
     public void numeroDLetras() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }*/
-    public void pdfFactura(String parametro,String codigo) {
+    public void pdfFactura(String parametro, String codigo) {
         Document documento = new Document();
         Datos datos = new Datos();
 
@@ -160,6 +160,7 @@ public class Functions extends file implements Interface_Functions {
             Paragraph fechaV = new Paragraph();
             Paragraph ciudad = new Paragraph();
             Paragraph total = new Paragraph();
+            Paragraph comentarios = new Paragraph();
 
             title.setAlignment(Paragraph.ALIGN_CENTER);
             title.setFont(FontFactory.getFont("Arial", 16, Font.BOLD, BaseColor.DARK_GRAY));
@@ -180,19 +181,25 @@ public class Functions extends file implements Interface_Functions {
             ciudad.setAlignment(Paragraph.ALIGN_LEFT);
             ciudad.setFont(FontFactory.getFont("Arial", 9, Font.PLAIN, BaseColor.BLACK));
             ciudad.add("Ciudad : " + Facturacion.ciudad + "\n\n");
-   
-            fechaV.setAlignment(Paragraph.ALIGN_LEFT);
-            fechaV.setFont(FontFactory.getFont("Arial", 9, Font.PLAIN, BaseColor.BLACK));
-            fechaV.add("\n" + "Paguese los primeros 5 dias del mes de Junio. " + "\n\n");
            
             total.setAlignment(Paragraph.ALIGN_LEFT);
             total.setFont(FontFactory.getFont("Arial", 9, Font.BOLD, BaseColor.BLACK));
-            total.add("\n" + "Total a pagar : $" + Facturacion.TotalString + " Pesos.");
+            total.add( "Total a pagar : $" + Facturacion.TotalString + " Pesos.");
+           
+            fechaV.setAlignment(Paragraph.ALIGN_LEFT);
+            fechaV.setFont(FontFactory.getFont("Arial", 9, Font.PLAIN, BaseColor.BLACK));
+            fechaV.add("Paguese los primeros 5 dias del mes de Junio. " + "\n\n");
+            
+            comentarios.setAlignment(Paragraph.ALIGN_LEFT);
+            comentarios.setFont(FontFactory.getFont("Arial", 9, Font.PLAIN, BaseColor.BLACK));
+            comentarios.add(Facturacion.txAreaComentarios.getText());
 
             fPago.setAlignment(Paragraph.ALIGN_CENTER);
             fPago.setFont(FontFactory.getFont("Arial", 8, Font.PLAIN, BaseColor.BLACK));
-            fPago.add( "Puede realizar sus pagos, en las oficinas de la empresa, carrera 27 Nº10-13 barrio el paraiso" + "\n"
+            fPago.add("Puede realizar sus pagos, en las oficinas de la empresa, carrera 27 Nº10-13 barrio el paraiso" + "\n"
                     + "recuerde pagar antes de la fecha de vencimiento para" + "\n" + "evitar suspencion del servicio y acarrear costos de reconexción.");
+            
+            
 
             documento.open();
             documento.add(header);
@@ -226,18 +233,19 @@ public class Functions extends file implements Interface_Functions {
 
                     } while (rs.next());
                     documento.add(tabla);
-                    
 
                 }
 
             } catch (Exception e) {
             }
+            documento.add(comentarios);
             documento.add(total);
             documento.add(fechaV);
             documento.add(fPago);
             documento.close();
             JOptionPane.showMessageDialog(null, "Documento creado.");
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"error " + e );
         }
     }
 
