@@ -12,7 +12,6 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import static windows.Facturacion.modelDos;
 import static windows.Facturacion1.modelcinco;
 
 public class tablaFacturas extends javax.swing.JFrame {
@@ -28,7 +27,11 @@ public class tablaFacturas extends javax.swing.JFrame {
         setResizable(false);
         setLocationRelativeTo(this);
         new Url().obtenerUrl();
+        tabla();
 
+    }
+
+    public void tabla() {
         try {
             Connection cn = conexion.conectar();
             PreparedStatement pst = cn.prepareStatement(
@@ -138,7 +141,7 @@ public class tablaFacturas extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Archivo no encontrado!");
         }
     }
-    
+
     @Override
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("iconos/iconopequeño.png"));
@@ -162,7 +165,8 @@ public class tablaFacturas extends javax.swing.JFrame {
         jTable_facturas = new javax.swing.JTable();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btn_borrar = new javax.swing.JButton();
+        btn_Cancelado = new javax.swing.JButton();
 
         jLabel2.setText("jLabel2");
 
@@ -201,7 +205,7 @@ public class tablaFacturas extends javax.swing.JFrame {
                 btnCerrarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 335, 100, -1));
+        jPanel1.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 340, 100, -1));
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -217,7 +221,7 @@ public class tablaFacturas extends javax.swing.JFrame {
                 btnAbrirActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAbrir, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 335, 100, -1));
+        jPanel1.add(btnAbrir, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, 100, -1));
 
         jButton1.setBackground(new java.awt.Color(0, 51, 102));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
@@ -228,7 +232,7 @@ public class tablaFacturas extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 335, 210, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, 210, -1));
 
         version.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         version.setForeground(new java.awt.Color(255, 255, 255));
@@ -264,15 +268,26 @@ public class tablaFacturas extends javax.swing.JFrame {
         jLabel4.setText("Buscar :");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 20, -1, 30));
 
-        jButton2.setBackground(new java.awt.Color(0, 51, 102));
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Eliminar registro");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btn_borrar.setBackground(new java.awt.Color(0, 51, 102));
+        btn_borrar.setForeground(new java.awt.Color(255, 255, 255));
+        btn_borrar.setText("Eliminar registro");
+        btn_borrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btn_borrarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 335, -1, -1));
+        jPanel1.add(btn_borrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, -1, -1));
+
+        btn_Cancelado.setBackground(new java.awt.Color(0, 51, 102));
+        btn_Cancelado.setForeground(new java.awt.Color(255, 255, 255));
+        btn_Cancelado.setText("Cancelado");
+        btn_Cancelado.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_Cancelado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_CanceladoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_Cancelado, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 340, 100, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 380));
 
@@ -288,6 +303,9 @@ public class tablaFacturas extends javax.swing.JFrame {
     }//GEN-LAST:event_txtBuscarKeyReleased
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+        Facturacion facturacion = new Facturacion();
+        facturacion.setVisible(true);
+
         dispose();
     }//GEN-LAST:event_btnCerrarActionPerformed
 
@@ -296,7 +314,7 @@ public class tablaFacturas extends javax.swing.JFrame {
         modelcinco.setColumnCount(0);
         Facturacion1 llamarT = new Facturacion1();
         llamarT.llenarFactura(jTable_facturas);
-        llamarT.descagarFactura(jTable_facturas, modelcinco);      
+        llamarT.descagarFactura(jTable_facturas, modelcinco);
         llamarT.setVisible(true);
 
         /* try {
@@ -320,7 +338,7 @@ public class tablaFacturas extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btn_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_borrarActionPerformed
         try {
             String datos;
             int filasSleccionada = jTable_facturas.getSelectedRow();
@@ -328,15 +346,31 @@ public class tablaFacturas extends javax.swing.JFrame {
             System.out.println(datos);
             Functions delete = new Functions();
             delete.delete("Num_Factura", "factura", datos);
+            delete.delete("Num_Factura", "tabla_facturas", datos);
+            JOptionPane.showMessageDialog(null, "¡Los registros han sido eliminados con exito!");
+            modelfacturas.setRowCount(0);
+            modelfacturas.setColumnCount(0);
+            tabla();
+
         } catch (Exception e) {
             System.out.println(e);
             JOptionPane.showMessageDialog(null, "¡Selecciona un registro!");
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btn_borrarActionPerformed
 
     private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBuscarActionPerformed
+
+    private void btn_CanceladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CanceladoActionPerformed
+        Functions cancelado = new Functions();
+
+        cancelado.funcionPago(jTable_facturas);
+
+        modelfacturas.setRowCount(0);
+        modelfacturas.setColumnCount(0);
+        tabla();
+    }//GEN-LAST:event_btn_CanceladoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -387,8 +421,9 @@ public class tablaFacturas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAbrir;
     private javax.swing.JButton btnCerrar;
+    private javax.swing.JButton btn_Cancelado;
+    private javax.swing.JButton btn_borrar;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

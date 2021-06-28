@@ -1,32 +1,30 @@
 package clases;
 
-import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.Chunk;
 import java.awt.Desktop;
 import java.awt.Font;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javafx.scene.control.RadioButton;
-import javax.swing.ButtonGroup;
-import javax.swing.JComboBox;
+
 import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Chunk;
 import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import java.awt.Image;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.UIManager;
+import javax.swing.JComboBox;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
@@ -35,6 +33,8 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+
+//***************************************************************************************************************************************************
 import windows.Administrador;
 import windows.Auxiliar;
 import windows.Facturacion;
@@ -42,6 +42,7 @@ import static windows.Interfaz.getPass;
 
 public class Functions extends file implements Interface_Functions {
 //Dar ingreso a la aplicación, especificando el permiso por medio de una consulta a la base de datos- login.
+//***************************************************************************************************************************************************
 
     @Override
     public void variable() {
@@ -97,6 +98,7 @@ public class Functions extends file implements Interface_Functions {
 
     }
 //Accede a una base de datos y extrae el nombre del usuario. administrador
+//***************************************************************************************************************************************************
 
     @Override
     public void nombreusuario() {
@@ -119,6 +121,7 @@ public class Functions extends file implements Interface_Functions {
 
     }
 //Verifica en la base de datos si el Id ingresado se encuentra registrado. validación para borrar
+//***************************************************************************************************************************************************
 
     public void delete(String indentificador, String tablaCodigo, String esto) {
         try {
@@ -140,6 +143,7 @@ public class Functions extends file implements Interface_Functions {
     public void numeroDLetras() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }*/
+    //***************************************************************************************************************************************************
     public void pdfFactura(String parametro, String codigo) {
         Document documento = new Document();
         Datos datos = new Datos();
@@ -181,15 +185,15 @@ public class Functions extends file implements Interface_Functions {
             ciudad.setAlignment(Paragraph.ALIGN_LEFT);
             ciudad.setFont(FontFactory.getFont("Arial", 9, Font.PLAIN, BaseColor.BLACK));
             ciudad.add("Ciudad : " + Facturacion.ciudad + "\n\n");
-           
+
             total.setAlignment(Paragraph.ALIGN_LEFT);
             total.setFont(FontFactory.getFont("Arial", 9, Font.BOLD, BaseColor.BLACK));
-            total.add( "Total a pagar : $" + Facturacion.TotalString + " Pesos.");
-           
+            total.add("Total a pagar : $" + Facturacion.TotalString + " Pesos.");
+
             fechaV.setAlignment(Paragraph.ALIGN_LEFT);
             fechaV.setFont(FontFactory.getFont("Arial", 9, Font.PLAIN, BaseColor.BLACK));
-            fechaV.add("Paguese los primeros 5 dias del mes de Junio. " + "\n\n");
-            
+            fechaV.add("Paguese los primeros 5 dias del mes de Julio. " + "\n\n");
+
             comentarios.setAlignment(Paragraph.ALIGN_LEFT);
             comentarios.setFont(FontFactory.getFont("Arial", 9, Font.PLAIN, BaseColor.BLACK));
             comentarios.add(Facturacion.txAreaComentarios.getText());
@@ -198,8 +202,6 @@ public class Functions extends file implements Interface_Functions {
             fPago.setFont(FontFactory.getFont("Arial", 8, Font.PLAIN, BaseColor.BLACK));
             fPago.add("Puede realizar sus pagos, en las oficinas de la empresa, carrera 27 Nº10-13 barrio el paraiso" + "\n"
                     + "recuerde pagar antes de la fecha de vencimiento para" + "\n" + "evitar suspencion del servicio y acarrear costos de reconexción.");
-            
-            
 
             documento.open();
             documento.add(header);
@@ -245,9 +247,10 @@ public class Functions extends file implements Interface_Functions {
             documento.close();
             JOptionPane.showMessageDialog(null, "Documento creado.");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,"error " + e );
+            JOptionPane.showMessageDialog(null, "error " + e);
         }
     }
+//***************************************************************************************************************************************************
 
     public void exportarExcel(JTable t) throws IOException, java.io.IOException {
         JFileChooser chooser = new JFileChooser();
@@ -300,6 +303,7 @@ public class Functions extends file implements Interface_Functions {
         }
 
     }
+    //***************************************************************************************************************************************************
 
     public void buscar(String buscar, DefaultTableModel tableModel, JTable tabla, JScrollPane scrollPane, String qery) {
         tableModel.setRowCount(0);
@@ -347,6 +351,7 @@ public class Functions extends file implements Interface_Functions {
 
     }
 
+    //***************************************************************************************************************************************************
     @Override
     public void borrar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -378,6 +383,7 @@ public class Functions extends file implements Interface_Functions {
 
     }
 
+    //***************************************************************************************************************************************************
     public String trimestre() {
         String trms = "";
         String mes;
@@ -407,6 +413,7 @@ public class Functions extends file implements Interface_Functions {
         }
         return trms;
     }
+    //***************************************************************************************************************************************************
 
     public String mesTrimes() {
 
@@ -456,6 +463,33 @@ public class Functions extends file implements Interface_Functions {
                 System.err.println("intentalo de nuevo");
         }
         return mesString;
+    }
+
+ //*******************************************************************************************************************
+    public void funcionPago(JTable tabla) {
+
+        String datos;
+        int filasSleccionada = tabla.getSelectedRow();
+        datos = tabla.getValueAt(filasSleccionada, 0).toString();
+       
+
+        try {
+            Connection cn = conexion.conectar();
+            PreparedStatement pst = cn.prepareStatement(
+                    "update factura set Forma_pago = ? WHERE Num_Factura = '" + datos + "'");
+                        pst.setString(1, "Cancelado");
+            pst.executeUpdate();
+            cn.close();
+            
+            
+            JOptionPane.showMessageDialog(null, "Pago Realizado!!");
+            
+
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, "Error" + e);
+        }
+
     }
 
 }

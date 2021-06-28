@@ -688,13 +688,13 @@ public class Facturacion extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-datosF();        
+        datosF();
 //  Datos validar = new Datos();
         Functions fs = new Functions();
         //  boolean valN = validar.validacion(txtDocumento1.getText());
         //  boolean valL = validar.validacionNombre(txtNombreCliente.getText());
         //  boolean valT = validar.validacion(txtTelefono.getText());
-        if (txtDocumento1.getText().equals("") || txtNombreCliente.getText().equals("") || txtDireccion.equals("")|| TotalString.equals("0")) {
+        if (txtDocumento1.getText().equals("") || txtNombreCliente.getText().equals("") || txtDireccion.equals("") || TotalString.equals("0")) {
             JOptionPane.showMessageDialog(null, "Debes llenar todos los campos");
 
         }//else if (txtTotal.getText().equals("0")) {
@@ -784,8 +784,11 @@ datosF();
     }//GEN-LAST:event_bton_limpiarCamposActionPerformed
 
     private void btn_FacturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_FacturasActionPerformed
+        dispose();
         tablaFacturas facturast = new tablaFacturas();
         facturast.setVisible(true);
+
+
     }//GEN-LAST:event_btn_FacturasActionPerformed
 
     private void bton_limpiarTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bton_limpiarTablaActionPerformed
